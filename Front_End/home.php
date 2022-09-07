@@ -11,7 +11,7 @@
         <link rel="icon" href="">
         
         <style>
-            body {background-color: black;}
+            body {background-color: blue;}
             h1   {color: white;
                   text-align: center;}
             p    {color: white;}
