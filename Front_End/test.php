@@ -40,7 +40,7 @@
 
         </style>
         
-        <title>Test</title>
+        <title>Testing</title>
     </head>
     <body>
         <header>
