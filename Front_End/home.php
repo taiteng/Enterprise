@@ -11,12 +11,13 @@
         <link rel="icon" href="">
         
         <style>
-            body {background-color: blue;}
-            h1   {color: white;
+            body {background-color: white;}
+            h1   {color: black;
                   text-align: center;}
-            p    {color: white;}
-            a    {color: white;
+            p    {color: black;}
+            a    {color: black;
                   text-decoration: none;}
+            hr   {color: black;}
             
             /* width */
             ::-webkit-scrollbar {
@@ -47,7 +48,7 @@
             <nav class="navbar navbar-expand-sm bg-white navbar-light fixed-top">
                 <div class="container-fluid">
                     <a class="navbar-brand">
-                        <img src="" alt="logo" onclick="location.href='home.php'"/>
+                        <img src="../Images/covent.png" alt="logo" onclick="location.href='home.php'"/>
                     </a>
                     <div class="d-flex flex-row bd-highlight mb-3 justify-content-end">
                         <ul class="navbar-nav nav">
@@ -68,5 +69,6 @@
                 </div>
             </nav>
         </header>
+        <h1 style="margin-top:100px">Home</h1>
     </body>
 </html>
