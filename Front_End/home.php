@@ -126,7 +126,7 @@
         <br>
         
         <div style="text-align: center;">
-            <button type="button" class="btn btn-outline-danger" href="" >View More</button>
+            <button type="button" class="btn btn-outline-danger" href="view_more.php" >View More</button>
         </div>
         
         <br>
@@ -135,10 +135,10 @@
             <table class="table table-borderless table-responsive" style="min-height: 300px;">
                 <tr class="body" align="center" style="padding:10px">
                     <td>
-                        <a href="">
+                        <a href="service_details.php">
                             <img src="../Images/self-service.png" width="150px" height="150px" alt="service" class="img-thumbnail"/>
                         </a>
-                        <a class="nav-link" href="" style="color: black; font-size: 20px;">Book A Service</a>
+                        <a class="nav-link" href="service_details.php" style="color: black; font-size: 20px;">Book A Service</a>
                     </td>
                     <td>
                         <a href="">
@@ -147,10 +147,10 @@
                         <a class="nav-link" href="" style="color: black; font-size: 20px;">My Projects</a>
                     </td>
                     <td>
-                        <a href="">
+                        <a href="reviews.php">
                             <img src="../Images/comment.png" width="150px" height="150px" alt="review" class="img-thumbnail"/>
                         </a>
-                        <a class="nav-link" href="" style="color: black; font-size: 20px;">Reviews</a>
+                        <a class="nav-link" href="reviews.php" style="color: black; font-size: 20px;">Reviews</a>
                     </td>
                 </tr>
             </table>
