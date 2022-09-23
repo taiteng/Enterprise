@@ -45,30 +45,31 @@
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-expand-sm bg-white navbar-light fixed-top">
+            <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #e3242b">
                 <div class="container-fluid">
                     <a class="navbar-brand">
-                        <img src="../Images/covent.png" alt="logo" onclick="location.href='home.php'"/>
+                        <img src="../Images/coventco.png" alt="logo" onclick="location.href='home.php'"/>
                     </a>
                     <div class="d-flex flex-row bd-highlight mb-3 justify-content-end">
                         <ul class="navbar-nav nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="home.php" style="font-size: 20px;">Home</a>
+                                <a class="nav-link" href="home.php" style="color: white; font-size: 20px;">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="" style="font-size: 20px;">Policy</a>
+                                <a class="nav-link" href="" style="color: white; font-size: 20px;">Policy</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="" style="font-size: 20px;">Help</a>
+                                <a class="nav-link" href="" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="" style="font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="" style="color: white; font-size: 20px;">Profile</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
-        <h1 style="margin-top:100px">Add Review</h1>
+        
+        <h1 style="margin-top:110px">Add Review</h1>
     </body>
 </html>
