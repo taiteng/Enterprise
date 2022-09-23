@@ -41,7 +41,7 @@
 
         </style>
         
-        <title>Home</title>
+        <title>Quotation</title>
     </head>
     <body>
         <header>
@@ -69,6 +69,6 @@
                 </div>
             </nav>
         </header>
-        <h1 style="margin-top:100px">Home</h1>
+        <h1 style="margin-top:100px">Quotation</h1>
     </body>
 </html>

@@ -41,7 +41,7 @@
 
         </style>
         
-        <title>Home</title>
+        <title>Service Details</title>
     </head>
     <body>
         <header>
@@ -69,6 +69,6 @@
                 </div>
             </nav>
         </header>
-        <h1 style="margin-top:100px">Home</h1>
+        <h1 style="margin-top:100px">Service Details</h1>
     </body>
 </html>
