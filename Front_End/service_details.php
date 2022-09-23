@@ -71,5 +71,6 @@
         </header>
         
         <h1 style="margin-top:110px">Service Details</h1>
+        <hr>
     </body>
 </html>
