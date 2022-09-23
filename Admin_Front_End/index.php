@@ -8,20 +8,22 @@
         <!-- Bootstrap plugin -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <link rel="stylesheet" href="cards_style.css">
+        <link rel="stylesheet" href="../Admin_Front_End/cards_style.css">
         
         <!-- logo -->
-        <link rel="icon" href="">
+        <link rel="icon" href="../Images/logo.png">
         
         <style>
           .zoom {
-                
                 transition: transform .4s; /* Animation */
                 margin: 0 auto;
             }
 
             .zoom:hover {
               transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+              background:#911F27;
+              color: white;
+             
             }
             *{
                 padding:0;
@@ -30,17 +32,19 @@
             }
             /* width */
             ::-webkit-scrollbar {
-              width: 10px;
+              width: 5px;
             }
 
             /* Track */
             ::-webkit-scrollbar-track {
-              background: #f1f1f1;
+                box-shadow: inset 0 0 5px grey;
+                border-radius: 10px;
             }
 
             /* Handle */
             ::-webkit-scrollbar-thumb {
               background: #888;
+              border-radius: 10px;
             }
 
             /* Handle on hover */
@@ -103,7 +107,7 @@
             </div>
         </div>
         
-        <div style="margin-top:5%; width:100%; height:300px;">
+        <div style="margin-top:5%; width:100%; height:300px; margin-bottom: 5%;">
             <div class="zoom" style="width: 27%; float: left;align-items: center; height:100%;  margin-left: 5%; padding:15px; border-radius: 20px; box-shadow: 2px 2px 8px #888888; " >
                 <img class="zoom" style="width:20%; display: flex; margin-top:15%; justify-content: center;" src="../Images/project_history-icon.png" class="card-img-top" alt="...">
                 <p class="card-text zoom" style="font-size: 18px; margin-top:15%; text-align: center;"><b>Project History</b></p>
