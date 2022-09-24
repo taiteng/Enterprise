@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -6,6 +7,10 @@
         <!-- Bootstrap plugin -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Add icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
@@ -20,6 +25,48 @@
             hr   {color: black;}
             td   {text-align: center;
                   min-width:300px;}
+            body {font-family: Arial, Helvetica, sans-serif;}
+            * {box-sizing: border-box;}
+
+            .input-container {
+              display: -ms-flexbox; /* IE10 */
+              display: flex;
+              width: 100%;
+              margin-bottom: 15px;
+            }
+
+            .icon {
+              padding: 10px;
+              background: dodgerblue;
+              color: white;
+              min-width: 50px;
+              text-align: center;
+            }
+
+            .input-field {
+              width: 100%;
+              padding: 10px;
+              outline: none;
+            }
+
+            .input-field:focus {
+              border: 2px solid dodgerblue;
+            }
+
+            /* Set a style for the submit button */
+            .btn {
+              background-color: dodgerblue;
+              color: white;
+              padding: 15px 20px;
+              border: none;
+              cursor: pointer;
+              width: 100%;
+              opacity: 0.9;
+            }
+
+            .btn:hover {
+              opacity: 1;
+            }
             
             /* width */
             ::-webkit-scrollbar {
@@ -50,113 +97,55 @@
             <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #e3242b">
                 <div class="container-fluid">
                     <a class="navbar-brand">
-                        <img src="../Images/coventco.png" alt="logo" onclick="location.href='home.php'"/>
+                        <img src="../Images/coventco.png" alt="logo" onclick="location.href='../Front_End/home.php'"/>
                     </a>
                     <div class="d-flex flex-row bd-highlight mb-3 justify-content-end">
                         <ul class="navbar-nav nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="home.php" style="color: white; font-size: 20px;">Home</a>
+                                <a class="nav-link" href="../Front_End/home.php" style="color: white; font-size: 20px;">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Policy.php" style="color: white; font-size: 20px;">Policy</a>
+                                <a class="nav-link" href="Policy.php" style="color: white; font-size: 20px;">Policy</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Faq.php" style="color: white; font-size: 20px;">Help</a>
+                                <a class="nav-link" href="Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Login.php" style="color: white; font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="Login.php" style="color: white; font-size: 20px;">Profile</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
-        
-        <h1 style="margin-top:110px">Home</h1>
-        
-        <div class="container" style="border-radius: 25px; border: 2px solid red; padding: 10px;">
-            <!-- Carousel -->
-            <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
-                <!-- Indicators/dots -->
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active" style="background-color:black;"></button>
-                    <button type="button" data-bs-target="#demo" data-bs-slide-to="1" style="background-color:black;"></button>
-                    <button type="button" data-bs-target="#demo" data-bs-slide-to="2" style="background-color:black;"></button>
-                </div>
+        <form action="/Policy.php" style="max-width:500px;margin:auto">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
 
-                <!-- The slideshow/carousel -->
-                <div class="carousel-inner slide">
-                    <div class="carousel-item active">
-                        <a href="">
-                            <img src="../Images/coming_soon.jpg" alt="carouselImage" class="d-block w-100" width="350px" height="500px">
-                        </a>
-                        <div class="carousel-caption">
-                            <h3>Coming Soon</h3>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="">
-                            <img src="../Images/coming_soon.jpg" alt="carouselImage" class="d-block w-100" width="350px" height="500px">
-                        </a>
-                        <div class="carousel-caption">
-                            <h3>Coming Soon</h3>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="">
-                            <img src="../Images/coming_soon.jpg" alt="carouselImage" class="d-block w-100" width="350px" height="500px">
-                        </a>
-                        <div class="carousel-caption">
-                            <h3>Coming Soon</h3>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Left and right controls/icons -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" style="border-radius: 30px; border: 5px solid black; background-color:black;"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" style="border-radius: 30px; border: 5px solid black; background-color:black;"></span>
-                </button>
+            <h2>Worker Signup Form</h2>
+            <div class="input-container">
+                <i class="fa fa-user icon"></i>
+                <input class="input-field" type="text" placeholder="Username" name="usrnm">
             </div>
-        </div>
-        
-        <br>
-        
-        <div style="text-align: center;">
-            <a href="view_more.php">
-                <button type="button" class="btn btn-outline-danger">View More</button>
-            </a>
-        </div>
-        
-        <br>
-        
-        <div class="container" style="text-align: center;">
-            <table class="table table-borderless table-responsive" style="min-height: 300px;">
-                <tr class="body" align="center" style="padding:10px">
-                    <td>
-                        <a href="service_details.php">
-                            <img src="../Images/self-service.png" width="150px" height="150px" alt="service" class="img-thumbnail"/>
-                        </a>
-                        <a class="nav-link" href="service_details.php" style="color: black; font-size: 20px;">Book A Service</a>
-                    </td>
-                    <td>
-                        <a href="">
-                            <img src="../Images/briefing.png" width="150px" height="150px" alt="project" class="img-thumbnail"/>
-                        </a>
-                        <a class="nav-link" href="" style="color: black; font-size: 20px;">My Projects</a>
-                    </td>
-                    <td>
-                        <a href="reviews.php">
-                            <img src="../Images/comment.png" width="150px" height="150px" alt="review" class="img-thumbnail"/>
-                        </a>
-                        <a class="nav-link" href="reviews.php" style="color: black; font-size: 20px;">Reviews</a>
-                    </td>
-                </tr>
-            </table>
-        </div>
+
+            <div class="input-container">
+                <i class="fa fa-envelope icon"></i>
+                <input class="input-field" type="text" placeholder="Email" name="email">
+            </div>
+
+            <div class="input-container">
+                <i class="fa fa-key icon"></i>
+                <input class="input-field" type="password" placeholder="Password" name="psw">
+            </div>
+
+            <button type="submit" class="btn">Login</button>
+
+        </form>
         
         <br>
         
@@ -274,5 +263,6 @@
           <!-- Footer -->
         </div>
         <!-- End of .container -->
+
     </body>
 </html>

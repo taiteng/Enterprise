@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -58,109 +59,277 @@
                                 <a class="nav-link" href="home.php" style="color: white; font-size: 20px;">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Policy.php" style="color: white; font-size: 20px;">Policy</a>
+                                <a class="nav-link" href="" style="color: white; font-size: 20px;">Policy</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Faq.php" style="color: white; font-size: 20px;">Help</a>
+                                <a class="nav-link" href="" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Login.php" style="color: white; font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="" style="color: white; font-size: 20px;">Profile</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
-        
-        <h1 style="margin-top:110px">Home</h1>
-        
-        <div class="container" style="border-radius: 25px; border: 2px solid red; padding: 10px;">
-            <!-- Carousel -->
-            <div id="demo" class="carousel slide" data-bs-ride="carousel">
+<html>
 
-                <!-- Indicators/dots -->
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active" style="background-color:black;"></button>
-                    <button type="button" data-bs-target="#demo" data-bs-slide-to="1" style="background-color:black;"></button>
-                    <button type="button" data-bs-target="#demo" data-bs-slide-to="2" style="background-color:black;"></button>
-                </div>
+<!DOCTYPE html>
+<html>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
 
-                <!-- The slideshow/carousel -->
-                <div class="carousel-inner slide">
-                    <div class="carousel-item active">
-                        <a href="">
-                            <img src="../Images/coming_soon.jpg" alt="carouselImage" class="d-block w-100" width="350px" height="500px">
-                        </a>
-                        <div class="carousel-caption">
-                            <h3>Coming Soon</h3>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="">
-                            <img src="../Images/coming_soon.jpg" alt="carouselImage" class="d-block w-100" width="350px" height="500px">
-                        </a>
-                        <div class="carousel-caption">
-                            <h3>Coming Soon</h3>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="">
-                            <img src="../Images/coming_soon.jpg" alt="carouselImage" class="d-block w-100" width="350px" height="500px">
-                        </a>
-                        <div class="carousel-caption">
-                            <h3>Coming Soon</h3>
-                        </div>
-                    </div>
-                </div>
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
 
-                <!-- Left and right controls/icons -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" style="border-radius: 30px; border: 5px solid black; background-color:black;"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" style="border-radius: 30px; border: 5px solid black; background-color:black;"></span>
-                </button>
-            </div>
-        </div>
-        
-        <br>
-        
-        <div style="text-align: center;">
-            <a href="view_more.php">
-                <button type="button" class="btn btn-outline-danger">View More</button>
-            </a>
-        </div>
-        
-        <br>
-        
-        <div class="container" style="text-align: center;">
-            <table class="table table-borderless table-responsive" style="min-height: 300px;">
-                <tr class="body" align="center" style="padding:10px">
-                    <td>
-                        <a href="service_details.php">
-                            <img src="../Images/self-service.png" width="150px" height="150px" alt="service" class="img-thumbnail"/>
-                        </a>
-                        <a class="nav-link" href="service_details.php" style="color: black; font-size: 20px;">Book A Service</a>
-                    </td>
-                    <td>
-                        <a href="">
-                            <img src="../Images/briefing.png" width="150px" height="150px" alt="project" class="img-thumbnail"/>
-                        </a>
-                        <a class="nav-link" href="" style="color: black; font-size: 20px;">My Projects</a>
-                    </td>
-                    <td>
-                        <a href="reviews.php">
-                            <img src="../Images/comment.png" width="150px" height="150px" alt="review" class="img-thumbnail"/>
-                        </a>
-                        <a class="nav-link" href="reviews.php" style="color: black; font-size: 20px;">Reviews</a>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        
-        <br>
-        
-        <div>
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+}
+</style>
+<body>
+
+<form action="/action_page.php" style="border:1px solid #ccc">
+  <div class="container">
+    <h1>Sign Up</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+    
+    <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
+    
+    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="submit" class="signupbtn">Sign Up</button>
+    </div>
+  </div>
+</form>
+
+</body>
+</html>
+    <!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+</style>
+
+</html>
+
+
+</body>
+</html>
+
+</div>
+   
+</div>
+
+<script>
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+     
+</body>
+
+</html>
+<div>
           <!-- Footer -->
           <footer class="text-center text-lg-start text-white" style="background-color: #800000">
             <!-- Section: Social media -->

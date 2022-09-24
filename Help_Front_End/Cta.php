@@ -14,7 +14,7 @@
             body {background-color: white;}
             h1   {color: black;
                   text-align: center;}
-            p    {color: white;}
+            p    {color: black;}
             a    {color: black;
                   text-decoration: none;}
             hr   {color: black;}
@@ -50,112 +50,62 @@
             <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #e3242b">
                 <div class="container-fluid">
                     <a class="navbar-brand">
-                        <img src="../Images/coventco.png" alt="logo" onclick="location.href='home.php'"/>
+                        <img src="../Images/coventco.png" alt="logo" onclick="location.href='../Front_End/home.php'"/>
                     </a>
                     <div class="d-flex flex-row bd-highlight mb-3 justify-content-end">
                         <ul class="navbar-nav nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="home.php" style="color: white; font-size: 20px;">Home</a>
+                                <a class="nav-link" href="../Front_End/home.php" style="color: white; font-size: 20px;">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Policy.php" style="color: white; font-size: 20px;">Policy</a>
+                                <a class="nav-link" href="Policy.php" style="color: white; font-size: 20px;">Policy</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Faq.php" style="color: white; font-size: 20px;">Help</a>
+                                <a class="nav-link" href="Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Login.php" style="color: white; font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="Login.php" style="color: white; font-size: 20px;">Profile</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
-        
-        <h1 style="margin-top:110px">Home</h1>
-        
-        <div class="container" style="border-radius: 25px; border: 2px solid red; padding: 10px;">
-            <!-- Carousel -->
-            <div id="demo" class="carousel slide" data-bs-ride="carousel">
-
-                <!-- Indicators/dots -->
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active" style="background-color:black;"></button>
-                    <button type="button" data-bs-target="#demo" data-bs-slide-to="1" style="background-color:black;"></button>
-                    <button type="button" data-bs-target="#demo" data-bs-slide-to="2" style="background-color:black;"></button>
-                </div>
-
-                <!-- The slideshow/carousel -->
-                <div class="carousel-inner slide">
-                    <div class="carousel-item active">
-                        <a href="">
-                            <img src="../Images/coming_soon.jpg" alt="carouselImage" class="d-block w-100" width="350px" height="500px">
-                        </a>
-                        <div class="carousel-caption">
-                            <h3>Coming Soon</h3>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="">
-                            <img src="../Images/coming_soon.jpg" alt="carouselImage" class="d-block w-100" width="350px" height="500px">
-                        </a>
-                        <div class="carousel-caption">
-                            <h3>Coming Soon</h3>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <a href="">
-                            <img src="../Images/coming_soon.jpg" alt="carouselImage" class="d-block w-100" width="350px" height="500px">
-                        </a>
-                        <div class="carousel-caption">
-                            <h3>Coming Soon</h3>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="my-4">
+            <div class="container">
+                <div class="row">
+                    <div class="offset-xl-1 col-xl-10 col-12 ">
+                        <div class="row px-3 pt-3 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border smooth-shadow-sm">
+                            <div class="col-lg-6 p-4 p-md-6 pt-lg-0">
+                                <h1 class="display-4 fw-bold lh-1 mb-3">Get to know Latest Promotion</h1>
+                                <p class="lead mb-5">
+                                    Provide us email address to get the latest promotion
+                                </p>
+                                <form class="row">
+                                    <div class="mb-3 col-md-7 col-12">
+                                        <input type="email" class="form-control" placeholder="Enter Email" required="">
+                                    </div>
+                                    <div class="d-grid mb-3 col-md-5 col-12 ps-md-0">
+                                        <button class="btn btn-primary" type="submit">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-lg-5 offset-lg-1 p-0 overflow-hidden shadow-lg rounded-end-md">
+                                <img class="rounded-top-md card-img-size-600" src="../images/coupon.png" alt="" >
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Left and right controls/icons -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" style="border-radius: 30px; border: 5px solid black; background-color:black;"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" style="border-radius: 30px; border: 5px solid black; background-color:black;"></span>
-                </button>
             </div>
-        </div>
-        
-        <br>
-        
-        <div style="text-align: center;">
-            <a href="view_more.php">
-                <button type="button" class="btn btn-outline-danger">View More</button>
-            </a>
-        </div>
-        
-        <br>
-        
-        <div class="container" style="text-align: center;">
-            <table class="table table-borderless table-responsive" style="min-height: 300px;">
-                <tr class="body" align="center" style="padding:10px">
-                    <td>
-                        <a href="service_details.php">
-                            <img src="../Images/self-service.png" width="150px" height="150px" alt="service" class="img-thumbnail"/>
-                        </a>
-                        <a class="nav-link" href="service_details.php" style="color: black; font-size: 20px;">Book A Service</a>
-                    </td>
-                    <td>
-                        <a href="">
-                            <img src="../Images/briefing.png" width="150px" height="150px" alt="project" class="img-thumbnail"/>
-                        </a>
-                        <a class="nav-link" href="" style="color: black; font-size: 20px;">My Projects</a>
-                    </td>
-                    <td>
-                        <a href="reviews.php">
-                            <img src="../Images/comment.png" width="150px" height="150px" alt="review" class="img-thumbnail"/>
-                        </a>
-                        <a class="nav-link" href="reviews.php" style="color: black; font-size: 20px;">Reviews</a>
-                    </td>
-                </tr>
-            </table>
         </div>
         
         <br>
