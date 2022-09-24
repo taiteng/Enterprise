@@ -1,73 +1,184 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-<title>Worker Page</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <head>
+        <meta charset="UTF-8">
+        
+        <!-- Bootstrap plugin -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <!-- logo -->
+        <link rel="icon" href="../Images/logo.png">
+        
+        <style>
+            body {background-color: white;}
+            h1   {color: black;
+                  text-align: center;}
+            p    {color: white;}
+            a    {color: black;
+                  text-decoration: none;}
+            hr   {color: black;}
+            td   {text-align: center;
+                  min-width:300px;}
+            
+            /* width */
+            ::-webkit-scrollbar {
+              width: 10px;
+            }
+
+            /* Track */
+            ::-webkit-scrollbar-track {
+              background: #f1f1f1;
+            }
+
+            /* Handle */
+            ::-webkit-scrollbar-thumb {
+              background: #888;
+            }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+              background: #555;
+            }
+
+        </style>
+        
+        <title>Home</title>
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #e3242b">
+                <div class="container-fluid">
+                    <a class="navbar-brand">
+                        <img src="../Images/coventco.png" alt="logo" onclick="location.href='home.php'"/>
+                    </a>
+                    <div class="d-flex flex-row bd-highlight mb-3 justify-content-end">
+                        <ul class="navbar-nav nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="home.php" style="color: white; font-size: 20px;">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="" style="color: white; font-size: 20px;">Policy</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="" style="color: white; font-size: 20px;">Help</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="" style="color: white; font-size: 20px;">Profile</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+<html>
+
+<!DOCTYPE html>
+<html>
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn, .signupbtn {
+  float: left;
+  width: 50%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn, .signupbtn {
+     width: 100%;
+  }
+}
+</style>
 <body>
 
-<div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:200px;" id="mySidebar">
-  <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
-  <a href="index.php" class="w3-bar-item w3-button">Worker Page</a>
-  <a href="Faq.php" class="w3-bar-item w3-button">FAQ</a>
-  <a href="#" class="w3-bar-item w3-button">Live Chat</a>
-  <a href="Policy.php" class="w3-bar-item w3-button">Policy</a>
-</div>
+<form action="/action_page.php" style="border:1px solid #ccc">
+  <div class="container">
+    <h1>Sign Up</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
 
-<div class="w3-main" style="margin-left:200px">
-<div class="w3-teal">
-  <button class="w3-button w3-teal w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</button>
-  <div class="w3-container">
-    <h1>Worker Page</h1>
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" name="email" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+    
+    <label>
+      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    </label>
+    
+    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="submit" class="signupbtn">Sign Up</button>
+    </div>
   </div>
-</div>
+</form>
 
-<div class="w3-container">
-  <h3>Responsive Sidebar</h3>
-  <p>The sidebar in this example will always be displayed on screens wider than 992px, and hidden on tablets or mobile phones (screens less than 993px wide).</p>
-  <p>On tablets and mobile phones the sidebar is replaced with a menu icon to open the sidebar.</p>
-  <p>The sidebar will overlay of the page content.</p>
-  <p><b>Resize the browser window to see how it works.</b></p>
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-<body>
-
-<div class="container mt-3">
-  <h2>Hover Rows</h2>
-  <p>The .table-hover class enables a hover state (grey background on mouse over) on table rows:</p>            
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+</body>
+</html>
     <!DOCTYPE html>
 <html>
 <head>
@@ -194,54 +305,7 @@ span.psw {
   }
 }
 </style>
-</head>
-<body>
 
-<h2>Worker Login Form</h2>
-
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
-
-<div id="id01" class="modal">
-  
-  <form class="modal-content animate" action="/action_page.php" method="post">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="../Images/logo.png" alt="Avatar" class="avatar">
-    </div>
-
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-        
-      <button type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
-</div>
-
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-
-</body>
 </html>
 
 
@@ -264,4 +328,120 @@ function w3_close() {
      
 </body>
 
+</html>
+<div>
+          <!-- Footer -->
+          <footer class="text-center text-lg-start text-white" style="background-color: #800000">
+            <!-- Section: Social media -->
+            <section class="d-flex justify-content-between p-4" style="background-color: #c30010">
+              <!-- Left -->
+              <div class="me-5">
+                <span style="color:white;">Get connected with us on social networks:</span>
+              </div>
+              <!-- Left -->
+              <!-- Right -->
+              <div>
+                <a href="" class="text-white me-4">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                  <i class="fab fa-google"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                  <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="" class="text-white me-4">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+              <!-- Right -->
+            </section>
+            <!-- Section: Social media -->
+            <!-- Section: Links  -->
+            <section class="">
+              <div class="container text-center text-md-start mt-5">
+                <!-- Grid row -->
+                <div class="row mt-3">
+                  <!-- Grid column -->
+                  <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <!-- Content -->
+                    <h6 class="text-uppercase fw-bold">Covent.Co</h6>
+                    <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: black; height: 2px"/>
+                    <p>
+                        Event Planning System. <br>
+                        We hope to bring properity and convenience to people.
+                    </p>
+                  </div>
+                  <!-- Grid column -->
+                  <!-- Grid column -->
+                  <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold">Products</h6>
+                    <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: black; height: 2px"/>
+                    <p>
+                      <a href="#!" class="text-white">MDBootstrap</a>
+                    </p>
+                    <p>
+                      <a href="#!" class="text-white">MDWordPress</a>
+                    </p>
+                    <p>
+                      <a href="#!" class="text-white">BrandFlow</a>
+                    </p>
+                    <p>
+                      <a href="#!" class="text-white">Bootstrap Angular</a>
+                    </p>
+                  </div>
+                  <!-- Grid column -->
+                  <!-- Grid column -->
+                  <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold">Useful links</h6>
+                    <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: black; height: 2px"/>
+                    <p>
+                      <a href="#!" class="text-white">Your Account</a>
+                    </p>
+                    <p>
+                      <a href="#!" class="text-white">Become an Affiliate</a>
+                    </p>
+                    <p>
+                      <a href="#!" class="text-white">Shipping Rates</a>
+                    </p>
+                    <p>
+                      <a href="#!" class="text-white">Help</a>
+                    </p>
+                  </div>
+                  <!-- Grid column -->
+                  <!-- Grid column -->
+                  <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold">Contact</h6>
+                    <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: black; height: 2px"/>
+                    <p><i class="fas fa-home mr-3"></i>1-Z, Lebuh Bukit Jambul, Bukit Jambul, 11900 Bayan Lepas, Pulau Pinang</p>
+                    <p><i class="fas fa-envelope mr-3"></i> covent@abc.com</p>
+                    <p><i class="fas fa-phone mr-3"></i> + 012 3456 789</p>
+                    <p><i class="fas fa-print mr-3"></i> + 987 6543 210</p>
+                  </div>
+                  <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+              </div>
+            </section>
+            <!-- Section: Links  -->
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+              © 2022 Copyright:
+              <a class="text-white" href="">COVENT</a>
+            </div>
+            <!-- Copyright -->
+          </footer>
+          <!-- Footer -->
+        </div>
+        <!-- End of .container -->
+    </body>
 </html>
