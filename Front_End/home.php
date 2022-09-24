@@ -126,7 +126,9 @@
         <br>
         
         <div style="text-align: center;">
-            <button type="button" class="btn btn-outline-danger" href="view_more.php" >View More</button>
+            <a href="view_more.php">
+                <button type="button" class="btn btn-outline-danger">View More</button>
+            </a>
         </div>
         
         <br>
