@@ -54,7 +54,7 @@
 
         </style>
         
-        <title>Home</title>
+        <title>Covent</title>
     </head>
     <body>
         <header>
@@ -87,51 +87,54 @@
             </nav>
         </header>
         
-        <div style="margin-top:10%; width:100%; height:300px;">
-            <div class="zoom" style="width: 27%; float: left; height:100%;  margin-left: 5%; padding:15px; border-radius: 20px; box-shadow: 2px 2px 8px #888888; " >
-                <a href="projects.php" style="text-decoration: none; color: black;">
-                    <img class="zoom" style="width:20%; height:auto; display: flex; margin-top:15%; justify-content: center;" src="../Images/project-icon.png" alt="...">
-                    <p class="zoom" style="font-size: 18px; margin-top:15%; text-align: center;"><b>PROJECTS</b></p>
-                </a>
-            </div>
+        <p style="margin-top:10%; font-size: 20px; color:black; text-align: center;"><b>DISCOUNT - The Management for the Welfare</b></p>
+        <button type="button" class="btn btn-success btn-rounded" style="margin-left:45%;">Create a Discount</button>
         
-            <div class="zoom" style="width: 56%;  align-items: center; height:100%; margin-left: 36%; padding:15px; border-radius: 20px; box-shadow: 2px 2px 8px #888888; object-fit:cover;" >
-                <a href="employee.php" style="text-decoration: none; color: black;">
-                    <img class="zoom" style="width:20%; height:auto; display: flex;  justify-content: center;" src="../Images/employee-icon.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text zoom" style=" font-size: 18px; text-align: center;"><b>EMPLOYEE SYSTEM</b></p>
-                    </div>
-                </a>
-            </div>
-        </div>
         
-        <div style="margin-top:5%; width:100%; height:300px; margin-bottom: 5%;">
-            <div class="zoom" style="width: 27%; float: left;align-items: center; height:100%;  margin-left: 5%; padding:15px; border-radius: 20px; box-shadow: 2px 2px 8px #888888; " >
-                <a href="projects_history.php" style="text-decoration: none; color: black;">
-                    <img class="zoom" style="width:20%; display: flex; margin-top:15%; justify-content: center;" src="../Images/project_history-icon.png" class="card-img-top" alt="...">
-                    <p class="card-text zoom" style="font-size: 18px; margin-top:15%; text-align: center;"><b>Project History</b></p>
-                </a>
-            </div>
         
-            <div class="zoom" style="width: 26%; float:left;  align-items: center; height:100%; margin-left: 4%; padding:15px; border-radius: 20px; box-shadow: 2px 2px 8px #888888; object-fit:cover;" >
-                <a href="statistic.php" style="text-decoration: none; color: black;">
-                    <img class="zoom" style="width:20%; display: flex; margin-top:15%; justify-content: center;" src="../Images/statistic-icon.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text zoom" style=" font-size: 18px; margin-top:15%; text-align: center;"><b>Sales Statistic</b></p>
-                    </div>
-                </a>
-                
+        <div class="row" style="margin-top:2%; width:100%; padding:30px;">
+            <div class="col-sm-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">15%</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-primary">Edit</a>
+                  <a href="#" class="btn btn-danger">Delete</a>
+                </div>
+              </div>
             </div>
-            <div class="zoom" style="width: 26%;  align-items: center; height:100%; margin-left:66%; padding:15px; border-radius: 20px; box-shadow: 2px 2px 8px #888888; object-fit:cover;" >
-                <a href="discount.php" style="text-decoration: none; color: black;">
-                    <img class="zoom" style="width:20%; display: flex; margin-top:15%; justify-content: center;" src="../Images/discount-icon.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text zoom" style=" font-size: 18px; margin-top:15%; text-align: center;"><b>Discount</b></p>
-                    </div>
-                </a>
-                
+            
+            <div class="col-sm-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-sm-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-sm-3">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
             </div>
         </div>
         
     </body>
 </html>
+
