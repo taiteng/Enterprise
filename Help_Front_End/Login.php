@@ -111,7 +111,7 @@
                                 <a class="nav-link" href="Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Login.php" style="color: white; font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="Signup.php" style="color: white; font-size: 20px;">Profile</a>
                             </li>
                         </ul>
                     </div>
@@ -127,7 +127,7 @@
             <br>
             <br>
 
-            <h2>Worker Signup Form</h2>
+            <h2>Worker Login Form</h2>
             <div class="input-container">
                 <i class="fa fa-user icon"></i>
                 <input class="input-field" type="text" placeholder="Username" name="usrnm">
