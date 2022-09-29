@@ -88,7 +88,7 @@
                                 <a class="nav-link" href="../Help_Front_End/Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Login.php" style="color: white; font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="../Help_Front_End/Signup.php" style="color: white; font-size: 20px;">Profile</a>
                             </li>
                         </ul>
                     </div>
@@ -109,11 +109,11 @@
                                         <div class="w-100">
                                             <h5>Add a comment</h5>
                                             <div class="rating"> 
-                                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
-                                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> 
-                                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
-                                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
-                                                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                                                <input type="radio" name="rate" value="5" id="5"><label for="5">☆</label>
+                                                <input type="radio" name="rate" value="4" id="4"><label for="4">☆</label> 
+                                                <input type="radio" name="rate" value="3" id="3"><label for="3">☆</label>
+                                                <input type="radio" name="rate" value="2" id="2"><label for="2">☆</label>
+                                                <input type="radio" name="rate" value="1" id="1"><label for="1">☆</label>
                                             </div>
                                             <br>
                                             <div>

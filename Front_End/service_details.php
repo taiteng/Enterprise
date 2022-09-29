@@ -7,6 +7,12 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/css/intlTelInput.css"/>
+        <script src="https://cdn.tutorialjinni.com/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
         
@@ -18,6 +24,19 @@
             a    {color: black;
                   text-decoration: none;}
             hr   {color: black;}
+            .policylink{ 
+                font-size: 15px;
+                color: cyan;
+            }
+            .policylink:hover{
+                background-color: lightgoldenrodyellow;
+                border-radius: 25px;
+                border: 2px solid lightgoldenrodyellow;
+            }
+            .layoutForm{
+                border-radius: 15px;
+                background-color: whitesmoke;
+            }
             
             /* width */
             ::-webkit-scrollbar {
@@ -62,7 +81,7 @@
                                 <a class="nav-link" href="../Help_Front_End/Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Login.php" style="color: white; font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="../Help_Front_End/Signup.php" style="color: white; font-size: 20px;">Profile</a>
                             </li>
                         </ul>
                     </div>
@@ -72,67 +91,185 @@
         
         <h1 style="margin-top:110px">Service Details</h1>
         
-        <form action="" method="POST">
-            <div class="mb-3 mt-3">
-                <label class="form-label">Site's Name:</label>
-                <input type="text" class="form-control" name="name" required>
+        <form class="was-validated" action="" method="POST">
+            <div class="container layoutForm">
+                <div class="row">
+                    <div class="col">
+                        <div class="mt-1">
+                            <label class="form-label">Site's Name:</label>
+                            <input type="text" class="form-control" name="name" required>
+                        </div>
+                        <div class="mt-1">
+                            <label class="form-label">Address:</label>
+                            <textarea type="text" class="form-control" rows="3" name="address" required></textarea>
+                        </div>
+                        <div class="mt-1">
+                            <label class="form-label">Site's Size:</label>
+                            <input type="text" class="form-control" name="size" required>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mt-1">
+                            <label class="form-label">User Name:</label>
+                            <input type="text" class="form-control" name="username" required>
+                        </div>
+                        <div class="mt-2">
+                            <label class="form-label">Contact:</label><br>
+                            <input class="form-control" name="contact" type="text" id="contact" required> 
+                        </div>
+                        <div class="mt-2">
+                            <label class="form-label">Email:</label>
+                            <input type="email" class="form-control" name="email" placeholder="example@example.com" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mt-3">
+                        <div class="control">
+                            <label class="form-label">Type of Service:</label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="birthday" name="type" value="birthday" required>
+                                <label class="form-check-label" for="birthday">Birthday</label><br>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="wedding" name="type" value="wedding" required>
+                                <label class="form-check-label" for="wedding">Wedding</label><br>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="farewell" name="type" value="farewell" required>
+                                <label class="form-check-label" for="farewell">Farewell</label><br>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="christmas" name="type" value="christmas" required>
+                                <label class="form-check-label" for="christmas">Christmas</label><br>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="newyear" name="type" value="newyear" required>
+                                <label class="form-check-label" for="newyear">New Year Eve</label><br>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="deepavali" name="type" value="deepavali" required>
+                                <label class="form-check-label" for="deepavali">Deepavali</label><br>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="raya" name="type" value="raya" required>
+                                <label class="form-check-label" for="raya">Hari Raya Aidilfitri</label><br>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <label class="form-label">Description of Event:</label>
+                            <textarea type="text" class="form-control" rows="4" name="description" required></textarea>
+                        </div>
+                        <div class="mt-2">
+                            <label class="form-label">Date of Event:</label>
+                            <input type="text" class="form-control" name="date" placeholder="Format: DD/MM/YYYY" required>
+                        </div>
+                        <div class="mt-2">
+                            <label class="form-label">Duration of Event:</label>
+                            <input type="text" class="form-control" name="time" placeholder="Format: 00:00am" required>
+                        </div>
+                        <div class="mt-2">
+                            <label class="form-label">Number of People:</label><br>
+                            <input class="form-control" type="number" id="noppl" name="noppl" min="1" required>
+                        </div>
+                        <div class="mt-2">
+                            <label class="form-label">Event Inquiries:</label><br>
+                            <div class="form-group row mt-1">
+                                <label for="nochair" class="col-sm-2 col-form-label">Chairs:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="number" id="nochair" name="nochair" min="0" required>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-1">
+                                <label for="nobabychair" class="col-sm-2 col-form-label">Baby Chairs:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="number" id="nobabychair" name="nobabychair" min="0" required>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-2">
+                                <label for="notable" class="col-sm-2 col-form-label">Tables:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="number" id="notable" name="notable" min="0" required>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-2">
+                                <label for="nocup" class="col-sm-2 col-form-label">Cups:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="number" id="nocup" name="nocup" min="0" required>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-2">
+                                <label for="nocutlery" class="col-sm-2 col-form-label">Cutlery Sets:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="number" id="nocutlery" name="nocutlery" min="0" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <label class="form-label">Food & Drinks:</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <select id="selectFND" class="form-control" name="selectFND" onchange="createFNDDisplay()" required>
+                                        <option disabled selected value>Please select a food & drinks vendor (Comes with a package)</option>
+                                        <option value="eNo">E&O Hotel</option>
+                                        <option value="view">The View</option>
+                                        <option value="es">ESoon Fast Food</option>
+                                        <option value="light">The Light</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <input class="form-control" type="number" id="noFND" name="noFND" min="1" placeholder="Please input the required quantity" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <textarea class="form-control" rows="5" id="displayFND" name="displayFND" disabled></textarea>
+                        </div>
+                        <div class="mt-2">
+                            <label for="selectDeco" class="form-label">Event Decorative:</label>
+                            <select id="selectDeco" class="form-control" name="selectDeco" onchange="createDecoDisplay()" required>
+                                <option disabled selected value>Please select a decorative pack (Price calculated based on site's size)</option>
+                                <option value="">Basic Pack</option>
+                                <option value="">Luxury Pack</option>
+                            </select>
+                        </div>
+                        <div class="mt-2">
+                            <input class="form-control" type="text" id="displayDeco" name="displayDeco" disabled/>
+                        </div>
+                        <div class="mt-2">
+                            <label for="selectFun" class="form-label">Event Entertainment:</label>
+                            <select id="selectFun" class="form-control" name="selectFun" required>
+                                <option disabled selected value>Please select an entertainment</option>
+                                <option value="none">None</option>
+                                <option value="clown">Clown</option>
+                                <option value="magician">Magician</option>
+                                <option value="both">Both (Clown & Magician)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-check mb-2 mt-5">
+                    <input class="form-check-input" type="checkbox" id="policycheck" name="policycheck" required>
+                    <label class="form-check-label" for="policycheck">
+                        I have read and agree to the 
+                        <a class="policylink" href="../Help_Front_End/Policy.php">
+                            Terms & Condition
+                        </a>
+                        .
+                    </label>
+                    <div class="invalid-feedback">
+                        You must agree before submitting.
+                    </div>
+                </div>
+                <div class="row" style="text-align: center;">
+                    <div class="col mt-3 mb-4">
+                        <button type="submit"  class="btn btn-outline-danger btn-lg btn-block">Get Quotation</button>
+                    </div>
+                </div>
             </div>
-            <div class="mb-3">
-                <label class="form-label">Address:</label>
-                <textarea type="text" class="form-control" rows="3" name="address" required></textarea>
-            </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label">Site's Size:</label>
-                <input type="text" class="form-control" name="size" required>
-            </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label">User Name:</label>
-                <input type="text" class="form-control" name="username" required>
-            </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label">Contact:</label>
-                <input type="text" class="form-control" name="contact" required>
-            </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label">Email:</label>
-                <input type="text" class="form-control" name="email" required>
-            </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label">Type of Service:</label>
-                <input type="text" class="form-control" name="type" required>
-            </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label">Description of Event:</label>
-                <textarea type="text" class="form-control" rows="4" name="description" required></textarea>
-            </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label">Date of Event:</label>
-                <input type="text" class="form-control" name="date" required>
-            </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label">Duration of Event:</label>
-                <input type="text" class="form-control" name="time" required>
-            </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label">Number of Participants:</label>
-                <input type="text" class="form-control" name="noppl" required>
-            </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label">Event Inquiries:</label>
-                <input type="text" class="form-control" name="inquiries" required>
-            </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label">Event Decorative:</label>
-                <input type="text" class="form-control" name="decos" required>
-            </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label">Event Entertainment:</label>
-                <input type="text" class="form-control" name="funs" required>
-            </div>
-            <button type="submit" class="btn btn-outline-danger">Get Quotation</button>
         </form>
         
-        <div style="text-align: center;">
+        <div class="mt-3" style="text-align: center;">
             <a href="quotation.php">
                 <button type="button" class="btn btn-outline-danger">Shortcut</button>
             </a>
@@ -255,5 +392,64 @@
         </div>
         <!-- End of .container -->
         <hr>
+        
+        <script>
+            var input = document.querySelector("#contact");
+            window.intlTelInput(input, {
+                separateDialCode: true,
+                preferredCountries: ["my", "us", "jp"]
+            });
+            
+            function createFNDDisplay(){
+                var d = document.getElementById("selectFND");
+                var displayText = d.options[d.selectedIndex].text;
+                
+                if(displayText === "E&O Hotel"){
+                    outputText = "Pork Chop (1 per person)\n\
+Cheesy Wedges (4 servings per person)\n\
+Orange & Apple (2 per person)\n\
+Matcha Ice Cream(2 scoops per person)\n\
+Lemonade & Tea (5 cups per person)";
+                }
+                else if(displayText === "The View"){
+                    outputText = "Lamb Steak (1 per person)\n\
+Ratatouille (4 servings per person)\n\
+Avocado & Pear (2 per person)\n\
+Chocolate Ice Cream(2 scoops per person)\n\
+Lemonade & Tea (5 cups per person)";
+                }
+                else if(displayText === "ESoon Fast Food"){
+                    outputText = "Fish N Chips (1 per person)\n\
+Cheesy Wedges (4 servings per person)\n\
+Orange & Apple (2 per person)\n\
+Vanilla Ice Cream(2 scoops per person)\n\
+Lemonade & Tea (5 cups per person)";
+                }
+                else if(displayText === "The Light"){
+                    outputText = "Beef Steak (1 per person)\n\
+Ratatouille (4 servings per person)\n\
+Avocado & Pear (2 per person)\n\
+Strawberry Ice Cream(2 scoops per person)\n\
+Lemonade & Tea (5 cups per person)";
+                }
+                
+                document.getElementById("displayFND").value = outputText;
+            }
+            
+            function createDecoDisplay(){
+                var d = document.getElementById("selectDeco");
+                var displayText = d.options[d.selectedIndex].text;
+                
+                if(displayText === "Luxury Pack"){
+                    outputText = "Balloons, Curtains, Blinds, Flowers, Lightings, Word Decor, Backdrops, Centerpieces, Confetties, Wall Decor, Banners, Streamers";
+                }
+                else{
+                    outputText = "Balloons, Curtains, Flowers, Word Decor, Confetties, Wall Decor, Streamers";
+                }
+                
+                document.getElementById("displayDeco").value = outputText;
+            }
+
+        </script>
     </body>
 </html>
