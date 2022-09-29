@@ -111,7 +111,7 @@
                                 <a class="nav-link" href="Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Login.php" style="color: white; font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="Signup.php" style="color: white; font-size: 20px;">Profile</a>
                             </li>
                         </ul>
                     </div>
@@ -145,9 +145,11 @@
 
             <button type="submit" class="btn">Signup</button>
             <br>
-            OR
             <br>
-            <button href="Login.php" type="submit"  class="btn">Login</button>
+            <br>
+            <a href="Login.php">
+                <button type="button" class="btn">Login</button>
+            </a>
         </form>
         
         <br>

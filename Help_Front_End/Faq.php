@@ -137,7 +137,7 @@
                                 <a class="nav-link" href="Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Login.php" style="color: white; font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="Signup.php" style="color: white; font-size: 20px;">Profile</a>
                             </li>
                         </ul>
                     </div>

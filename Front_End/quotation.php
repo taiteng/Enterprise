@@ -1,3 +1,10 @@
+<?php 
+session_start();
+
+include("../Back_End/db_conn.php");
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -62,7 +69,7 @@
                                 <a class="nav-link" href="../Help_Front_End/Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Login.php" style="color: white; font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="../Help_Front_End/Signup.php" style="color: white; font-size: 20px;">Profile</a>
                             </li>
                         </ul>
                     </div>

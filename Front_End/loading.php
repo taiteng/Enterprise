@@ -14,11 +14,12 @@
             body {background-color: white;}
             h1   {color: black;
                   text-align: center;}
-            p    {color: black;}
+            p    {color: white;}
             a    {color: black;
                   text-decoration: none;}
             hr   {color: black;}
-            form {text-align: center;}
+            td   {text-align: center;
+                  min-width:300px;}
             
             /* width */
             ::-webkit-scrollbar {
@@ -42,7 +43,7 @@
 
         </style>
         
-        <title>Payment</title>
+        <title>Loading</title>
     </head>
     <body>
         <header>
@@ -70,20 +71,6 @@
                 </div>
             </nav>
         </header>
-        
-        <h1 style="margin-top:110px">Payment</h1>
-        
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post"> 
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="paypal@your-web-domain.com">
-            <input type="hidden" name="quantity" value="1">
-            <input type="hidden" name="item_name" value="Enter Item Name">
-            <input type="hidden" name="amount" value="39.00">
-            <input type="hidden" name="shipping" value="4.99">
-            <input type="hidden" name="custom" value="">
-            <input type="hidden" name="return" value="http://your-web-domain.com/thanks-payment.htm">
-            <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" alt="PayPal - The safer, easier way to pay online"> 
-        </form>
         
         <br>
         
@@ -131,7 +118,7 @@
                     <!-- Content -->
                     <h6 class="text-uppercase fw-bold">Covent.Co</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: black; height: 2px"/>
-                    <p style="color:white;">
+                    <p>
                         Event Planning System. <br>
                         We hope to bring properity and convenience to people.
                     </p>
@@ -180,10 +167,10 @@
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold">Contact</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: black; height: 2px"/>
-                    <p style="color:white;"><i class="fas fa-home mr-3"></i>1-Z, Lebuh Bukit Jambul, Bukit Jambul, 11900 Bayan Lepas, Pulau Pinang</p>
-                    <p style="color:white;"><i class="fas fa-envelope mr-3"></i> covent@abc.com</p>
-                    <p style="color:white;"><i class="fas fa-phone mr-3"></i> + 012 3456 789</p>
-                    <p style="color:white;"><i class="fas fa-print mr-3"></i> + 987 6543 210</p>
+                    <p><i class="fas fa-home mr-3"></i>1-Z, Lebuh Bukit Jambul, Bukit Jambul, 11900 Bayan Lepas, Pulau Pinang</p>
+                    <p><i class="fas fa-envelope mr-3"></i> covent@abc.com</p>
+                    <p><i class="fas fa-phone mr-3"></i> + 012 3456 789</p>
+                    <p><i class="fas fa-print mr-3"></i> + 987 6543 210</p>
                   </div>
                   <!-- Grid column -->
                 </div>
