@@ -156,11 +156,17 @@
         <br>
         <br>
         
+        <div class="p-5 text-center bg-light">
+        <h1 class="mb-3">Policy Statement</h1>
+        <h4 class="mb-3">Rules and regulation before book for an event</h4>
+        
+        </div>
+        
         <!-- Accordion Example -->
-        <div class="accordion-item">
+        <div class="accordion-item" align="center">
             <div class="col-md-6">
                 <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Accordion Item #1</button>
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Statement #1</button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
@@ -181,10 +187,10 @@
                 </div>
             </div>    
         </div>
-        <div class="accordion-item">
+        <div class="accordion-item" align="center">
             <div class="col-md-6">
                 <h2 class="accordion-header" id="headingTwo">
-                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Accordion Item #2</button>
+                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Statement #2</button>
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
@@ -206,10 +212,10 @@
             </div>
         </div>
      
-        <div class="accordion-item">
-            <div class="col-md-6">
+        <div class="accordion-item" align="center">
+            <div class="col-md-6" >
                 <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Accordion Item #3</button>
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Statement #3</button>
                 </h2>
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
@@ -238,9 +244,9 @@
         </div>
         <form>
             <!-- Name input -->
-            <div class="form-outline mb-1 col-md-6">
-                <input type="text" id="form4Example1" class="form-control" />
-                <label class="form-label" for="form4Example1">Name</label>
+            <div class="form-outline mb-1 col-md-6" align="center">
+                <input type="text" id="form4Example1" class="form-control" align="center"/>
+                <label class="form-label" align="center" for="form4Example1">Name </label>
             </div>
 
             <!-- Email input -->
