@@ -1,3 +1,10 @@
+<?php 
+session_start();
+
+include("../Back_End/db_conn.php");
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -91,31 +98,31 @@
         
         <h1 style="margin-top:110px">Service Details</h1>
         
-        <form class="was-validated" action="" method="POST">
+        <form class="was-validated" action="../Back_End/API/create.php" method="POST">
             <div class="container layoutForm">
                 <div class="row">
                     <div class="col">
-                        <div class="mt-1">
+                        <div class="mt-2">
                             <label class="form-label">Site's Name:</label>
                             <input type="text" class="form-control" name="name" required>
                         </div>
-                        <div class="mt-1">
+                        <div class="mt-2">
                             <label class="form-label">Address:</label>
-                            <textarea type="text" class="form-control" rows="3" name="address" required></textarea>
+                            <textarea type="text" class="form-control" name="address" required></textarea>
                         </div>
-                        <div class="mt-1">
+                        <div class="mt-2">
                             <label class="form-label">Site's Size:</label>
                             <input type="text" class="form-control" name="size" required>
                         </div>
                     </div>
                     <div class="col">
-                        <div class="mt-1">
+                        <div class="mt-2">
                             <label class="form-label">User Name:</label>
                             <input type="text" class="form-control" name="username" required>
                         </div>
                         <div class="mt-2">
                             <label class="form-label">Contact:</label><br>
-                            <input class="form-control" name="contact" type="text" id="contact" required> 
+                            <input class="form-control" name="contact" type="number" id="contact" required> 
                         </div>
                         <div class="mt-2">
                             <label class="form-label">Email:</label>
@@ -180,7 +187,7 @@
                                     <input class="form-control" type="number" id="nochair" name="nochair" min="0" required>
                                 </div>
                             </div>
-                            <div class="form-group row mt-1">
+                            <div class="form-group row mt-2">
                                 <label for="nobabychair" class="col-sm-2 col-form-label">Baby Chairs:</label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="number" id="nobabychair" name="nobabychair" min="0" required>
@@ -229,8 +236,8 @@
                             <label for="selectDeco" class="form-label">Event Decorative:</label>
                             <select id="selectDeco" class="form-control" name="selectDeco" onchange="createDecoDisplay()" required>
                                 <option disabled selected value>Please select a decorative pack (Price calculated based on site's size)</option>
-                                <option value="">Basic Pack</option>
-                                <option value="">Luxury Pack</option>
+                                <option value="basic">Basic Pack</option>
+                                <option value="luxury">Luxury Pack</option>
                             </select>
                         </div>
                         <div class="mt-2">

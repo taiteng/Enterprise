@@ -1,10 +1,3 @@
-<?php 
-session_start();
-
-include("../Back_End/db_conn.php");
-
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,10 +14,12 @@ include("../Back_End/db_conn.php");
             body {background-color: white;}
             h1   {color: black;
                   text-align: center;}
-            p    {color: black;}
+            p    {color: white;}
             a    {color: black;
                   text-decoration: none;}
             hr   {color: black;}
+            td   {text-align: center;
+                  min-width:300px;}
             
             /* width */
             ::-webkit-scrollbar {
@@ -48,7 +43,7 @@ include("../Back_End/db_conn.php");
 
         </style>
         
-        <title>Quotation</title>
+        <title>Loading</title>
     </head>
     <body>
         <header>
@@ -76,128 +71,6 @@ include("../Back_End/db_conn.php");
                 </div>
             </nav>
         </header>
-        
-        <h1 style="margin-top:110px">Quotation</h1>
-        
-        <div class="container" style="text-align: center;">
-            <table class="table table-bordered table-responsive" style="min-height: 100px;">
-                <tr class="body" align="center" style="padding:5px">
-                    <td>
-                        <table class="table table-borderless table-responsive">
-                            <tr class="body" align="left" style="padding:5px">
-                                <td>
-                                    <p>Site's Name:</p>
-                                </td>
-                                <td>
-                                    <p>Nani The Fuck</p>
-                                </td>
-                            </tr>
-                            <tr class="body" align="left" style="padding:5px">
-                                <td>
-                                    <p>Address:</p>
-                                </td>
-                                <td>
-                                    <p>1234, Taman Shibal, <br>
-                                       Lorong Shibal, 12345 <br>
-                                       Pulau Pinang
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr class="body" align="left" style="padding:5px">
-                                <td>
-                                    <p>Site's Size:</p>
-                                </td>
-                                <td>
-                                    <p>120 ft</p>
-                                </td>
-                            </tr>
-                            <tr class="body" align="left" style="padding:5px">
-                                <td>
-                                    <p>Type of Service:</p>
-                                </td>
-                                <td>
-                                    <p>Birthday</p>
-                                </td>
-                            </tr>
-                            <tr class="body" align="left" style="padding:5px">
-                                <td>
-                                    <p>Description of Event:</p>
-                                </td>
-                                <td>
-                                    <p>Need someone to cum. <br>
-                                       I've got no frens, <br>
-                                       no one to celebrate my birthday. <br>
-                                       Hope to add a part-timer fake people package.
-                                    </p>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td>
-                        <table class="table table-borderless table-responsive">
-                            <tr class="body" align="left" style="padding:5px">
-                                <td>
-                                    <p>User Name:</p>
-                                </td>
-                                <td>
-                                    <p>Shibal Inu</p>
-                                </td>
-                            </tr>
-                            <tr class="body" align="left" style="padding:5px">
-                                <td>
-                                    <p>Contact:</p>
-                                </td>
-                                <td>
-                                    <p>012 3456 789</p>
-                                </td>
-                            </tr>
-                            <tr class="body" align="left" style="padding:5px">
-                                <td>
-                                    <p>Email:</p>
-                                </td>
-                                <td>
-                                    <p>shibalInu@gmail.com</p>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr class="body" align="center" style="padding:5px">
-                    <table class="table table-bordered table-responsive">
-                        <tr class="body" align="left" style="padding:10px">
-                            <td style="min-width: 300px;">
-                                <p>Description</p>
-                            </td>
-                            <td>
-                                <p>Quantity</p>
-                            </td>
-                            <td>
-                                <p>Price</p>
-                            </td>
-                        </tr>
-                    </table>
-                </tr>
-                <tr align="center" style="padding:10px">
-                    <td>
-                        <a href="payment.php">
-                            <button type="button" class="btn btn-outline-primary">Accept</button>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="home.php">
-                            <button type="button" class="btn btn-outline-secondary">Reject</button>
-                        </a>
-                    </td>
-                </tr>
-                <br>
-                <br>
-                <tr>
-                    <a href="">
-                        <button type="button" class="btn btn-outline-danger">Download PDF</button>
-                    </a>
-                </tr>
-            </table>
-        </div>
         
         <br>
         
@@ -245,7 +118,7 @@ include("../Back_End/db_conn.php");
                     <!-- Content -->
                     <h6 class="text-uppercase fw-bold">Covent.Co</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: black; height: 2px"/>
-                    <p style="color:white;">
+                    <p>
                         Event Planning System. <br>
                         We hope to bring properity and convenience to people.
                     </p>
@@ -294,10 +167,10 @@ include("../Back_End/db_conn.php");
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold">Contact</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: black; height: 2px"/>
-                    <p style="color:white;"><i class="fas fa-home mr-3"></i>1-Z, Lebuh Bukit Jambul, Bukit Jambul, 11900 Bayan Lepas, Pulau Pinang</p>
-                    <p style="color:white;"><i class="fas fa-envelope mr-3"></i> covent@abc.com</p>
-                    <p style="color:white;"><i class="fas fa-phone mr-3"></i> + 012 3456 789</p>
-                    <p style="color:white;"><i class="fas fa-print mr-3"></i> + 987 6543 210</p>
+                    <p><i class="fas fa-home mr-3"></i>1-Z, Lebuh Bukit Jambul, Bukit Jambul, 11900 Bayan Lepas, Pulau Pinang</p>
+                    <p><i class="fas fa-envelope mr-3"></i> covent@abc.com</p>
+                    <p><i class="fas fa-phone mr-3"></i> + 012 3456 789</p>
+                    <p><i class="fas fa-print mr-3"></i> + 987 6543 210</p>
                   </div>
                   <!-- Grid column -->
                 </div>
