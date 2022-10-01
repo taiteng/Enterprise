@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -5,9 +9,11 @@
         
         <!-- Bootstrap plugin -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        
-        
+        <script src="../Admin_Front_End/admin_js/tableProject.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
         
@@ -32,6 +38,15 @@
             ::-webkit-scrollbar-thumb:hover {
               background: #555;
             }
+           .my-custom-scrollbar {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: auto;
+            }
+            .table-wrapper-scroll-y {
+            display: block;
+            }
 
         </style>
         
@@ -39,7 +54,7 @@
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #e3242b">
+            <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #e3242b;">
                 <div class="container-fluid">
                     <a class="navbar-brand">
                         <img src="../Images/coventco.png" alt="logo" onclick="location.href='index.php'"/>
@@ -68,57 +83,78 @@
             </nav>
         </header>
         
-        <table class="table align-middle mb-0 bg-white" style="margin-top:10%;">
-            <thead class="bg-light">
-              <tr>
-                <th>No</th>
-                <th>Task/Description</th>
-                <th>Person-in-Charge (PIC)</th>
-                <th>Status</th>
-                <th>Quotation Document</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <div class="d-flex align-items-center">
-                   <p class="fw-bold mb-1">1</p>
-                  </div>
-                </td>
-                <td>
-                  <p class="fw-normal mb-1">Car Party </p>
-                  <p class="text-muted mb-0">IT department</p>
-                </td>
-                <td>
-                  <img style="width:30px; height:auto;" src="../Images/edit_icon.png"/>
-                </td>
-                <td><span class="status text-success">&bull;</span> Open</td>
-                <td>
-                    <img style="width:30px; height:auto;" src="../Images/download_icon.png"/>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="d-flex align-items-center">
-                   <p class="fw-bold mb-1">1</p>
-                  </div>
-                </td>
-                <td>
-                  <p class="fw-normal mb-1">Car Party </p>
-                  <p class="text-muted mb-0">IT department</p>
-                </td>
-                <td>
-                  <img style="width:30px; height:auto;" src="../Images/edit_icon.png"/>
-                </td>
-                <td><span class="status text-warning ">&bull;</span> In Progress</td>
-                <td>
-                    <img style="width:30px; height:auto;" src="../Images/download_icon.png"/>
-                </td>
-              </tr>
-              
-            </tbody>
-          </table>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar" style="margin-top:10%; padding:20px;">
+            <table  class="table table-bordered table-striped mb-0">
+                <thead>
+                    <tr align="center">
+                        <th scope="col">Service ID</th>
+                        <th scope="col">Task/Description</th>
+                        <th scope="col">Person-In-Charge</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Quotation</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="projects">
+                    <script src="../Admin_Back_End/displayProject.js"></script>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Task Assign</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    
+                    <form action="../Admin_Back_End/handle_assignProject.php" method="post">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label class="form-label">Employee</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected></option>
+                                    <?php
+                                    include "../Back_End/db_conn.php";
+                                    
+                                    $sql = "SELECT username FROM accounts";
+                                    $result = $conn->query($sql);
+                                    
+                                    if ($result->num_rows > 0) {
+                                        // output data of each row
+                                        while($row = $result->fetch_assoc()) {
+                                            echo '<option name=username>'.$row["username"].'</option>';
+                                        }
 
+                                    }else{
+                                       $_SESSION["noEmployee"] = true;
+                                            ?>
+                                            <script>
+                                            Swal.fire({
+                                            icon: 'warning',
+                                            title: 'Notice',
+                                            text: 'There are no employees to assign'
+                                            });
+                                            </script>
+                                        <?php
+                                    }
+                                    ?>
+                                </select>
+                                <div id="emailHelp" class="form-text">Assign an employee to in charge of this project</div>
+                            </div>
+                        </div>
+                        
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         
     </body>
 </html>
+
