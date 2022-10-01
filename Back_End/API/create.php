@@ -18,7 +18,7 @@ $service = new service($db);
 if($_SERVER['REQUEST_METHOD'] == "POST"){    
     if(!empty($_POST['name']) && !empty($_POST['address']) && !empty($_POST['size']) && !empty($_POST['username']) && !empty($_POST['contact']) && !empty($_POST['email']) && !empty($_POST['type']) && !empty($_POST['description'])
             && !empty($_POST['date']) && !empty($_POST['time']) && !empty($_POST['noppl']) && !empty($_POST['nochair']) && !empty($_POST['nobabychair']) && !empty($_POST['notable']) && !empty($_POST['nocup']) && !empty($_POST['nocutlery'])
-            && !empty($_POST['selectFND']) && !empty($_POST['noFND']) && !empty($_POST['selectDeco']) && !empty($_POST['selectFun'])  && !empty($_POST['sid']) &&  !empty($_POST['totalprice'])){        
+            && !empty($_POST['selectFND']) && !empty($_POST['noFND']) && !empty($_POST['selectDeco']) && !empty($_POST['selectFun'])  && !empty($_POST['sid']) &&  !empty($_POST['totalprice']) &&  !empty($_POST['projectstatus']) &&  !empty($_POST['workername'])){        
         $service->service_id = $_POST['sid'];
         $service->site_name = $_POST['name'];
         $service->site_address = $_POST['address'];
@@ -41,6 +41,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $service->deco_name = $_POST['selectDeco'];
         $service->fun_name = $_POST['selectFun'];
         $service->total_price = $_POST['totalprice'];
+        $service->project_status = $_POST['projectstatus'];
+        $service->worker_name = $_POST['workername'];
         
         // create the product
         if($service->create()){
