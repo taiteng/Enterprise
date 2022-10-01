@@ -107,13 +107,13 @@
                                 <a class="nav-link" href="../Front_End/home.php" style="color: white; font-size: 20px;">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Policy.php" style="color: white; font-size: 20px;">Policy</a>
+                                <a class="nav-link" href="../Help/Policy.php" style="color: white; font-size: 20px;">Policy</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Faq.php" style="color: white; font-size: 20px;">Help</a>
+                                <a class="nav-link" href="../Help/Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="register.php" style="color: white; font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="login.php" style="color: white; font-size: 20px;">Profile</a>
                             </li>
                         </ul>
                     </div>
