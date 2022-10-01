@@ -2,14 +2,11 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <!-- Bootstrap plugin -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Add icon library -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
         
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
@@ -18,7 +15,7 @@
             body {background-color: white;}
             h1   {color: black;
                   text-align: center;}
-            p    {color: white;}
+            p    {color: black;}
             a    {color: black;
                   text-decoration: none;}
             hr   {color: black;}
@@ -27,43 +24,73 @@
             body {font-family: Arial, Helvetica, sans-serif;}
             * {box-sizing: border-box;}
 
-            .input-container {
-              display: -ms-flexbox; /* IE10 */
-              display: flex;
-              width: 100%;
-              margin-bottom: 15px;
-            }
-
-            .icon {
-              padding: 10px;
-              background: dodgerblue;
+            /* Button used to open the chat form - fixed at the bottom of the page */
+            .open-button {
+              background-color: #555;
               color: white;
-              min-width: 50px;
-              text-align: center;
+              padding: 16px 20px;
+              border: none;
+              cursor: pointer;
+              opacity: 0.8;
+              position: fixed;
+              bottom: 23px;
+              right: 28px;
+              width: 280px;
             }
 
-            .input-field {
-              width: 100%;
+            /* The popup chat - hidden by default */
+            .chat-popup {
+              display: none;
+              position: fixed;
+              bottom: 0;
+              right: 15px;
+              border: 3px solid #f1f1f1;
+              z-index: 9;
+            }
+
+            /* Add styles to the form container */
+            .form-container {
+              max-width: 300px;
               padding: 10px;
+              background-color: white;
+            }
+
+            /* Full-width textarea */
+            .form-container textarea {
+              width: 100%;
+              padding: 15px;
+              margin: 5px 0 22px 0;
+              border: none;
+              background: #f1f1f1;
+              resize: none;
+              min-height: 200px;
+            }
+
+            /* When the textarea gets focus, do something */
+            .form-container textarea:focus {
+              background-color: #ddd;
               outline: none;
             }
 
-            .input-field:focus {
-              border: 2px solid dodgerblue;
-            }
-
-            /* Set a style for the submit button */
-            .btn {
-              background-color: dodgerblue;
+            /* Set a style for the submit/send button */
+            .form-container .btn {
+              background-color: #04AA6D;
               color: white;
-              padding: 15px 20px;
+              padding: 16px 20px;
               border: none;
               cursor: pointer;
               width: 100%;
-              opacity: 0.9;
+              margin-bottom:10px;
+              opacity: 0.8;
             }
 
-            .btn:hover {
+            /* Add a red background color to the cancel button */
+            .form-container .cancel {
+              background-color: red;
+            }
+
+            /* Add some hover effects to buttons */
+            .form-container .btn:hover, .open-button:hover {
               opacity: 1;
             }
             
@@ -104,49 +131,119 @@
                                 <a class="nav-link" href="../Front_End/home.php" style="color: white; font-size: 20px;">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Policy.php" style="color: white; font-size: 20px;">Policy</a>
+                                <a class="nav-link" href="T&C.php" style="color: white; font-size: 20px;">T&C</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Signup.php" style="color: white; font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="../Worker/login.php" style="color: white; font-size: 20px;">Worker</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
-<link href="style1.css" rel="stylesheet" type="text/css">
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Login</title>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-	</head>
-        <br><!-- comment -->
-	<body>
-		<div class="login">
-			<h1>Login</h1>
-			<form action="authenticate.php" method="post">
-				<label for="username">
-					<i class="fas fa-user"></i>
-				</label>
-				<input type="text" name="username" placeholder="Username" id="username" required>
-				<label for="password">
-					<i class="fas fa-lock"></i>
-				</label>
-				<input type="password" name="password" placeholder="Password" id="password" required>
-				<input type="submit" value="Login">
-                                <br>
-                                <br>
-                                
-			</form>
-		</div>
-	</body>
-</html>
-<div>
+
+        <!--Section: FAQ-->
+        <section>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h3 class="text-center mb-4 pb-2 text-primary fw-bold">FAQ</h3>
+            <p class="text-center mb-5">
+                Find the answers for the most frequently asked questions below
+            </p>
+
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <h6 class="mb-3 text-primary"><i class="far fa-paper-plane text-primary pe-2"></i> A simple question?</h6>
+                    <p>
+                        <strong><u>Absolutely!</u></strong> We work with top payment companies which guarantees your safety and security. All billing information is stored on our payment processing partner.
+                    </p>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <h6 class="mb-3 text-primary"><i class="fas fa-pen-alt text-primary pe-2"></i> A question that is longer then the previous one?</h6>
+                    <p>
+                        <strong><u>Yes, it is possible!</u></strong> You can cancel your subscription anytime in your account. Once the subscription is cancelled, you will not be charged next month.
+                    </p>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <h6 class="mb-3 text-primary"><i class="fas fa-user text-primary pe-2"></i> A simple question?</h6>
+                    <p>
+                        Currently, we only offer monthly subscription. You can upgrade or cancel your monthly account at any time with no further obligation.
+                    </p>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <h6 class="mb-3 text-primary"><i class="fas fa-rocket text-primary pe-2"></i> A simple question?</h6>
+                    <p>
+                        Yes. Go to the billing section of your dashboard and update your payment information.
+                    </p>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <h6 class="mb-3 text-primary"><i class="fas fa-home text-primary pe-2"></i> Can I request refund on deposit?</h6>
+                    <p>
+                        <strong><u>Unfortunately no</u>.</strong> We do not issue full or partial refunds for any reason.
+                    </p>
+                </div>
+
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <h6 class="mb-3 text-primary"><i class="fas fa-book-open text-primary pe-2"></i> Another question that is longer than usual</h6>
+                    <p>
+                        Of course! We’re happy to offer a free plan to anyone who wants to try our service.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!--Section: FAQ-->
+
+        <div class="dropdown-menu p-4 text-muted" style="max-width: 200px;">
+            <p>
+                Some example text that's free-flowing within the dropdown menu.
+            </p>
+            <p class="mb-0">
+                And this is more example text.
+            </p>
+        </div>
+
+        <h2>Popup Chat Window</h2>
+        <p>Click on the button at the bottom of this page to open the chat form.</p>
+        <p>Note that the button and the form is fixed - they will always be positioned to the bottom of the browser window.</p>
+
+        <button class="open-button" onclick="openForm()">Chat</button>
+
+        <div class="chat-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+                <h1>Chat</h1>
+                
+                <label for="msg"><b>Message</b></label>
+                <textarea placeholder="Type message.." name="msg" required></textarea>
+
+                <button type="submit" class="btn">Send</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+        </div>
+
+        <script>
+        function openForm() {
+          document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+          document.getElementById("myForm").style.display = "none";
+        }
+        </script>
+        
+        <br>
+        
+        <div>
           <!-- Footer -->
           <footer class="text-center text-lg-start text-white" style="background-color: #800000">
             <!-- Section: Social media -->
@@ -190,7 +287,7 @@
                     <!-- Content -->
                     <h6 class="text-uppercase fw-bold">Covent.Co</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: black; height: 2px"/>
-                    <p>
+                    <p style="color:white;">
                         Event Planning System. <br>
                         We hope to bring properity and convenience to people.
                     </p>
@@ -239,10 +336,10 @@
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold">Contact</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: black; height: 2px"/>
-                    <p><i class="fas fa-home mr-3"></i>1-Z, Lebuh Bukit Jambul, Bukit Jambul, 11900 Bayan Lepas, Pulau Pinang</p>
-                    <p><i class="fas fa-envelope mr-3"></i> covent@abc.com</p>
-                    <p><i class="fas fa-phone mr-3"></i> + 012 3456 789</p>
-                    <p><i class="fas fa-print mr-3"></i> + 987 6543 210</p>
+                    <p style="color:white;"><i class="fas fa-home mr-3"></i>1-Z, Lebuh Bukit Jambul, Bukit Jambul, 11900 Bayan Lepas, Pulau Pinang</p>
+                    <p style="color:white;"><i class="fas fa-envelope mr-3"></i> covent@abc.com</p>
+                    <p style="color:white;"><i class="fas fa-phone mr-3"></i> + 012 3456 789</p>
+                    <p style="color:white;"><i class="fas fa-print mr-3"></i> + 987 6543 210</p>
                   </div>
                   <!-- Grid column -->
                 </div>
@@ -260,5 +357,7 @@
           <!-- Footer -->
         </div>
         <!-- End of .container -->
+
     </body>
 </html>
+

@@ -7,10 +7,6 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Add icon library -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
         
@@ -18,54 +14,12 @@
             body {background-color: white;}
             h1   {color: black;
                   text-align: center;}
-            p    {color: white;}
+            p    {color: black;}
             a    {color: black;
                   text-decoration: none;}
             hr   {color: black;}
             td   {text-align: center;
                   min-width:300px;}
-            body {font-family: Arial, Helvetica, sans-serif;}
-            * {box-sizing: border-box;}
-
-            .input-container {
-              display: -ms-flexbox; /* IE10 */
-              display: flex;
-              width: 100%;
-              margin-bottom: 15px;
-            }
-
-            .icon {
-              padding: 10px;
-              background: dodgerblue;
-              color: white;
-              min-width: 50px;
-              text-align: center;
-            }
-
-            .input-field {
-              width: 100%;
-              padding: 10px;
-              outline: none;
-            }
-
-            .input-field:focus {
-              border: 2px solid dodgerblue;
-            }
-
-            /* Set a style for the submit button */
-            .btn {
-              background-color: dodgerblue;
-              color: white;
-              padding: 15px 20px;
-              border: none;
-              cursor: pointer;
-              width: 100%;
-              opacity: 0.9;
-            }
-
-            .btn:hover {
-              opacity: 1;
-            }
             
             /* width */
             ::-webkit-scrollbar {
@@ -89,7 +43,7 @@
 
         </style>
         
-        <title>Register</title>
+        <title>Home</title>
     </head>
     <body>
         <header>
@@ -104,115 +58,83 @@
                                 <a class="nav-link" href="../Front_End/home.php" style="color: white; font-size: 20px;">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Policy.php" style="color: white; font-size: 20px;">Policy</a>
+                                <a class="nav-link" href="T&C.php" style="color: white; font-size: 20px;">T&C</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Signup.php" style="color: white; font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="../Worker/login.php" style="color: white; font-size: 20px;">Worker</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
-<link href="style.css" rel="stylesheet" type="text/css">
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Register</title>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-	</head>
-	<body>
-		<div class="register">
-			<h1>Register</h1>
-			<form action="register.php" method="post" autocomplete="off">
-				<label for="username">
-					<i class="fas fa-user"></i>
-				</label>
-				<input type="text" name="username" placeholder="Username" id="username" required>
-				<label for="password">
-					<i class="fas fa-lock"></i>
-				</label>
-				<input type="password" name="password" placeholder="Password" id="password" required>
-				<label for="email">
-					<i class="fas fa-envelope"></i>
-				</label>
-				<input type="email" name="email" placeholder="Email" id="email" required>
-				<input type="submit" value="Register">
-			</form>
-		</div>
-	</body>
-        
-</html>
-<?php
-// Change this to your connection info.
-$DATABASE_HOST = 'localhost';
-$DATABASE_USER = 'root';
-$DATABASE_PASS = '';
-$DATABASE_NAME = 'phplogin';
-// Try and connect using the info above.
-$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
-if (mysqli_connect_errno()) {
-	// If there is an error with the connection, stop the script and display the error.
-	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
-}
-// Now we check if the data was submitted, isset() function will check if the data exists.
-if (!isset($_POST['username'], $_POST['password'], $_POST['email'])) {
-	// Could not get the data that should have been sent.
-	exit('Please complete the registration form!');
-}
-// Make sure the submitted registration values are not empty.
-if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['email'])) {
-	// One or more values are empty.
-	exit('Please complete the registration form');
-}
-if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-	exit('Email is not valid!');
-}
-if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['username']) == 0) {
-    exit('Username is not valid!');
-}
-if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
-	exit('Password must be between 5 and 20 characters long!');
-}
 
-// We need to check if the account with that username exists.
-if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?')) {
-	// Bind parameters (s = string, i = int, b = blob, etc), hash the password using the PHP password_hash function.
-	$stmt->bind_param('s', $_POST['username']);
-	$stmt->execute();
-	$stmt->store_result();
-	// Store the result so we can check if the account exists in the database.
-	if ($stmt->num_rows > 0) {
-		// Username already exists
-		echo 'Username exists, please choose another!';
-	} else {
-		// Insert new account
-                // Username doesnt exists, insert new account
-if ($stmt = $con->prepare('INSERT INTO accounts (username, password, email) VALUES (?, ?, ?)')) {
-	// We do not want to expose passwords in our database, so hash the password and use password_verify when a user logs in.
-	$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-	$stmt->bind_param('sss', $_POST['username'], $password, $_POST['email']);
-	$stmt->execute();
-	echo 'You have successfully registered, you can now login!';
-} else {
-	// Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
-	echo 'Could not prepare statement!';
-}
-	}
-	$stmt->close();
-} else {
-	// Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
-	echo 'Could not prepare statement!';
-}
-$con->close();
-?>
-<!doctype html>
-<html>
-<div>
+        <section style="background-color: #eee;">
+            <div class="container py-5">
+
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-4">
+
+                        <div class="card" id="chat1" style="border-radius: 15px;">
+                            <div class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0" style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                                <i class="fas fa-angle-left"></i>
+                                <p class="mb-0 fw-bold">Live chat</p>
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex flex-row justify-content-start mb-4">
+                                    <img src="../Images/user.png" alt="avatar 1" style="width: 45px; height: 100%;">
+                                    <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
+                                        <p class="small mb-0">Hello and thank you for visiting Covent Event Planning. Please click the Document below.</p>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row justify-content-end mb-4">
+                                    <div class="p-3 me-3 border" style="border-radius: 15px; background-color: #fbfbfb;">
+                                        <p class="small mb-0">Thank you, I really like your product.</p>
+                                    </div>
+                                    <img src="../Images/user.png" alt="avatar 1" style="width: 45px; height: 100%;">
+                                </div>
+
+                                <div class="d-flex flex-row justify-content-start mb-4">
+                                    <img src="../Images/user.png" alt="avatar 1" style="width: 45px; height: 100%;">
+                                    <div class="ms-3" style="border-radius: 15px;">
+                                        <div class="bg-image">
+                                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/screenshot1.webp" style="border-radius: 15px;" alt="video">
+                                            <a href="#!">
+                                                <div class="mask"></div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row justify-content-start mb-4">
+                                    <img src="../Images/user.png" alt="avatar 1" style="width: 45px; height: 100%;">
+                                    <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
+                                        <p class="small mb-0">...</p>
+                                    </div>
+                                </div>
+
+                                <div class="form-outline">
+                                    <textarea class="form-control" id="textAreaExample" rows="4"></textarea>
+                                    <label class="form-label" for="textAreaExample">Type your message</label>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
+        <br>
+        
+        <div>
           <!-- Footer -->
           <footer class="text-center text-lg-start text-white" style="background-color: #800000">
             <!-- Section: Social media -->
@@ -325,7 +247,6 @@ $con->close();
           </footer>
           <!-- Footer -->
         </div>
-</html>    
-
-
-
+        <!-- End of .container -->
+    </body>
+</html>

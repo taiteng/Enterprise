@@ -10,6 +10,8 @@
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
         
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        
         <style>
             body {background-color: white;}
             h1   {color: black;
@@ -58,13 +60,13 @@
                                 <a class="nav-link" href="home.php" style="color: white; font-size: 20px;">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Policy.php" style="color: white; font-size: 20px;">Policy</a>
+                                <a class="nav-link" href="../Help/T&C.php" style="color: white; font-size: 20px;">T&C</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Faq.php" style="color: white; font-size: 20px;">Help</a>
+                                <a class="nav-link" href="../Help/Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Signup.php" style="color: white; font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="../Worker/login.php" style="color: white; font-size: 20px;">Worker</a>
                             </li>
                         </ul>
                     </div>
@@ -141,12 +143,6 @@
                             <img src="../Images/self-service.png" width="150px" height="150px" alt="service" class="img-thumbnail"/>
                         </a>
                         <a class="nav-link" href="service_details.php" style="color: black; font-size: 20px;">Book A Service</a>
-                    </td>
-                    <td>
-                        <a href="">
-                            <img src="../Images/briefing.png" width="150px" height="150px" alt="project" class="img-thumbnail"/>
-                        </a>
-                        <a class="nav-link" href="" style="color: black; font-size: 20px;">My Projects</a>
                     </td>
                     <td>
                         <a href="reviews.php">

@@ -1,151 +1,53 @@
-<!DOCTYPE html>
+<?php
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+// If the user is not logged in redirect to the login page...
+if (!isset($_SESSION['loggedin'])) {
+	header('Location: login.php');
+	exit;
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        
         <!-- Bootstrap plugin -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Add icon library -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
         
-        <style>
-            body {background-color: white;}
-            h1   {color: black;
-                  text-align: center;}
-            p    {color: white;}
-            a    {color: black;
-                  text-decoration: none;}
-            hr   {color: black;}
-            td   {text-align: center;
-                  min-width:300px;}
-            body {font-family: Arial, Helvetica, sans-serif;}
-            * {box-sizing: border-box;}
-
-            .input-container {
-              display: -ms-flexbox; /* IE10 */
-              display: flex;
-              width: 100%;
-              margin-bottom: 15px;
-            }
-
-            .icon {
-              padding: 10px;
-              background: dodgerblue;
-              color: white;
-              min-width: 50px;
-              text-align: center;
-            }
-
-            .input-field {
-              width: 100%;
-              padding: 10px;
-              outline: none;
-            }
-
-            .input-field:focus {
-              border: 2px solid dodgerblue;
-            }
-
-            /* Set a style for the submit button */
-            .btn {
-              background-color: dodgerblue;
-              color: white;
-              padding: 15px 20px;
-              border: none;
-              cursor: pointer;
-              width: 100%;
-              opacity: 0.9;
-            }
-
-            .btn:hover {
-              opacity: 1;
-            }
-            
-            /* width */
-            ::-webkit-scrollbar {
-              width: 10px;
-            }
-
-            /* Track */
-            ::-webkit-scrollbar-track {
-              background: #f1f1f1;
-            }
-
-            /* Handle */
-            ::-webkit-scrollbar-thumb {
-              background: #888;
-            }
-
-            /* Handle on hover */
-            ::-webkit-scrollbar-thumb:hover {
-              background: #555;
-            }
-
-        </style>
-        
-        <title>Home</title>
+        <link href="homecss.css" rel="stylesheet" type="text/css">
+        <meta charset="utf-8">
+	<title>Home Page</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     </head>
-    <body>
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #e3242b">
-                <div class="container-fluid">
-                    <a class="navbar-brand">
-                        <img src="../Images/coventco.png" alt="logo" onclick="location.href='../Front_End/home.php'"/>
-                    </a>
-                    <div class="d-flex flex-row bd-highlight mb-3 justify-content-end">
-                        <ul class="navbar-nav nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="../Front_End/home.php" style="color: white; font-size: 20px;">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="Policy.php" style="color: white; font-size: 20px;">Policy</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="Faq.php" style="color: white; font-size: 20px;">Help</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="Signup.php" style="color: white; font-size: 20px;">Profile</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
-
-        <form action="/Policy.php" style="max-width:500px;margin:auto">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-
-            <h2>Worker Login Form</h2>
-            <div class="input-container">
-                <i class="fa fa-user icon"></i>
-                <input class="input-field" type="text" placeholder="Username" name="usrnm">
+    <body class="loggedin">
+	<nav class="navtop">
+            <div>
+		<h1>Worker Home</h1>
+                <a href="worker_home.php"><i class="fas fa-user-circle"></i>Home</a>
+		<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
+		<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
             </div>
-
-            <div class="input-container">
-                <i class="fa fa-envelope icon"></i>
-                <input class="input-field" type="text" placeholder="Email" name="email">
-            </div>
-
-            <div class="input-container">
-                <i class="fa fa-key icon"></i>
-                <input class="input-field" type="password" placeholder="Password" name="psw">
-            </div>
-
-            <button type="submit" class="btn">Login</button>
-
-        </form>
+	</nav>
+	<div class="content">
+            <h2>Worker Home Page</h2>
+            <p>Welcome back, <?=$_SESSION['name']?>!</p>
+	</div>
+        <div class="container" style="text-align: center;">
+            <table class="table table-borderless table-responsive" style="min-height: 300px;">
+                <tr class="body" align="center" style="padding:10px">
+                    <td>
+                        <a href="">
+                            <img src="../Images/briefing.png" width="150px" height="150px" alt="project" class="img-thumbnail"/>
+                        </a>
+                        <a class="nav-link" href="" style="color: black; font-size: 20px;">My Projects</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
         
         <br>
         
@@ -263,6 +165,6 @@
           <!-- Footer -->
         </div>
         <!-- End of .container -->
-
     </body>
 </html>
+

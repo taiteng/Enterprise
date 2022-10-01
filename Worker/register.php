@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -14,6 +13,9 @@
         
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        <link href="style.css" rel="stylesheet" type="text/css">
         
         <style>
             body {background-color: white;}
@@ -90,7 +92,7 @@
 
         </style>
         
-        <title>Home</title>
+        <title>Register</title>
     </head>
     <body>
         <header>
@@ -111,48 +113,35 @@
                                 <a class="nav-link" href="Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Signup.php" style="color: white; font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="register.php" style="color: white; font-size: 20px;">Profile</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
-
-        <form action="/action_page.php" style="max-width:500px;margin:auto">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-
-            <h2>Worker Signup Form</h2>
-            <div class="input-container">
-                <i class="fa fa-user icon"></i>
-                <input class="input-field" type="text" placeholder="Username" name="usrnm">
-            </div>
-
-            <div class="input-container">
-                <i class="fa fa-envelope icon"></i>
-                <input class="input-field" type="text" placeholder="Email" name="email">
-            </div>
-
-            <div class="input-container">
-                <i class="fa fa-key icon"></i>
-                <input class="input-field" type="password" placeholder="Password" name="psw">
-            </div>
-
-            <button type="submit" class="btn">Signup</button>
-            <br>
-            <br>
-            <br>
-            <a href="Login.php">
-                <button type="button" class="btn">Login</button>
-            </a>
-        </form>
         
         <br>
+        <br>
+
+	<div class="register">
+            <h1>Register (Authorized Personnel Only)</h1>
+            <form action="signup_auth.php" method="post" autocomplete="off">
+                <label for="username">
+                    <i class="fas fa-user"></i>
+                </label>
+                <input type="text" name="username" placeholder="Username" id="username" required>
+                <label for="password">
+                    <i class="fas fa-lock"></i>
+                </label>
+                <input type="password" name="password" placeholder="Password" id="password" required>
+                <label for="email">
+                    <i class="fas fa-envelope"></i>
+                </label>
+                <input type="email" name="email" placeholder="Email" id="email" required>
+                <input type="submit" value="Register">
+            </form>
+	</div>
         
         <div>
           <!-- Footer -->
@@ -267,6 +256,8 @@
           </footer>
           <!-- Footer -->
         </div>
-        <!-- End of .container -->
     </body>
-</html>
+</html>    
+
+
+
