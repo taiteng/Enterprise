@@ -2,6 +2,9 @@
 session_start();
 
 include("../Back_End/db_conn.php");
+include("../Back_End/function.php");
+
+$sid = random_id_gen(24);
 
 ?>
 
@@ -255,6 +258,8 @@ include("../Back_End/db_conn.php");
                         </div>
                     </div>
                 </div>
+                <input class="form-control" type="hidden" value="<?php echo $sid; ?>" name="sid" id="sid" />
+                <input class="form-control" type="hidden" value="00" name="totalprice" id="totalprice" />
                 <div class="form-check mb-2 mt-5">
                     <input class="form-check-input" type="checkbox" id="policycheck" name="policycheck" required>
                     <label class="form-check-label" for="policycheck">

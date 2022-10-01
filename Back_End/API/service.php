@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 class service{
   
     // database connection and table name
@@ -27,6 +29,8 @@ class service{
     public $no_FND;
     public $deco_name;
     public $fun_name;
+    public $total_price;
+    public $id;
   
     // constructor with $db as database connection
     public function __construct($db){
@@ -36,11 +40,12 @@ class service{
     // create service
     function create(){
         // query to insert record
-        $query = "INSERT INTO " . $this->table_name . " SET site_name=:site_name, site_address=:site_address, site_size=:site_size, username=:username, contact=:contact, email=:email, service_type=:service_type, "
-                . "service_desc=:service_desc, event_date=:event_date, event_time=:event_time, no_ppl=:no_ppl, no_chair=:no_chair, no_babychair=:no_babychair, no_table=:no_table, no_cup=:no_cup, no_cutlery=:no_cutlery, FND_name=:FND_name, no_FND=:no_FND, deco_name=:deco_name, fun_name=:fun_name";
+        $query = "INSERT INTO " . $this->table_name . " SET service_id=:service_id, site_name=:site_name, site_address=:site_address, site_size=:site_size, username=:username, contact=:contact, email=:email, service_type=:service_type, "
+                . "service_desc=:service_desc, event_date=:event_date, event_time=:event_time, no_ppl=:no_ppl, no_chair=:no_chair, no_babychair=:no_babychair, no_table=:no_table, no_cup=:no_cup, no_cutlery=:no_cutlery, FND_name=:FND_name, no_FND=:no_FND, deco_name=:deco_name, fun_name=:fun_name, total_price=:total_price";
         // prepare query
         $stmt = $this->conn->prepare($query);
-        // sanitize
+        // sanitize 
+        $this->service_id=htmlspecialchars(strip_tags($this->service_id));
         $this->site_name=htmlspecialchars(strip_tags($this->site_name));
         $this->site_address=htmlspecialchars(strip_tags($this->site_address));
         $this->site_size=htmlspecialchars(strip_tags($this->site_size));
@@ -61,7 +66,9 @@ class service{
         $this->no_FND=htmlspecialchars(strip_tags($this->no_FND));
         $this->deco_name=htmlspecialchars(strip_tags($this->deco_name));
         $this->fun_name=htmlspecialchars(strip_tags($this->fun_name));
+        $this->total_price=htmlspecialchars(strip_tags($this->total_price));
         // bind values
+        $stmt->bindParam(":service_id", $this->service_id);
         $stmt->bindParam(":site_name", $this->site_name);
         $stmt->bindParam(":site_address", $this->site_address);
         $stmt->bindParam(":site_size", $this->site_size);
@@ -82,8 +89,12 @@ class service{
         $stmt->bindParam(":no_FND", $this->no_FND);
         $stmt->bindParam(":deco_name", $this->deco_name);
         $stmt->bindParam(":fun_name", $this->fun_name);
+        $stmt->bindParam(":total_price", $this->total_price);
         // execute query
         if($stmt->execute()){
+            $idddd = "75t34756";
+            $_SESSION['iid'] = $idddd;
+            
             return true;
         }
         return false;
