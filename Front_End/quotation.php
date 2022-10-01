@@ -199,6 +199,12 @@ include("../Back_End/db_conn.php");
             </table>
         </div>
         
+        <?php
+
+        echo '<p>'. $_SESSION['sid'] . '</p>';
+        
+        ?>
+        
         <br>
         
         <div>

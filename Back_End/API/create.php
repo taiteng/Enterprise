@@ -15,10 +15,11 @@ $db = $database->getConnection();
   
 $service = new service($db);
 
-if($_SERVER['REQUEST_METHOD'] == "POST"){
+if($_SERVER['REQUEST_METHOD'] == "POST"){    
     if(!empty($_POST['name']) && !empty($_POST['address']) && !empty($_POST['size']) && !empty($_POST['username']) && !empty($_POST['contact']) && !empty($_POST['email']) && !empty($_POST['type']) && !empty($_POST['description'])
             && !empty($_POST['date']) && !empty($_POST['time']) && !empty($_POST['noppl']) && !empty($_POST['nochair']) && !empty($_POST['nobabychair']) && !empty($_POST['notable']) && !empty($_POST['nocup']) && !empty($_POST['nocutlery'])
-            && !empty($_POST['selectFND']) && !empty($_POST['noFND']) && !empty($_POST['selectDeco']) && !empty($_POST['selectFun'])){
+            && !empty($_POST['selectFND']) && !empty($_POST['noFND']) && !empty($_POST['selectDeco']) && !empty($_POST['selectFun'])  && !empty($_POST['sid']) &&  !empty($_POST['totalprice'])){        
+        $service->service_id = $_POST['sid'];
         $service->site_name = $_POST['name'];
         $service->site_address = $_POST['address'];
         $service->site_size = $_POST['size'];
@@ -39,6 +40,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $service->no_FND = $_POST['noFND'];
         $service->deco_name = $_POST['selectDeco'];
         $service->fun_name = $_POST['selectFun'];
+        $service->total_price = $_POST['totalprice'];
         
         // create the product
         if($service->create()){
@@ -49,7 +51,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             // tell the user
             echo json_encode(array("message" => "Service was created."));
 
-            header("Location: ../../Front_End/loading.php", TRUE, 301);
+            header("Location: ../../Front_End/quotation.php", TRUE, 301);
             exit;
         }
   
@@ -71,5 +73,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
         // tell the user
         echo json_encode(array("message" => "Unable to create service. Data is incomplete."));
+
     }
 }
