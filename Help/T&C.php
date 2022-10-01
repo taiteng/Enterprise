@@ -2,11 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <!-- Bootstrap plugin -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
@@ -15,7 +18,7 @@
             body {background-color: white;}
             h1   {color: black;
                   text-align: center;}
-            p    {color: black;}
+            p    {color: white;}
             a    {color: black;
                   text-decoration: none;}
             hr   {color: black;}
@@ -116,7 +119,7 @@
 
         </style>
         
-        <title>Home</title>
+        <title>Terms & Conditions</title>
     </head>
     <body>
         <header>
@@ -131,86 +134,168 @@
                                 <a class="nav-link" href="../Front_End/home.php" style="color: white; font-size: 20px;">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Policy.php" style="color: white; font-size: 20px;">Policy</a>
+                                <a class="nav-link" href="T&C.php" style="color: white; font-size: 20px;">T&C</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Signup.php" style="color: white; font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="../Worker/login.php" style="color: white; font-size: 20px;">Worker</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
-
-        <!--Section: FAQ-->
-        <section>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <h3 class="text-center mb-4 pb-2 text-primary fw-bold">FAQ</h3>
-            <p class="text-center mb-5">
-                Find the answers for the most frequently asked questions below
-            </p>
-
-            <div class="row">
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <h6 class="mb-3 text-primary"><i class="far fa-paper-plane text-primary pe-2"></i> A simple question?</h6>
-                    <p>
-                        <strong><u>Absolutely!</u></strong> We work with top payment companies which guarantees your safety and security. All billing information is stored on our payment processing partner.
-                    </p>
+        
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        <div class="p-5 text-center bg-light">
+        <h1 class="mb-3">Policy Statement</h1>
+        <h4 class="mb-3">Rules and regulation before book for an event</h4>
+        
+        </div>
+        
+        <!-- Accordion Example -->
+        <div class="accordion-item" align="center">
+            <div class="col-md-6">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Statement #1</button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>This is the first item's accordion
+                        body.</strong>
+                        It is hidden by default, until the collapse
+                        plugin adds the appropriate classes that we
+                        use to style each element. These classes
+                        control the overall appearance, as well as
+                        the showing and hiding via CSS transitions.
+                        You can modify any of this with custom CSS
+                        or overriding our default variables. It's
+                        also worth noting that just about any HTML
+                        can go within the
+                        <code>.accordion-body</code>, though the
+                        transition does limit overflow.
+                    </div>
                 </div>
-
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <h6 class="mb-3 text-primary"><i class="fas fa-pen-alt text-primary pe-2"></i> A question that is longer then the previous one?</h6>
-                    <p>
-                        <strong><u>Yes, it is possible!</u></strong> You can cancel your subscription anytime in your account. Once the subscription is cancelled, you will not be charged next month.
-                    </p>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <h6 class="mb-3 text-primary"><i class="fas fa-user text-primary pe-2"></i> A simple question?</h6>
-                    <p>
-                        Currently, we only offer monthly subscription. You can upgrade or cancel your monthly account at any time with no further obligation.
-                    </p>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <h6 class="mb-3 text-primary"><i class="fas fa-rocket text-primary pe-2"></i> A simple question?</h6>
-                    <p>
-                        Yes. Go to the billing section of your dashboard and update your payment information.
-                    </p>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <h6 class="mb-3 text-primary"><i class="fas fa-home text-primary pe-2"></i> Can I request refund on deposit?</h6>
-                    <p>
-                        <strong><u>Unfortunately no</u>.</strong> We do not issue full or partial refunds for any reason.
-                    </p>
-                </div>
-
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <h6 class="mb-3 text-primary"><i class="fas fa-book-open text-primary pe-2"></i> Another question that is longer than usual</h6>
-                    <p>
-                        Of course! We’re happy to offer a free plan to anyone who wants to try our service.
-                    </p>
+            </div>    
+        </div>
+        <div class="accordion-item" align="center">
+            <div class="col-md-6">
+                <h2 class="accordion-header" id="headingTwo">
+                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Statement #2</button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>This is the second item's accordion
+                        body.</strong>
+                        It is hidden by default, until the collapse
+                        plugin adds the appropriate classes that we
+                        use to style each element. These classes
+                        control the overall appearance, as well as
+                        the showing and hiding via CSS transitions.
+                        You can modify any of this with custom CSS
+                        or overriding our default variables. It's
+                        also worth noting that just about any HTML
+                        can go within the
+                        <code>.accordion-body</code>, though the
+                        transition does limit overflow.
+                    </div>
+                </div>  
+            </div>
+        </div>
+     
+        <div class="accordion-item" align="center">
+            <div class="col-md-6" >
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Statement #3</button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>This is the third item's accordion
+                        body.</strong>
+                        It is hidden by default, until the collapse
+                        plugin adds the appropriate classes that we
+                        use to style each element. These classes
+                        control the overall appearance, as well as
+                        the showing and hiding via CSS transitions.
+                        You can modify any of this with custom CSS
+                        or overriding our default variables. It's
+                        also worth noting that just about any HTML
+                        can go within the
+                        <code>.accordion-body</code>, though the
+                        transition does limit overflow.
+                    </div>
                 </div>
             </div>
-        </section>
-        <!--Section: FAQ-->
+        </div>
+        
+        <div class="row">
+            <div class="col-md-3">.</div>
+            <div class="col-md-6">.</div>
+            <div class="col-md-3">.</div>
+        </div>
+        <form>
+            <!-- Name input -->
+            <div class="form-outline mb-1 col-md-6" align="center">
+                <input type="text" id="form4Example1" class="form-control" align="center"/>
+                <label class="form-label" align="center" for="form4Example1">Name </label>
+            </div>
 
-        <div class="dropdown-menu p-4 text-muted" style="max-width: 200px;">
-            <p>
-                Some example text that's free-flowing within the dropdown menu.
-            </p>
-            <p class="mb-0">
-                And this is more example text.
-            </p>
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <input type="email" id="form4Example2" class="form-control" />
+                <label class="form-label" for="form4Example2">Email address</label>
+            </div>
+
+            <!-- Message input -->
+            <div class="form-outline mb-4">
+                <textarea class="form-control" id="form4Example3" rows="4"></textarea>
+                <label class="form-label" for="form4Example3">Message</label>
+            </div>
+
+            <!-- Checkbox -->
+            <div class="form-check d-flex justify-content-center mb-4">
+                <input class="form-check-input me-2" type="checkbox" value="" id="form4Example4" checked />
+                <label class="form-check-label" for="form4Example4">Send me a copy of this message</label>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Send</button>
+        </form>
+        
+        <br>
+        <br>
+
+        <div class="w3-container">
+            <h2>Borders</h2>
+
+            <div class="w3-panel w3-border">
+                <p>I have borders.</p>
+            </div>
+
+            <div class="w3-panel w3-border-left">
+                <p>I have only a left border.</p>
+            </div>
+
+            <div class="w3-panel w3-border-right">
+                <p>I have only a right border.</p>
+            </div>
+
+            <div class="w3-panel w3-border-top w3-border-bottom">
+                <p>I have top and bottom borders.</p>
+            </div>
+
+        </div>
+
+        <div class="container-fluid">
+          ...dddddddddddddddddddddd
         </div>
 
         <h2>Popup Chat Window</h2>
@@ -222,7 +307,7 @@
         <div class="chat-popup" id="myForm">
             <form action="/action_page.php" class="form-container">
                 <h1>Chat</h1>
-                
+
                 <label for="msg"><b>Message</b></label>
                 <textarea placeholder="Type message.." name="msg" required></textarea>
 
@@ -287,7 +372,7 @@
                     <!-- Content -->
                     <h6 class="text-uppercase fw-bold">Covent.Co</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: black; height: 2px"/>
-                    <p style="color:white;">
+                    <p>
                         Event Planning System. <br>
                         We hope to bring properity and convenience to people.
                     </p>
@@ -336,10 +421,10 @@
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold">Contact</h6>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: black; height: 2px"/>
-                    <p style="color:white;"><i class="fas fa-home mr-3"></i>1-Z, Lebuh Bukit Jambul, Bukit Jambul, 11900 Bayan Lepas, Pulau Pinang</p>
-                    <p style="color:white;"><i class="fas fa-envelope mr-3"></i> covent@abc.com</p>
-                    <p style="color:white;"><i class="fas fa-phone mr-3"></i> + 012 3456 789</p>
-                    <p style="color:white;"><i class="fas fa-print mr-3"></i> + 987 6543 210</p>
+                    <p><i class="fas fa-home mr-3"></i>1-Z, Lebuh Bukit Jambul, Bukit Jambul, 11900 Bayan Lepas, Pulau Pinang</p>
+                    <p><i class="fas fa-envelope mr-3"></i> covent@abc.com</p>
+                    <p><i class="fas fa-phone mr-3"></i> + 012 3456 789</p>
+                    <p><i class="fas fa-print mr-3"></i> + 987 6543 210</p>
                   </div>
                   <!-- Grid column -->
                 </div>
@@ -360,4 +445,3 @@
 
     </body>
 </html>
-

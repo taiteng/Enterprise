@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -8,8 +7,15 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Add icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
+        
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        <link href="style.css" rel="stylesheet" type="text/css">
         
         <style>
             body {background-color: white;}
@@ -21,6 +27,48 @@
             hr   {color: black;}
             td   {text-align: center;
                   min-width:300px;}
+            body {font-family: Arial, Helvetica, sans-serif;}
+            * {box-sizing: border-box;}
+
+            .input-container {
+              display: -ms-flexbox; /* IE10 */
+              display: flex;
+              width: 100%;
+              margin-bottom: 15px;
+            }
+
+            .icon {
+              padding: 10px;
+              background: dodgerblue;
+              color: white;
+              min-width: 50px;
+              text-align: center;
+            }
+
+            .input-field {
+              width: 100%;
+              padding: 10px;
+              outline: none;
+            }
+
+            .input-field:focus {
+              border: 2px solid dodgerblue;
+            }
+
+            /* Set a style for the submit button */
+            .btn {
+              background-color: dodgerblue;
+              color: white;
+              padding: 15px 20px;
+              border: none;
+              cursor: pointer;
+              width: 100%;
+              opacity: 0.9;
+            }
+
+            .btn:hover {
+              opacity: 1;
+            }
             
             /* width */
             ::-webkit-scrollbar {
@@ -44,292 +92,58 @@
 
         </style>
         
-        <title>Home</title>
+        <title>Register</title>
     </head>
     <body>
         <header>
             <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #e3242b">
                 <div class="container-fluid">
                     <a class="navbar-brand">
-                        <img src="../Images/coventco.png" alt="logo" onclick="location.href='home.php'"/>
+                        <img src="../Images/coventco.png" alt="logo" onclick="location.href='../Front_End/home.php'"/>
                     </a>
                     <div class="d-flex flex-row bd-highlight mb-3 justify-content-end">
                         <ul class="navbar-nav nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="home.php" style="color: white; font-size: 20px;">Home</a>
+                                <a class="nav-link" href="../Front_End/home.php" style="color: white; font-size: 20px;">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="" style="color: white; font-size: 20px;">Policy</a>
+                                <a class="nav-link" href="Policy.php" style="color: white; font-size: 20px;">Policy</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="" style="color: white; font-size: 20px;">Help</a>
+                                <a class="nav-link" href="Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="" style="color: white; font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="register.php" style="color: white; font-size: 20px;">Profile</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
-<html>
+        
+        <br>
+        <br>
 
-<!DOCTYPE html>
-<html>
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box}
-
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
-
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
-
-/* Set a style for all buttons */
-button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-button:hover {
-  opacity:1;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-  padding: 14px 20px;
-  background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-  float: left;
-  width: 50%;
-}
-
-/* Add padding to container elements */
-.container {
-  padding: 16px;
-}
-
-/* Clear floats */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-  .cancelbtn, .signupbtn {
-     width: 100%;
-  }
-}
-</style>
-<body>
-
-<form action="/action_page.php" style="border:1px solid #ccc">
-  <div class="container">
-    <h1>Sign Up</h1>
-    <p>Please fill in this form to create an account.</p>
-    <hr>
-
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
-    
-    <label>
-      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-    </label>
-    
-    <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-
-    <div class="clearfix">
-      <button type="button" class="cancelbtn">Cancel</button>
-      <button type="submit" class="signupbtn">Sign Up</button>
-    </div>
-  </div>
-</form>
-
-</body>
-</html>
-    <!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-/* Set a style for all buttons */
-button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-
-button:hover {
-  opacity: 0.8;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
-}
-
-/* Center the image and position the close button */
-.imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
-}
-
-img.avatar {
-  width: 40%;
-  border-radius: 50%;
-}
-
-.container {
-  padding: 16px;
-}
-
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
-
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  padding-top: 60px;
-}
-
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-/* The Close Button (x) */
-.close {
-  position: absolute;
-  right: 25px;
-  top: 0;
-  color: #000;
-  font-size: 35px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: red;
-  cursor: pointer;
-}
-
-/* Add Zoom Animation */
-.animate {
-  -webkit-animation: animatezoom 0.6s;
-  animation: animatezoom 0.6s
-}
-
-@-webkit-keyframes animatezoom {
-  from {-webkit-transform: scale(0)} 
-  to {-webkit-transform: scale(1)}
-}
-  
-@keyframes animatezoom {
-  from {transform: scale(0)} 
-  to {transform: scale(1)}
-}
-
-/* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 300px) {
-  span.psw {
-     display: block;
-     float: none;
-  }
-  .cancelbtn {
-     width: 100%;
-  }
-}
-</style>
-
-</html>
-
-
-</body>
-</html>
-
-</div>
-   
-</div>
-
-<script>
-function w3_open() {
-  document.getElementById("mySidebar").style.display = "block";
-}
-
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-}
-</script>
-     
-</body>
-
-</html>
-<div>
+	<div class="register">
+            <h1>Register (Authorized Personnel Only)</h1>
+            <form action="signup_auth.php" method="post" autocomplete="off">
+                <label for="username">
+                    <i class="fas fa-user"></i>
+                </label>
+                <input type="text" name="username" placeholder="Username" id="username" required>
+                <label for="password">
+                    <i class="fas fa-lock"></i>
+                </label>
+                <input type="password" name="password" placeholder="Password" id="password" required>
+                <label for="email">
+                    <i class="fas fa-envelope"></i>
+                </label>
+                <input type="email" name="email" placeholder="Email" id="email" required>
+                <input type="submit" value="Register">
+            </form>
+	</div>
+        
+        <div>
           <!-- Footer -->
           <footer class="text-center text-lg-start text-white" style="background-color: #800000">
             <!-- Section: Social media -->
@@ -442,6 +256,8 @@ function w3_close() {
           </footer>
           <!-- Footer -->
         </div>
-        <!-- End of .container -->
     </body>
-</html>
+</html>    
+
+
+

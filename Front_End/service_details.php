@@ -26,6 +26,8 @@ $sid = random_id_gen(24);
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
         
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        
         <style>
             body {background-color: white;}
             h1   {color: black;
@@ -85,13 +87,13 @@ $sid = random_id_gen(24);
                                 <a class="nav-link" href="home.php" style="color: white; font-size: 20px;">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Policy.php" style="color: white; font-size: 20px;">Policy</a>
+                                <a class="nav-link" href="../Help/T&C.php" style="color: white; font-size: 20px;">T&C</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Faq.php" style="color: white; font-size: 20px;">Help</a>
+                                <a class="nav-link" href="../Help/Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Signup.php" style="color: white; font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="../Worker/login.php" style="color: white; font-size: 20px;">Worker</a>
                             </li>
                         </ul>
                     </div>
@@ -264,7 +266,7 @@ $sid = random_id_gen(24);
                     <input class="form-check-input" type="checkbox" id="policycheck" name="policycheck" required>
                     <label class="form-check-label" for="policycheck">
                         I have read and agree to the 
-                        <a class="policylink" href="../Help_Front_End/Policy.php">
+                        <a class="policylink" href="../Help/Policy.php">
                             Terms & Condition
                         </a>
                         .

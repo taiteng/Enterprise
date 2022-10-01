@@ -7,19 +7,69 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Add icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
+        
+        <link href="style1.css" rel="stylesheet" type="text/css">
+		
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
         
         <style>
             body {background-color: white;}
             h1   {color: black;
                   text-align: center;}
-            p    {color: black;}
+            p    {color: white;}
             a    {color: black;
                   text-decoration: none;}
             hr   {color: black;}
             td   {text-align: center;
                   min-width:300px;}
+            body {font-family: Arial, Helvetica, sans-serif;}
+            * {box-sizing: border-box;}
+
+            .input-container {
+              display: -ms-flexbox; /* IE10 */
+              display: flex;
+              width: 100%;
+              margin-bottom: 15px;
+            }
+
+            .icon {
+              padding: 10px;
+              background: dodgerblue;
+              color: white;
+              min-width: 50px;
+              text-align: center;
+            }
+
+            .input-field {
+              width: 100%;
+              padding: 10px;
+              outline: none;
+            }
+
+            .input-field:focus {
+              border: 2px solid dodgerblue;
+            }
+
+            /* Set a style for the submit button */
+            .btn {
+              background-color: dodgerblue;
+              color: white;
+              padding: 15px 20px;
+              border: none;
+              cursor: pointer;
+              width: 100%;
+              opacity: 0.9;
+            }
+
+            .btn:hover {
+              opacity: 1;
+            }
             
             /* width */
             ::-webkit-scrollbar {
@@ -43,7 +93,7 @@
 
         </style>
         
-        <title>Home</title>
+        <title>Login</title>
     </head>
     <body>
         <header>
@@ -58,56 +108,48 @@
                                 <a class="nav-link" href="../Front_End/home.php" style="color: white; font-size: 20px;">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Policy.php" style="color: white; font-size: 20px;">Policy</a>
+                                <a class="nav-link" href="../Help/T&C.php" style="color: white; font-size: 20px;">T&C</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Faq.php" style="color: white; font-size: 20px;">Help</a>
+                                <a class="nav-link" href="../Help/Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Signup.php" style="color: white; font-size: 20px;">Profile</a>
+                                <a class="nav-link" href="login.php" style="color: white; font-size: 20px;">Worker</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
         </header>
+
         <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="my-4">
-            <div class="container">
-                <div class="row">
-                    <div class="offset-xl-1 col-xl-10 col-12 ">
-                        <div class="row px-3 pt-3 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border smooth-shadow-sm">
-                            <div class="col-lg-6 p-4 p-md-6 pt-lg-0">
-                                <h1 class="display-4 fw-bold lh-1 mb-3">Get to know Latest Promotion</h1>
-                                <p class="lead mb-5">
-                                    Provide us email address to get the latest promotion
-                                </p>
-                                <form class="row">
-                                    <div class="mb-3 col-md-7 col-12">
-                                        <input type="email" class="form-control" placeholder="Enter Email" required="">
-                                    </div>
-                                    <div class="d-grid mb-3 col-md-5 col-12 ps-md-0">
-                                        <button class="btn btn-primary" type="submit">Submit</button>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="col-lg-5 offset-lg-1 p-0 overflow-hidden shadow-lg rounded-end-md">
-                                <img class="rounded-top-md card-img-size-600" src="../images/coupon.png" alt="" >
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
+	<div class="login">
+            <h1>Login</h1>
+            <form action="authenticate.php" method="post">
+                <label for="username">
+                    <i class="fas fa-user"></i>
+                </label>
+                <input type="text" name="username" placeholder="Username" id="username" required>
+                <label for="password">
+                    <i class="fas fa-lock"></i>
+                </label>
+                <input type="password" name="password" placeholder="Password" id="password" required>
+                <input type="submit" value="Login">
+                    
+                <br>
+                <br>
+                                
+            </form>
+            
+            <br>
+            
+            <a href="register.php">
+                <button type="button" class="btn">Register</button>
+            </a>
+	</div>
         
+        <br>
         <br>
         
         <div>

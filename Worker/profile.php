@@ -1,8 +1,31 @@
+<?php
+// We need to use sessions, so you should always start sessions using the below code.
+session_start();
+// If the user is not logged in redirect to the login page...
+if (!isset($_SESSION['loggedin'])) {
+	header('Location: login.php');
+	exit;
+}
+$DATABASE_HOST = 'localhost';
+$DATABASE_USER = 'root';
+$DATABASE_PASS = '';
+$DATABASE_NAME = 'covent';
+$con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
+if (mysqli_connect_errno()) {
+	exit('Failed to connect to MySQL: ' . mysqli_connect_error());
+}
+// We don't have the password or email info stored in sessions so instead we can get the results from the database.
+$stmt = $con->prepare('SELECT password, email FROM accounts WHERE id = ?');
+// In this case we can use the account ID to get the account info.
+$stmt->bind_param('i', $_SESSION['id']);
+$stmt->execute();
+$stmt->bind_result($password, $email);
+$stmt->fetch();
+$stmt->close();
+?>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        
         <!-- Bootstrap plugin -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -10,68 +33,47 @@
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
         
-        <style>
-            body {background-color: white;}
-            h1   {color: black;
-                  text-align: center;}
-            p    {color: white;}
-            a    {color: black;
-                  text-decoration: none;}
-            hr   {color: black;}
-            td   {text-align: center;
-                  min-width:300px;}
-            
-            /* width */
-            ::-webkit-scrollbar {
-              width: 10px;
-            }
-
-            /* Track */
-            ::-webkit-scrollbar-track {
-              background: #f1f1f1;
-            }
-
-            /* Handle */
-            ::-webkit-scrollbar-thumb {
-              background: #888;
-            }
-
-            /* Handle on hover */
-            ::-webkit-scrollbar-thumb:hover {
-              background: #555;
-            }
-
-        </style>
-        
-        <title>Loading</title>
+	<meta charset="utf-8">
+	<title>Profile Page</title>
+        <meta charset="utf-8">
+	<link href="homecss.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     </head>
-    <body>
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #e3242b">
-                <div class="container-fluid">
-                    <a class="navbar-brand">
-                        <img src="../Images/coventco.png" alt="logo" onclick="location.href='home.php'"/>
-                    </a>
-                    <div class="d-flex flex-row bd-highlight mb-3 justify-content-end">
-                        <ul class="navbar-nav nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="home.php" style="color: white; font-size: 20px;">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Policy.php" style="color: white; font-size: 20px;">Policy</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Faq.php" style="color: white; font-size: 20px;">Help</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="../Help_Front_End/Signup.php" style="color: white; font-size: 20px;">Profile</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
+    <body class="loggedin">
+	<nav class="navtop">
+            <div>
+		<h1>Profile</h1>
+                <a href="worker_home.php"><i class="fas fa-user-circle"></i>Home</a>
+		<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
+		<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
+            </div>
+	</nav>
+	<div class="content">
+            <h2>Profile Page</h2>
+            <div>
+		<p>Your account details are below:</p>
+		<table>
+                    <tr>
+			<td>Username:</td>
+			<td><?=$_SESSION['name']?></td>
+                    </tr>
+                    <tr>
+			<td>Password:</td>
+			<td><?=$password?></td>
+                    </tr>
+                    <tr>
+			<td>Email:</td>
+			<td><?=$email?></td>
+                    </tr>
+		</table>
+            </div>
+	</div>
         
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <br>
         
         <div>
