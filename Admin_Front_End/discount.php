@@ -98,7 +98,7 @@
                 <div class="card-body">
                   <h5 class="card-title">15%</h5>
                   <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" class="btn btn-primary">Edit</a>
+                  <a href="#" class="btn btn-primary" style="width: 150px; height:auto;">Edit</a>
                   <a href="#" class="btn btn-danger">Delete</a>
                 </div>
               </div>
