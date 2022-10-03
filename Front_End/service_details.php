@@ -104,7 +104,7 @@ $sid = random_id_gen(24);
         <h1 style="margin-top:110px">Service Details</h1>
         
         <form class="was-validated" action="../Back_End/API/create.php" method="POST">
-            <div class="container layoutForm">
+            <div class="container layoutForm shadow-lg p-3 mb-5 bg-white rounded">
                 <div class="row">
                     <div class="col">
                         <div class="mt-2">
@@ -140,31 +140,31 @@ $sid = random_id_gen(24);
                         <div class="control">
                             <label class="form-label">Type of Service:</label><br>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="birthday" name="type" value="birthday" required>
+                                <input class="form-check-input" type="radio" id="birthday" name="type" value="Birthday Party" required>
                                 <label class="form-check-label" for="birthday">Birthday</label><br>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="wedding" name="type" value="wedding" required>
+                                <input class="form-check-input" type="radio" id="wedding" name="type" value="Wedding Ceremony" required>
                                 <label class="form-check-label" for="wedding">Wedding</label><br>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="farewell" name="type" value="farewell" required>
+                                <input class="form-check-input" type="radio" id="farewell" name="type" value="Farewell Ceremony" required>
                                 <label class="form-check-label" for="farewell">Farewell</label><br>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="christmas" name="type" value="christmas" required>
+                                <input class="form-check-input" type="radio" id="christmas" name="type" value="Christmas Celebration" required>
                                 <label class="form-check-label" for="christmas">Christmas</label><br>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="newyear" name="type" value="newyear" required>
+                                <input class="form-check-input" type="radio" id="newyear" name="type" value="New Year Celebration" required>
                                 <label class="form-check-label" for="newyear">New Year Eve</label><br>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="deepavali" name="type" value="deepavali" required>
+                                <input class="form-check-input" type="radio" id="deepavali" name="type" value="Deepavali Celebration" required>
                                 <label class="form-check-label" for="deepavali">Deepavali</label><br>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="raya" name="type" value="raya" required>
+                                <input class="form-check-input" type="radio" id="raya" name="type" value="Raya Aidilfitri Celebration" required>
                                 <label class="form-check-label" for="raya">Hari Raya Aidilfitri</label><br>
                             </div>
                         </div>
@@ -221,12 +221,8 @@ $sid = random_id_gen(24);
                             <label class="form-label">Food & Drinks:</label>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <select id="selectFND" class="form-control" name="selectFND" onchange="createFNDDisplay()" required>
-                                        <option disabled selected value>Please select a food & drinks vendor (Comes with a package)</option>
-                                        <option value="eNo">E&O Hotel</option>
-                                        <option value="view">The View</option>
-                                        <option value="es">ESoon Fast Food</option>
-                                        <option value="light">The Light</option>
+                                    <select id="selectFND" class="form-control FNDSelection" name="selectFND" onchange="createFNDDisplay()" required>
+                                        
                                     </select>
                                 </div>
                                 <div class="col-md-6">
@@ -235,35 +231,31 @@ $sid = random_id_gen(24);
                             </div>
                         </div>
                         <div class="mt-2">
-                            <textarea class="form-control" rows="5" id="displayFND" name="displayFND" disabled></textarea>
+                            <textarea class="form-control displayFND" rows="5" id="displayFND" name="displayFND" disabled></textarea>
                         </div>
                         <div class="mt-2">
                             <label for="selectDeco" class="form-label">Event Decorative:</label>
-                            <select id="selectDeco" class="form-control" name="selectDeco" onchange="createDecoDisplay()" required>
-                                <option disabled selected value>Please select a decorative pack (Price calculated based on site's size)</option>
-                                <option value="basic">Basic Pack</option>
-                                <option value="luxury">Luxury Pack</option>
+                            <select id="selectDeco" class="form-control decoSelection" name="selectDeco" onchange="createDecoDisplay()" required>
+                               
                             </select>
                         </div>
                         <div class="mt-2">
-                            <input class="form-control" type="text" id="displayDeco" name="displayDeco" disabled/>
+                            <input class="form-control displayDeco" type="text" id="displayDeco" name="displayDeco" disabled/>
                         </div>
                         <div class="mt-2">
                             <label for="selectFun" class="form-label">Event Entertainment:</label>
-                            <select id="selectFun" class="form-control" name="selectFun" required>
-                                <option disabled selected value>Please select an entertainment</option>
-                                <option value="none">None</option>
-                                <option value="clown">Clown</option>
-                                <option value="magician">Magician</option>
-                                <option value="both">Both (Clown & Magician)</option>
+                            <select id="selectFun" class="form-control funSelection" name="selectFun" required>
+                                
                             </select>
                         </div>
                     </div>
                 </div>
+                
                 <input class="form-control" type="hidden" value="<?php echo $sid; ?>" name="sid" id="sid" />
                 <input class="form-control" type="hidden" value="00" name="totalprice" id="totalprice" />
                 <input class="form-control" type="hidden" value="open" name="projectstatus" id="projectstatus" />
                 <input class="form-control" type="hidden" value="-" name="workername" id="workername" />
+                
                 <div class="form-check mb-2 mt-5">
                     <input class="form-check-input" type="checkbox" id="policycheck" name="policycheck" required>
                     <label class="form-check-label" for="policycheck">
@@ -416,56 +408,9 @@ $sid = random_id_gen(24);
                 preferredCountries: ["my", "us", "jp"]
             });
             
-            function createFNDDisplay(){
-                var d = document.getElementById("selectFND");
-                var displayText = d.options[d.selectedIndex].text;
-                
-                if(displayText === "E&O Hotel"){
-                    outputText = "Pork Chop (1 per person)\n\
-Cheesy Wedges (4 servings per person)\n\
-Orange & Apple (2 per person)\n\
-Matcha Ice Cream(2 scoops per person)\n\
-Lemonade & Tea (5 cups per person)";
-                }
-                else if(displayText === "The View"){
-                    outputText = "Lamb Steak (1 per person)\n\
-Ratatouille (4 servings per person)\n\
-Avocado & Pear (2 per person)\n\
-Chocolate Ice Cream(2 scoops per person)\n\
-Lemonade & Tea (5 cups per person)";
-                }
-                else if(displayText === "ESoon Fast Food"){
-                    outputText = "Fish N Chips (1 per person)\n\
-Cheesy Wedges (4 servings per person)\n\
-Orange & Apple (2 per person)\n\
-Vanilla Ice Cream(2 scoops per person)\n\
-Lemonade & Tea (5 cups per person)";
-                }
-                else if(displayText === "The Light"){
-                    outputText = "Beef Steak (1 per person)\n\
-Ratatouille (4 servings per person)\n\
-Avocado & Pear (2 per person)\n\
-Strawberry Ice Cream(2 scoops per person)\n\
-Lemonade & Tea (5 cups per person)";
-                }
-                
-                document.getElementById("displayFND").value = outputText;
-            }
-            
-            function createDecoDisplay(){
-                var d = document.getElementById("selectDeco");
-                var displayText = d.options[d.selectedIndex].text;
-                
-                if(displayText === "Luxury Pack"){
-                    outputText = "Balloons, Curtains, Blinds, Flowers, Lightings, Word Decor, Backdrops, Centerpieces, Confetties, Wall Decor, Banners, Streamers";
-                }
-                else{
-                    outputText = "Balloons, Curtains, Flowers, Word Decor, Confetties, Wall Decor, Streamers";
-                }
-                
-                document.getElementById("displayDeco").value = outputText;
-            }
-
         </script>
+        
+        <!-- Script to call displays -->
+        <script src="Z_display.js"></script>
     </body>
 </html>

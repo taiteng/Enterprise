@@ -2,6 +2,9 @@
 session_start();
 
 include("../Back_End/db_conn.php");
+include("../Back_End/function.php");
+
+$service_data = check_service($conn);
 
 ?>
 
@@ -13,6 +16,9 @@ include("../Back_End/db_conn.php");
         <!-- Bootstrap plugin -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <!-- MDB -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet">
         
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
@@ -81,7 +87,7 @@ include("../Back_End/db_conn.php");
         
         <h1 style="margin-top:110px">Quotation</h1>
         
-        <div class="container" style="text-align: center;">
+        <div class="container shadow-2" style="text-align: center;">
             <table class="table table-bordered table-responsive" style="min-height: 100px;">
                 <tr class="body" align="center" style="padding:5px">
                     <td>
@@ -91,7 +97,7 @@ include("../Back_End/db_conn.php");
                                     <p>Site's Name:</p>
                                 </td>
                                 <td>
-                                    <p>Nani The Fuck</p>
+                                    <p><?php echo $service_data['site_name']; ?></p>
                                 </td>
                             </tr>
                             <tr class="body" align="left" style="padding:5px">
@@ -99,10 +105,7 @@ include("../Back_End/db_conn.php");
                                     <p>Address:</p>
                                 </td>
                                 <td>
-                                    <p>1234, Taman Shibal, <br>
-                                       Lorong Shibal, 12345 <br>
-                                       Pulau Pinang
-                                    </p>
+                                    <p><?php echo $service_data['site_address']; ?></p>
                                 </td>
                             </tr>
                             <tr class="body" align="left" style="padding:5px">
@@ -110,15 +113,18 @@ include("../Back_End/db_conn.php");
                                     <p>Site's Size:</p>
                                 </td>
                                 <td>
-                                    <p>120 ft</p>
+                                    <p><?php echo $service_data['site_size']; ?></p>
                                 </td>
+                            </tr>
+                            <tr style="border-bottom:1px solid lightgrey">
+                                <td colspan="100%"></td>
                             </tr>
                             <tr class="body" align="left" style="padding:5px">
                                 <td>
                                     <p>Type of Service:</p>
                                 </td>
                                 <td>
-                                    <p>Birthday</p>
+                                    <p><?php echo $service_data['service_type']; ?></p>
                                 </td>
                             </tr>
                             <tr class="body" align="left" style="padding:5px">
@@ -126,11 +132,7 @@ include("../Back_End/db_conn.php");
                                     <p>Description of Event:</p>
                                 </td>
                                 <td>
-                                    <p>Need someone to cum. <br>
-                                       I've got no frens, <br>
-                                       no one to celebrate my birthday. <br>
-                                       Hope to add a part-timer fake people package.
-                                    </p>
+                                    <p><?php echo $service_data['service_desc']; ?></p>
                                 </td>
                             </tr>
                         </table>
@@ -142,7 +144,7 @@ include("../Back_End/db_conn.php");
                                     <p>User Name:</p>
                                 </td>
                                 <td>
-                                    <p>Shibal Inu</p>
+                                    <p><?php echo $service_data['username']; ?></p>
                                 </td>
                             </tr>
                             <tr class="body" align="left" style="padding:5px">
@@ -150,7 +152,7 @@ include("../Back_End/db_conn.php");
                                     <p>Contact:</p>
                                 </td>
                                 <td>
-                                    <p>012 3456 789</p>
+                                    <p><?php echo $service_data['contact']; ?></p>
                                 </td>
                             </tr>
                             <tr class="body" align="left" style="padding:5px">
@@ -158,15 +160,34 @@ include("../Back_End/db_conn.php");
                                     <p>Email:</p>
                                 </td>
                                 <td>
-                                    <p>shibalInu@gmail.com</p>
+                                    <p><?php echo $service_data['email']; ?></p>
+                                </td>
+                            </tr>
+                            <tr style="border-bottom:1px solid lightgrey">
+                                <td colspan="100%"></td>
+                            </tr>
+                            <tr class="body" align="left" style="padding:5px">
+                                <td>
+                                    <p>Date of Event:</p>
+                                </td>
+                                <td>
+                                    <p><?php echo $service_data['event_date']; ?></p>
+                                </td>
+                            </tr>
+                            <tr class="body" align="left" style="padding:5px">
+                                <td>
+                                    <p>Duration of Event:</p>
+                                </td>
+                                <td>
+                                    <p><?php echo $service_data['event_time']; ?></p>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr class="body" align="center" style="padding:5px">
-                    <table class="table table-bordered table-responsive">
-                        <tr class="body" align="left" style="padding:10px">
+                    <table class="table table-borderless table-responsive">
+                        <tr class="body" align="left" style="padding:10px; border:1px solid lightgrey">
                             <td style="min-width: 300px;">
                                 <p>Description</p>
                             </td>
@@ -175,6 +196,17 @@ include("../Back_End/db_conn.php");
                             </td>
                             <td>
                                 <p>Price</p>
+                            </td>
+                        </tr>
+                        <tr class="body" align="left" style="padding:10px; border-left: 1px solid lightgrey; border-right: 1px solid lightgrey;">
+                            <td style="min-width: 300px;">
+                                <p>Chair</p>
+                            </td>
+                            <td>
+                                <p>20</p>
+                            </td>
+                            <td>
+                                <p>40</p>
                             </td>
                         </tr>
                     </table>
