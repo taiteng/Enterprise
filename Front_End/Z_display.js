@@ -92,3 +92,13 @@ function createFNDDisplay() {
                 }
             }).catch(error => console.log(error));
 }
+
+//Display the fragment
+function createNoFNDDisplay() {
+    var d = document.getElementById("noppl");
+    var e = document.getElementById("noFND");
+    
+    if(e > d){
+        confirm("Number of food & drinks quantity exceeds the number of participants.");
+    }
+}

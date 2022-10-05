@@ -102,4 +102,26 @@ class service{
         }
         return false;
     }
+    
+    // delete the service
+    function delete() {
+        // delete query
+        $query = "DELETE FROM " . $this->table_name . " WHERE service_id = ?";
+
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+
+        // sanitize
+        $this->service_id = htmlspecialchars(strip_tags($this->service_id));
+
+        // bind id of record to delete
+        $stmt->bindParam(1, $this->service_id);
+
+        // execute query
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+    }
 }

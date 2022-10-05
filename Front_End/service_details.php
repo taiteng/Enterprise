@@ -226,7 +226,7 @@ $sid = random_id_gen(24);
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <input class="form-control" type="number" id="noFND" name="noFND" min="1" placeholder="Please input the required quantity" required>
+                                    <input class="form-control" type="number" id="noFND" name="noFND" min="1" onchange="createNoFNDDisplay()" placeholder="Please input the required quantity" required>
                                 </div>
                             </div>
                         </div>
