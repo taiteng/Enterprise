@@ -1,3 +1,10 @@
+<?php 
+session_start();
+
+include("../Back_End/db_conn.php");
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>

@@ -36,3 +36,99 @@ function check_service($conn){
         die;
     }
 }
+
+function check_chair($conn){
+    $chair = 'Chairs';
+    $query = "select * from item where item_name = '$chair'";
+    $result = mysqli_query($conn, $query);
+    if($result && mysqli_num_rows($result) > 0)
+    {
+        $chair_data = mysqli_fetch_assoc($result);
+    }
+    
+    return $chair_data;
+}
+
+function check_babychair($conn){
+    $babychair = 'Baby Chairs';
+    $query = "select * from item where item_name = '$babychair'";
+    $result = mysqli_query($conn, $query);
+    if($result && mysqli_num_rows($result) > 0)
+    {
+        $babychair_data = mysqli_fetch_assoc($result);
+    }
+    
+    return $babychair_data;
+}
+
+function check_table($conn){
+    $table = 'Tables';
+    $query = "select * from item where item_name = '$table'";
+    $result = mysqli_query($conn, $query);
+    if($result && mysqli_num_rows($result) > 0)
+    {
+        $table_data = mysqli_fetch_assoc($result);
+    }
+    
+    return $table_data;
+}
+
+function check_cup($conn){
+    $cup = 'Cups';
+    $query = "select * from item where item_name = '$cup'";
+    $result = mysqli_query($conn, $query);
+    if($result && mysqli_num_rows($result) > 0)
+    {
+        $cup_data = mysqli_fetch_assoc($result);
+    }
+    
+    return $cup_data;
+}
+
+function check_cutlery($conn){
+    $cutlery = 'Cutlery Sets';
+    $query = "select * from item where item_name = '$cutlery'";
+    $result = mysqli_query($conn, $query);
+    if($result && mysqli_num_rows($result) > 0)
+    {
+        $cutlery_data = mysqli_fetch_assoc($result);
+    }
+    
+    return $cutlery_data;
+}
+
+function check_FND($FND_name, $conn){
+    $FND = $FND_name;
+    $query = "select * from fnd where pack_name = '$FND'";
+    $result = mysqli_query($conn, $query);
+    if($result && mysqli_num_rows($result) > 0)
+    {
+        $FND_data = mysqli_fetch_assoc($result);
+    }
+    
+    return $FND_data;
+}
+
+function check_deco($deco_name, $conn){
+    $deco = $deco_name;
+    $query = "select * from decoration where deco_name = '$deco'";
+    $result = mysqli_query($conn, $query);
+    if($result && mysqli_num_rows($result) > 0)
+    {
+        $deco_data = mysqli_fetch_assoc($result);
+    }
+    
+    return $deco_data;
+}
+
+function check_fun($fun_name, $conn){
+    $fun = $fun_name;
+    $query = "select * from fun where fun_name = '$fun'";
+    $result = mysqli_query($conn, $query);
+    if($result && mysqli_num_rows($result) > 0)
+    {
+        $fun_data = mysqli_fetch_assoc($result);
+    }
+    
+    return $fun_data;
+}
