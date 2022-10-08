@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "../Back_End/db_conn.php";
 ?>
 
 <!DOCTYPE html>
@@ -101,8 +102,14 @@ session_start();
             </table>
         </div>
         
+        <?php
+        $service_id = "";
+        if(isset($_GET["service_id"])){
+            $service_id = $_GET["service_id"];
+        }?>
+        
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="assignModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -110,37 +117,31 @@ session_start();
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     
-                    <form action="../Admin_Back_End/handle_assignProject.php" method="post">
+                    
+                    <!--MODAL POP UP FOR ASSIGN EMPLOYEE-->
+                    <?php
+                    $service_id = "";
+                    if(isset($_GET["service_id"])){
+                        $service_id = $_GET["service_id"];
+                    }
+                    
+                    $sql = "SELECT username FROM accounts";
+                    $result = $conn->query($sql);
+                    
+                    echo '<form action="../Admin_Back_End/handle_assignProject.php?id='.$serviceId.'" method="post">
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label class="form-label">Employee</label>
                                 <select class="form-select" aria-label="Default select example">
                                     <option selected></option>
-                                    <?php
-                                    include "../Back_End/db_conn.php";
-                                    
-                                    $sql = "SELECT username FROM accounts";
-                                    $result = $conn->query($sql);
-                                    
+                                  
                                     if ($result->num_rows > 0) {
                                         // output data of each row
                                         while($row = $result->fetch_assoc()) {
-                                            echo '<option name=username>'.$row["username"].'</option>';
+                                            <option name=username>'.$row["username"].'</option>;
                                         }
 
-                                    }else{
-                                       $_SESSION["noEmployee"] = true;
-                                            ?>
-                                            <script>
-                                            Swal.fire({
-                                            icon: 'warning',
-                                            title: 'Notice',
-                                            text: 'There are no employees to assign'
-                                            });
-                                            </script>
-                                        <?php
                                     }
-                                    ?>
                                 </select>
                                 <div id="emailHelp" class="form-text">Assign an employee to in charge of this project</div>
                             </div>
@@ -150,10 +151,22 @@ session_start();
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                           <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
-                    </form>
+                    </form>';
+
+                    ?>
+                    
+                    
+                    
                 </div>
             </div>
         </div>
+        
+        <script>
+            $(document).ready(function(){
+                $()
+            });
+        </script>
+        
         
     </body>
 </html>
