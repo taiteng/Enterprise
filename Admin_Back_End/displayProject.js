@@ -12,7 +12,7 @@ fetch('../Admin_Back_End/dbService.php').then((data)=>{
                             <p class="text-muted mb-0">${values.service_desc}</p>
                       </td>
                       <td>
-                          Otto
+                          <input type="hidden" name="delete_id" value="${values.service_id}" id="delete_id"/>
                       </td>
                       <td>
                           <span class="status text-warning ">&bull;</span> In Progress
@@ -21,8 +21,8 @@ fetch('../Admin_Back_End/dbService.php').then((data)=>{
                           <i class="fa fa-download fa-2x" aria-hidden="true"></i>
                       </td>
                       <td align="center">
-                          <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
-                          <a href="" type="submit">
+                          <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#assignModal"></i>
+                          <a href="../Admin_Front_End/projects.php?id=${values.service_id}" type="submit">
                                 <i class="fa fa-trash fa-2x" aria-hidden="true"></i>
                           </a>
                       </td>
