@@ -1,3 +1,11 @@
+<?php 
+session_start();
+
+include("../Back_End/db_conn.php");
+include("../Back_End/function.php");
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -75,170 +83,8 @@
         <h1 style="margin-top:110px">Reviews</h1>
         
         <div class="container" style="text-align: center;">
-            <table class="table table-bordered" style="min-height: 200px; min-width: 200px;" align="center">
-                <!-- Row 1 -->
-                <tr class="" style="padding:10px">
-                    <td>
-                        <p>Name</p>
-                        
-                        <p>Comment</p>
-                        
-                        <!-- Star table -->
-                        <table align="center">
-                            <tr>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td>
-                        <p>Name</p>
-                        
-                        <p>Comment</p>
-                        
-                        <!-- Star table -->
-                        <table align="center">
-                            <tr>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td>
-                        <p>Name</p>
-                        
-                        <p>Comment</p>
-                        
-                        <!-- Star table -->
-                        <table align="center">
-                            <tr>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
+            <table class="table table-bordered commentBody" style="min-height: 200px; min-width: 200px;" align="center">
                 
-                <!-- Row 2 -->
-                <tr class="" style="padding:10px">
-                    <td>
-                        <p>Name</p>
-                        
-                        <p>Comment</p>
-                        
-                        <!-- Star table -->
-                        <table align="center">
-                            <tr>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td>
-                        <p>Name</p>
-                        
-                        <p>Comment</p>
-                        
-                        <!-- Star table -->
-                        <table align="center">
-                            <tr>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td>
-                        <p>Name</p>
-                        
-                        <p>Comment</p>
-                        
-                        <!-- Star table -->
-                        <table align="center">
-                            <tr>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                                <td>
-                                    <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
             </table>
         </div>
         
@@ -366,5 +212,8 @@
           <!-- Footer -->
         </div>
         <!-- End of .container -->
+        
+        <!-- Script to call displays -->
+        <script src="Z_display_reviews.js"></script>
     </body>
 </html>

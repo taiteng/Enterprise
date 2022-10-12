@@ -102,3 +102,4 @@ function createNoFNDDisplay() {
         confirm("Number of food & drinks quantity exceeds the number of participants.");
     }
 }
+
