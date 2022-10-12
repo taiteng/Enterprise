@@ -255,6 +255,8 @@ $sid = random_id_gen(24);
                 <input class="form-control" type="hidden" value="00" name="totalprice" id="totalprice" />
                 <input class="form-control" type="hidden" value="Waiting for Job Assign" name="projectstatus" id="projectstatus" />
                 <input class="form-control" type="hidden" value="-" name="workername" id="workername" />
+                <input class="form-control" type="hidden" value="-" name="progresscheck" id="progresscheck" />
+                <input class="form-control" type="hidden" value="-" name="progressdescription" id="progressdescription" />
                 
                 <div class="form-check mb-2 mt-5">
                     <input class="form-check-input" type="checkbox" id="policycheck" name="policycheck" required>
