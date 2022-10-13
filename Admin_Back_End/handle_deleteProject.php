@@ -6,8 +6,8 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
   
 // include database and object file
-include_once '../Back_End/api/database.php';
-include_once '../Back_End/api/service.php';
+include_once '../Back_End/Service_API/database.php';
+include_once '../Back_End/Service_API/service.php';
 include "../Back_End/db_conn.php";
 
 // get database connection

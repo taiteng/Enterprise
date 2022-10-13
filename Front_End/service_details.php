@@ -103,7 +103,7 @@ $sid = random_id_gen(24);
         
         <h1 style="margin-top:110px">Service Details</h1>
         
-        <form class="was-validated" action="../Back_End/API/create.php" method="POST">
+        <form class="was-validated" action="../Back_End/Service_API/create.php" method="POST">
             <div class="container layoutForm shadow-lg p-3 mb-5 bg-white rounded">
                 <div class="row">
                     <div class="col">
@@ -253,8 +253,10 @@ $sid = random_id_gen(24);
                 
                 <input class="form-control" type="hidden" value="<?php echo $sid; ?>" name="sid" id="sid" />
                 <input class="form-control" type="hidden" value="00" name="totalprice" id="totalprice" />
-                <input class="form-control" type="hidden" value="open" name="projectstatus" id="projectstatus" />
+                <input class="form-control" type="hidden" value="Waiting for Job Assign" name="projectstatus" id="projectstatus" />
                 <input class="form-control" type="hidden" value="-" name="workername" id="workername" />
+                <input class="form-control" type="hidden" value="-" name="progresscheck" id="progresscheck" />
+                <input class="form-control" type="hidden" value="-" name="progressdescription" id="progressdescription" />
                 
                 <div class="form-check mb-2 mt-5">
                     <input class="form-check-input" type="checkbox" id="policycheck" name="policycheck" required>
