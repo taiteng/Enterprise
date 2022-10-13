@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 class service{
   
@@ -119,6 +119,37 @@ class service{
 
         // execute query
         if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+    }
+    
+    // update the product
+    function updateTask(){
+        
+        // update query
+        $query = "UPDATE service 
+                SET
+                    worker_name = :worker_name,
+                    project_status = :project_status
+                WHERE
+                    service_id = :service_id";
+        
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        
+        $this->service_id=htmlspecialchars(strip_tags($this->service_id));
+        $this->project_status=htmlspecialchars(strip_tags($this->project_status));
+        $this->worker_name=htmlspecialchars(strip_tags($this->worker_name));
+        
+        // bind new values
+        $stmt->bindParam(':service_id', $this->service_id);
+        $stmt->bindParam(':project_status', $this->project_status);
+        $stmt->bindParam(':worker_name', $this->worker_name);
+        
+        // execute the query
+        if($stmt->execute()){
             return true;
         }
 
