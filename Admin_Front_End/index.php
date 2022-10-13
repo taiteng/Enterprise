@@ -154,7 +154,7 @@ session_start();
             </div>
             <div class="box zoom" onclick="location.href='../Admin_Front_End/.php';">
                 <a class="zoom link" href=".php">
-                    <img class="zoom image" src="../Images/employee-icon.png">
+                    <img class="zoom image" src="../Images/help-icon.png">
                     <p class="zoom title"><b>Help</b></p>
                 </a>
             </div>

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "../Back_End/db_conn.php";
+include "../Admin_Back_End/config.php";
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +15,12 @@ include "../Back_End/db_conn.php";
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="../Admin_Front_End/admin_js/tableProject.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+        <link href='https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
         
@@ -51,6 +57,8 @@ include "../Back_End/db_conn.php";
 
         </style>
         
+        
+        
         <title>Home</title>
     </head>
     <body>
@@ -84,31 +92,23 @@ include "../Back_End/db_conn.php";
             </nav>
         </header>
         
-        <div class="table-wrapper-scroll-y my-custom-scrollbar" style="margin-top:10%; padding:20px;">
-            <table  class="table table-bordered table-striped mb-0">
+        <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive" style="margin-top:10%; padding:20px;">
+            <table id="projectTable" class="table table-bordered table-striped mb-0" style="width: 100%;">
                 <thead>
                     <tr align="center">
-                        <th scope="col">Service ID</th>
-                        <th scope="col">Task/Description</th>
-                        <th scope="col">Person-In-Charge</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Quotation</th>
-                        <th scope="col">Actions</th>
+                        <th>Service ID</th>
+                        <th>Task and Description</th>
+                        <th>Person-In-Charge</th>
+                        <th>Status</th>
+                        <th>Quotation</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody id="projects">
-                    <script src="../Admin_Back_End/displayProject.js"></script>
-                </tbody>
             </table>
         </div>
         
-        <?php
-        $service_id = "";
-        if(isset($_GET["service_id"])){
-            $service_id = $_GET["service_id"];
-        }?>
         
-        <!-- Modal -->
+        <!-- Edit Modal -->
         <div class="modal fade" id="assignModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -117,33 +117,31 @@ include "../Back_End/db_conn.php";
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     
-                    
-                    <!--MODAL POP UP FOR ASSIGN EMPLOYEE-->
-                    <?php
-                    $service_id = "";
-                    if(isset($_GET["service_id"])){
-                        $service_id = $_GET["service_id"];
-                    }
-                    
-                    $sql = "SELECT username FROM accounts";
-                    $result = $conn->query($sql);
-                    
-                    echo '<form action="../Admin_Back_End/handle_assignProject.php?id='.$serviceId.'" method="post">
+                    <form action="../Admin_Back_End/handle_assignProject.php" method="POST">
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label class="form-label">Employee</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected></option>
-                                  
+                                
+                                <input type="hidden" id="service" name="service" value=""/>
+                                
+                                <select class="form-select" aria-label="Default select example" name="username">
+                                    <option id="selectedWorker"></option>
+                                    <option>-</option>
+                                    <!--MODAL POP UP FOR ASSIGN EMPLOYEE-->
+                                    <?php
+                                    $sql = "SELECT username FROM accounts";
+                                    $result = $conn->query($sql);
+                                    
                                     if ($result->num_rows > 0) {
                                         // output data of each row
                                         while($row = $result->fetch_assoc()) {
-                                            <option name=username>'.$row["username"].'</option>;
+                                            echo '<option>'.$row["username"].'</option>';
                                         }
-
                                     }
+                                    ?>
                                 </select>
-                                <div id="emailHelp" class="form-text">Assign an employee to in charge of this project</div>
+                                <div id="emailHelp" class="form-text">Assign an employee for the task</div>
+                                
                             </div>
                         </div>
                         
@@ -151,21 +149,119 @@ include "../Back_End/db_conn.php";
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                           <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
-                    </form>';
-
-                    ?>
-                    
-                    
-                    
+                    </form>
                 </div>
             </div>
         </div>
         
-        <script>
+        <!-- Delete Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Warning: Project Deletion</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    
+                    <form action="../Admin_Back_End/handle_deleteProject.php" method="POST">
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label class="form-label">Are you sure to delete this project?</label>
+                                
+                                <input type="hidden" id="deleteService" name="deleteService" value=""/>
+                                
+                                <b><p id="deleteServiceID"></p></b>
+                                <div id="emailHelp" class="form-text">Project cannot be return and will be deleted permanently!</div>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- Get the Service Details from the bootstrap modal when the "editBtn" or "deleteBtn" is triggered -->
+        <!-- Set the value to the HTML input element and passed it to the form-->
+        <script type="text/javascript">
             $(document).ready(function(){
-                $()
+                $(document).on('click', '.editBtn', function(){
+                    var serviceId = $(this).data('id');
+                    //var serviceId = $(this).closest('tr').find('#service_id').text();
+                    //var serviceId = $('#service_id').text();
+                    var workerName = $('#worker_name').text();
+
+                    $('#service').val(serviceId);
+                    $('#selectedWorker').val(workerName);
+                });
             });
+            
+            $(document).ready(function(){
+                $(document).on('click', '.deleteBtn', function(){
+                    //var serviceId = $(this).closest('tr').find('#service_id').text();
+                    var serviceId = $(this).data('id');
+                    $('#deleteService').val(serviceId);
+                    document.getElementById("deleteServiceID").innerHTML = "Service ID: "+ serviceId;
+                });
+            });
+            
+            $(document).ready(function(){
+                var projectDataTable = $('#projectTable').DataTable({
+                    'processing': true,
+                    'serverSide': true,
+                    'serverMethod': 'post',
+                    'ajax': {
+                        'url':'dataTableAjax.php'
+                    },
+                    pageLength: 5,
+                    'columns': [
+                        { data: 'service_id' },
+                        { data: 'service_detail' },
+                        { data: 'worker_name' },
+                        { data: 'project_status' },
+                        { data: 'quotation' },
+                        { data: 'actions' }
+                    ]
+                });
+            });
+            
+            
         </script>
+        
+        <?php
+        if(isset($_SESSION['deleteSuccess'])){ ?>
+            <script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Deleted',
+                text: 'Project Deleted Successfully'
+                });
+            </script>
+        <?php
+            unset($_SESSION['deleteSuccess']);
+        }
+        ?>
+        
+        <?php
+        if(isset($_SESSION['updateSuccess'])){ ?>
+            <script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Task Updated',
+                text: 'Task has been updated'
+                });
+            </script>
+        <?php
+            unset($_SESSION['updateSuccess']);
+        }
+        ?>
+        
+        
         
         
     </body>
