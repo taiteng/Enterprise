@@ -15,9 +15,64 @@ session_start();
         <link rel="icon" href="../Images/logo.png">
         
         <style>
-          .zoom {
+            .image{
+                width: 50px;
+                height: 50px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .box{
+                background:whitesmoke;
+                width: 28%;
+                height:250px;
+                box-sizing: border-box;
+                box-shadow: 2px 2px 10px #888888;
+                padding:2em;
+                border-radius: 24px;
+                text-align: center;
+                margin: 20px;
+            }
+            
+            .container{
+                width:100%;
+                height: auto;
+                display:flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                flex-flow: wrap;
+            }
+            
+            .title{
+                font-size: 18px; 
+                margin-top:15%; 
+                text-align: center;
+            }
+            
+            .link{
+                text-decoration: none; 
+                color: black;
+            }
+            
+            @media screen and (max-width:1200px){
+                .box{
+                    width:40%;
+                }
+            }
+            
+            @media screen and (max-width:600px){
+                .box{
+                    width:40%;
+                }
+                .title{
+                    font-size:13px;
+                }
+            }
+            
+            .zoom {
                 transition: transform .4s; /* Animation */
-                margin: 0 auto;
             }
 
             .zoom:hover {
@@ -26,11 +81,7 @@ session_start();
               color: white;
              
             }
-            *{
-                padding:0;
-                margin:0 ;
-                box-sizing:border-box;
-            }
+            
             /* width */
             ::-webkit-scrollbar {
               width: 5px;
@@ -59,7 +110,7 @@ session_start();
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #e3242b">
+            <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #e3242b;">
                 <div class="container-fluid">
                     <a class="navbar-brand">
                         <img src="../Images/coventco.png" alt="logo" onclick="location.href='index.php'"/>
@@ -88,22 +139,65 @@ session_start();
             </nav>
         </header>
         
-        <div style="margin-top:10%; width:100%; height:300px;">
-            <div class="zoom" style="width: 27%; float: left; height:100%;  margin-left: 5%; padding:15px; border-radius: 20px; box-shadow: 2px 2px 8px #888888; " >
-                <a href="projects.php" style="text-decoration: none; color: black;">
-                    <img class="zoom" style="width:20%; height:auto; display: flex; margin-top:15%; justify-content: center;" src="../Images/project-icon.png" alt="...">
-                    <p class="zoom" style="font-size: 18px; margin-top:15%; text-align: center;"><b>PROJECTS</b></p>
+        <div class="container" style="margin-top: 10%;">
+            <div class="box zoom" onclick="location.href='../Admin_Front_End/projects.php';">
+                <a class="zoom link" href="projects.php">
+                    <img class="zoom image " src="../Images/project-icon.png">
+                    <p class="zoom title"><b>Projects</b></p>
                 </a>
             </div>
+            <div class="box zoom" onclick="location.href='../Admin_Front_End/employee.php';">
+                <a class="zoom link" href="employee.php">
+                    <img class="zoom image" src="../Images/employee-icon.png">
+                    <p class="zoom title"><b>Employee System</b></p>
+                </a>
+            </div>
+            <div class="box zoom" onclick="location.href='../Admin_Front_End/.php';">
+                <a class="zoom link" href=".php">
+                    <img class="zoom image" src="../Images/help-icon.png">
+                    <p class="zoom title"><b>Help</b></p>
+                </a>
+            </div>
+            <div class="box zoom" onclick="location.href='../Admin_Front_End/projects_history.php';">
+                <a class="zoom link" href="projects_history.php">
+                    <img class="zoom image" src="../Images/project_history-icon.png">
+                    <p class="zoom title"><b>Project History</b></p>
+                </a>
+            </div>
+            <div class="box zoom" onclick="location.href='../Admin_Front_End/statistic.php';">
+                <a class="zoom link" href="statistic.php">
+                    <img class="zoom image" src="../Images/statistic-icon.png">
+                    <p class="zoom title"><b>Sale Statistic</b></p>
+                </a>
+            </div>
+            <div class="box zoom" onclick="location.href='../Admin_Front_End/discount.php';">
+                <a class="zoom link" href="discount.php">
+                    <img class="zoom image" src="../Images/discount-icon.png">
+                    <p class="zoom title"><b>Discount</b></p>
+                </a>
+            </div>
+            <div class="box zoom" onclick="location.href='../Admin_Front_End/.php';">
+                <a class="zoom link" href=".php">
+                    <img class="zoom image" src="../Images/discount-icon.png">
+                    <p class="zoom title"><b>Manage Service</b></p>
+                </a>
+            </div>
+        </div>
         
-            <div class="zoom" style="width: 56%;  align-items: center; height:100%; margin-left: 36%; padding:15px; border-radius: 20px; box-shadow: 2px 2px 8px #888888; object-fit:cover;" >
-                <a href="employee.php" style="text-decoration: none; color: black;">
-                    <img class="zoom" style="width:20%; height:auto; display: flex;  justify-content: center;" src="../Images/employee-icon.png" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text zoom" style=" font-size: 18px; text-align: center;"><b>EMPLOYEE SYSTEM</b></p>
-                    </div>
-                </a>
-            </div>
+        
+<!--    <div class="row container" style="margin-top:10%; width:100%; height:300px;">
+            <a class="col-sm-3 zoom" href="projects.php" style="text-decoration: none; color: black; width: 27%;height:100%; border-radius: 20px; box-shadow: 2px 2px 8px #888888; ">
+                <img class="zoom" style="width:20%; height:auto; display: block; margin-top:15%; justify-content: center;" src="../Images/project-icon.png" alt="...">
+                <p class="zoom" style="font-size: 18px; margin-top:15%; text-align: center;"><b>PROJECTS</b></p>
+            </a>
+        
+            <a class="col-sm-9 zoom" href="employee.php" style="text-decoration: none; color: black; width: 56%; height:100%;border-radius: 20px; box-shadow: 2px 2px 8px #888888; object-fit:cover;">
+                <img class="zoom" style="width:20%; height:auto; display: flex;  justify-content: center;" src="../Images/employee-icon.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text zoom" style=" font-size: 18px; text-align: center;"><b>EMPLOYEE SYSTEM</b></p>
+                </div>
+            </a>
+            
         </div>
         
         <div style="margin-top:5%; width:100%; height:300px; margin-bottom: 5%;">
@@ -132,7 +226,7 @@ session_start();
                 </a>
                 
             </div>
-        </div>
+        </div>-->
         
     </body>
 </html>

@@ -46,7 +46,7 @@ if (!isset($_SESSION['loggedin'])) {
                         <a href="">
                             <img src="../Images/briefing.png" width="150px" height="150px" alt="project" class="img-thumbnail"/>
                         </a>
-                        <a class="nav-link" href="" style="color: black; font-size: 20px;">My Projects</a>
+                        <a class="nav-link" href="my_project.php" style="color: black; font-size: 20px;">My Projects</a>
                     </td>
                 </tr>
             </table>

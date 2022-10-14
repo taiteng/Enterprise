@@ -114,7 +114,7 @@
             </tr>
         </table>
 
-        <script type="text/javascript" src="chart.js"></script>
+        <script type="text/javascript" src="../Admin_Front_End/admin_js/chart.js"></script>
         
     </body>
 </html>

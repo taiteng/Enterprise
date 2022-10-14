@@ -2,6 +2,27 @@
 session_start();
 
 include("../Back_End/db_conn.php");
+include("../Back_End/function.php");
+
+$service_data = check_service($conn);
+$chair_data = check_chair($conn);
+$babychair_data = check_babychair($conn);
+$table_data = check_table($conn);
+$cup_data = check_cup($conn);
+$cutlery_data = check_cutlery($conn);
+$FND_data = check_FND($service_data['FND_name'], $conn);
+$deco_data = check_deco($service_data['deco_name'], $conn);
+$fun_data = check_fun($service_data['fun_name'], $conn);
+
+$chairPrice = $chair_data['item_price'] * $service_data['no_chair'];
+$babychairPrice = $babychair_data['item_price'] * $service_data['no_babychair'];
+$tablePrice = $table_data['item_price'] * $service_data['no_table'];
+$cupPrice = $cup_data['item_price'] * $service_data['no_cup'];
+$cutleryPrice = $cutlery_data['item_price'] * $service_data['no_cutlery'];
+$FNDPrice = $FND_data['pack_price'] * $service_data['no_FND'];
+$decoPrice =$deco_data['deco_price'] * $service_data['site_size'];
+$funPrice = $fun_data['fun_price'];
+$totalPrice = $chairPrice + $babychairPrice + $tablePrice + $cupPrice + $cutleryPrice + $FNDPrice + $decoPrice + $funPrice;
 
 ?>
 
@@ -13,6 +34,9 @@ include("../Back_End/db_conn.php");
         <!-- Bootstrap plugin -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <!-- MDB -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet">
         
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
@@ -27,6 +51,15 @@ include("../Back_End/db_conn.php");
             a    {color: black;
                   text-decoration: none;}
             hr   {color: black;}
+            .bLFT{border-left:1px solid lightgrey; 
+                  border-right:1px solid lightgrey; 
+                  border-top:1px solid lightgrey;}
+            .bLF {border-left:1px solid lightgrey; 
+                  border-right:1px solid lightgrey;}
+            .bLFB{border-left:1px solid lightgrey; 
+                  border-right:1px solid lightgrey; 
+                  border-bottom:1px solid lightgrey;}
+            form {display: inline-block;}
             
             /* width */
             ::-webkit-scrollbar {
@@ -81,131 +114,280 @@ include("../Back_End/db_conn.php");
         
         <h1 style="margin-top:110px">Quotation</h1>
         
-        <div class="container" style="text-align: center;">
-            <table class="table table-bordered table-responsive" style="min-height: 100px;">
+        <div class="container shadow-4" style="text-align: center;">
+            <table class="table table-borderless table-responsive" style="min-height: 100px;">
                 <tr class="body" align="center" style="padding:5px">
                     <td>
                         <table class="table table-borderless table-responsive">
-                            <tr class="body" align="left" style="padding:5px">
+                            <tr class="body bLFT" align="left" style="padding:5px;">
                                 <td>
                                     <p>Site's Name:</p>
                                 </td>
                                 <td>
-                                    <p>Nani The Fuck</p>
+                                    <p><?php echo $service_data['site_name']; ?></p>
                                 </td>
                             </tr>
-                            <tr class="body" align="left" style="padding:5px">
+                            <tr class="body bLF" align="left" style="padding:5px;">
                                 <td>
                                     <p>Address:</p>
                                 </td>
                                 <td>
-                                    <p>1234, Taman Shibal, <br>
-                                       Lorong Shibal, 12345 <br>
-                                       Pulau Pinang
-                                    </p>
+                                    <p><?php echo $service_data['site_address']; ?></p>
                                 </td>
                             </tr>
-                            <tr class="body" align="left" style="padding:5px">
+                            <tr class="body bLFB" align="left" style="padding:5px;">
                                 <td>
                                     <p>Site's Size:</p>
                                 </td>
                                 <td>
-                                    <p>120 ft</p>
+                                    <p><?php echo $service_data['site_size'], ' SQ FT'; ?></p>
                                 </td>
                             </tr>
-                            <tr class="body" align="left" style="padding:5px">
+                            <tr class="body bLFT" align="left" style="padding:5px;">
                                 <td>
                                     <p>Type of Service:</p>
                                 </td>
                                 <td>
-                                    <p>Birthday</p>
+                                    <p><?php echo $service_data['service_type']; ?></p>
                                 </td>
                             </tr>
-                            <tr class="body" align="left" style="padding:5px">
+                            <tr class="body bLF" align="left" style="padding:5px;">
                                 <td>
                                     <p>Description of Event:</p>
                                 </td>
                                 <td>
-                                    <p>Need someone to cum. <br>
-                                       I've got no frens, <br>
-                                       no one to celebrate my birthday. <br>
-                                       Hope to add a part-timer fake people package.
-                                    </p>
+                                    <p><?php echo $service_data['service_desc']; ?></p>
+                                </td>
+                            </tr>
+                            <tr class="body bLFB" align="left" style="padding:5px;">
+                                <td>
+                                    <p>Number of Participants:</p>
+                                </td>
+                                <td>
+                                    <p><?php echo $service_data['no_ppl']; ?></p>
                                 </td>
                             </tr>
                         </table>
                     </td>
                     <td>
                         <table class="table table-borderless table-responsive">
-                            <tr class="body" align="left" style="padding:5px">
+                            <tr class="body bLFT" align="left" style="padding:5px;">
                                 <td>
                                     <p>User Name:</p>
                                 </td>
                                 <td>
-                                    <p>Shibal Inu</p>
+                                    <p><?php echo $service_data['username']; ?></p>
                                 </td>
                             </tr>
-                            <tr class="body" align="left" style="padding:5px">
+                            <tr class="body bLF" align="left" style="padding:5px;">
                                 <td>
                                     <p>Contact:</p>
                                 </td>
                                 <td>
-                                    <p>012 3456 789</p>
+                                    <p><?php echo $service_data['contact']; ?></p>
                                 </td>
                             </tr>
-                            <tr class="body" align="left" style="padding:5px">
+                            <tr class="body bLFB" align="left" style="padding:5px;">
                                 <td>
                                     <p>Email:</p>
                                 </td>
                                 <td>
-                                    <p>shibalInu@gmail.com</p>
+                                    <p><?php echo $service_data['email']; ?></p>
+                                </td>
+                            </tr>
+                            <tr class="body bLFT" align="left" style="padding:5px;">
+                                <td>
+                                    <p>Date of Event:</p>
+                                </td>
+                                <td>
+                                    <p><?php echo $service_data['event_date']; ?></p>
+                                </td>
+                            </tr>
+                            <tr class="body bLFB" align="left" style="padding:5px;">
+                                <td>
+                                    <p>Duration of Event:</p>
+                                </td>
+                                <td>
+                                    <p><?php echo $service_data['event_time']; ?></p>
                                 </td>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr class="body" align="center" style="padding:5px">
-                    <table class="table table-bordered table-responsive">
-                        <tr class="body" align="left" style="padding:10px">
+                    <table class="table table-borderless table-responsive">
+                        <tr class="body" align="left" style="padding:10px; border:1px solid lightgrey;">
                             <td style="min-width: 300px;">
                                 <p>Description</p>
                             </td>
-                            <td>
+                            <td align="right">
                                 <p>Quantity</p>
                             </td>
-                            <td>
-                                <p>Price</p>
+                            <td align="right">
+                                <p>Price (RM)</p>
+                            </td>
+                        </tr>
+                        <tr class="body bLF" name="chairRow" align="left" style="padding:10px;">
+                            <td style="min-width: 300px;">
+                                <p><?php echo $chair_data['item_name']; ?></p>
+                            </td>
+                            <td align="right">
+                                <p><?php echo $service_data['no_chair']; ?></p>
+                            </td>
+                            <td align="right">
+                                <p><?php echo $chairPrice; ?></p>
+                            </td>
+                        </tr>
+                        <tr class="body bLF" name="babychairRow" align="left" style="padding:10px;">
+                            <td style="min-width: 300px;">
+                                <p><?php echo $babychair_data['item_name']; ?></p>
+                            </td>
+                            <td align="right">
+                                <p><?php echo $service_data['no_babychair']; ?></p>
+                            </td>
+                            <td align="right">
+                                <p><?php echo $babychairPrice; ?></p>
+                            </td>
+                        </tr>
+                        <tr class="body bLF" name="tableRow" align="left" style="padding:10px;">
+                            <td style="min-width: 300px;">
+                                <p><?php echo $table_data['item_name']; ?></p>
+                            </td>
+                            <td align="right">
+                                <p><?php echo $service_data['no_table']; ?></p>
+                            </td>
+                            <td align="right">
+                                <p><?php echo $tablePrice; ?></p>
+                            </td>
+                        </tr>
+                        <tr class="body bLF" name="cupRow" align="left" style="padding:10px;">
+                            <td style="min-width: 300px;">
+                                <p><?php echo $cup_data['item_name']; ?></p>
+                            </td>
+                            <td align="right">
+                                <p><?php echo $service_data['no_cup']; ?></p>
+                            </td>
+                            <td align="right">
+                                <p><?php echo $cupPrice; ?></p>
+                            </td>
+                        </tr>
+                        <tr class="body bLF" name="cutleryRow" align="left" style="padding:10px;">
+                            <td style="min-width: 300px;">
+                                <p><?php echo $cutlery_data['item_name']; ?></p>
+                            </td>
+                            <td align="right">
+                                <p><?php echo $service_data['no_cutlery']; ?></p>
+                            </td>
+                            <td align="right">
+                                <p><?php echo $cutleryPrice; ?></p>
+                            </td>
+                        </tr>
+                        <tr class="body bLF" align="left" style="padding:10px;">
+                            <td style="min-width: 300px;">
+                                <p>Food & Beverage Pack:</p>
+                            </td>
+                            <td align="right">
+                                <p></p>
+                            </td>
+                            <td align="right">
+                                <p></p>
+                            </td>
+                        </tr>
+                        <tr class="body bLF" name="FNDRow" align="left" style="padding:10px;">
+                            <td style="min-width: 300px;">
+                                <p><?php echo '&nbsp' . '&nbsp' . $FND_data['pack_name']; ?></p>
+                            </td>
+                            <td align="right">
+                                <p><?php echo $service_data['no_FND']; ?></p>
+                            </td>
+                            <td align="right">
+                                <p><?php echo $FNDPrice; ?></p>
+                            </td>
+                        </tr>
+                        <tr class="body bLF" align="left" style="padding:10px;">
+                            <td style="min-width: 300px;">
+                                <p>Decoration Pack:</p>
+                            </td>
+                            <td align="right">
+                                <p></p>
+                            </td>
+                            <td align="right">
+                                <p></p>
+                            </td>
+                        </tr>
+                        <tr class="body bLF" name="decoRow" align="left" style="padding:10px;">
+                            <td style="min-width: 300px;">
+                                <p><?php echo '&nbsp' . '&nbsp' . $deco_data['deco_name']; ?></p>
+                            </td>
+                            <td align="right">
+                                <p></p>
+                            </td>
+                            <td align="right">
+                                <p><?php echo $decoPrice; ?></p>
+                            </td>
+                        </tr>
+                        <tr class="body bLF" align="left" style="padding:10px;">
+                            <td style="min-width: 300px;">
+                                <p>Entertainment Pack:</p>
+                            </td>
+                            <td align="right">
+                                <p></p>
+                            </td>
+                            <td align="right">
+                                <p></p>
+                            </td>
+                        </tr>
+                        <tr class="body bLFB" name="funRow" align="left" style="padding:10px;">
+                            <td style="min-width: 300px;">
+                                <p><?php echo '&nbsp' . '&nbsp' . $fun_data['fun_name']; ?></p>
+                            </td>
+                            <td align="right">
+                                <p></p>
+                            </td>
+                            <td align="right">
+                                <p><?php echo $funPrice; ?></p>
+                            </td>
+                        </tr>
+                        <tr class="body bLFB" name="funRow" align="left" style="padding:10px;">
+                            <td style="min-width: 300px;">
+                                <p><?php echo 'Total Price'; ?></p>
+                            </td>
+                            <td align="right">
+                                <p></p>
+                            </td>
+                            <td align="right">
+                                <p><?php echo $totalPrice; ?></p>
                             </td>
                         </tr>
                     </table>
                 </tr>
-                <tr align="center" style="padding:10px">
+                <tr class="body" align="center" style="padding:10px">
                     <td>
-                        <a href="payment.php">
-                            <button type="button" class="btn btn-outline-primary">Accept</button>
-                        </a>
+                        <form action="../Back_End/quotation_accept.php" method="POST">
+                            <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
+                            <input type="hidden" name="totalPrice" value="<?php echo $totalPrice; ?>">
+                            <button class="btn btn-outline-primary" type="submit">Accept</button>
+                        </form>
                     </td>
                     <td>
-                        <a href="home.php">
-                            <button type="button" class="btn btn-outline-secondary">Reject</button>
-                        </a>
+                        <form action="../Back_End/quotation_reject.php" method="POST">
+                            <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
+                            <button class="btn btn-outline-secondary" type="submit">Reject</button>
+                        </form>
                     </td>
                 </tr>
                 <br>
                 <br>
-                <tr>
-                    <a href="">
-                        <button type="button" class="btn btn-outline-danger">Download PDF</button>
-                    </a>
+                <tr class="body" align="center" style="padding:10px">
+                    <form action="../Back_End/pdfDownload.php" method="POST">
+                        <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
+                        <button class="btn btn-outline-danger" type="submit">Download PDF</button>
+                    </form>
                 </tr>
+                <br>
+                <br>
             </table>
         </div>
-        
-        <?php
-
-        echo '<p>'. $_SESSION['sid'] . '</p>';
-        
-        ?>
         
         <br>
         
@@ -323,5 +505,8 @@ include("../Back_End/db_conn.php");
           <!-- Footer -->
         </div>
         <!-- End of .container -->
+        
+        <!-- Script to call displays -->
+        <script src="Z_quotation.js"></script>
     </body>
 </html>

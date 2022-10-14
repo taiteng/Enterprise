@@ -32,6 +32,8 @@ class service{
     public $total_price;
     public $project_status;
     public $worker_name;
+    public $progress_check;
+    public $progress_desc;
   
     // constructor with $db as database connection
     public function __construct($db){
@@ -43,7 +45,7 @@ class service{
         // query to insert record
         $query = "INSERT INTO " . $this->table_name . " SET service_id=:service_id, site_name=:site_name, site_address=:site_address, site_size=:site_size, username=:username, contact=:contact, email=:email, service_type=:service_type, "
                 . "service_desc=:service_desc, event_date=:event_date, event_time=:event_time, no_ppl=:no_ppl, no_chair=:no_chair, no_babychair=:no_babychair, no_table=:no_table, no_cup=:no_cup, no_cutlery=:no_cutlery, FND_name=:FND_name, "
-                . "no_FND=:no_FND, deco_name=:deco_name, fun_name=:fun_name, total_price=:total_price, project_status=:project_status, worker_name=:worker_name";
+                . "no_FND=:no_FND, deco_name=:deco_name, fun_name=:fun_name, total_price=:total_price, project_status=:project_status, worker_name=:worker_name, progress_check=:progress_check, progress_desc=:progress_desc";
         // prepare query
         $stmt = $this->conn->prepare($query);
         // sanitize 
@@ -71,6 +73,8 @@ class service{
         $this->total_price=htmlspecialchars(strip_tags($this->total_price));
         $this->project_status=htmlspecialchars(strip_tags($this->project_status));
         $this->worker_name=htmlspecialchars(strip_tags($this->worker_name));
+        $this->progress_check=htmlspecialchars(strip_tags($this->progress_check));
+        $this->progress_desc=htmlspecialchars(strip_tags($this->progress_desc));
         // bind values
         $stmt->bindParam(":service_id", $this->service_id);
         $stmt->bindParam(":site_name", $this->site_name);
@@ -96,10 +100,65 @@ class service{
         $stmt->bindParam(":total_price", $this->total_price);
         $stmt->bindParam(":project_status", $this->project_status);
         $stmt->bindParam(":worker_name", $this->worker_name);
+        $stmt->bindParam(":progress_check", $this->progress_check);
+        $stmt->bindParam(":progress_desc", $this->progress_desc);
         // execute query
         if($stmt->execute()){
             return true;
         }
+        return false;
+    }
+    
+    // delete the service
+    function delete() {
+        // delete query
+        $query = "DELETE FROM " . $this->table_name . " WHERE service_id = ?";
+
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+
+        // sanitize
+        $this->service_id = htmlspecialchars(strip_tags($this->service_id));
+
+        // bind id of record to delete
+        $stmt->bindParam(1, $this->service_id);
+
+        // execute query
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+    }
+    
+    // update the product
+    function updateTask(){
+        
+        // update query
+        $query = "UPDATE service 
+                SET
+                    worker_name = :worker_name,
+                    project_status = :project_status
+                WHERE
+                    service_id = :service_id";
+        
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        
+        $this->service_id=htmlspecialchars(strip_tags($this->service_id));
+        $this->project_status=htmlspecialchars(strip_tags($this->project_status));
+        $this->worker_name=htmlspecialchars(strip_tags($this->worker_name));
+        
+        // bind new values
+        $stmt->bindParam(':service_id', $this->service_id);
+        $stmt->bindParam(':project_status', $this->project_status);
+        $stmt->bindParam(':worker_name', $this->worker_name);
+        
+        // execute the query
+        if($stmt->execute()){
+            return true;
+        }
+
         return false;
     }
 }
