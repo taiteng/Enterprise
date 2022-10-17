@@ -51,6 +51,18 @@ if (!isset($_SESSION['loggedin'])) {
                 </tr>
             </table>
         </div>
+        <div class="container" style="text-align: center;">
+            <table class="table table-borderless table-responsive" style="min-height: 300px;">
+                <tr class="body" align="center" style="padding:10px">
+                    <td>
+                        <a href="../Livechat/index.php">
+                            <img src="../Images/images.png" width="150px" height="150px" alt="project" class="img-thumbnail"/>
+                        </a>
+                        <a class="nav-link" href="" style="color: black; font-size: 20px;">Live chat</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
         
         <br>
         
