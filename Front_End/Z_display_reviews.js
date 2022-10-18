@@ -2,19 +2,14 @@
 fetch('Z_review_con.php').then((res) => res.json())
 .then(response => {
 	console.log(response);
-        let count = 0;
 	let output = '';
-        output += `<tr align="center" style="padding:10px">`;
 	for(let i in response){
-            if(count % 3 === 0){
-                output += `</tr>
-                                <tr align="center" style="padding:10px">`;
-            
-                output += `<td>
-                                <p>${response[i].name}</p>
-                        
-                                <p>${response[i].comment}</p>`;
-            
+            output += ` <div class="col-sm-4">
+                            <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                                <div class="card-body">
+                                    <h5 class="card-title">${response[i].name}</h5>
+                                    <p class="card-text">${response[i].comment}</p>`;
+        
                 if (response[i].rating === '0') {
                     output += `<table align="center">
                                     <tr>
@@ -36,8 +31,7 @@ fetch('Z_review_con.php').then((res) => res.json())
                                     </tr>
                                 </table>
                             </td>`;
-                }
-                else if (response[i].rating === '1') {
+                } else if (response[i].rating === '1') {
                     output += `<table align="center">
                                     <tr>
                                         <td>
@@ -58,8 +52,7 @@ fetch('Z_review_con.php').then((res) => res.json())
                                     </tr>
                                 </table>
                             </td>`;
-                }
-                else if (response[i].rating === '2') {
+                } else if (response[i].rating === '2') {
                     output += `<table align="center">
                                     <tr>
                                         <td>
@@ -80,8 +73,7 @@ fetch('Z_review_con.php').then((res) => res.json())
                                     </tr>
                                 </table>
                             </td>`;
-                }
-                else if (response[i].rating === '3') {
+                } else if (response[i].rating === '3') {
                     output += `<table align="center">
                                     <tr>
                                         <td>
@@ -102,8 +94,7 @@ fetch('Z_review_con.php').then((res) => res.json())
                                     </tr>
                                 </table>
                             </td>`;
-                }
-                else if (response[i].rating === '4') {
+                } else if (response[i].rating === '4') {
                     output += `<table align="center">
                                     <tr>
                                         <td>
@@ -124,8 +115,7 @@ fetch('Z_review_con.php').then((res) => res.json())
                                     </tr>
                                 </table>
                             </td>`;
-                }
-                else if (response[i].rating === '5') {
+                } else if (response[i].rating === '5') {
                     output += `<table align="center">
                                     <tr>
                                         <td>
@@ -147,145 +137,11 @@ fetch('Z_review_con.php').then((res) => res.json())
                                 </table>
                             </td>`;
                 }
-            }
-            else{
-                    output += `<td>
-                                <p>${response[i].name}</p>
-                        
-                                <p>${response[i].comment}</p>`;
-
-                    if (response[i].rating === '0') {
-                        output += `<table align="center">
-                                    <tr>
-                                        <td>
-                                            <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>`;
-                    } else if (response[i].rating === '1') {
-                        output += `<table align="center">
-                                    <tr>
-                                        <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>`;
-                    } else if (response[i].rating === '2') {
-                        output += `<table align="center">
-                                    <tr>
-                                        <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>`;
-                    } else if (response[i].rating === '3') {
-                        output += `<table align="center">
-                                    <tr>
-                                        <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>`;
-                    } else if (response[i].rating === '4') {
-                        output += `<table align="center">
-                                    <tr>
-                                        <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>`;
-                    } else if (response[i].rating === '5') {
-                        output += `<table align="center">
-                                    <tr>
-                                        <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                        <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>`;
-                    }
-            }
-            
-            count += 1;
+                
+            output += `</div>
+                        </div>
+                    </div>`;
 	}
-        output += `</tr>`;
 
 	document.querySelector('.commentBody').innerHTML = output;
 }).catch(error => console.log(error));

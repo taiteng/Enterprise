@@ -114,7 +114,7 @@ $totalPrice = $chairPrice + $babychairPrice + $tablePrice + $cupPrice + $cutlery
         
         <h1 style="margin-top:110px">Quotation</h1>
         
-        <div class="container shadow-4" style="text-align: center;">
+        <div class="container shadow-4" style="text-align: center;" id="htmlContent">
             <table class="table table-borderless table-responsive" style="min-height: 100px;">
                 <tr class="body" align="center" style="padding:5px">
                     <td>
@@ -361,34 +361,31 @@ $totalPrice = $chairPrice + $babychairPrice + $tablePrice + $cupPrice + $cutlery
                         </tr>
                     </table>
                 </tr>
-                <tr class="body" align="center" style="padding:10px">
-                    <td>
-                        <form action="../Back_End/quotation_accept.php" method="POST">
-                            <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
-                            <input type="hidden" name="totalPrice" value="<?php echo $totalPrice; ?>">
-                            <button class="btn btn-outline-primary" type="submit">Accept</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="../Back_End/quotation_reject.php" method="POST">
-                            <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
-                            <button class="btn btn-outline-secondary" type="submit">Reject</button>
-                        </form>
-                    </td>
-                </tr>
-                <br>
-                <br>
-                <tr class="body" align="center" style="padding:10px">
-                    <form action="../Back_End/pdfDownload.php" method="POST">
-                        <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
-                        <button class="btn btn-outline-danger" type="submit">Download PDF</button>
-                    </form>
-                </tr>
-                <br>
-                <br>
             </table>
+            <br>
         </div>
         
+        <br>
+        <br>
+        
+        <center>
+            <form action="../Back_End/quotation_accept.php" method="POST">
+                <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
+                <input type="hidden" name="totalPrice" value="<?php echo $totalPrice; ?>">
+                <button class="btn btn-outline-primary" type="submit">Accept</button>
+            </form>
+            <form action="../Back_End/quotation_reject.php" method="POST">
+                <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
+                <button class="btn btn-outline-secondary" type="submit">Reject</button>
+            </form>
+        </center>
+    
+        <div id="editor"></div>
+    
+        <center>
+            <button class="btn btn-outline-danger" type="submit" id="generatePDF">Download PDF</button>
+        </center>
+    
         <br>
         
         <div>
@@ -505,6 +502,29 @@ $totalPrice = $chairPrice + $babychairPrice + $tablePrice + $cupPrice + $cutlery
           <!-- Footer -->
         </div>
         <!-- End of .container -->
+        
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+
+
+        <!--the script-->
+        <script type="text/javascript">
+            var doc = new jsPDF();
+            var specialElementHandlers = {
+                '#editor': function (element, renderer) {
+                    return true;
+                }
+            };
+
+
+            $('#generatePDF').click(function () {
+                doc.fromHTML($('#htmlContent').html(), {
+                    'width': 2000,
+                    'elementHandlers': specialElementHandlers
+                });
+                doc.save('sample_file.pdf');
+            });
+        </script>
         
         <!-- Script to call displays -->
         <script src="Z_quotation.js"></script>
