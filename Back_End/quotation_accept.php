@@ -26,6 +26,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
             // tell the user
             echo json_encode(array("message" => "Service was updated."));
+            
+            $_SESSION["sid"] = $sid;
+            $_SESSION["total"] = $total;
 
             header("Location: ../Front_End/payment.php", TRUE, 301);
             exit;
