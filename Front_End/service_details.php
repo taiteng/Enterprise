@@ -47,6 +47,7 @@ $sid = random_id_gen(24);
             }
             .layoutForm{
                 border-radius: 15px;
+                border-radius: 50%;
                 background-color: whitesmoke;
             }
             
@@ -174,11 +175,18 @@ $sid = random_id_gen(24);
                         </div>
                         <div class="mt-2">
                             <label class="form-label">Date of Event:</label>
-                            <input type="text" class="form-control" name="date" placeholder="Format: DD/MM/YYYY" required>
+                            <input type="date" class="form-control" name="date" id="date" required>
                         </div>
                         <div class="mt-2">
                             <label class="form-label">Duration of Event:</label>
-                            <input type="text" class="form-control" name="time" placeholder="Format: 00:00am" required>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="time" class="form-control" name="startTime" id="startTime" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="time" class="form-control" name="endTime" id="endTime" onchange="handler(event)"; required>
+                                </div>
+                            </div>
                         </div>
                         <div class="mt-2">
                             <label class="form-label">Number of People:</label><br>
@@ -409,6 +417,18 @@ $sid = random_id_gen(24);
                 separateDialCode: true,
                 preferredCountries: ["my", "us", "jp"]
             });
+            
+            function handler(e){
+                var end = e.target.value;
+                var endTime = document.getElementById("endTime");
+                var startTime = document.getElementById("startTime");
+                var start = startTime.value;
+                
+                if(end < start){
+                    alert("The start time must be before the end time.");
+                    endTime.value = "";
+                }
+            }
             
         </script>
         

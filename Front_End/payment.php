@@ -2,6 +2,11 @@
 session_start();
 
 include("../Back_End/db_conn.php");
+include("../Back_End/function.php");
+
+$discount = 0;
+$total = $_SESSION["total"];
+$deposit = $total/2;
 
 ?>
 
@@ -13,6 +18,8 @@ include("../Back_End/db_conn.php");
         <!-- Bootstrap plugin -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
@@ -80,19 +87,69 @@ include("../Back_End/db_conn.php");
             </nav>
         </header>
         
-        <h1 style="margin-top:110px">Payment</h1>
+        <h1 style="margin-top:110px">Quotation</h1>
         
+        <script>
+            
+            Swal.fire({
+              title: 'Calculating',
+              icon: 'info',
+              width: 500,
+              timer: 5000,
+              didOpen: () => {
+                Swal.showLoading()
+
+                timerInterval = setInterval(() => {
+                  Swal.getHtmlContainer().querySelector('strong')
+                    .textContent = (Swal.getTimerLeft() / 1000)
+                      .toFixed(0)
+                }, 100)
+              },
+              willClose: () => {
+                clearInterval(timerInterval)
+              }
+            })
+        </script>
+        
+        <!--
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post"> 
             <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="paypal@your-web-domain.com">
+            <input type="hidden" name="business" value="paypal@taitengchan@gmail.com">
             <input type="hidden" name="quantity" value="1">
-            <input type="hidden" name="item_name" value="Enter Item Name">
-            <input type="hidden" name="amount" value="39.00">
-            <input type="hidden" name="shipping" value="4.99">
-            <input type="hidden" name="custom" value="">
-            <input type="hidden" name="return" value="http://your-web-domain.com/thanks-payment.htm">
-            <input type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" alt="PayPal - The safer, easier way to pay online"> 
+            <input type="hidden" name="item_name" value="Covent Event Planning Deposit">
+            <input type="hidden" name="amount" value="<?php echo $deposit; ?>">
+            <input type="hidden" name="shipping" value="5">
+            <input type="hidden" name="return" value="http://taitengchan.com/thanks-payment.htm">
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"> 
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
         </form>
+        -->
+        
+        <div class="card text-center border-warning mb-3" style="margin: auto; max-width: 30rem;">
+            <div class="card-header">
+                PayPal
+            </div>
+            <div class="card-body text-warning">
+                <h5 class="card-title">Deposit for Covent Event Planning Service</h5>
+                <p class="card-text">
+                    Total Price (Service) = <?php echo $total; ?> <br>
+                    Discount = <?php echo $discount; ?> <br>
+                    Amount Payable (Deposit) = <?php echo $deposit; ?> <br>
+                </p>
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="business" value="paypal@taitengchan@gmail.com">
+                    <input type="hidden" name="hosted_button_id" value="4CBWYU4HBLQFS">
+                    <input type="hidden" name="item_name" value="Covent Event Planning Deposit">
+                    <input type="hidden" name="amount" value="<?php echo $deposit; ?>">
+                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                </form>
+            </div>
+            <div class="card-footer text-muted">
+                Status: Awaiting payment...
+            </div>
+        </div>
         
         <br>
         

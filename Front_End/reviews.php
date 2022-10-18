@@ -3,6 +3,7 @@ session_start();
 
 include("../Back_End/db_conn.php");
 include("../Back_End/function.php");
+include("config.php");
 
 ?>
 
@@ -82,10 +83,8 @@ include("../Back_End/function.php");
         
         <h1 style="margin-top:110px">Reviews</h1>
         
-        <div class="container" style="text-align: center;">
-            <table class="table table-bordered commentBody" style="min-height: 200px; min-width: 200px;" align="center">
-                
-            </table>
+        <div class="row commentBody" style="padding:30px; margin: 20px; text-align: center;">
+            
         </div>
         
         <br>
@@ -214,6 +213,6 @@ include("../Back_End/function.php");
         <!-- End of .container -->
         
         <!-- Script to call displays -->
-        <script src="Z_display_reviews.js"></script>
+        <script src="Z_display_reviews.js?v=<?=$version?>"></script>
     </body>
 </html>
