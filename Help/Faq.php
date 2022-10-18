@@ -200,6 +200,13 @@
                         Of course! We’re happy to offer a free plan to anyone who wants to try our service.
                     </p>
                 </div>
+                
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <h6 class="mb-3 text-primary"><i class="fas fa-book-open text-primary pe-2"></i> Another question that is longer than usual</h6>
+                    <p>
+                        Of course! We’re happy to offer a free plan to anyone who wants to try our service.
+                    </p>
+                </div>
             </div>
         </section>
         <!--Section: FAQ-->
@@ -212,10 +219,10 @@
                 And this is more example text.
             </p>
         </div>
-
-        <h2>Popup Chat Window</h2>
-        <p>Click on the button at the bottom of this page to open the chat form.</p>
-        <p>Note that the button and the form is fixed - they will always be positioned to the bottom of the browser window.</p>
+        <br><!-- comment -->
+        <h2></h2>
+        <p>Click on the chat button to</p>
+        <p>Have a chat with our operator 8am-5pm for futher enquiry</p>
 
         <button class="open-button" onclick="openForm()">Chat</button>
 

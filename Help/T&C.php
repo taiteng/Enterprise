@@ -156,7 +156,7 @@
         <br>
         
         <div class="p-5 text-center bg-light">
-        <h1 class="mb-3">Policy Statement</h1>
+        <h1 class="mb-3">Terms and Condition</h1>
         <h4 class="mb-3">Rules and regulation before book for an event</h4>
         
         </div>
@@ -165,23 +165,13 @@
         <div class="accordion-item" align="center">
             <div class="col-md-6">
                 <h2 class="accordion-header" id="headingOne">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Statement #1</button>
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Terms of Payment</button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <strong>This is the first item's accordion
-                        body.</strong>
-                        It is hidden by default, until the collapse
-                        plugin adds the appropriate classes that we
-                        use to style each element. These classes
-                        control the overall appearance, as well as
-                        the showing and hiding via CSS transitions.
-                        You can modify any of this with custom CSS
-                        or overriding our default variables. It's
-                        also worth noting that just about any HTML
-                        can go within the
-                        <code>.accordion-body</code>, though the
-                        transition does limit overflow.
+                        <strong>1. Terms of Payment:</strong>
+                         Fees shall be agreed as stated in the relevant quotation. 50% of the Fees is required as deposit for the reservation of the Event Manager’s dates and prior to commencement of work (“Deposit”) and 50% of the Fees is due on the Event Date.
+                        
                     </div>
                 </div>
             </div>    
@@ -189,23 +179,12 @@
         <div class="accordion-item" align="center">
             <div class="col-md-6">
                 <h2 class="accordion-header" id="headingTwo">
-                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Statement #2</button>
+                   <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Cancellation</button>
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <strong>This is the second item's accordion
-                        body.</strong>
-                        It is hidden by default, until the collapse
-                        plugin adds the appropriate classes that we
-                        use to style each element. These classes
-                        control the overall appearance, as well as
-                        the showing and hiding via CSS transitions.
-                        You can modify any of this with custom CSS
-                        or overriding our default variables. It's
-                        also worth noting that just about any HTML
-                        can go within the
-                        <code>.accordion-body</code>, though the
-                        transition does limit overflow.
+                        <strong>2. Cancellation:</strong>
+                         Full payment of the Fees is required to be settled if the Event is cancelled within 7 working days before the Event. If a substantial part of the Event thereof does not take place or is cancelled and no substitute event is provided to the Event Manager by then, the deposit of 50% of the total billing will be forfeited.
                     </div>
                 </div>  
             </div>
@@ -214,23 +193,27 @@
         <div class="accordion-item" align="center">
             <div class="col-md-6" >
                 <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Statement #3</button>
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Failure</button>
                 </h2>
                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        <strong>This is the third item's accordion
-                        body.</strong>
-                        It is hidden by default, until the collapse
-                        plugin adds the appropriate classes that we
-                        use to style each element. These classes
-                        control the overall appearance, as well as
-                        the showing and hiding via CSS transitions.
-                        You can modify any of this with custom CSS
-                        or overriding our default variables. It's
-                        also worth noting that just about any HTML
-                        can go within the
-                        <code>.accordion-body</code>, though the
-                        transition does limit overflow.
+                        <strong>3.Failure</strong>
+                        All the rights that are released and quoted are only given subject to payment in full. The Event Manager reserves the rights to terminate the delivery of goods and/or services in its entirety and/or partially with the possibility of a monetary claim(s) as per order value should you fail in fulfilling any of the Terms terms & Conditions conditions stated herein, inclusive of Terms of Payment.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="accordion-item" align="center">
+            <div class="col-md-6" >
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTree" aria-expanded="false" aria-controls="collapseThree">Additional Fee</button>
+                </h2>
+                <div id="collapseTree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>4.Additional Fee</strong>
+                        An additional fee will be imposed upon confirmation for last-minute venue/ceremony installation/preparation written requests. 
+                        The Event Manager and your company shall negotiate in good faith with a view to agreeing upon a fair and reasonable fee.
                     </div>
                 </div>
             </div>
@@ -241,66 +224,12 @@
             <div class="col-md-6">.</div>
             <div class="col-md-3">.</div>
         </div>
-        <form>
-            <!-- Name input -->
-            <div class="form-outline mb-1 col-md-6" align="center">
-                <input type="text" id="form4Example1" class="form-control" align="center"/>
-                <label class="form-label" align="center" for="form4Example1">Name </label>
-            </div>
-
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-                <input type="email" id="form4Example2" class="form-control" />
-                <label class="form-label" for="form4Example2">Email address</label>
-            </div>
-
-            <!-- Message input -->
-            <div class="form-outline mb-4">
-                <textarea class="form-control" id="form4Example3" rows="4"></textarea>
-                <label class="form-label" for="form4Example3">Message</label>
-            </div>
-
-            <!-- Checkbox -->
-            <div class="form-check d-flex justify-content-center mb-4">
-                <input class="form-check-input me-2" type="checkbox" value="" id="form4Example4" checked />
-                <label class="form-check-label" for="form4Example4">Send me a copy of this message</label>
-            </div>
-
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">Send</button>
-        </form>
+        
         
         <br>
         <br>
 
-        <div class="w3-container">
-            <h2>Borders</h2>
-
-            <div class="w3-panel w3-border">
-                <p>I have borders.</p>
-            </div>
-
-            <div class="w3-panel w3-border-left">
-                <p>I have only a left border.</p>
-            </div>
-
-            <div class="w3-panel w3-border-right">
-                <p>I have only a right border.</p>
-            </div>
-
-            <div class="w3-panel w3-border-top w3-border-bottom">
-                <p>I have top and bottom borders.</p>
-            </div>
-
-        </div>
-
-        <div class="container-fluid">
-          ...dddddddddddddddddddddd
-        </div>
-
-        <h2>Popup Chat Window</h2>
-        <p>Click on the button at the bottom of this page to open the chat form.</p>
-        <p>Note that the button and the form is fixed - they will always be positioned to the bottom of the browser window.</p>
+        
 
         <button class="open-button" onclick="openForm()">Chat</button>
 
