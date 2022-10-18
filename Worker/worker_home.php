@@ -15,16 +15,18 @@ if (!isset($_SESSION['loggedin'])) {
         <!-- Bootstrap plugin -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <link href="style.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+        <link href="homecss.css" rel="stylesheet" type="text/css">
         
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
         
-        <link href="homecss.css" rel="stylesheet" type="text/css">
+        
         
 	<title>Home Page</title>
         
-	<link href="style.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+	
     </head>
     <body class="loggedin">
 	<nav class="navtop">
@@ -43,7 +45,7 @@ if (!isset($_SESSION['loggedin'])) {
             <table class="table table-borderless table-responsive" style="min-height: 300px;">
                 <tr class="body" align="center" style="padding:10px">
                     <td>
-                        <a href="">
+                        <a href="my_project.php">
                             <img src="../Images/briefing.png" width="150px" height="150px" alt="project" class="img-thumbnail"/>
                         </a>
                         <a class="nav-link" href="my_project.php" style="color: black; font-size: 20px;">My Projects</a>
