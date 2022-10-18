@@ -20,21 +20,17 @@ $db = $database->getConnection();
 $service = new service($db);
   
 // set ID property of product to be edited
-$service->service_id = $_POST["service"];
+$service->service_id = $_POST["sid"];
   
 // set product property values
-$service->worker_name = $_POST["username"];
-
-if($service->worker_name == '-'){
-    $service->project_status = "Waiting for Job Assign";
-}else{
-    $service->project_status = "Open";
-}
+$service->progress_check = $_POST["progressCompletion"];
+$service->project_status = $_POST["status"];
+$service->progress_desc = $_POST["progressDesc"];
 
 // update the product
-if($service->updateTask()){
+if($service->updateWorkerTask()){
     $_SESSION['updateSuccess'] = "true";
-    header("Location: ../Admin_Front_End/projects.php");
+    header("Location: ../Worker/my_project.php");
     exit();
     
     // set response code - 200 ok

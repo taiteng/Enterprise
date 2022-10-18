@@ -13,10 +13,9 @@ include "../Admin_Back_End/config.php";
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="../Admin_Front_End/admin_js/tableProject.js"></script>
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
@@ -45,15 +44,7 @@ include "../Admin_Back_End/config.php";
             ::-webkit-scrollbar-thumb:hover {
               background: #555;
             }
-           .my-custom-scrollbar {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            overflow: auto;
-            }
-            .table-wrapper-scroll-y {
-            display: block;
-            }
+           
 
         </style>
         
@@ -92,14 +83,17 @@ include "../Admin_Back_End/config.php";
             </nav>
         </header>
         
-        <div class="table-wrapper-scroll-y my-custom-scrollbar table-responsive" style="margin-top:10%; padding:20px;">
-            <table id="projectTable" class="table table-bordered table-striped mb-0" style="width: 100%;">
+        <div style="margin-top:10%; padding:20px;">
+            <table id="projectTable" class="table table-bordered table-striped mb-0" style="width: 100%; box-shadow: 2px 2px 10px #888888;">
                 <thead>
                     <tr align="center">
                         <th>Service ID</th>
-                        <th>Task and Description</th>
+                        <th>Task</th>
+                        <th>Description</th>
                         <th>Person-In-Charge</th>
                         <th>Status</th>
+                        <th>Progress Check</th>
+                        <th>Progress Description</th>
                         <th>Quotation</th>
                         <th>Actions</th>
                     </tr>
@@ -185,6 +179,32 @@ include "../Admin_Back_End/config.php";
             </div>
         </div>
         
+        <!-- View Progress Description Modal -->
+        <div class="modal fade" id="progressModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Progress Description</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            
+                            <label id="progressText" class="form-label"></label>
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         
         <!-- Get the Service Details from the bootstrap modal when the "editBtn" or "deleteBtn" is triggered -->
         <!-- Set the value to the HTML input element and passed it to the form-->
@@ -211,6 +231,20 @@ include "../Admin_Back_End/config.php";
             });
             
             $(document).ready(function(){
+                $(document).on('click', '.viewProgressBtn', function(){
+                    var progress_desc = $(this).data('id');
+                    
+                    if(progress_desc === "-"){
+                        $('#progressText').text("No update from the employee");
+                    }else{
+                        $('#progressText').text(progress_desc);
+                    }
+
+                    
+                });
+            });
+            
+            $(document).ready(function(){
                 var projectDataTable = $('#projectTable').DataTable({
                     'processing': true,
                     'serverSide': true,
@@ -219,11 +253,50 @@ include "../Admin_Back_End/config.php";
                         'url':'dataTableAjax.php'
                     },
                     pageLength: 5,
+                    'columnDefs': [
+                        {
+                            "targets": 0, // your case first column
+                            "className": "text-center",
+                       },
+                       {
+                            "targets": 2, // your case first column
+                            "className": "text-center",
+                       },
+                       {
+                            "targets": 3, // your case first column
+                            "className": "text-center",
+                       },
+                       {
+                            "targets": 4, // your case first column
+                            "className": "text-center",
+                       },
+                       {
+                            "targets": 5, // your case first column
+                            "className": "text-center",
+                       },
+                       {
+                            "targets": 6, // your case first column
+                            "className": "text-center",
+                       },
+                       {
+                            "targets": 7, // your case first column
+                            "className": "text-center",
+                       },
+                       {    "searchable": false, 
+                                "targets": [6, 7] 
+                       },
+                        {    "orderable": false,
+                             "targets": [5, 6, 7] 
+                        }
+                    ],
                     'columns': [
                         { data: 'service_id' },
-                        { data: 'service_detail' },
+                        { data: 'service_type' },
+                        { data: 'service_desc' },
                         { data: 'worker_name' },
                         { data: 'project_status' },
+                        { data: 'progress_check' },
+                        { data: 'progress_desc' },
                         { data: 'quotation' },
                         { data: 'actions' }
                     ]

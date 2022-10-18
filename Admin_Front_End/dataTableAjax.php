@@ -1,6 +1,6 @@
 <?php
 include 'db.php';
-
+header("Set-Cookie: cross-site-cookie=whatever; SameSite=None; Secure");
 $draw = $_POST['draw'];  
 $row = $_POST['start'];
 $rowperpage = $_POST['length']; // Rows display per page
@@ -36,28 +36,32 @@ $serviceRecords = mysqli_query($conn, $serviceQuery);
 $data = array();
  
 while($row = mysqli_fetch_assoc($serviceRecords)){
-    if($row['project_status'] == "In-Progress"){
+    if($row['project_status'] == "Open"){
         $worker_name = $row['worker_name'];
         $workerarray = "$worker_name";
         $data[] = array(
                 "service_id"=>$row['service_id'],
-                "service_detail"=>'<p class="fw-normal mb-1">'.$row['service_type'].'</p>
-                                   <p class="text-muted mb-0">'.$row['service_desc'].'</p>',
+                "service_type"=>'<p class="fw-normal mb-1">'.$row['service_type'].'</p>',
+                "service_desc"=>'<p class="text-muted mb-0">'.$row['service_desc'].'</p>',
                 "worker_name"=>$workerarray,
-                "project_status"=>'<i class="fa fa-circle fa-xs" aria-hidden="true" style="color:orange"></i> '.$row["project_status"].'',
+                "project_status"=>'<i class="fa fa-circle fa-xs" aria-hidden="true" style="color:green"></i> '.$row["project_status"].'',
+                "progress_check"=>$row['progress_check'],
+                "progress_desc"=>'<i class="viewProgressBtn 	fa fa-arrows-alt" aria-hidden="true" data-id="'.$row["progress_desc"].'" data-bs-toggle="modal" data-bs-target="#progressModal"></i>',
                 "quotation"=>'<i class="fa fa-download fa-2x" aria-hidden="true"></i>',
                 "actions"=>'<i id="myEditId" class="editBtn fa fa-pencil-square-o fa-2x " aria-hidden="true" data-id="'.$row["service_id"].'" data-bs-toggle="modal" data-bs-target="#assignModal"></i>'
                     . '<i id="myDeleteId" class="deleteBtn fa fa-trash fa-2x" aria-hidden="true" data-id="'.$row["service_id"].'" data-bs-toggle="modal" data-bs-target="#deleteModal"></i>'
                 );
-    }else if($row['project_status'] == "Waiting for Job Assign"){
+    }else if($row['project_status'] == "In-Progress"){
         $worker_name = $row['worker_name'];
         $workerarray = "$worker_name";
         $data[] = array(
                 "service_id"=>$row['service_id'],
-                "service_detail"=>'<p class="fw-normal mb-1">'.$row['service_type'].'</p>
-                                   <p class="text-muted mb-0">'.$row['service_desc'].'</p>',
+                "service_type"=>'<p class="fw-normal mb-1">'.$row['service_type'].'</p>',
+                "service_desc"=>'<p class="text-muted mb-0">'.$row['service_desc'].'</p>',
                 "worker_name"=>$workerarray,
-                "project_status"=>'<i class="fa fa-circle fa-xs" aria-hidden="true" style="color:green"></i> '.$row["project_status"].'',
+                "project_status"=>'<i class="fa fa-circle fa-xs" aria-hidden="true" style="color:orange"></i> '.$row["project_status"].'',
+                "progress_check"=>$row['progress_check'],
+                "progress_desc"=>'<i class="viewProgressBtn 	fa fa-arrows-alt" aria-hidden="true" data-id="'.$row["progress_desc"].'" data-bs-toggle="modal" data-bs-target="#progressModal"></i>',
                 "quotation"=>'<i class="fa fa-download fa-2x" aria-hidden="true"></i>',
                 "actions"=>'<i id="myEditId" class="editBtn fa fa-pencil-square-o fa-2x " aria-hidden="true" data-id="'.$row["service_id"].'" data-bs-toggle="modal" data-bs-target="#assignModal"></i>'
                     . '<i id="myDeleteId" class="deleteBtn fa fa-trash fa-2x" aria-hidden="true" data-id="'.$row["service_id"].'" data-bs-toggle="modal" data-bs-target="#deleteModal"></i>'
@@ -67,10 +71,12 @@ while($row = mysqli_fetch_assoc($serviceRecords)){
         $workerarray = "$worker_name";
         $data[] = array(
                 "service_id"=>$row['service_id'],
-                "service_detail"=>'<p class="fw-normal mb-1">'.$row['service_type'].'</p>
-                                   <p class="text-muted mb-0">'.$row['service_desc'].'</p>',
+                "service_type"=>'<p class="fw-normal mb-1">'.$row['service_type'].'</p>',
+                "service_desc"=>'<p class="text-muted mb-0">'.$row['service_desc'].'</p>',
                 "worker_name"=>$workerarray,
-                "project_status"=>'<i class="fa fa-circle fa-xs" aria-hidden="true" style="color:green"></i> '.$row["project_status"].'',
+                "project_status"=>'<i class="fa fa-circle fa-xs" aria-hidden="true" style="color:red"></i> '.$row["project_status"].'',
+                "progress_check"=>$row['progress_check'],
+                "progress_desc"=>'<i class="viewProgressBtn 	fa fa-arrows-alt" aria-hidden="true" data-id="'.$row["progress_desc"].'" data-bs-toggle="modal" data-bs-target="#progressModal"></i>',
                 "quotation"=>'<i class="fa fa-download fa-2x" aria-hidden="true"></i>',
                 "actions"=>'<i id="myEditId" class="editBtn fa fa-pencil-square-o fa-2x " aria-hidden="true" data-id="'.$row["service_id"].'" data-bs-toggle="modal" data-bs-target="#assignModal"></i>'
                     . '<i id="myDeleteId" class="deleteBtn fa fa-trash fa-2x" aria-hidden="true" data-id="'.$row["service_id"].'" data-bs-toggle="modal" data-bs-target="#deleteModal"></i>'

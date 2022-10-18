@@ -161,4 +161,38 @@ class service{
 
         return false;
     }
+    
+    // update the product
+    function updateWorkerTask(){
+        
+        // update query
+        $query = "UPDATE service 
+                SET
+                    progress_check = :progress_check,
+                    progress_desc   = :progress_desc,
+                    project_status = :project_status
+                WHERE
+                    service_id = :service_id";
+        
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        
+        $this->service_id=htmlspecialchars(strip_tags($this->service_id));
+        $this->progress_check=htmlspecialchars(strip_tags($this->progress_check));
+        $this->progress_desc=htmlspecialchars(strip_tags($this->progress_desc));
+        $this->project_status=htmlspecialchars(strip_tags($this->project_status));
+        
+        // bind new values
+        $stmt->bindParam(':service_id', $this->service_id);
+        $stmt->bindParam(':project_status', $this->project_status);
+        $stmt->bindParam(':progress_desc', $this->progress_desc);
+        $stmt->bindParam(':progress_check', $this->progress_check);
+        
+        // execute the query
+        if($stmt->execute()){
+            return true;
+        }
+
+        return false;
+    }
 }

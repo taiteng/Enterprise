@@ -158,12 +158,6 @@ session_start();
                     <p class="zoom title"><b>Help</b></p>
                 </a>
             </div>
-            <div class="box zoom" onclick="location.href='../Admin_Front_End/projects_history.php';">
-                <a class="zoom link" href="projects_history.php">
-                    <img class="zoom image" src="../Images/project_history-icon.png">
-                    <p class="zoom title"><b>Project History</b></p>
-                </a>
-            </div>
             <div class="box zoom" onclick="location.href='../Admin_Front_End/statistic.php';">
                 <a class="zoom link" href="statistic.php">
                     <img class="zoom image" src="../Images/statistic-icon.png">
