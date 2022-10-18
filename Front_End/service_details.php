@@ -261,7 +261,7 @@ $sid = random_id_gen(24);
                 
                 <input class="form-control" type="hidden" value="<?php echo $sid; ?>" name="sid" id="sid" />
                 <input class="form-control" type="hidden" value="00" name="totalprice" id="totalprice" />
-                <input class="form-control" type="hidden" value="Waiting for Job Assign" name="projectstatus" id="projectstatus" />
+                <input class="form-control" type="hidden" value="Open" name="projectstatus" id="projectstatus" />
                 <input class="form-control" type="hidden" value="-" name="workername" id="workername" />
                 <input class="form-control" type="hidden" value="-" name="progresscheck" id="progresscheck" />
                 <input class="form-control" type="hidden" value="-" name="progressdescription" id="progressdescription" />
