@@ -80,7 +80,7 @@ $sid = random_id_gen(24);
             <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #e3242b">
                 <div class="container-fluid">
                     <a class="navbar-brand">
-                        <img src="../Images/coventco.png" alt="logo" onclick="location.href='home.php'"/>
+                        <img src="../Images/coventco_red.png" alt="logo" onclick="location.href='home.php'"/>
                     </a>
                     <div class="d-flex flex-row bd-highlight mb-3 justify-content-end">
                         <ul class="navbar-nav nav">
@@ -94,7 +94,7 @@ $sid = random_id_gen(24);
                                 <a class="nav-link" href="../Help/Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Worker/login.php" style="color: white; font-size: 20px;">Worker</a>
+                                <a class="nav-link" href="../Worker/login.php" style="color: white; font-size: 20px;">Login</a>
                             </li>
                         </ul>
                     </div>
@@ -104,27 +104,27 @@ $sid = random_id_gen(24);
         
         <h1 style="margin-top:110px">Service Details</h1>
         
-        <form class="was-validated" action="../Back_End/Service_API/create.php" method="POST">
+        <form id="myForm" class="was-validated" action="../Back_End/Service_API/create.php" method="POST">
             <div class="container layoutForm shadow-lg p-3 mb-5 bg-white rounded">
                 <div class="row">
                     <div class="col">
                         <div class="mt-2">
                             <label class="form-label">Site's Name:</label>
-                            <input type="text" class="form-control" name="name" required>
+                            <input type="text" class="form-control" name="name" id="name" required>
                         </div>
                         <div class="mt-2">
                             <label class="form-label">Address:</label>
-                            <textarea type="text" class="form-control" name="address" required></textarea>
+                            <textarea type="text" class="form-control" name="address" id="address" required></textarea>
                         </div>
                         <div class="mt-2">
                             <label class="form-label">Site's Size:</label>
-                            <input type="text" class="form-control" name="size" required>
+                            <input type="text" class="form-control" name="size" id="size" required>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mt-2">
                             <label class="form-label">User Name:</label>
-                            <input type="text" class="form-control" name="username" required>
+                            <input type="text" class="form-control" name="username" id="username" required>
                         </div>
                         <div class="mt-2">
                             <label class="form-label">Contact:</label><br>
@@ -132,7 +132,7 @@ $sid = random_id_gen(24);
                         </div>
                         <div class="mt-2">
                             <label class="form-label">Email:</label>
-                            <input type="email" class="form-control" name="email" placeholder="example@example.com" required>
+                            <input type="email" class="form-control" name="email" placeholder="example@example.com" id="email" required>
                         </div>
                     </div>
                 </div>
@@ -141,37 +141,37 @@ $sid = random_id_gen(24);
                         <div class="control">
                             <label class="form-label">Type of Service:</label><br>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="birthday" name="type" value="Birthday Party" required>
+                                <input class="form-check-input" type="radio" id="type" name="type" value="Birthday Party" required>
                                 <label class="form-check-label" for="birthday">Birthday</label><br>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="wedding" name="type" value="Wedding Ceremony" required>
+                                <input class="form-check-input" type="radio" id="type" name="type" value="Wedding Ceremony" required>
                                 <label class="form-check-label" for="wedding">Wedding</label><br>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="farewell" name="type" value="Farewell Ceremony" required>
+                                <input class="form-check-input" type="radio" id="type" name="type" value="Farewell Ceremony" required>
                                 <label class="form-check-label" for="farewell">Farewell</label><br>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="christmas" name="type" value="Christmas Celebration" required>
+                                <input class="form-check-input" type="radio" id="type" name="type" value="Christmas Celebration" required>
                                 <label class="form-check-label" for="christmas">Christmas</label><br>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="newyear" name="type" value="New Year Celebration" required>
+                                <input class="form-check-input" type="radio" id="type" name="type" value="New Year Celebration" required>
                                 <label class="form-check-label" for="newyear">New Year Eve</label><br>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="deepavali" name="type" value="Deepavali Celebration" required>
+                                <input class="form-check-input" type="radio" id="type" name="type" value="Deepavali Celebration" required>
                                 <label class="form-check-label" for="deepavali">Deepavali</label><br>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" id="raya" name="type" value="Raya Aidilfitri Celebration" required>
+                                <input class="form-check-input" type="radio" id="type" name="type" value="Raya Aidilfitri Celebration" required>
                                 <label class="form-check-label" for="raya">Hari Raya Aidilfitri</label><br>
                             </div>
                         </div>
                         <div class="mt-3">
                             <label class="form-label">Description of Event:</label>
-                            <textarea type="text" class="form-control" rows="4" name="description" required></textarea>
+                            <textarea type="text" class="form-control" rows="4" name="description" id="description" required></textarea>
                         </div>
                         <div class="mt-2">
                             <label class="form-label">Date of Event:</label>
@@ -281,17 +281,11 @@ $sid = random_id_gen(24);
                 </div>
                 <div class="row" style="text-align: center;">
                     <div class="col mt-3 mb-4">
-                        <button type="submit"  class="btn btn-outline-danger btn-lg btn-block">Get Quotation</button>
+                        <button type="submit" class="btn btn-outline-danger btn-lg btn-block">Get Quotation</button>
                     </div>
                 </div>
             </div>
         </form>
-        
-        <div class="mt-3" style="text-align: center;">
-            <a href="quotation.php">
-                <button type="button" class="btn btn-outline-danger">Shortcut</button>
-            </a>
-        </div>
         
         <br>
         
@@ -434,5 +428,7 @@ $sid = random_id_gen(24);
         
         <!-- Script to call displays -->
         <script src="Z_display.js"></script>
+        
+        <script src="send_email.js"></script>
     </body>
 </html>

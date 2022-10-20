@@ -59,7 +59,7 @@ include("config.php");
             <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #e3242b">
                 <div class="container-fluid">
                     <a class="navbar-brand">
-                        <img src="../Images/coventco.png" alt="logo" onclick="location.href='home.php'"/>
+                        <img src="../Images/coventco_red.png" alt="logo" onclick="location.href='home.php'"/>
                     </a>
                     <div class="d-flex flex-row bd-highlight mb-3 justify-content-end">
                         <ul class="navbar-nav nav">
@@ -73,7 +73,7 @@ include("config.php");
                                 <a class="nav-link" href="../Help/Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Worker/login.php" style="color: white; font-size: 20px;">Worker</a>
+                                <a class="nav-link" href="../Worker/login.php" style="color: white; font-size: 20px;">Login</a>
                             </li>
                         </ul>
                     </div>
@@ -88,13 +88,6 @@ include("config.php");
         </div>
         
         <br>
-        
-        <div style="text-align: center;">
-            <a href="add_review.php">
-                <button type="button" class="btn btn-outline-danger" href="add_review.php" >Add Review</button>
-            </a>
-        </div>
-        
         <br>
         
         <div>

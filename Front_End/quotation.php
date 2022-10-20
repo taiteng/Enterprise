@@ -24,6 +24,8 @@ $decoPrice =$deco_data['deco_price'] * $service_data['site_size'];
 $funPrice = $fun_data['fun_price'];
 $totalPrice = $chairPrice + $babychairPrice + $tablePrice + $cupPrice + $cutleryPrice + $FNDPrice + $decoPrice + $funPrice;
 
+$_SESSION['totalPrice'] = $totalPrice;
+
 ?>
 
 <!DOCTYPE html>
@@ -31,12 +33,16 @@ $totalPrice = $chairPrice + $babychairPrice + $tablePrice + $cupPrice + $cutlery
     <head>
         <meta charset="UTF-8">
         
+        <!-- MDB -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet">
+        
         <!-- Bootstrap plugin -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         
-        <!-- MDB -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet">
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        
+        <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
         
         <!-- logo -->
         <link rel="icon" href="../Images/logo.png">
@@ -59,7 +65,39 @@ $totalPrice = $chairPrice + $babychairPrice + $tablePrice + $cupPrice + $cutlery
             .bLFB{border-left:1px solid lightgrey; 
                   border-right:1px solid lightgrey; 
                   border-bottom:1px solid lightgrey;}
-            form {display: inline-block;}
+            form {margin: 0 auto;}
+            .rating {
+                display: flex;
+                margin-top: -5px;
+                flex-direction: row-reverse;
+                margin-left: -4px;
+                float: left;
+            }
+            .rating>input {
+                display: none;
+            }
+            .rating>label {
+                position: relative;
+                width: 20px;
+                font-size: 30px;
+                color: #ff0000;
+                cursor: pointer;
+            }
+            .rating>label::before {
+                content: "\2605";
+                position: absolute;
+                opacity: 0;
+            }
+            .rating>label:hover:before,
+            .rating>label:hover~label:before {
+                opacity: 1 !important;
+            }
+            .rating>input:checked~label:before {
+                opacity: 1;
+            }
+            .rating:hover>input:checked~label:before {
+                opacity: 0.4;
+            }
             
             /* width */
             ::-webkit-scrollbar {
@@ -90,7 +128,7 @@ $totalPrice = $chairPrice + $babychairPrice + $tablePrice + $cupPrice + $cutlery
             <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #e3242b">
                 <div class="container-fluid">
                     <a class="navbar-brand">
-                        <img src="../Images/coventco.png" alt="logo" onclick="location.href='home.php'"/>
+                        <img src="../Images/coventco_red.png" alt="logo" onclick="location.href='home.php'"/>
                     </a>
                     <div class="d-flex flex-row bd-highlight mb-3 justify-content-end">
                         <ul class="navbar-nav nav">
@@ -104,7 +142,7 @@ $totalPrice = $chairPrice + $babychairPrice + $tablePrice + $cupPrice + $cutlery
                                 <a class="nav-link" href="../Help/Faq.php" style="color: white; font-size: 20px;">Help</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="../Worker/login.php" style="color: white; font-size: 20px;">Worker</a>
+                                <a class="nav-link" href="../Worker/login.php" style="color: white; font-size: 20px;">Login</a>
                             </li>
                         </ul>
                     </div>
@@ -114,107 +152,108 @@ $totalPrice = $chairPrice + $babychairPrice + $tablePrice + $cupPrice + $cutlery
         
         <h1 style="margin-top:110px">Quotation</h1>
         
-        <div class="container shadow-4" style="text-align: center;" id="htmlContent">
-            <table class="table table-borderless table-responsive" style="min-height: 100px;">
-                <tr class="body" align="center" style="padding:5px">
-                    <td>
-                        <table class="table table-borderless table-responsive">
-                            <tr class="body bLFT" align="left" style="padding:5px;">
-                                <td>
-                                    <p>Site's Name:</p>
-                                </td>
-                                <td>
-                                    <p><?php echo $service_data['site_name']; ?></p>
-                                </td>
-                            </tr>
-                            <tr class="body bLF" align="left" style="padding:5px;">
-                                <td>
-                                    <p>Address:</p>
-                                </td>
-                                <td>
-                                    <p><?php echo $service_data['site_address']; ?></p>
-                                </td>
-                            </tr>
-                            <tr class="body bLFB" align="left" style="padding:5px;">
-                                <td>
-                                    <p>Site's Size:</p>
-                                </td>
-                                <td>
-                                    <p><?php echo $service_data['site_size'], ' SQ FT'; ?></p>
-                                </td>
-                            </tr>
-                            <tr class="body bLFT" align="left" style="padding:5px;">
-                                <td>
-                                    <p>Type of Service:</p>
-                                </td>
-                                <td>
-                                    <p><?php echo $service_data['service_type']; ?></p>
-                                </td>
-                            </tr>
-                            <tr class="body bLF" align="left" style="padding:5px;">
-                                <td>
-                                    <p>Description of Event:</p>
-                                </td>
-                                <td>
-                                    <p><?php echo $service_data['service_desc']; ?></p>
-                                </td>
-                            </tr>
-                            <tr class="body bLFB" align="left" style="padding:5px;">
-                                <td>
-                                    <p>Number of Participants:</p>
-                                </td>
-                                <td>
-                                    <p><?php echo $service_data['no_ppl']; ?></p>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td>
-                        <table class="table table-borderless table-responsive">
-                            <tr class="body bLFT" align="left" style="padding:5px;">
-                                <td>
-                                    <p>User Name:</p>
-                                </td>
-                                <td>
-                                    <p><?php echo $service_data['username']; ?></p>
-                                </td>
-                            </tr>
-                            <tr class="body bLF" align="left" style="padding:5px;">
-                                <td>
-                                    <p>Contact:</p>
-                                </td>
-                                <td>
-                                    <p><?php echo $service_data['contact']; ?></p>
-                                </td>
-                            </tr>
-                            <tr class="body bLFB" align="left" style="padding:5px;">
-                                <td>
-                                    <p>Email:</p>
-                                </td>
-                                <td>
-                                    <p><?php echo $service_data['email']; ?></p>
-                                </td>
-                            </tr>
-                            <tr class="body bLFT" align="left" style="padding:5px;">
-                                <td>
-                                    <p>Date of Event:</p>
-                                </td>
-                                <td>
-                                    <p><?php echo $service_data['event_date']; ?></p>
-                                </td>
-                            </tr>
-                            <tr class="body bLFB" align="left" style="padding:5px;">
-                                <td>
-                                    <p>Duration of Event:</p>
-                                </td>
-                                <td>
-                                    <p><?php echo $service_data['event_time']; ?></p>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr class="body" align="center" style="padding:5px">
+        <form method="post" action="send_email.php">
+            <div class="container shadow-4" style="text-align: center;" id="htmlContent">
+                <table class="table table-borderless table-responsive" style="min-height: 100px;">
+                    <tr class="body" align="center" style="padding:5px">
+                        <td>
+                            <table class="table table-borderless table-responsive">
+                                <tr class="body bLFT" align="left" style="padding:5px;">
+                                    <td>
+                                        <p>Site's Name:</p>
+                                    </td>
+                                    <td>
+                                        <p><?php echo $service_data['site_name']; ?></p>
+                                    </td>
+                                </tr>
+                                <tr class="body bLF" align="left" style="padding:5px;">
+                                    <td>
+                                        <p>Address:</p>
+                                    </td>
+                                    <td>
+                                        <p><?php echo $service_data['site_address']; ?></p>
+                                    </td>
+                                </tr>
+                                <tr class="body bLFB" align="left" style="padding:5px;">
+                                    <td>
+                                        <p>Site's Size:</p>
+                                    </td>
+                                    <td>
+                                        <p><?php echo $service_data['site_size'], ' SQ FT'; ?></p>
+                                    </td>
+                                </tr>
+                                <tr class="body bLFT" align="left" style="padding:5px;">
+                                    <td>
+                                        <p>Type of Service:</p>
+                                    </td>
+                                    <td>
+                                        <p><?php echo $service_data['service_type']; ?></p>
+                                    </td>
+                                </tr>
+                                <tr class="body bLF" align="left" style="padding:5px;">
+                                    <td>
+                                        <p>Description of Event:</p>
+                                    </td>
+                                    <td>
+                                        <p><?php echo $service_data['service_desc']; ?></p>
+                                    </td>
+                                </tr>
+                                <tr class="body bLFB" align="left" style="padding:5px;">
+                                    <td>
+                                        <p>Number of Participants:</p>
+                                    </td>
+                                    <td>
+                                        <p><?php echo $service_data['no_ppl']; ?></p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td>
+                            <table class="table table-borderless table-responsive">
+                                <tr class="body bLFT" align="left" style="padding:5px;">
+                                    <td>
+                                        <p>User Name:</p>
+                                    </td>
+                                    <td>
+                                        <p><?php echo $service_data['username']; ?></p>
+                                    </td>
+                                </tr>
+                                <tr class="body bLF" align="left" style="padding:5px;">
+                                    <td>
+                                        <p>Contact:</p>
+                                    </td>
+                                    <td>
+                                        <p><?php echo $service_data['contact']; ?></p>
+                                    </td>
+                                </tr>
+                                <tr class="body bLFB" align="left" style="padding:5px;">
+                                    <td>
+                                        <p>Email:</p>
+                                    </td>
+                                    <td>
+                                        <p><?php echo $service_data['email']; ?></p>
+                                    </td>
+                                </tr>
+                                <tr class="body bLFT" align="left" style="padding:5px;">
+                                    <td>
+                                        <p>Date of Event:</p>
+                                    </td>
+                                    <td>
+                                        <p><?php echo $service_data['event_date']; ?></p>
+                                    </td>
+                                </tr>
+                                <tr class="body bLFB" align="left" style="padding:5px;">
+                                    <td>
+                                        <p>Duration of Event:</p>
+                                    </td>
+                                    <td>
+                                        <p><?php echo $service_data['event_time']; ?></p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class="body" align="center" style="padding:5px">
                     <table class="table table-borderless table-responsive">
                         <tr class="body" align="left" style="padding:10px; border:1px solid lightgrey;">
                             <td style="min-width: 300px;">
@@ -360,32 +399,84 @@ $totalPrice = $chairPrice + $babychairPrice + $tablePrice + $cupPrice + $cutlery
                             </td>
                         </tr>
                     </table>
-                </tr>
-            </table>
-            <br>
-        </div>
+                    </tr>
+                </table>
+                <br>
+            </div>
+        </form>
         
         <br>
         <br>
         
         <center>
-            <form action="../Back_End/quotation_accept.php" method="POST">
+            <form action="../Back_End/quotation_accept.php" method="POST" style="display: inline-block;">
                 <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
                 <input type="hidden" name="totalPrice" value="<?php echo $totalPrice; ?>">
                 <button class="btn btn-outline-primary" type="submit">Accept</button>
             </form>
-            <form action="../Back_End/quotation_reject.php" method="POST">
+            <form action="../Back_End/quotation_reject.php" method="POST" style="display: inline-block;">
                 <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
                 <button class="btn btn-outline-secondary" type="submit">Reject</button>
             </form>
         </center>
     
         <div id="editor"></div>
+        
+        <br>
     
         <center>
             <button class="btn btn-outline-danger" type="submit" id="generatePDF">Download PDF</button>
+            <form action="send_email.php" method="POST" style="display: inline-block;">
+                <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
+                <button class="btn btn-outline-secondary" type="submit">Send to Mail</button>
+            </form>
         </center>
     
+        <br>
+        
+        <hr>
+        <h1>Add Review</h1>
+        
+        <section style="background-color: white;">
+            <form action="../Back_End/Review_API/create.php" method="POST">
+                <div class="container my-5 py-5 text-dark">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-10 col-lg-8 col-xl-6">
+                            <div class="card">
+                                <div class="card-body p-4">
+                                    <div class="d-flex flex-start w-100">
+                                        <div class="w-100">
+                                            <h5>Add a comment</h5>
+                                            <div class="rating">
+                                                <input type="radio" name="rating" value="5" id="5"><label for="5">☆</label>
+                                                <input type="radio" name="rating" value="4" id="4"><label for="4">☆</label> 
+                                                <input type="radio" name="rating" value="3" id="3"><label for="3">☆</label>
+                                                <input type="radio" name="rating" value="2" id="2"><label for="2">☆</label>
+                                                <input type="radio" name="rating" value="1" id="1"><label for="1">☆</label>
+                                            </div>
+                                            <br>
+                                            <div>
+                                                <input type="text" class="form-control" placeholder="Name" name="name" required/>
+                                            </div>
+                                            <br>
+                                            <div class="">
+                                                <textarea class="form-control" rows="4" placeholder="What is your review?" name="comment" required></textarea>
+                                            </div>
+                                            <div class="d-flex justify-content-between mt-3">
+                                                <button type="submit" class="btn btn-danger">
+                                                    Send <i class="fas fa-long-arrow-alt-right ms-1"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+
         <br>
         
         <div>
@@ -506,7 +597,19 @@ $totalPrice = $chairPrice + $babychairPrice + $tablePrice + $cupPrice + $cutlery
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
 
-
+        <?php if (isset($_SESSION['reviewCreated'])) { ?>
+            <script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Review Created',
+                text: 'Review has been created'
+                });
+            </script>
+            <?php
+            unset($_SESSION['reviewCreated']);
+        }
+        ?>
+        
         <!--the script-->
         <script type="text/javascript">
             var doc = new jsPDF();
@@ -524,6 +627,7 @@ $totalPrice = $chairPrice + $babychairPrice + $tablePrice + $cupPrice + $cutlery
                 });
                 doc.save('sample_file.pdf');
             });
+            
         </script>
         
         <!-- Script to call displays -->
