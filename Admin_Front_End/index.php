@@ -113,7 +113,7 @@ session_start();
             <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #e3242b;">
                 <div class="container-fluid">
                     <a class="navbar-brand">
-                        <img src="../Images/coventco.png" alt="logo" onclick="location.href='index.php'"/>
+                        <img src="../Images/coventco_red.png" alt="logo" onclick="location.href='index.php'"/>
                     </a>
                     <div class="d-flex flex-row bd-highlight mb-3 justify-content-end">
                         <ul class="navbar-nav nav">
