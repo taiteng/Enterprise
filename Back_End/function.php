@@ -1,5 +1,8 @@
 <?php
-session_start();
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 
 function random_id_gen($length){
     //the characters you want in your id
@@ -10,8 +13,6 @@ function random_id_gen($length){
     for ($i = 0; $i < $length; $i++) {
         $string .= $characters[mt_rand(0, $max)];
     }
-
-    $_SESSION['sid'] = $string;
     return $string;
 }
 
@@ -27,11 +28,8 @@ function check_service($conn){
             return $service_data;
         }
 
-        header("Location: ../Front_End/quotation.php");
-        die;
     }
     else{
-        //redirect to login
         header("Location: ../Front_End/home.php");
         die;
     }
