@@ -16,7 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     if(!empty($_POST['serviceID'])){
         $service->service_id = $_POST['serviceID'];
         
-        // create the product
+        // create the service
         if($service->delete()){
 
             // set response code - 201 created
@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             exit;
         }
   
-        // if unable to create the product, tell the user
+        // if unable to create the service, tell the user
         else{
 
             // set response code - 503 service unavailable

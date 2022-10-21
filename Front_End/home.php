@@ -2,11 +2,11 @@
 session_start();
 
 include("../Back_End/db_conn.php");
-include("../Back_End/validate_service_deletion.php");
+//include("../Back_End/validate_service.php");
 
 if(isset($_SESSION['sid'])){
-    del_service($_SESSION['sid']);
     unset ($_SESSION['sid']);
+    unset ($_SESSION['total']);
 }
 
 ?>

@@ -5,10 +5,10 @@ include("../Back_End/db_conn.php");
 include("../Back_End/function.php");
 
 $service_data = check_service($conn);
-$discount = 0;
+$discount = check_discount($conn);
 
 $total = $_SESSION["total"];
-$deposit = $total/2;
+$deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
 
 ?>
 
@@ -262,27 +262,67 @@ $deposit = $total/2;
                         <h5 class="card-title">Deposit for Covent Event Planning Service</h5>
                         <p class="card-text">
                             Total Price (Service) = <?php echo $total; ?> <br>
-                            Discount = <?php echo $discount; ?> <br>
+                            Discount = <?php echo $discount['discount_percent']; ?>% <br>
                             Amount Payable (Deposit) = <?php echo $deposit; ?> <br>
                         </p>
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                            <input type="hidden" name="cmd" value="_s-xclick">
-                            <input type="hidden" name="business" value="paypal@taitengchan@gmail.com">
-                            <input type="hidden" name="hosted_button_id" value="4CBWYU4HBLQFS">
-                            <input type="hidden" name="item_name" value="Covent Event Planning Deposit">
-                            <input type="hidden" name="amount" value="<?php echo $deposit; ?>">
-                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                        </form>
+                        <div id="smart-button-container">
+                            <div style="text-align: center;">
+                                <div id="paypal-button-container"></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-footer text-muted">
                         Status: Awaiting payment...
                     </div>
+                    
+                    <script src="https://www.paypal.com/sdk/js?client-id=AZlHPSrkGjTwm0_6CRhRdaQrm3rIb78Tig7YsjRaGYAkhckKtu8NGabynxeS57mrYXp-OLjSc1MsyVDP&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+                    <script>
+                      function initPayPalButton() {
+                        var total = <?php echo json_encode($deposit); ?>;
+                          
+                        paypal.Buttons({
+                          style: {
+                            shape: 'pill',
+                            color: 'gold',
+                            layout: 'vertical',
+                            label: 'paypal',
+          
+                          },
+
+                          createOrder: function(data, actions) {
+                            return actions.order.create({
+                              purchase_units: [{"description":"Deposit for Covent Event Planning System","amount":{"currency_code":"USD","value":total,"breakdown":{"item_total":{"currency_code":"USD","value":total},"shipping":{"currency_code":"USD","value":0},"tax_total":{"currency_code":"USD","value":0}}}}]
+                            });
+                          },
+
+                          onApprove: function(data, actions) {
+                            return actions.order.capture().then(function(orderData) {
+            
+                              // Full available details
+                              console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+                              // Show a success message within this page, e.g.
+                              const element = document.getElementById('paypal-button-container');
+                              element.innerHTML = '';
+                              element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+                              // Or go to another URL:  actions.redirect('thank_you.html');
+            
+                            });
+                          },
+
+                          onError: function(err) {
+                            console.log(err);
+                          }
+                        }).render('#paypal-button-container');
+                      }
+                      initPayPalButton();
+                    </script>
                 </div>
             </div>
         </section>
         
-        <section style="background-color: white;">
+        <section style="background-color: whitesmoke;">
             <center>
                 <form action="../Back_End/make_payment.php" method="POST" style="display: inline-block;">
                     <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">

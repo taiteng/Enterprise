@@ -5,6 +5,10 @@ include("../Back_End/db_conn.php");
 include("../Back_End/function.php");
 
 $service_data = check_service($conn);
+$discount = check_discount($conn);
+
+$total = $_SESSION["total"];
+$deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
 
 ?>
 
@@ -238,6 +242,25 @@ $service_data = check_service($conn);
             <div class="mbr-overlay"></div>
             <div class="container">
                 <h3 class="text-center text-black mb-4 text-primary fw-bold display-2">Paid</h3>
+                <div class="card text-center border-warning mb-3" style="margin: auto; max-width: 30rem; background-color: white;">
+                    <div class="card-header">
+                        PayPal
+                    </div>
+                    <div class="card-body text-warning">
+                        <h5 class="card-title">Deposit for Covent Event Planning Service</h5>
+                        <p class="card-text">
+                            Total Price (Service) = <?php echo $total; ?> <br>
+                            Discount = <?php echo $discount['discount_percent']; ?>% <br>
+                            Amount Paid (Deposit) = <?php echo $deposit; ?> <br>
+                        </p>
+                        <a class="text-black display-4" href="home.php">
+                            Exit?
+                        </a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        Status: Deposit Paid...
+                    </div>
+                </div>
             </div>
         </section>
         

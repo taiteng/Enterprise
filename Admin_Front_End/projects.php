@@ -34,6 +34,8 @@ include "../Back_End/db_conn.php";
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/css/vertical-layout-light/style.css">
         <link rel="icon" href="../Images/logo.png">
         
+        
+        
         <title>Covent</title>
     </head>
     <body>
@@ -190,7 +192,7 @@ include "../Back_End/db_conn.php";
                                                 <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
                                                     <div class="card card-rounded">
                                                         <div class="card-body">
-                                                            <table id="projectTable" class="table table-bordered table-striped mb-0 table-responsive" style="box-shadow: 2px 2px 10px #888888;">
+                                                            <table id="projectTable" class="table tttable table-bordered table-striped mb-0 table-responsive" style="box-shadow: 2px 2px 10px #888888;">
                                                                 <thead>
                                                                     <tr align="center">
                                                                         <th>Service ID</th>
