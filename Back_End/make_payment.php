@@ -7,11 +7,11 @@ if (session_status() === PHP_SESSION_NONE) {
 include_once 'db_conn.php';
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){
-    if(!empty($_POST['serviceID']) && !empty($_POST['totalPrice'])){
+    if(!empty($_POST['serviceID']) && !empty($_POST['projectstatus'])){
         $sid = $_POST['serviceID'];
-        $total = $_POST['totalPrice'];
+        $pstatus = $_POST['projectstatus'];
         
-        $sql = "UPDATE service SET total_price = '$total' WHERE service_id = '$sid'";
+        $sql = "UPDATE service SET project_status = '$pstatus' WHERE service_id = '$sid'";
 
         if ($conn->query($sql) === TRUE) {
             echo "Record updated successfully";
@@ -21,11 +21,8 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
             // tell the user
             echo json_encode(array("message" => "Service was updated."));
-            
-            $_SESSION["sid"] = $sid;
-            $_SESSION["total"] = $total;
 
-            header("Location: ../Front_End/payment.php", TRUE, 301);
+            header("Location: ../Front_End/paid.php", TRUE, 301);
             exit;
             
         } else {

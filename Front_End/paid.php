@@ -5,10 +5,6 @@ include("../Back_End/db_conn.php");
 include("../Back_End/function.php");
 
 $service_data = check_service($conn);
-$discount = 0;
-
-$total = $_SESSION["total"];
-$deposit = $total/2;
 
 ?>
 
@@ -232,64 +228,17 @@ $deposit = $total/2;
         
         <script>
             Swal.fire({
-              title: 'Calculating',
-              icon: 'info',
-              timer: 3000,
-              didOpen: () => {
-                Swal.showLoading()
-
-                timerInterval = setInterval(() => {
-                  Swal.getHtmlContainer().querySelector('strong')
-                    .textContent = (Swal.getTimerLeft() / 1000)
-                      .toFixed(0)
-                }, 100)
-              },
-              willClose: () => {
-                clearInterval(timerInterval)
-              }
-            })
+                icon: 'success',
+                title: 'Paid',
+                text: 'Payment has been made'
+                });
         </script>
         
         <section class="header2 cid-qMPFA6jKDg mbr-fullscreen" id="header2-1">
             <div class="mbr-overlay"></div>
             <div class="container">
-                <h3 class="text-center text-black mb-4 text-primary fw-bold display-2">Payment</h3>
-                <div class="card text-center border-warning mb-3" style="margin: auto; max-width: 30rem; background-color: white;">
-                    <div class="card-header">
-                        PayPal
-                    </div>
-                    <div class="card-body text-warning">
-                        <h5 class="card-title">Deposit for Covent Event Planning Service</h5>
-                        <p class="card-text">
-                            Total Price (Service) = <?php echo $total; ?> <br>
-                            Discount = <?php echo $discount; ?> <br>
-                            Amount Payable (Deposit) = <?php echo $deposit; ?> <br>
-                        </p>
-                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                            <input type="hidden" name="cmd" value="_s-xclick">
-                            <input type="hidden" name="business" value="paypal@taitengchan@gmail.com">
-                            <input type="hidden" name="hosted_button_id" value="4CBWYU4HBLQFS">
-                            <input type="hidden" name="item_name" value="Covent Event Planning Deposit">
-                            <input type="hidden" name="amount" value="<?php echo $deposit; ?>">
-                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-                        </form>
-                    </div>
-                    <div class="card-footer text-muted">
-                        Status: Awaiting payment...
-                    </div>
-                </div>
+                <h3 class="text-center text-black mb-4 text-primary fw-bold display-2">Paid</h3>
             </div>
-        </section>
-        
-        <section style="background-color: white;">
-            <center>
-                <form action="../Back_End/make_payment.php" method="POST" style="display: inline-block;">
-                    <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
-                    <input type="hidden" name="projectstatus" value="Open">
-                    <button type="submit" class="btn btn-success display-6">Skip</button>
-                </form>
-            </center>
         </section>
         
         <div>

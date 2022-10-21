@@ -2,7 +2,7 @@
 session_start();
 
 include("../Back_End/db_conn.php");
-include("../Back_End/validate_deletion_service.php");
+include("../Back_End/validate_service_deletion.php");
 
 if(isset($_SESSION['sid'])){
     del_service($_SESSION['sid']);
