@@ -55,7 +55,7 @@ while($row = mysqli_fetch_assoc($projectRecords)){
                                     . '</br><p>'.$row['progress_desc'].'</p>'
                                      
                                     ,
-            "action"        => '<i class="updateBtn button-30" aria-hidden="true" data-id="'.$row["service_id"].'" data-bs-toggle="modal" data-bs-target="#progressModal">Update Task</i>'
+            "action"        => '<i class="updateBtn button-30" aria-hidden="true" data-bs-id="'.$row["progress_desc"].'" data-id="'.$row["service_id"].'" data-bs-toggle="modal" data-bs-target="#progressModal">Update Task</i>'
                                 
                                 .'</br><i class="quotationBtn button-30">View Quotation</i>'
             );
@@ -75,7 +75,7 @@ while($row = mysqli_fetch_assoc($projectRecords)){
                                     . '</br><p>'.$row['progress_desc'].'</p>'
                                      
                                     ,
-            "action"        => '<i class="updateBtn button-30" aria-hidden="true" data-id="'.$row["service_id"].'" data-bs-toggle="modal" data-bs-target="#progressModal">Update Task</i>'
+            "action"        => '<i class="updateBtn button-30" aria-hidden="true" data-bs-id="'.$row["progress_desc"].'" data-id="'.$row["service_id"].'" data-bs-toggle="modal" data-bs-target="#progressModal">Update Task</i>'
                                 
                                 .'</br><i class="quotationBtn button-30">View Quotation</i>'
             );

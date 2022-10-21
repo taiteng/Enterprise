@@ -18,7 +18,7 @@ include "../Back_End/db_conn.php";
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-        
+        <script src="https://cdn.datatables.net/responsive/2.0.2/css/responsive.dataTables.min.css"></script>
         <!-- plugins:css -->
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/feather/feather.css">
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/mdi/css/materialdesignicons.min.css">
@@ -35,6 +35,21 @@ include "../Back_End/db_conn.php";
         <link rel="icon" href="../Images/logo.png">
         
         <title>Covent</title>
+        
+        <style>
+            .section-title {
+  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y:hidden
+}
+
+.paginate_button:hover
+{
+  background:none !important;
+  border:none !important;
+}
+        </style>
+        
     </head>
     <body>
         <div class="container-scroller">
@@ -180,39 +195,23 @@ include "../Back_End/db_conn.php";
             <!-- Main Panel Body -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="home-tab">
-                                <div class="tab-content tab-content-basic">
-                                    <div class="row">
-                                        <div class="col-lg-12 d-flex flex-column">
-                                            <div class="row flex-grow">
-                                                <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
-                                                    <div class="card card-rounded">
-                                                        <div class="card-body">
-                                                            <table id="projectTable" class="table table-bordered table-striped mb-0 table-responsive" style="box-shadow: 2px 2px 10px #888888;">
-                                                                <thead>
-                                                                    <tr align="center">
-                                                                        <th>Service ID</th>
-                                                                        <th>Task</th>
-                                                                        <th>Description</th>
-                                                                        <th>Person-In-Charge</th>
-                                                                        <th>Status</th>
-                                                                        <th>Progress Check</th>
-                                                                        <th>Progress Description</th>
-                                                                        <th>Quotation</th>
-                                                                        <th>Actions</th>
-                                                                    </tr>
-                                                                </thead>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="row section-title flex-grow">
+                        <div class="col-lg-12 d-flex flex-column">
+                                    <table id="projectTable" class="table table-bordered table-striped mb-0 responsive" style="box-shadow: 2px 2px 10px #888888; width:80%;">
+                                        <thead>
+                                            <tr align="center">
+                                                <th>Service ID</th>
+                                                <th>Task</th>
+                                                <th>Description</th>
+                                                <th>Person-In-Charge</th>
+                                                <th>Status</th>
+                                                <th>Progress Check</th>
+                                                <th>Progress Description</th>
+                                                <th>Quotation</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
                         </div>
                     </div>
                 </div>
@@ -405,6 +404,7 @@ include "../Back_End/db_conn.php";
 
         $(document).ready(function(){
             var projectDataTable = $('#projectTable').DataTable({
+                scrollCollapse: true,
                 'processing': true,
                 'serverSide': true,
                 'serverMethod': 'post',
@@ -478,7 +478,6 @@ include "../Back_End/db_conn.php";
       <script src="../Admin_Front_End/admin_design/js/hoverable-collapse.js"></script>
       <script src="../Admin_Front_End/admin_design/js/template.js"></script>
       <script src="../Admin_Front_End/admin_design/js/settings.js"></script>
-      <script src="../Admin_Front_End/admin_design/js/todolist.js"></script>
       <!-- endinject -->
       <!-- Custom js for this page-->
       <script src="../Admin_Front_End/admin_design/js/jquery.cookie.js" type="text/javascript"></script>
