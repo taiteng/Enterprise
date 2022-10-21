@@ -1,16 +1,11 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-// required headers
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: POST");
-header("Access-Control-Max-Age: 3600");
-header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
-  
 // include database and object files
-include_once 'API/database.php';
-include_once 'API/service.php';
+include_once 'Service_API/database.php';
+include_once 'Service_API/service.php';
   
 $database = new database();
 $db = $database->getConnection();
@@ -21,7 +16,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     if(!empty($_POST['serviceID'])){
         $service->service_id = $_POST['serviceID'];
         
-        // create the product
+        // create the service
         if($service->delete()){
 
             // set response code - 201 created
@@ -34,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
             exit;
         }
   
-        // if unable to create the product, tell the user
+        // if unable to create the service, tell the user
         else{
 
             // set response code - 503 service unavailable

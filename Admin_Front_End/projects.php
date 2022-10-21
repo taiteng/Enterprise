@@ -34,6 +34,8 @@ include "../Back_End/db_conn.php";
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/css/vertical-layout-light/style.css">
         <link rel="icon" href="../Images/logo.png">
         
+        
+        
         <title>Covent</title>
         
         <style>
@@ -197,21 +199,21 @@ include "../Back_End/db_conn.php";
                 <div class="content-wrapper">
                     <div class="row section-title flex-grow">
                         <div class="col-lg-12 d-flex flex-column">
-                                    <table id="projectTable" class="table table-bordered table-striped mb-0 responsive" style="box-shadow: 2px 2px 10px #888888; width:80%;">
-                                        <thead>
-                                            <tr align="center">
-                                                <th>Service ID</th>
-                                                <th>Task</th>
-                                                <th>Description</th>
-                                                <th>Person-In-Charge</th>
-                                                <th>Status</th>
-                                                <th>Progress Check</th>
-                                                <th>Progress Description</th>
-                                                <th>Quotation</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                    </table>
+                              <table id="projectTable" class="table table-bordered table-striped mb-0 responsive" style="box-shadow: 2px 2px 10px #888888; width:80%;">
+                                  <thead>
+                                      <tr align="center">
+                                          <th>Service ID</th>
+                                          <th>Task</th>
+                                          <th>Description</th>
+                                          <th>Person-In-Charge</th>
+                                          <th>Status</th>
+                                          <th>Progress Check</th>
+                                          <th>Progress Description</th>
+                                          <th>Quotation</th>
+                                          <th>Actions</th>
+                                      </tr>
+                                  </thead>
+                              </table>
                         </div>
                     </div>
                 </div>

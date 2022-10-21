@@ -35,7 +35,7 @@ fetch('Z_review_con.php').then((res) => res.json())
                     output += `<table align="center">
                                     <tr>
                                         <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
+                                            <img src="../Images/star.jpg" width="30px" height="30px" alt="star"/>
                                         </td>
                                         <td>
                                             <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
@@ -56,10 +56,10 @@ fetch('Z_review_con.php').then((res) => res.json())
                     output += `<table align="center">
                                     <tr>
                                         <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
+                                            <img src="../Images/star.jpg" width="30px" height="30px" alt="star"/>
                                         </td>
                                         <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
+                                            <img src="../Images/star.jpg" width="30px" height="30px" alt="star"/>
                                         </td>
                                         <td>
                                             <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
@@ -77,13 +77,13 @@ fetch('Z_review_con.php').then((res) => res.json())
                     output += `<table align="center">
                                     <tr>
                                         <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
+                                            <img src="../Images/star.jpg" width="30px" height="30px" alt="star"/>
                                         </td>
                                         <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
+                                            <img src="../Images/star.jpg" width="30px" height="30px" alt="star"/>
                                         </td>
                                         <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
+                                            <img src="../Images/star.jpg" width="30px" height="30px" alt="star"/>
                                         </td>
                                         <td>
                                             <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
@@ -98,16 +98,16 @@ fetch('Z_review_con.php').then((res) => res.json())
                     output += `<table align="center">
                                     <tr>
                                         <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
+                                            <img src="../Images/star.jpg" width="30px" height="30px" alt="star"/>
                                         </td>
                                         <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
+                                            <img src="../Images/star.jpg" width="30px" height="30px" alt="star"/>
                                         </td>
                                         <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
+                                            <img src="../Images/star.jpg" width="30px" height="30px" alt="star"/>
                                         </td>
                                         <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
+                                            <img src="../Images/star.jpg" width="30px" height="30px" alt="star"/>
                                         </td>
                                         <td>
                                             <img src="../Images/empty-star.png" width="30px" height="30px" alt="star"/>
@@ -119,19 +119,19 @@ fetch('Z_review_con.php').then((res) => res.json())
                     output += `<table align="center">
                                     <tr>
                                         <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
+                                            <img src="../Images/star.jpg" width="30px" height="30px" alt="star"/>
                                         </td>
                                         <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
+                                            <img src="../Images/star.jpg" width="30px" height="30px" alt="star"/>
                                         </td>
                                         <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
+                                            <img src="../Images/star.jpg" width="30px" height="30px" alt="star"/>
                                         </td>
                                         <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
+                                            <img src="../Images/star.jpg" width="30px" height="30px" alt="star"/>
                                         </td>
                                         <td>
-                                            <img src="../Images/star.png" width="30px" height="30px" alt="star"/>
+                                            <img src="../Images/star.jpg" width="30px" height="30px" alt="star"/>
                                         </td>
                                     </tr>
                                 </table>

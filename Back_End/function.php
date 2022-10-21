@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 function random_id_gen($length){
     //the characters you want in your id
@@ -10,8 +12,11 @@ function random_id_gen($length){
     for ($i = 0; $i < $length; $i++) {
         $string .= $characters[mt_rand(0, $max)];
     }
+    
+    if (!isset($_SESSION['sid'])) {
+        $_SESSION['sid'] = $string;
+    }
 
-    $_SESSION['sid'] = $string;
     return $string;
 }
 
@@ -27,11 +32,8 @@ function check_service($conn){
             return $service_data;
         }
 
-        header("Location: ../Front_End/quotation.php");
-        die;
     }
     else{
-        //redirect to login
         header("Location: ../Front_End/home.php");
         die;
     }
@@ -131,4 +133,16 @@ function check_fun($fun_name, $conn){
     }
     
     return $fun_data;
+}
+
+function check_discount($conn){
+    $status = 'enabled';
+    $query = "select * from discount where discount_status = '$status'";
+
+    $result = mysqli_query($conn, $query);
+    if ($result && mysqli_num_rows($result) > 0) {
+        $discount_data = mysqli_fetch_assoc($result);
+    }
+    
+    return $discount_data;
 }

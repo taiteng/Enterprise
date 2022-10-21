@@ -232,28 +232,16 @@ $deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
         
         <script>
             Swal.fire({
-              title: 'Calculating',
-              icon: 'info',
-              timer: 3000,
-              didOpen: () => {
-                Swal.showLoading()
-
-                timerInterval = setInterval(() => {
-                  Swal.getHtmlContainer().querySelector('strong')
-                    .textContent = (Swal.getTimerLeft() / 1000)
-                      .toFixed(0)
-                }, 100)
-              },
-              willClose: () => {
-                clearInterval(timerInterval)
-              }
-            })
+                icon: 'success',
+                title: 'Paid',
+                text: 'Payment has been made'
+                });
         </script>
         
         <section class="header2 cid-qMPFA6jKDg mbr-fullscreen" id="header2-1">
             <div class="mbr-overlay"></div>
             <div class="container">
-                <h3 class="text-center text-black mb-4 text-primary fw-bold display-2">Payment</h3>
+                <h3 class="text-center text-black mb-4 text-primary fw-bold display-2">Paid</h3>
                 <div class="card text-center border-warning mb-3" style="margin: auto; max-width: 30rem; background-color: white;">
                     <div class="card-header">
                         PayPal
@@ -263,73 +251,17 @@ $deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
                         <p class="card-text">
                             Total Price (Service) = <?php echo $total; ?> <br>
                             Discount = <?php echo $discount['discount_percent']; ?>% <br>
-                            Amount Payable (Deposit) = <?php echo $deposit; ?> <br>
+                            Amount Paid (Deposit) = <?php echo $deposit; ?> <br>
                         </p>
-                        <div id="smart-button-container">
-                            <div style="text-align: center;">
-                                <div id="paypal-button-container"></div>
-                            </div>
-                        </div>
+                        <a class="text-black display-4" href="home.php">
+                            Exit?
+                        </a>
                     </div>
                     <div class="card-footer text-muted">
-                        Status: Awaiting payment...
+                        Status: Deposit Paid...
                     </div>
-                    
-                    <script src="https://www.paypal.com/sdk/js?client-id=AZlHPSrkGjTwm0_6CRhRdaQrm3rIb78Tig7YsjRaGYAkhckKtu8NGabynxeS57mrYXp-OLjSc1MsyVDP&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
-                    <script>
-                      function initPayPalButton() {
-                        var total = <?php echo json_encode($deposit); ?>;
-                          
-                        paypal.Buttons({
-                          style: {
-                            shape: 'pill',
-                            color: 'gold',
-                            layout: 'vertical',
-                            label: 'paypal',
-          
-                          },
-
-                          createOrder: function(data, actions) {
-                            return actions.order.create({
-                              purchase_units: [{"description":"Deposit for Covent Event Planning System","amount":{"currency_code":"USD","value":total,"breakdown":{"item_total":{"currency_code":"USD","value":total},"shipping":{"currency_code":"USD","value":0},"tax_total":{"currency_code":"USD","value":0}}}}]
-                            });
-                          },
-
-                          onApprove: function(data, actions) {
-                            return actions.order.capture().then(function(orderData) {
-            
-                              // Full available details
-                              console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-
-                              // Show a success message within this page, e.g.
-                              const element = document.getElementById('paypal-button-container');
-                              element.innerHTML = '';
-                              element.innerHTML = '<h3>Thank you for your payment!</h3>';
-
-                              // Or go to another URL:  actions.redirect('thank_you.html');
-            
-                            });
-                          },
-
-                          onError: function(err) {
-                            console.log(err);
-                          }
-                        }).render('#paypal-button-container');
-                      }
-                      initPayPalButton();
-                    </script>
                 </div>
             </div>
-        </section>
-        
-        <section style="background-color: whitesmoke;">
-            <center>
-                <form action="../Back_End/make_payment.php" method="POST" style="display: inline-block;">
-                    <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
-                    <input type="hidden" name="projectstatus" value="Open">
-                    <button type="submit" class="btn btn-success display-6">Skip</button>
-                </form>
-            </center>
         </section>
         
         <div>
