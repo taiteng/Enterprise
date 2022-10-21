@@ -6,10 +6,6 @@ include("../Back_End/function.php");
 
 $sid = random_id_gen(24);
 
-if(!isset($_SESSION['sid'])){
-    $_SESSION['sid'] = $sid;
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -342,7 +338,7 @@ if(!isset($_SESSION['sid'])){
                             </div>
                         </div>
 
-                        <input class="form-control" type="hidden" value="<?php echo $sid; ?>" name="sid" id="sid" />
+                        <input class="form-control" type="hidden" value="<?php echo $_SESSION['sid']; ?>" name="sid" id="sid" />
                         <input class="form-control" type="hidden" value="00" name="totalprice" id="totalprice" />
                         <input class="form-control" type="hidden" value="Unpaid" name="projectstatus" id="projectstatus" />
                         <input class="form-control" type="hidden" value="-" name="workername" id="workername" />
