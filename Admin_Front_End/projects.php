@@ -18,7 +18,7 @@ include "../Back_End/db_conn.php";
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-        
+        <script src="https://cdn.datatables.net/responsive/2.0.2/css/responsive.dataTables.min.css"></script>
         <!-- plugins:css -->
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/feather/feather.css">
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/mdi/css/materialdesignicons.min.css">
@@ -35,6 +35,21 @@ include "../Back_End/db_conn.php";
         <link rel="icon" href="../Images/logo.png">
         
         <title>Covent</title>
+        
+        <style>
+            .section-title {
+  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y:hidden
+}
+
+.paginate_button:hover
+{
+  background:none !important;
+  border:none !important;
+}
+        </style>
+        
     </head>
     <body>
         <div class="container-scroller">
@@ -479,7 +494,6 @@ include "../Back_End/db_conn.php";
       <script src="../Admin_Front_End/admin_design/js/hoverable-collapse.js"></script>
       <script src="../Admin_Front_End/admin_design/js/template.js"></script>
       <script src="../Admin_Front_End/admin_design/js/settings.js"></script>
-      <script src="../Admin_Front_End/admin_design/js/todolist.js"></script>
       <!-- endinject -->
       <!-- Custom js for this page-->
       <script src="../Admin_Front_End/admin_design/js/jquery.cookie.js" type="text/javascript"></script>
