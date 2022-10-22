@@ -165,11 +165,11 @@ if (!isset($_SESSION['loggedin'])) {
                                 <label>Progress Description:</label>
                                 
                                 <?php
-                                $sql = "SELECT progress_desc, progress_cbeck FROM service";
+                                $sql = "SELECT progress_desc, progress_check FROM service";
                                 ?>
                                 
                                 <br>
-                                <textarea class="form-control" name="progressDesc" rows="3" required></textarea>
+                                <textarea class="form-control" id="progressText" name="progressDesc" rows="3" required></textarea>
 
 
                             </div>
@@ -199,7 +199,10 @@ if (!isset($_SESSION['loggedin'])) {
             $(document).ready(function(){
                 $(document).on('click', '.updateBtn', function(){
                     var serviceId = $(this).data('id');
+                    var serviceDesc = $(this).data('bs-id');
                     $('#sid').val(serviceId);
+                    $('#progressText').val(serviceDesc);
+                    
                 });
             });
             
