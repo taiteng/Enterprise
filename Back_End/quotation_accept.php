@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// include database and object files
+// include database
 include_once 'db_conn.php';
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){

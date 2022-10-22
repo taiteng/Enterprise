@@ -34,8 +34,6 @@ include "../Back_End/db_conn.php";
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/css/vertical-layout-light/style.css">
         <link rel="icon" href="../Images/logo.png">
         
-        
-        
         <title>Covent</title>
         
         <style>

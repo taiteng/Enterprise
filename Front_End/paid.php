@@ -234,7 +234,7 @@ $deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
             Swal.fire({
                 icon: 'success',
                 title: 'Paid',
-                text: 'Payment has been made'
+                text: 'Payment made, receipt sent to email'
                 });
         </script>
         
@@ -253,15 +253,17 @@ $deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
                             Discount = <?php echo $discount['discount_percent']; ?>% <br>
                             Amount Paid (Deposit) = <?php echo $deposit; ?> <br>
                         </p>
-                        <a class="text-black display-4" href="home.php">
-                            Exit?
-                        </a>
                     </div>
                     <div class="card-footer text-muted">
                         Status: Deposit Paid...
                     </div>
                 </div>
             </div>
+            <center>
+                <a class="text-black display-4" href="home.php">
+                    <button type="submit" class="btn btn-white-outline display-6">Exit?</button>
+                </a>
+            </center>
         </section>
         
         <div>
