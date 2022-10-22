@@ -27,14 +27,12 @@ include "../Back_End/db_conn.php";
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/simple-line-icons/css/simple-line-icons.css">
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/css/vendor.bundle.base.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href='https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
+        <link href='https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
         
         <!-- End plugin css for this page -->
         <!-- inject:css -->
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/css/vertical-layout-light/style.css">
         <link rel="icon" href="../Images/logo.png">
-        
-        
         
         <title>Covent</title>
     </head>
@@ -192,7 +190,7 @@ include "../Back_End/db_conn.php";
                                                 <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
                                                     <div class="card card-rounded">
                                                         <div class="card-body">
-                                                            <table id="projectTable" class="table tttable table-bordered table-striped mb-0 table-responsive" style="box-shadow: 2px 2px 10px #888888;">
+                                                            <table id="projectTable" class="table table-bordered table-striped mb-0 table-responsive" style="width: 100%; box-shadow: 2px 2px 10px #888888; overflow-x: auto;">
                                                                 <thead>
                                                                     <tr align="center">
                                                                         <th>Service ID</th>
@@ -407,6 +405,7 @@ include "../Back_End/db_conn.php";
 
         $(document).ready(function(){
             var projectDataTable = $('#projectTable').DataTable({
+                scrollX: true,
                 'processing': true,
                 'serverSide': true,
                 'serverMethod': 'post',
