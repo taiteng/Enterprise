@@ -1,5 +1,6 @@
 <?php
 session_start();
+include '../Admin_Back_End/config.php';
 ?>
 
 <!DOCTYPE html>
@@ -17,15 +18,18 @@ session_start();
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/simple-line-icons/css/simple-line-icons.css">
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/css/vendor.bundle.base.css">
         
-        <!-- endinject -->
-        <!-- Plugin css for this page -->
-        <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
-        <link rel="stylesheet" href="../Admin_Front_End/admin_design/js/select.dataTables.min.css">
-        <!-- End plugin css for this page -->
         <!-- inject:css -->
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/css/vertical-layout-light/style.css">
         <!-- endinject -->
         <link rel="icon" href="../Images/logo.png" />
+        
+        <style>
+            .list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+li:nth-child(odd)
+        </style>
         
         <title>Covent</title>
     </head>
@@ -216,12 +220,14 @@ session_start();
                                             <div class="card card-rounded">
                                                 <div class="card-body">
                                                     <div class="row">
-                                                        <div class="col-lg-12">
+                                                        <div class="col-12 my-auto">
                                                             <div class="d-flex justify-content-between align-items-center mb-3">
                                                                 <h4 class="card-title card-title-dash">Progress Ratio</h4>
                                                             </div>
                                                             <canvas class="my-auto" id="doughnutChart" height="200"></canvas>
-                                                            <div id="doughnut-chart-legend" class="mt-5 text-center"></div>
+                                                                <div class=" flex-column justify-content-evenly align-items-center">
+                                                                    <div id="doughnut-chart-legend" class="mt-5 text-center "></div>
+                                                                </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -419,7 +425,9 @@ session_start();
       <!-- endinject -->
       <!-- Custom js for this page-->
       <script src="../Admin_Front_End/admin_design/js/jquery.cookie.js" type="text/javascript"></script>
-      <script src="../Admin_Front_End/admin_design/js/dashboard.js"></script>
+      <script src="../Admin_Front_End/admin_js/performanceLine.js" type="text/javascript"></script>
+      <script src="../Admin_Front_End/admin_js/doughnutChart.js?v=<?=$version?>" type="text/javascript"></script>
+      
       <!-- End custom js for this page-->
     </body>
 
