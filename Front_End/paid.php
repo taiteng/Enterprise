@@ -261,7 +261,7 @@ $deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
             </div>
             <center>
                 <a class="text-black display-4" href="home.php">
-                    <button type="submit" class="btn btn-white-outline display-6">Exit</button>
+                    <button type="submit" class="btn btn-white-outline display-6">Exit?</button>
                 </a>
             </center>
         </section>
