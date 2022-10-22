@@ -27,14 +27,12 @@ include "../Back_End/db_conn.php";
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/simple-line-icons/css/simple-line-icons.css">
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/css/vendor.bundle.base.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href='https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
+        <link href='https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
         
         <!-- End plugin css for this page -->
         <!-- inject:css -->
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/css/vertical-layout-light/style.css">
         <link rel="icon" href="../Images/logo.png">
-        
-        
         
         <title>Covent</title>
         
@@ -197,23 +195,39 @@ include "../Back_End/db_conn.php";
             <!-- Main Panel Body -->
             <div class="main-panel">
                 <div class="content-wrapper">
-                    <div class="row section-title flex-grow">
-                        <div class="col-lg-12 d-flex flex-column">
-                              <table id="projectTable" class="table table-bordered table-striped mb-0 responsive" style="box-shadow: 2px 2px 10px #888888; width:80%;">
-                                  <thead>
-                                      <tr align="center">
-                                          <th>Service ID</th>
-                                          <th>Task</th>
-                                          <th>Description</th>
-                                          <th>Person-In-Charge</th>
-                                          <th>Status</th>
-                                          <th>Progress Check</th>
-                                          <th>Progress Description</th>
-                                          <th>Quotation</th>
-                                          <th>Actions</th>
-                                      </tr>
-                                  </thead>
-                              </table>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="home-tab">
+                                <div class="tab-content tab-content-basic">
+                                    <div class="row">
+                                        <div class="col-lg-12 d-flex flex-column">
+                                            <div class="row flex-grow">
+                                                <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
+                                                    <div class="card card-rounded">
+                                                        <div class="card-body">
+                                                            <table id="projectTable" class="table table-bordered table-striped mb-0 table-responsive" style="width: 100%; box-shadow: 2px 2px 10px #888888; overflow-x: auto;">
+                                                                <thead>
+                                                                    <tr align="center">
+                                                                        <th>Service ID</th>
+                                                                        <th>Task</th>
+                                                                        <th>Description</th>
+                                                                        <th>Person-In-Charge</th>
+                                                                        <th>Status</th>
+                                                                        <th>Progress Check</th>
+                                                                        <th>Progress Description</th>
+                                                                        <th>Quotation</th>
+                                                                        <th>Actions</th>
+                                                                    </tr>
+                                                                </thead>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -406,7 +420,7 @@ include "../Back_End/db_conn.php";
 
         $(document).ready(function(){
             var projectDataTable = $('#projectTable').DataTable({
-                scrollCollapse: true,
+                scrollX: true,
                 'processing': true,
                 'serverSide': true,
                 'serverMethod': 'post',

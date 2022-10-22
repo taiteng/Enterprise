@@ -225,7 +225,6 @@ if(isset($_SESSION["reviewCreated"])){
             <div class="container">
                 <h1 class="display-2"></h1>
                 <h3 class="text-center text-black mb-4 text-primary fw-bold display-2">Quotation</h3>
-                <form method="post" action="send_email.php">
                     <div class="container shadow-lg p-3 mb-5 bg-white rounded" style="text-align: center;" id="htmlContent">
                         <table class="table table-borderless table-responsive" style="min-height: 100px;">
                             <tr class="body" align="center" style="padding:5px">
@@ -474,9 +473,7 @@ if(isset($_SESSION["reviewCreated"])){
                             </table>
                             </tr>
                         </table>
-                        <br>
                     </div>
-                </form>
             </div>
         </section>
         
@@ -493,12 +490,71 @@ if(isset($_SESSION["reviewCreated"])){
                 </form>
             </center>
 
-            <div id="editor"></div>
-
             <center>
-                <button class="btn btn-black-outline display-6" type="submit" id="generatePDF">Download PDF</button>
-                <form action="send_email.php" method="POST" style="display: inline-block;">
+                <form action="make_pdf.php" method="POST" style="display: inline-block;">
                     <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
+                    <input type="hidden" name="siteName" value="<?php echo $service_data['site_name']; ?>">
+                    <input type="hidden" name="siteAddress" value="<?php echo $service_data['site_address']; ?>">
+                    <input type="hidden" name="siteSize" value="<?php echo $service_data['site_size']; ?>">
+                    <input type="hidden" name="serviceType" value="<?php echo $service_data['service_type']; ?>">
+                    <input type="hidden" name="serviceDesc" value="<?php echo $service_data['service_desc']; ?>">
+                    <input type="hidden" name="noppl" value="<?php echo $service_data['no_ppl']; ?>">
+                    <input type="hidden" name="username" value="<?php echo $service_data['username']; ?>">
+                    <input type="hidden" name="contact" value="<?php echo $service_data['contact']; ?>">
+                    <input type="hidden" name="email" value="<?php echo $service_data['email']; ?>">
+                    <input type="hidden" name="eventDate" value="<?php echo $service_data['event_date']; ?>">
+                    <input type="hidden" name="eventTime" value="<?php echo $service_data['event_time']; ?>">
+                    <input type="hidden" name="nochair" value="<?php echo $service_data['no_chair']; ?>">
+                    <input type="hidden" name="chairPrice" value="<?php echo $chairPrice; ?>">
+                    <input type="hidden" name="nobabychair" value="<?php echo $service_data['no_babychair']; ?>">
+                    <input type="hidden" name="babychairPrice" value="<?php echo $babychairPrice; ?>">
+                    <input type="hidden" name="notable" value="<?php echo $service_data['no_table']; ?>">
+                    <input type="hidden" name="tablePrice" value="<?php echo $tablePrice; ?>">
+                    <input type="hidden" name="nocup" value="<?php echo $service_data['no_cup']; ?>">
+                    <input type="hidden" name="cupPrice" value="<?php echo $cupPrice; ?>">
+                    <input type="hidden" name="nocutlery" value="<?php echo $service_data['no_cutlery']; ?>">
+                    <input type="hidden" name="cutleryPrice" value="<?php echo $cutleryPrice; ?>">
+                    <input type="hidden" name="fndName" value="<?php echo $service_data['FND_name']; ?>">
+                    <input type="hidden" name="nofnd" value="<?php echo $service_data['no_FND']; ?>">
+                    <input type="hidden" name="fndPrice" value="<?php echo $FNDPrice; ?>">
+                    <input type="hidden" name="decoName" value="<?php echo $service_data['deco_name']; ?>">
+                    <input type="hidden" name="decoPrice" value="<?php echo $decoPrice; ?>">
+                    <input type="hidden" name="funName" value="<?php echo $service_data['fun_name']; ?>">
+                    <input type="hidden" name="funPrice" value="<?php echo $funPrice; ?>">
+                    <input type="hidden" name="totalPrice" value="<?php echo $totalPrice; ?>">
+                    <button class="btn btn-black-outline display-6" type="submit">Download PDF</button>
+                </form>
+                <form action="../Back_End/send_mail.php" method="POST" style="display: inline-block;">
+                    <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
+                    <input type="hidden" name="siteName" value="<?php echo $service_data['site_name']; ?>">
+                    <input type="hidden" name="siteAddress" value="<?php echo $service_data['site_address']; ?>">
+                    <input type="hidden" name="siteSize" value="<?php echo $service_data['site_size']; ?>">
+                    <input type="hidden" name="serviceType" value="<?php echo $service_data['service_type']; ?>">
+                    <input type="hidden" name="serviceDesc" value="<?php echo $service_data['service_desc']; ?>">
+                    <input type="hidden" name="noppl" value="<?php echo $service_data['no_ppl']; ?>">
+                    <input type="hidden" name="username" value="<?php echo $service_data['username']; ?>">
+                    <input type="hidden" name="contact" value="<?php echo $service_data['contact']; ?>">
+                    <input type="hidden" name="email" value="<?php echo $service_data['email']; ?>">
+                    <input type="hidden" name="eventDate" value="<?php echo $service_data['event_date']; ?>">
+                    <input type="hidden" name="eventTime" value="<?php echo $service_data['event_time']; ?>">
+                    <input type="hidden" name="nochair" value="<?php echo $service_data['no_chair']; ?>">
+                    <input type="hidden" name="chairPrice" value="<?php echo $chairPrice; ?>">
+                    <input type="hidden" name="nobabychair" value="<?php echo $service_data['no_babychair']; ?>">
+                    <input type="hidden" name="babychairPrice" value="<?php echo $babychairPrice; ?>">
+                    <input type="hidden" name="notable" value="<?php echo $service_data['no_table']; ?>">
+                    <input type="hidden" name="tablePrice" value="<?php echo $tablePrice; ?>">
+                    <input type="hidden" name="nocup" value="<?php echo $service_data['no_cup']; ?>">
+                    <input type="hidden" name="cupPrice" value="<?php echo $cupPrice; ?>">
+                    <input type="hidden" name="nocutlery" value="<?php echo $service_data['no_cutlery']; ?>">
+                    <input type="hidden" name="cutleryPrice" value="<?php echo $cutleryPrice; ?>">
+                    <input type="hidden" name="fndName" value="<?php echo $service_data['FND_name']; ?>">
+                    <input type="hidden" name="nofnd" value="<?php echo $service_data['no_FND']; ?>">
+                    <input type="hidden" name="fndPrice" value="<?php echo $FNDPrice; ?>">
+                    <input type="hidden" name="decoName" value="<?php echo $service_data['deco_name']; ?>">
+                    <input type="hidden" name="decoPrice" value="<?php echo $decoPrice; ?>">
+                    <input type="hidden" name="funName" value="<?php echo $service_data['fun_name']; ?>">
+                    <input type="hidden" name="funPrice" value="<?php echo $funPrice; ?>">
+                    <input type="hidden" name="totalPrice" value="<?php echo $totalPrice; ?>">
                     <button type="submit" class="btn btn-white-outline display-6">Send to Mail</button>
                 </form>
             </center>
@@ -642,6 +698,21 @@ if(isset($_SESSION["reviewCreated"])){
             <!-- Footer -->
         </div>
         <!-- End of .container -->
+        
+        <?php if (isset($_SESSION['mailSent'])) { ?>
+            <script>
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Quotation have been sent',
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            </script>
+            <?php
+            unset($_SESSION['mailSent']);
+        }
+        ?>
 
         <?php if (isset($_SESSION['reviewCreated'])) { ?>
             <script>
@@ -655,27 +726,7 @@ if(isset($_SESSION["reviewCreated"])){
             unset($_SESSION['reviewCreated']);
         }
         ?>
-        
-        <!--the script-->
-        <script type="text/javascript">
-            var doc = new jsPDF();
-            var specialElementHandlers = {
-                '#editor': function (element, renderer) {
-                    return true;
-                }
-            };
-
-
-            $('#generatePDF').click(function () {
-                doc.fromHTML($('#htmlContent').html(), {
-                    'width': 2000,
-                    'elementHandlers': specialElementHandlers
-                });
-                doc.save('sample_file.pdf');
-            });
             
-        </script>
-        
         <!-- Script to call displays -->
         <script src="Z_quotation.js"></script>
     </body>
