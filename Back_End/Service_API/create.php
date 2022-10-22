@@ -3,6 +3,8 @@
 // include database and object files
 include_once 'database.php';
 include_once 'service.php';
+include("../db_conn.php");
+include("../function.php");
   
 $database = new database();
 $db = $database->getConnection();
@@ -38,7 +40,37 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         $service->no_FND = $_POST['noFND'];
         $service->deco_name = $_POST['selectDeco'];
         $service->fun_name = $_POST['selectFun'];
-        $service->total_price = $_POST['totalprice'];
+        
+        $chair_data = check_chair($conn);
+        $babychair_data = check_babychair($conn);
+        $table_data = check_table($conn);
+        $cup_data = check_cup($conn);
+        $cutlery_data = check_cutlery($conn);
+        $FND_data = check_FND($_POST['selectFND'], $conn);
+        $deco_data = check_deco($_POST['selectDeco'], $conn);
+        $fun_data = check_fun($_POST['selectFun'], $conn);
+
+        $chairPrice = $chair_data['item_price'] * $_POST['nochair'];
+        $babychairPrice = $babychair_data['item_price'] * $_POST['nobabychair'];
+        $tablePrice = $table_data['item_price'] * $_POST['notable'];
+        $cupPrice = $cup_data['item_price'] * $_POST['nocup'];
+        $cutleryPrice = $cutlery_data['item_price'] * $_POST['nocutlery'];
+        $FNDPrice = $FND_data['pack_price'] * $_POST['noFND'];
+        $decoPrice = $deco_data['deco_price'] * $_POST['size'];
+        $funPrice = $fun_data['fun_price'];
+        $totalPrice = $chairPrice + $babychairPrice + $tablePrice + $cupPrice + $cutleryPrice + $FNDPrice + $decoPrice + $funPrice;
+
+        $_SESSION['chairPrice'] = $chairPrice;
+        $_SESSION['babychairPrice'] = $babychairPrice;
+        $_SESSION['tablePrice'] = $tablePrice;
+        $_SESSION['cupPrice'] = $cupPrice;
+        $_SESSION['cutleryPrice'] = $cutleryPrice;
+        $_SESSION['FNDPrice'] = $FNDPrice;
+        $_SESSION['decoPrice'] = $decoPrice;
+        $_SESSION['funPrice'] = $funPrice;
+        $_SESSION['totalPrice'] = $totalPrice;
+
+        $service->total_price = $totalPrice;
         $service->project_status = $_POST['projectstatus'];
         $service->worker_name = $_POST['workername'];
         $service->progress_check = $_POST['progresscheck'];

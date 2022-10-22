@@ -14,17 +14,15 @@ $FND_data = check_FND($service_data['FND_name'], $conn);
 $deco_data = check_deco($service_data['deco_name'], $conn);
 $fun_data = check_fun($service_data['fun_name'], $conn);
 
-$chairPrice = $chair_data['item_price'] * $service_data['no_chair'];
-$babychairPrice = $babychair_data['item_price'] * $service_data['no_babychair'];
-$tablePrice = $table_data['item_price'] * $service_data['no_table'];
-$cupPrice = $cup_data['item_price'] * $service_data['no_cup'];
-$cutleryPrice = $cutlery_data['item_price'] * $service_data['no_cutlery'];
-$FNDPrice = $FND_data['pack_price'] * $service_data['no_FND'];
-$decoPrice =$deco_data['deco_price'] * $service_data['site_size'];
-$funPrice = $fun_data['fun_price'];
-$totalPrice = $chairPrice + $babychairPrice + $tablePrice + $cupPrice + $cutleryPrice + $FNDPrice + $decoPrice + $funPrice;
-
-$_SESSION['totalPrice'] = $totalPrice;
+$chairPrice = $_SESSION['chairPrice'];
+$babychairPrice = $_SESSION['babychairPrice'];
+$tablePrice = $_SESSION['tablePrice'];
+$cupPrice = $_SESSION['cupPrice'];
+$cutleryPrice = $_SESSION['cutleryPrice'];
+$FNDPrice = $_SESSION['FNDPrice'];
+$decoPrice = $_SESSION['decoPrice'];
+$funPrice = $_SESSION['funPrice'];
+$totalPrice = $_SESSION['totalPrice'];
 
 if(isset($_SESSION["reviewCreated"])){
     unset ($_SESSION["reviewCreated"]);
