@@ -21,25 +21,25 @@ $result7 = mysqli_query($conn, $query7);
 
 $data = array();
 foreach($result1 as $row){
-    $data['Birthday Party'] = $row;
+    $data['Birthday Party'] = $row['COUNT(service_id)'];
 }
 foreach($result2 as $row){
-    $data['Wedding Ceremony'] = $row;
+    $data['Wedding Ceremony'] = $row['COUNT(service_id)'];
 }
 foreach($result3 as $row){
-    $data['Farewell Ceremony'] = $row;
+    $data['Farewell Ceremony'] = $row['COUNT(service_id)'];
 }
 foreach($result4 as $row){
-    $data['Christmas Celebration'] = $row;
+    $data['Christmas Celebration'] = $row['COUNT(service_id)'];
 }
 foreach($result5 as $row){
-    $data['New Year Celebration'] = $row;
+    $data['New Year Celebration'] = $row['COUNT(service_id)'];
 }
 foreach($result6 as $row){
-    $data['Deepavali Celebration'] = $row;
+    $data['Deepavali Celebration'] = $row['COUNT(service_id)'];
 }
 foreach($result7 as $row){
-    $data['Raya Aidilfitri Celebration'] = $row;
+    $data['Raya Aidilfitri Celebration'] = $row['COUNT(service_id)'];
 }
 
 $result1->close();

@@ -18,7 +18,7 @@ $(document).ready(function(){
                 var doughnutChartCanvas = $("#doughnutChart").get(0).getContext("2d");
                 var doughnutPieData = {
                   datasets: [{
-                    data: [birthday, 2, 3, 4, 5, 6, 7],
+                    data: [birthday, farewell, wedding, christmas, newyear, deepavali, raya],
                     backgroundColor: [
                       "#1F3BB3",
                       "#FDD0C7",
@@ -63,11 +63,11 @@ $(document).ready(function(){
                     var text = [];
                     var index = 0;
                     
-                    text.push('<div class="chartjs-legend"><ul class="list justify-content-evenly align-items-center">');
+                    text.push('<div class="chartjs-legend">');
                     for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
                         
                         if(index === 0){
-                            text.push('<li><span style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
+                            text.push('<ul class="justify-content-center align-items-center"><li style="margin-top:15px;"><span style="margin-left:15px; background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
                             text.push('</span>');
                             
                             if (chart.data.labels[i]) {
@@ -76,17 +76,17 @@ $(document).ready(function(){
                             index+=1;
                             
                         }else if(index % 3 === 0){
-                            text.push('<span style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
+                            text.push('<span style="margin-left:15px; background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
                             text.push('</span>');
                             
                             if (chart.data.labels[i]) {
                                 text.push(chart.data.labels[i]);
                             }
-                            text.push('</li>');
+                            text.push('</li></ul>');
                             index=0;
                             
                         }else{
-                            text.push('<span style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
+                            text.push('<span style="margin-left:15px; background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
                             text.push('</span>');
                             
                             if (chart.data.labels[i]) {

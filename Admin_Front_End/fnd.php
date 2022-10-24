@@ -10,7 +10,7 @@ include '../Back_End/db_conn.php';
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!-- plugins:css -->
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/feather/feather.css">
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/mdi/css/materialdesignicons.min.css">
@@ -51,11 +51,11 @@ include '../Back_End/db_conn.php';
                 </div>
 
                 <!-- Greeting Bar -->
-                <div class="navbar-menu-wrapper d-flex align-items-top"> 
+                <div class="navbar-menu-wrapper d-flex align-items-top">
                     <ul class="navbar-nav">
                         <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                            <h1 class="welcome-text">Greetings, <span class="text-black fw-bold">John Doe</span></h1>
-                            <h3 class="welcome-sub-text">Welcome to Covent Dashboard</h3>
+                            <h1 class="welcome-text">Edit Service: <span class="text-black fw-bold">Food and Drinks</span></h1>
+                            <h3 class="welcome-sub-text">Prepare and provide the victuals as a package</h3>
                         </li>
                     </ul>
 
@@ -163,46 +163,152 @@ include '../Back_End/db_conn.php';
                 <!-- Main Panel Body -->
                 <div class="main-panel">
                     <div class="content-wrapper">
-                        <div class="row" style="margin-top:2%; width:100%; padding:30px;">
-                            <div class="col-sm-3">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h5 class="card-title">15%</h5>
-                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-primary" style="width: 150px; height:auto;">Edit</a>
-                                  <a href="#" class="btn btn-danger">Delete</a>
-                                </div>
-                              </div>
+                        <div class="row">
+                            <div class="flex-column justify-content-lg-end">
+                                <button type="button" class="btn btn-primary btn-icon-text col-lg-2 mb-4" aria-hidden="true"  data-bs-toggle="modal" data-bs-target="#fndModal">
+                                    <i class="ti-plus btn-icon-prepend"></i>
+                                    New Package
+                                </button>
                             </div>
-
-                            <div class="col-sm-3">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h5 class="card-title">Special title treatment</h5>
-                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                            
+                            <div class="col-lg-12 grid-margin stretch-card mt-xl-5">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <h4 class="card-title">Packages</h4>
+                                    <p class="card-description">
+                                        Specialize in food and drinks. 
+                                    </p>
+                                    <div class="table-responsive">
+                                      <table id="packageList" class="table table-hover">
+                                        <thead>
+                                          <tr>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Price</th>
+                                            <th>Actions</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                            <script src="display_fnd.js?v=<?=$version?>"></script>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Add Package -->
+                    <div class="modal fade" id="fndModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Food and Drinks</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                                <form action="../Admin_Back_End/handle_addFND.php" method="POST">
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <input type="hidden" name="id" id="fndid"/>
+                                            <div class="form-group">
+                                                <label for="exampleInputUsername1">Package Name</label>
+                                                <input type="text" name="name" class="form-control" id="exampleInputUsername1" placeholder="Shining Calories" required>
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="exampleInputEmail1">Package Description</label>
+                                                <textarea class="form-control" name="desc" style="resize: vertical; height:auto;" rows="5" placeholder="KFC Chicken..." required></textarea>
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="exampleInputPassword1">Price (RM)</label>
+                                                <input type="number" name="price" class="form-control" id="exampleInputPassword1" placeholder="150" required>
+                                              </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-primary">Create</button>
+                                    </div>
+                                </form>
                             </div>
-
-                            <div class="col-sm-3">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h5 class="card-title">Special title treatment</h5>
-                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                    
+                    
+                    <!-- Edit Modal -->
+                    <div class="modal fade" id="editPackageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Task Assign</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                              </div>
+
+                                <form action="" method="POST">
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label class="form-label">Employee</label>
+
+                                            <input type="hidden" id="service" name="service" value=""/>
+
+                                            <select class="form-select" aria-label="Default select example" name="username">
+                                                <option id="selectedWorker"></option>
+                                                <option>-</option>
+                                                <!--MODAL POP UP FOR ASSIGN EMPLOYEE-->
+                                                <?php
+                                                $sql = "SELECT username FROM accounts";
+                                                $result = $conn->query($sql);
+
+                                                if ($result->num_rows > 0) {
+                                                    // output data of each row
+                                                    while($row = $result->fetch_assoc()) {
+                                                        echo '<option>'.$row["username"].'</option>';
+                                                    }
+                                                }
+                                                ?>
+                                            </select>
+                                            <div id="emailHelp" class="form-text">Assign an employee for the task</div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
                             </div>
-
-                            <div class="col-sm-3">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h5 class="card-title">Special title treatment</h5>
-                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Delete Modal -->
+                    <div class="modal fade" id="deletePackageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Delete Package</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                              </div>
+
+                                <form action="" method="POST">
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+
+                                            <input type="hidden" id="deleteService" name="deleteService" value=""/>
+
+                                            <b><p id="deleteServiceID"></p></b>
+                                            <div id="emailHelp" class="form-text text-center">This will delete the package from the system</br>Are you sure?</div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-danger">Delete</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -227,6 +333,34 @@ include '../Back_End/db_conn.php';
         <script src="../Admin_Front_End/admin_design/js/jquery.cookie.js" type="text/javascript"></script>
         <script src="../Admin_Front_End/admin_js/performanceLine.js" type="text/javascript"></script>
         <script src="../Admin_Front_End/admin_js/doughnutChart.js?v=<?=$version?>" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+            $(document).on('click', '.editBtn', function(){
+                var serviceId = $(this).data('id');
+                //var serviceId = $(this).closest('tr').find('#service_id').text();
+                //var serviceId = $('#service_id').text();
+                var workerName = $('#worker_name').text();
+
+                $('#service').val(serviceId);
+                $('#selectedWorker').val(workerName);
+            });
+        });
+        </script>
+        
+        <?php
+        if(isset($_SESSION['updateSuccess'])){ ?>
+            <script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Package Created',
+                text: 'You have created a new Package'
+                });
+            </script>
+        <?php
+            unset($_SESSION['updateSuccess']);
+        }
+        ?>
     </body>
 </html>
 
