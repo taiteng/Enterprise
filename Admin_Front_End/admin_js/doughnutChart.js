@@ -12,9 +12,8 @@ $(document).ready(function(){
             var deepavali =  data['Deepavali Celebration'];
             var raya = data['Raya Aidilfitri Celebration'];
             
-            console.log(birthday);
-            
             if ($("#doughnutChart").length) {
+                var value = birthday;
                 var doughnutChartCanvas = $("#doughnutChart").get(0).getContext("2d");
                 var doughnutPieData = {
                   datasets: [{
@@ -67,7 +66,7 @@ $(document).ready(function(){
                     for (var i = 0; i < chart.data.datasets[0].data.length; i++) {
                         
                         if(index === 0){
-                            text.push('<li><span style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
+                            text.push('<li><span style="margin-left: 10px; background-color:' + chart.data.datasets[0].backgroundColor[i] + '">');
                             text.push('</span>');
                             
                             if (chart.data.labels[i]) {
