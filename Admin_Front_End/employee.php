@@ -1,305 +1,191 @@
-
+<?php
+session_start();
+include '../Admin_Back_End/config.php';
+include '../Back_End/db_conn.php';
+?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Bootstrap plugin -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <link rel="stylesheet" href="../Admin_Front_End/cards_style.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
-        <!-- logo -->
-        <link rel="icon" href="../Images/logo.png">
+        <!-- plugins:css -->
+        <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/feather/feather.css">
+        <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/mdi/css/materialdesignicons.min.css">
+        <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/ti-icons/css/themify-icons.css">
+        <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/typicons/typicons.css">
+        <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/simple-line-icons/css/simple-line-icons.css">
+        <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/css/vendor.bundle.base.css">
         
-        <style>
-            .table-responsive {
-                margin: 30px 0;
-            }
-                .table-wrapper {
-                min-width: 1000px;
-                background: #fff;
-                padding: 20px 25px;
-                        border-radius: 3px;
-                box-shadow: 0 1px 1px rgba(0,0,0,.05);
-            }
-                .table-title {
-                        padding-bottom: 15px;
-                        background: #299be4;
-                        color: #fff;
-                        padding: 16px 30px;
-                        margin: -20px -25px 10px;
-                        border-radius: 3px 3px 0 0;
-            }
-            .table-title h2 {
-                        margin: 5px 0 0;
-                        font-size: 24px;
-                }
-                .table-title .btn {
-                        color: #566787;
-                        float: right;
-                        font-size: 13px;
-                        background: #fff;
-                        border: none;
-                        min-width: 50px;
-                        border-radius: 2px;
-                        border: none;
-                        outline: none !important;
-                        margin-left: 10px;
-                }
-                .table-title .btn:hover, .table-title .btn:focus {
-                color: #566787;
-                        background: #f2f2f2;
-                }
-                .table-title .btn i {
-                        float: left;
-                        font-size: 21px;
-                        margin-right: 5px;
-                }
-                .table-title .btn span {
-                        float: left;
-                        margin-top: 2px;
-                }
-            table.table tr th, table.table tr td {
-                border-color: #e9e9e9;
-                        padding: 12px 15px;
-                        vertical-align: middle;
-            }
-                table.table tr th:first-child {
-                        width: 60px;
-                }
-                table.table tr th:last-child {
-                        width: 100px;
-                }
-            table.table-striped tbody tr:nth-of-type(odd) {
-                background-color: #fcfcfc;
-                }
-                table.table-striped.table-hover tbody tr:hover {
-                        background: #f5f5f5;
-                }
-            table.table th i {
-                font-size: 13px;
-                margin: 0 5px;
-                cursor: pointer;
-            }	
-            table.table td:last-child i {
-                        opacity: 0.9;
-                        font-size: 22px;
-                margin: 0 5px;
-            }
-                table.table td a {
-                        font-weight: bold;
-                        color: #566787;
-                        display: inline-block;
-                        text-decoration: none;
-                }
-                table.table td a:hover {
-                        color: #2196F3;
-                }
-                table.table td a.settings {
-                color: #2196F3;
-            }
-            table.table td a.delete {
-                color: #F44336;
-            }
-            table.table td i {
-                font-size: 19px;
-            }
-                table.table .avatar {
-                        border-radius: 50%;
-                        vertical-align: middle;
-                        margin-right: 10px;
-                }
-                .status {
-                        font-size: 30px;
-                        margin: 2px 2px 0 0;
-                        display: inline-block;
-                        vertical-align: middle;
-                        line-height: 10px;
-                }
-            .text-success {
-                color: #10c469;
-            }
-            .text-info {
-                color: #62c9e8;
-            }
-            .text-warning {
-                color: #FFC107;
-            }
-            .text-danger {
-                color: #ff5b5b;
-            }
-            .pagination {
-                float: right;
-                margin: 0 0 5px;
-            }
-            .pagination li a {
-                border: none;
-                font-size: 13px;
-                min-width: 30px;
-                min-height: 30px;
-                color: #999;
-                margin: 0 2px;
-                line-height: 30px;
-                border-radius: 2px !important;
-                text-align: center;
-                padding: 0 6px;
-            }
-            .pagination li a:hover {
-                color: #666;
-            }	
-            .pagination li.active a, .pagination li.active a.page-link {
-                background: #03A9F4;
-            }
-            .pagination li.active a:hover {        
-                background: #0397d6;
-            }
-                .pagination li.disabled i {
-                color: #ccc;
-            }
-            .pagination li i {
-                font-size: 16px;
-                padding-top: 6px
-            }
-            .hint-text {
-                float: left;
-                margin-top: 10px;
-                font-size: 13px;
-            }
-            
-            
-          .zoom {
-                transition: transform .4s; /* Animation */
-                margin: 0 auto;
-            }
-
-            .zoom:hover {
-              transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-              background:#911F27;
-              color: white;
-             
-            }
-            *{
-                padding:0;
-                margin:0 ;
-                box-sizing:border-box;
-            }
-            /* width */
-            ::-webkit-scrollbar {
-              width: 5px;
-            }
-
-            /* Track */
-            ::-webkit-scrollbar-track {
-                box-shadow: inset 0 0 5px grey;
-                border-radius: 10px;
-            }
-
-            /* Handle */
-            ::-webkit-scrollbar-thumb {
-              background: #888;
-              border-radius: 10px;
-            }
-
-            /* Handle on hover */
-            ::-webkit-scrollbar-thumb:hover {
-              background: #555;
-            }
-
-        </style>
+        <!-- inject:css -->
+        <link rel="stylesheet" href="../Admin_Front_End/admin_design/css/vertical-layout-light/style.css">
+        <!-- endinject -->
+        <link rel="icon" href="../Images/logo.png" />
         
-        <title>Home</title>
+        
+        <title>Covent</title>
     </head>
     <body>
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #e3242b">
-                <div class="container-fluid">
-                    <a class="navbar-brand">
-                        <img src="../Images/coventco_red.png" alt="logo" onclick="location.href='index.php'"/>
-                    </a>
-                    <div class="d-flex flex-row bd-highlight mb-3 justify-content-end">
-                        <ul class="navbar-nav nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="index.php" style="font-size: 20px; color: white;">Home</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" style="font-size: 20px; color: white;">Profile</a>
-                                <ul class="dropdown-menu">
-                                   <?php
-                                    if(isset($_SESSION['userLogged'])){
-                                        echo '<li><a class="dropdown-item" style="font-size: 20px;" href="../FrontEnd/AccountPage.php">Settings</a></li>';
-                                        echo '<li><a class="dropdown-item" style="font-size: 20px;" href="../BackEnd/logout.php">Log Out</a></li>';
-                                    }else{
-                                        echo '<li><a class="dropdown-item" style="font-size: 20px;" href="../FrontEnd/LoginPage.php">Log In</a></li>';
-                                    }
-                                    ?>
-                                </ul>
-                            </li>
-                        </ul>
+        <div class="container-scroller">
+          
+            <!--Navigation Bar -->
+            <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
+                <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+                    <!-- Expand Button -->
+                    <div class="me-3">
+                        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
+                            <span class="icon-menu"></span>
+                        </button>
                     </div>
+
+                    <div>
+                        <a class="navbar-brand brand-logo" href="index.php">
+                            <img src="../Images/coventco_white.jpg" alt="logo" />
+                        </a>
+                        <a class="navbar-brand brand-logo-mini" href="index.php">
+                            <img src="../Images/coventco_white.jpg" alt="logo" />
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Greeting Bar -->
+                <div class="navbar-menu-wrapper d-flex align-items-top"> 
+                    <ul class="navbar-nav">
+                        <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
+                            <h1 class="welcome-text">Greetings, <span class="text-black fw-bold">John Doe</span></h1>
+                            <h3 class="welcome-sub-text">Welcome to Covent Dashboard</h3>
+                        </li>
+                    </ul>
+
+                    <!-- Admin Settings -->
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown d-none d-lg-block user-dropdown">
+                            <a class="nav-link" id="UserDropdown" href="" data-bs-toggle="dropdown" aria-expanded="false">
+                                <p class="mb-1 mt-3 font-weight-semibold">Admin Name</p>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                                <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- Expand Button -->
+                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
+                        <span class="mdi mdi-menu"></span>
+                    </button>
                 </div>
             </nav>
-        </header>
-        
-        <div class="container" style="width:100%; margin-top:10%;">
-            <div class="table-responsive">
-                <div class="table-wrapper">
-                    <div class="table-title">
-                        <div class="row">
-                            <div class="col-xs-5">
-                                <h2>User <b>Management</b></h2>
-                            </div>
-                        </div>
-                    </div>
-                    <table class="table table-striped table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name</th>		
-                                <th>Email</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td><p>Ng E Soon</p></td>
-                                <td>ngesoon123@gmail.com</td>
-                                <td><span class="status text-success">&bull;</span> Active</td>
-                                <td>
-                                    <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                                    <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="clearfix">
-                        <div class="hint-text">Showing <b>1</b> out of <b>25</b> entries</div>
-                        <ul class="pagination">
-                            <li class="page-item disabled"><a href="#">Previous</a></li>
-                            <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                            <li class="page-item"><a href="#" class="page-link">2</a></li>
-                            <li class="page-item"><a href="#" class="page-link">3</a></li>
-                            <li class="page-item"><a href="#" class="page-link">4</a></li>
-                            <li class="page-item"><a href="#" class="page-link">5</a></li>
-                            <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                        </ul>
+            
+            <div class="container-fluid page-body-wrapper">
+                <div class="theme-setting-wrapper">
+                    <div id="settings-trigger"><i class="ti-settings"></i></div>
+                    <div id="theme-settings" class="settings-panel">
+                        <i class="settings-close ti-close"></i>
+                        <p class="settings-heading">SIDEBAR SKINS</p>
+                        <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border me-3"></div>Light</div>
+                        <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border me-3"></div>Dark</div>
+                        <p class="settings-heading mt-2">HEADER SKINS</p>
+                        <div class="color-tiles mx-0 px-4">
+                            <div class="tiles success"></div>
+                            <div class="tiles warning"></div>
+                            <div class="tiles danger"></div>
+                            <div class="tiles info"></div>
+                            <div class="tiles dark"></div>
+                            <div class="tiles default"></div>
+                      </div>
                     </div>
                 </div>
-            </div>        
-        </div>  
+            
+                <!--Left Sidebar-->
+                <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php">
+                                <i class="mdi mdi-grid-large menu-icon"></i>
+                                <span class="menu-title">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item nav-category">Projects</li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="projects.php" aria-expanded="false" aria-controls="ui-basic">
+                                <i class="menu-icon mdi mdi-floor-plan"></i>
+                                <span class="menu-title">Manage Tasks</span>
+                            </a>
+                        </li>
+                        <li class="nav-item nav-category">Service Management</li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="collapse" href="#editservice" aria-expanded="false" aria-controls="form-elements">
+                                <i class="menu-icon mdi mdi-card-text-outline"></i>
+                                <span class="menu-title">Edit Service</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="collapse" id="editservice">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item"> <a class="nav-link" href="fnd.php">Food and Drinks</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="item.php">Items</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="decoration.php">Decorations</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="fun.php">Fun and Entertainment</a></li>
+                                </ul>
+                            </div>
 
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="discount.php" aria-expanded="false" aria-controls="icons">
+                                <i class="menu-icon mdi mdi-layers-outline"></i>
+                                <span class="menu-title">Discount</span>
+                            </a>
+                        </li>
+                        <li class="nav-item nav-category">Company Management</li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="employee.php" aria-expanded="false" aria-controls="auth">
+                                <i class="menu-icon mdi mdi-account-circle-outline"></i>
+                                <span class="menu-title">Employees</span>
+                            </a>
+                        </li>
+                        <li class="nav-item nav-category">Information Editor</li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">
+                                <i class="menu-icon mdi mdi-file-document"></i>
+                                <span class="menu-title">Terms and Condition</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">
+                                <i class="menu-icon mdi mdi-help-circle-outline"></i>
+                                <span class="menu-title">Help</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            
+                <!-- Main Panel Body -->
+                <div class="main-panel">
+                    <div class="content-wrapper">
 
-        
+                    </div>
+
+                    <footer class="footer">
+                        <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Covent: Your Event Planning Partner</span>
+                            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2022. All rights reserved.</span>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+
+      
+        <script src="../Admin_Front_End/admin_design/vendors/js/vendor.bundle.base.js"></script>
+        <script src="../Admin_Front_End/admin_design/vendors/chart.js/Chart.min.js"></script>
+        <script src="../Admin_Front_End/admin_design/js/off-canvas.js"></script>
+        <script src="../Admin_Front_End/admin_design/js/hoverable-collapse.js"></script>
+        <script src="../Admin_Front_End/admin_design/js/template.js"></script>
+        <script src="../Admin_Front_End/admin_design/js/settings.js"></script>
+        <script src="../Admin_Front_End/admin_design/js/jquery.cookie.js" type="text/javascript"></script>
+        <script src="../Admin_Front_End/admin_js/performanceLine.js" type="text/javascript"></script>
+        <script src="../Admin_Front_End/admin_js/doughnutChart.js?v=<?=$version?>" type="text/javascript"></script>
     </body>
 </html>
-
-
 

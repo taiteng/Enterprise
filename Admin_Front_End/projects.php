@@ -163,7 +163,7 @@ include "../Back_End/db_conn.php";
                     </li>
                     <li class="nav-item nav-category">Company Management</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" aria-expanded="false" aria-controls="auth">
+                        <a class="nav-link" href="employee.php" aria-expanded="false" aria-controls="auth">
                             <i class="menu-icon mdi mdi-account-circle-outline"></i>
                             <span class="menu-title">Employees</span>
                         </a>
