@@ -126,7 +126,7 @@
        
 	<div class="login">
             <h1>Login</h1>
-            <form action="authenticate.php" method="post">
+            <form action="../Worker/authenticate.php" method="post">
                 <label for="username">
                     <i class="fas fa-user"></i>
                 </label>
