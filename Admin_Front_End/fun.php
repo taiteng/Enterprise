@@ -163,48 +163,7 @@ include '../Back_End/db_conn.php';
                 <!-- Main Panel Body -->
                 <div class="main-panel">
                     <div class="content-wrapper">
-                        <div class="row" style="margin-top:2%; width:100%; padding:30px;">
-                            <div class="col-sm-3">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h5 class="card-title">15%</h5>
-                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-primary" style="width: 150px; height:auto;">Edit</a>
-                                  <a href="#" class="btn btn-danger">Delete</a>
-                                </div>
-                              </div>
-                            </div>
 
-                            <div class="col-sm-3">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h5 class="card-title">Special title treatment</h5>
-                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="col-sm-3">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h5 class="card-title">Special title treatment</h5>
-                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="col-sm-3">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h5 class="card-title">Special title treatment</h5>
-                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
                     </div>
 
                     <footer class="footer">
