@@ -221,7 +221,7 @@ include "../Back_End/db_conn.php";
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
 
-                            <form action="../Admin_Back_End/handle_assignProject.php" method="POST">
+                            <form action="../Admin_Back_End/api/project_api/handle_assignProject.php" method="POST">
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label class="form-label">Employee</label>
@@ -267,7 +267,7 @@ include "../Back_End/db_conn.php";
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
 
-                            <form action="../Admin_Back_End/handle_deleteProject.php" method="POST">
+                            <form action="../Admin_Back_End/api/project_api/handle_deleteProject.php" method="POST">
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label class="form-label">Are you sure to delete this project?</label>
@@ -407,7 +407,7 @@ include "../Back_End/db_conn.php";
                 'ajax': {
                     'url':'dataTableAjax.php'
                 },
-                pageLength: 5,
+                pageLength: 10,
                 'columnDefs': [
                     {
                         "targets": 0, // your case first column

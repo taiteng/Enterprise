@@ -10,7 +10,7 @@ include '../Back_End/db_conn.php';
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!-- plugins:css -->
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/feather/feather.css">
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/mdi/css/materialdesignicons.min.css">
@@ -54,8 +54,8 @@ include '../Back_End/db_conn.php';
                 <div class="navbar-menu-wrapper d-flex align-items-top"> 
                     <ul class="navbar-nav">
                         <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                            <h1 class="welcome-text">Greetings, <span class="text-black fw-bold">John Doe</span></h1>
-                            <h3 class="welcome-sub-text">Welcome to Covent Dashboard</h3>
+                            <h1 class="welcome-text">Edit Goodies: <span class="text-black fw-bold">Discount</span></h1>
+                            <h3 class="welcome-sub-text">The friend of every customers</h3>
                         </li>
                     </ul>
 
@@ -164,48 +164,150 @@ include '../Back_End/db_conn.php';
                 <div class="main-panel">
                     <div class="content-wrapper">
                         <div class="row" style="margin-top:2%; width:100%; padding:30px;">
-                            <div class="col-sm-3">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h5 class="card-title">15%</h5>
-                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-primary" style="width: 150px; height:auto;">Edit</a>
-                                  <a href="#" class="btn btn-danger">Delete</a>
-                                </div>
-                              </div>
+                            <div class="d-flex flex-row justify-content-lg-end">
+                                <button type="button" class="btn btn-primary btn-icon-text col-lg-2 mb-4" aria-hidden="true"  data-bs-toggle="modal" data-bs-target="#discountModal">
+                                    <i class="ti-plus btn-icon-prepend"></i>
+                                    Add Discount
+                                </button>
                             </div>
-
-                            <div class="col-sm-3">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h5 class="card-title">Special title treatment</h5>
-                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                            
+                            <div class="card card-rounded border border-success border-2">
+                                <div  class="card-body">
+                                    <h4 class="card-title">Activated Discount</h4>
+                                    <p class="card-description">
+                                        These discount will be usable from the calculation in quotation.
+                                    </p>
+                                    <div id="activatedDiscount" class="flex-row d-flex">
+                                        <script src="display_discount.js"></script>
+                                    </div>
                                 </div>
-                              </div>
                             </div>
-
-                            <div class="col-sm-3">
-                              <div class="card">
+                            
+                            <div class="card card-rounded border border-danger border-2 mt-xl-4">
                                 <div class="card-body">
-                                  <h5 class="card-title">Special title treatment</h5>
-                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                                    <h4 class="card-title">Paused Discount</h4>
+                                    <p class="card-description">
+                                        The deactivated discount will be shown here.
+                                    </p>
+                                    <div id="deactivatedDiscount" class="flex-row d-flex text-center">
+                                        <script src="display_discountDisabled.js"></script>
+                                    </div>
                                 </div>
-                              </div>
-                            </div>
-
-                            <div class="col-sm-3">
-                              <div class="card">
-                                <div class="card-body">
-                                  <h5 class="card-title">Special title treatment</h5>
-                                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                                </div>
-                              </div>
                             </div>
                         </div>
                     </div>
+                    
+                    <!-- Add Discount -->
+                    <div class="modal fade" id="discountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Discount</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                                <form action="../Admin_Back_End/api/discount_api/handle_addDiscount.php" method="POST">
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            
+                                                <div class="form-group">
+                                                    
+                                                    <label>Discount Name</label>
+                                                    <input type="text" class="form-control" name="name" required/>
+                                                    
+                                                    <label>Discount Status</label>
+                                                    <select class="form-select" name="status" required>
+                                                        <option>enabled</option>
+                                                        <option>disabled</option>
+                                                    </select>
+                                                    
+                                                    <label>Discount Percentage (%)</label>
+                                                    <input type="number" name="percent" class="form-control" placeholder="1" required>
+                                                </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-primary">Create</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <!-- Edit Discount Modal -->
+                    <div class="modal fade" id="editDiscountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Edit Discount</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                                <form action="../Admin_Back_End/api/discount_api/handle_editDiscount.php" method="POST">
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <input type="hidden" name="id" id="editDiscount" value=""/>
+                                            
+                                                <div class="form-group">
+                                                    <label>Discount Name</label>
+                                                    <input id="discountName" type="text" class="form-control" name="name" required/>
+                                                    
+                                                    <label>Discount Percentage (%)</label>
+                                                    <input id="discountPercent" type="number" name="percent" class="form-control" placeholder="1" required>
+                                                    
+                                                    <label>Discount Status</label>
+                                                    <select id="discountStatus" class="form-select" name="status" required>
+                                                        <option>enabled</option>
+                                                        <option>disabled</option>
+                                                    </select>
+                                                    
+                                                    
+                                                </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Delete Discount Modal -->
+                    <div class="modal fade" id="deleteDiscountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Delete Discount</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                                <form action="../Admin_Back_End/api/discount_api/handle_deleteDiscount.php" method="POST">
+                                    <div class="modal-body">
+                                        <div class="mb-3 text-center">
+
+                                            <input type="hidden" id="deleteDiscount" name="deleteDiscount" value=""/>
+
+                                            <b><label class="form-text" id="deleteDiscountName"></label></b>
+                                            <div id="emailHelp" class="form-text text-center">This will delete the discount from the system</br>Are you sure?</div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-danger">Delete</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
 
                     <footer class="footer">
                         <div class="d-sm-flex justify-content-center justify-content-sm-between">
@@ -227,6 +329,74 @@ include '../Back_End/db_conn.php';
         <script src="../Admin_Front_End/admin_design/js/jquery.cookie.js" type="text/javascript"></script>
         <script src="../Admin_Front_End/admin_js/performanceLine.js" type="text/javascript"></script>
         <script src="../Admin_Front_End/admin_js/doughnutChart.js?v=<?=$version?>" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $(document).on('click', '.editDiscount', function(){
+                    var discountID = $(this).data('id');
+                    var discountName = $(this).data('name');
+                    var discountStatus = $(this).data('status');
+                    var discountPercent = $(this).data('percent');
+
+                    $('#editDiscount').val(discountID);
+                    $('#discountName').val(discountName);
+                    $('#discountStatus').val(discountStatus);
+                    $('#discountPercent').val(discountPercent);
+                });
+            });
+            
+            $(document).ready(function(){
+                $(document).on('click', '.deleteDiscount', function(){
+                    var discountID = $(this).data('id');
+                    var discountName = $(this).data('name');
+
+                    $('#deleteDiscount').val(discountID);
+                    $('#deleteDiscountName').text(discountName);
+                });
+            });
+        </script>
+        
+        <?php
+        if(isset($_SESSION['createSuccess'])){ ?>
+            <script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Discount Created',
+                text: 'You just created the Discount'
+                });
+            </script>
+        <?php
+            unset($_SESSION['createSuccess']);
+        }
+        ?>
+        
+        <?php
+        if(isset($_SESSION['updateSuccess'])){ ?>
+            <script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Discount Updated',
+                text: 'You just updated the Discount'
+                });
+            </script>
+        <?php
+            unset($_SESSION['updateSuccess']);
+        }
+        ?>
+            
+        <?php
+        if(isset($_SESSION['deleteSuccess'])){ ?>
+            <script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Discount Deleted',
+                text: 'You just deleted a Discount'
+                });
+            </script>
+        <?php
+            unset($_SESSION['deleteSuccess']);
+        }
+        ?>
     </body>
 </html>
 

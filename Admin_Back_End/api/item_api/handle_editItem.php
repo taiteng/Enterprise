@@ -8,49 +8,44 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
   
 // include database and object files
-include_once '../Back_End/Service_API/database.php';
-include_once '../Back_End/Service_API/service.php';
-include "../Back_End/db_conn.php";
+include_once '../../../Admin_Back_End/api/item_api/database.php';
+include_once '../../../Admin_Back_End/api/item_api/item.php';
+include "../../../Back_End/db_conn.php";
   
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
   
 // prepare product object
-$service = new service($db);
+$item = new item($db);
   
-// set ID property of product to be edited
-$service->service_id = $_POST["service"];
-  
-// set product property values
-$service->worker_name = $_POST["username"];
+// set ID property of item to be edited
+$item->item_id = $_POST["id"];
 
-if($service->worker_name == '-'){
-    $service->project_status = "Waiting for Job Assign";
-}else{
-    $service->project_status = "Open";
-}
+// set product property values
+$item->item_name = $_POST["name"];
+$item->item_price = $_POST["price"];
 
 // update the product
-if($service->updateTask()){
+if($item->updateItem()){
     $_SESSION['updateSuccess'] = "true";
-    header("Location: ../Admin_Front_End/projects.php");
+    header("Location: ../../../Admin_Front_End/item.php");
     exit();
     
     // set response code - 200 ok
     http_response_code(200);
     
     // tell the user
-    echo json_encode(array("message" => "Service was updated."));
+    echo json_encode(array("message" => "Item was updated."));
 }
   
-// if unable to update the product, tell the user
+// if unable to update the item, tell the user
 else{
   
     // set response code - 503 service unavailable
     http_response_code(503);
   
     // tell the user
-    echo json_encode(array("message" => "Unable to update service."));
+    echo json_encode(array("message" => "Unable to update item."));
 }
 ?>

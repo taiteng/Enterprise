@@ -5,46 +5,46 @@ header("Access-Control-Allow-Methods: POST");
 header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
   
-// include database and object file
-include_once '../Back_End/Service_API/database.php';
-include_once '../Back_End/Service_API/service.php';
-include "../Back_End/db_conn.php";
+// include database and object files
+include_once '../../../Admin_Back_End/api/item_api/database.php';
+include_once '../../../Admin_Back_End/api/item_api/item.php';
+include "../../../Back_End/db_conn.php";
 
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
   
-// prepare product object
-$service = new service($db);
+// prepare fnd object
+$item = new item($db);
 
-if(isset($_POST["deleteService"])){
-    // set service id to be deleted
-    $service->service_id = $_POST["deleteService"];
+if(isset($_POST["deleteItem"])){
+    // set fnd id to be deleted
+    $item->item_id = $_POST["deleteItem"];
     
-    $sql = "SELECT * FROM service WHERE service_id = '$service->service_id'";
+    $sql = "SELECT * FROM item WHERE item_id = '$item->item_id'";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 }
 
-// delete the product
-if($service->delete()){
+// delete the item
+if($item->delete()){
     $_SESSION['deleteSuccess'] = "true";
-    header("Location: ../Admin_Front_End/projects.php");
+    header("Location: ../../../Admin_Front_End/item.php");
     exit();
   
     // set response code - 200 ok
     http_response_code(200);
   
     // tell the user
-    echo json_encode(array("message" => "Service was deleted."));
+    echo json_encode(array("message" => "Item was deleted."));
 }
   
-// if unable to delete the product
+// if unable to delete the item
 else{
   
     // set response code - 503 service unavailable
     http_response_code(503);
   
     // tell the user
-    echo json_encode(array("message" => "Unable to delete service."));
+    echo json_encode(array("message" => "Unable to delete Item."));
 }

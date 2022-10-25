@@ -10,7 +10,7 @@ include '../Back_End/db_conn.php';
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!-- plugins:css -->
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/feather/feather.css">
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/mdi/css/materialdesignicons.min.css">
@@ -54,8 +54,8 @@ include '../Back_End/db_conn.php';
                 <div class="navbar-menu-wrapper d-flex align-items-top"> 
                     <ul class="navbar-nav">
                         <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                            <h1 class="welcome-text">Greetings, <span class="text-black fw-bold">John Doe</span></h1>
-                            <h3 class="welcome-sub-text">Welcome to Covent Dashboard</h3>
+                            <h1 class="welcome-text">Edit Service: <span class="text-black fw-bold">Items</span></h1>
+                            <h3 class="welcome-sub-text">Accessories and Requirements for the event</h3>
                         </li>
                     </ul>
 
@@ -163,9 +163,136 @@ include '../Back_End/db_conn.php';
                 <!-- Main Panel Body -->
                 <div class="main-panel">
                     <div class="content-wrapper">
-
+                        <div class="row">
+                            <div class="d-flex flex-row justify-content-lg-end mt-xl-5">
+                                <button type="button" class="btn btn-primary btn-icon-text col-lg-2" aria-hidden="true"  data-bs-toggle="modal" data-bs-target="#itemModal">
+                                    <i class="ti-plus btn-icon-prepend"></i>
+                                    New Item
+                                </button>
+                            </div>
+                            
+                            <div class="col-lg-12 grid-margin stretch-card mt-xl-5">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <h4 class="card-title">Items</h4>
+                                    <p class="card-description">
+                                        Requirements and Accessories 
+                                    </p>
+                                    <div class="table-responsive">
+                                      <table id="ItemList" class="table table-hover">
+                                        <thead>
+                                          <tr>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Actions</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                            <script src="display_item.js?v=<?=$version?>"></script>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
                     </div>
+                    
+                    <!-- Add Item Modal -->
+                    <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Items for Event</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
 
+                                <form action="../Admin_Back_End/api/item_api/handle_addItem.php" method="POST">
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <input type="hidden" name="itemid" id="itemid"/>
+                                            <div class="form-group">
+                                                <label for="exampleInputUsername1">Item Name</label>
+                                                <input type="text" name="name" class="form-control" placeholder="Chair" required>
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="exampleInputPassword1">Price (RM)</label>
+                                                <input type="number" name="price" class="form-control" placeholder="1" required>
+                                              </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-primary">Create</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <!-- Edit Item Modal -->
+                    <div class="modal fade" id="editItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Edit Item</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                                <form action="../Admin_Back_End/api/item_api/handle_editItem.php" method="POST">
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <input type="hidden" name="id" id="editItem" value=""/>
+                                            
+                                            <div class="form-group">
+                                                <label for="exampleInputUsername1">Item Name</label>
+                                                <input id="itemName" type="text" name="name" class="form-control" placeholder="Chair" required>
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="exampleInputPassword1">Price (RM)</label>
+                                                <input id="itemPrice" type="number" name="price" class="form-control"  placeholder="1" required>
+                                              </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Delete Item Modal -->
+                    <div class="modal fade" id="deleteItemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Delete Item</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                                <form action="../Admin_Back_End/api/item_api/handle_deleteItem.php" method="POST">
+                                    <div class="modal-body">
+                                        <div class="mb-3 text-center">
+                                            <input type="hidden" id="deleteItem" name="deleteItem" value=""/>
+                                            <b><label class="form-text" id="deleteItemName"></label></b>
+                                            <div id="emailHelp" class="form-text text-center">This will delete the item from the system</br>Are you sure?</div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-danger">Delete</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <footer class="footer">
                         <div class="d-sm-flex justify-content-center justify-content-sm-between">
                             <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Covent: Your Event Planning Partner</span>
@@ -186,6 +313,72 @@ include '../Back_End/db_conn.php';
         <script src="../Admin_Front_End/admin_design/js/jquery.cookie.js" type="text/javascript"></script>
         <script src="../Admin_Front_End/admin_js/performanceLine.js" type="text/javascript"></script>
         <script src="../Admin_Front_End/admin_js/doughnutChart.js?v=<?=$version?>" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $(document).on('click', '.editItem', function(){
+                    var itemID = $(this).data('id');
+                    var itemName = $(this).data('name');
+                    var itemPrice = $(this).data('price');
+
+                    $('#editItem').val(itemID);
+                    $('#itemName').val(itemName);
+                    $('#itemPrice').val(itemPrice);
+                });
+            });
+            
+            $(document).ready(function(){
+                $(document).on('click', '.deleteItem', function(){
+                    var itemID = $(this).data('id');
+                    var itemName = $(this).data('name');
+
+                    $('#deleteItem').val(itemID);
+                    $('#deleteItemName').text(itemName);
+                });
+            });
+        </script>
+        
+        <?php
+        if(isset($_SESSION['createSuccess'])){ ?>
+            <script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Item Created',
+                text: 'You just created the Item'
+                });
+            </script>
+        <?php
+            unset($_SESSION['createSuccess']);
+        }
+        ?>
+        
+        <?php
+        if(isset($_SESSION['updateSuccess'])){ ?>
+            <script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Item Updated',
+                text: 'You just updated the Item'
+                });
+            </script>
+        <?php
+            unset($_SESSION['updateSuccess']);
+        }
+        ?>
+            
+        <?php
+        if(isset($_SESSION['deleteSuccess'])){ ?>
+            <script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Item Deleted',
+                text: 'You just deleted a Item'
+                });
+            </script>
+        <?php
+            unset($_SESSION['deleteSuccess']);
+        }
+        ?>
     </body>
 </html>
 
