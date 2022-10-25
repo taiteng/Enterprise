@@ -33,52 +33,52 @@ include '../Back_End/db_conn.php';
             <!--Navigation Bar -->
             <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
             
-            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-                
-                <!-- Expand Button -->
-                <div class="me-3">
-                    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
-                        <span class="icon-menu"></span>
+                <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+
+                    <!-- Expand Button -->
+                    <div class="me-3">
+                        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
+                            <span class="icon-menu"></span>
+                        </button>
+                    </div>
+
+                    <div>
+                        <a class="navbar-brand brand-logo" href="index.php">
+                            <img src="../Images/coventco_white.jpg" alt="logo" />
+                        </a>
+                        <a class="navbar-brand brand-logo-mini" href="index.php">
+                            <img src="../Images/coventco_white.jpg" alt="logo" />
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Greeting Bar -->
+                <div class="navbar-menu-wrapper d-flex align-items-top"> 
+                    <ul class="navbar-nav">
+                        <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
+                            <h1 class="welcome-text">Greetings, <span class="text-black fw-bold">John Doe</span></h1>
+                            <h3 class="welcome-sub-text">Welcome to Covent Dashboard</h3>
+                        </li>
+                    </ul>
+
+                    <!-- Admin Settings -->
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown d-none d-lg-block user-dropdown">
+                            <a class="nav-link" id="UserDropdown" href="" data-bs-toggle="dropdown" aria-expanded="false">
+                                <p class="mb-1 mt-3 font-weight-semibold">Admin Name</p>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                                <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- Expand Button -->
+                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
+                        <span class="mdi mdi-menu"></span>
                     </button>
                 </div>
-                
-                <div>
-                    <a class="navbar-brand brand-logo" href="index.php">
-                        <img src="../Images/coventco_white.jpg" alt="logo" />
-                    </a>
-                    <a class="navbar-brand brand-logo-mini" href="index.php">
-                        <img src="../Images/coventco_white.jpg" alt="logo" />
-                    </a>
-                </div>
-            </div>
-
-            <!-- Greeting Bar -->
-            <div class="navbar-menu-wrapper d-flex align-items-top"> 
-                <ul class="navbar-nav">
-                    <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                        <h1 class="welcome-text">Greetings, <span class="text-black fw-bold">John Doe</span></h1>
-                        <h3 class="welcome-sub-text">Welcome to Covent Dashboard</h3>
-                    </li>
-                </ul>
-                
-                <!-- Admin Settings -->
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown d-none d-lg-block user-dropdown">
-                        <a class="nav-link" id="UserDropdown" href="" data-bs-toggle="dropdown" aria-expanded="false">
-                            <p class="mb-1 mt-3 font-weight-semibold">Admin Name</p>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
-                        </div>
-                    </li>
-                </ul>
-                
-                <!-- Expand Button -->
-                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
-                    <span class="mdi mdi-menu"></span>
-                </button>
-            </div>
-        </nav>
+            </nav>
         
           <!-- partial -->
         <div class="container-fluid page-body-wrapper">
@@ -248,7 +248,7 @@ include '../Back_End/db_conn.php';
                                                             </thead>
                                                             <tbody>
                                                                 <?php
-                                                                $query = "SELECT worker_name, service_type, service_desc, project_status, progress_check FROM service ORDER BY progress_check";
+                                                                $query = "SELECT worker_name, service_type, service_desc, project_status, progress_check FROM service ORDER BY progress_check DESC";
                                                                 
                                                                 $result = mysqli_query($conn, $query);
                                                                 
@@ -278,7 +278,7 @@ include '../Back_End/db_conn.php';
                                                                                     </td>
                                                                                     <td><div class="badge badge-opacity-success">'.$row['project_status'].'</div></td>
                                                                                 </tr>';
-                                                                            }else if($row['progress_check'] == "In-Progress"){
+                                                                            }else if($row['project_status'] == "In-Progress"){
                                                                                 echo '<tr>
                                                                                     <td>
                                                                                         <div class="d-flex ">

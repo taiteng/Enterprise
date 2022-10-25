@@ -8,45 +8,42 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
   
 // include database and object files
-include_once '../Admin_Back_End/api/fnd_api/database.php';
-include_once '../Admin_Back_End/api/fnd_api/fnd.php';
-include "../Back_End/db_conn.php";
+include_once '../../../Admin_Back_End/api/discount_api/database.php';
+include_once '../../../Admin_Back_End/api/discount_api/discount.php';
+include "../../../Back_End/db_conn.php";
   
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
   
 // prepare product object
-$fnd = new fnd($db);
-  
-// set ID property of product to be edited
-$fnd->FND_id = $_POST["fndid"];
+$discount = new discount($db);
   
 // set product property values
-$fnd->pack_name = $_POST["name"];
-$fnd->pack_desc = $_POST["desc"];
-$fnd->pack_price = $_POST["price"];
+$discount->discount_percent = $_POST["percent"];
+$discount->discount_name = $_POST["name"];
+$discount->discount_status = $_POST["status"];
 
-// update the product
-if($fnd->create()){
+// update the discount
+if($discount->create()){
     $_SESSION['updateSuccess'] = "true";
-    header("Location: ../Admin_Front_End/fnd.php");
+    header("Location: ../../../Admin_Front_End/discount.php");
     exit();
     
     // set response code - 200 ok
     http_response_code(200);
     
     // tell the user
-    echo json_encode(array("message" => "Package was created."));
+    echo json_encode(array("message" => "Discount was created."));
 }
   
-// if unable to update the product, tell the user
+// if unable to update the discount, tell the user
 else{
   
     // set response code - 503 service unavailable
     http_response_code(503);
   
     // tell the user
-    echo json_encode(array("message" => "Unable to create package."));
+    echo json_encode(array("message" => "Unable to create discount."));
 }
 ?>

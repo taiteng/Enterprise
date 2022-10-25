@@ -133,7 +133,7 @@ if (!isset($_SESSION['loggedin'])) {
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     
-                    <form action="../Admin_Back_End/handle_updateProject.php" method="POST">
+                    <form action="../Admin_Back_End/api/project_api/handle_updateProject.php" method="POST">
                         <div class="modal-body">
                             <div class="mb-3">
                                 <input type="hidden" id="sid" name="sid" value=""/>

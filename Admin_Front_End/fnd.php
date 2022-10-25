@@ -164,8 +164,8 @@ include '../Back_End/db_conn.php';
                 <div class="main-panel">
                     <div class="content-wrapper">
                         <div class="row">
-                            <div class="flex-column justify-content-lg-end">
-                                <button type="button" class="btn btn-primary btn-icon-text col-lg-2 mb-4" aria-hidden="true"  data-bs-toggle="modal" data-bs-target="#fndModal">
+                            <div class="d-flex flex-row justify-content-lg-end mt-xl-5">
+                                <button type="button" class="btn btn-primary btn-icon-text col-lg-2" aria-hidden="true"  data-bs-toggle="modal" data-bs-target="#fndModal">
                                     <i class="ti-plus btn-icon-prepend"></i>
                                     New Package
                                 </button>
@@ -208,7 +208,7 @@ include '../Back_End/db_conn.php';
                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
 
-                                <form action="../Admin_Back_End/handle_addFND.php" method="POST">
+                                <form action="../Admin_Back_End/api/fnd_api/handle_addFND.php" method="POST">
                                     <div class="modal-body">
                                         <div class="mb-3">
                                             <input type="hidden" name="id" id="fndid"/>
@@ -242,35 +242,27 @@ include '../Back_End/db_conn.php';
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Task Assign</h5>
+                                  <h5 class="modal-title" id="exampleModalLabel">Edit Food Package</h5>
                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
 
-                                <form action="" method="POST">
+                                <form action="../Admin_Back_End/api/fnd_api/handle_editFND.php" method="POST">
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label class="form-label">Employee</label>
-
-                                            <input type="hidden" id="service" name="service" value=""/>
-
-                                            <select class="form-select" aria-label="Default select example" name="username">
-                                                <option id="selectedWorker"></option>
-                                                <option>-</option>
-                                                <!--MODAL POP UP FOR ASSIGN EMPLOYEE-->
-                                                <?php
-                                                $sql = "SELECT username FROM accounts";
-                                                $result = $conn->query($sql);
-
-                                                if ($result->num_rows > 0) {
-                                                    // output data of each row
-                                                    while($row = $result->fetch_assoc()) {
-                                                        echo '<option>'.$row["username"].'</option>';
-                                                    }
-                                                }
-                                                ?>
-                                            </select>
-                                            <div id="emailHelp" class="form-text">Assign an employee for the task</div>
-
+                                            <input type="hidden" name="id" id="editFnd" value=""/>
+                                            
+                                            <div class="form-group">
+                                                <label for="exampleInputUsername1">Package Name</label>
+                                                <input id="packName" type="text" name="name" class="form-control" placeholder="Shining Calories" required>
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="exampleInputEmail1">Package Description</label>
+                                                <textarea id="packDesc" class="form-control" name="desc" style="resize: vertical; height:auto;" rows="5" placeholder="KFC Chicken..." required></textarea>
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="exampleInputPassword1">Price (RM)</label>
+                                                <input id="packPrice" type="number" name="price" class="form-control"  placeholder="150" required>
+                                              </div>
                                         </div>
                                     </div>
 
@@ -292,13 +284,13 @@ include '../Back_End/db_conn.php';
                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
 
-                                <form action="" method="POST">
+                                <form action="../Admin_Back_End/api/fnd_api/handle_deleteFND.php" method="POST">
                                     <div class="modal-body">
-                                        <div class="mb-3">
+                                        <div class="mb-3 text-center">
 
-                                            <input type="hidden" id="deleteService" name="deleteService" value=""/>
+                                            <input type="hidden" id="deleteFND" name="deleteFND" value=""/>
 
-                                            <b><p id="deleteServiceID"></p></b>
+                                            <b><label class="form-text" id="deleteFNDName"></label></b>
                                             <div id="emailHelp" class="form-text text-center">This will delete the package from the system</br>Are you sure?</div>
 
                                         </div>
@@ -336,29 +328,69 @@ include '../Back_End/db_conn.php';
         
         <script type="text/javascript">
             $(document).ready(function(){
-            $(document).on('click', '.editBtn', function(){
-                var serviceId = $(this).data('id');
-                //var serviceId = $(this).closest('tr').find('#service_id').text();
-                //var serviceId = $('#service_id').text();
-                var workerName = $('#worker_name').text();
+                $(document).on('click', '.editPackage', function(){
+                    var packageID = $(this).data('id');
+                    var packageName = $(this).data('name');
+                    var packageDesc = $(this).data('desc');
+                    var packagePrice = $(this).data('price');
 
-                $('#service').val(serviceId);
-                $('#selectedWorker').val(workerName);
+                    $('#editFnd').val(packageID);
+                    $('#packName').val(packageName);
+                    $('#packDesc').text(packageDesc);
+                    $('#packPrice').val(packagePrice);
+                });
             });
-        });
+            
+            $(document).ready(function(){
+                $(document).on('click', '.deletePackage', function(){
+                    var packageID = $(this).data('id');
+                    var packageName = $(this).data('name');
+
+                    $('#deleteFND').val(packageID);
+                    $('#deleteFNDName').text(packageName);
+                });
+            });
         </script>
+        
+        <?php
+        if(isset($_SESSION['createSuccess'])){ ?>
+            <script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Package Created',
+                text: 'You just created the Package'
+                });
+            </script>
+        <?php
+            unset($_SESSION['createSuccess']);
+        }
+        ?>
         
         <?php
         if(isset($_SESSION['updateSuccess'])){ ?>
             <script>
                 Swal.fire({
                 icon: 'success',
-                title: 'Package Created',
-                text: 'You have created a new Package'
+                title: 'Package Updated',
+                text: 'You just updated the Package'
                 });
             </script>
         <?php
             unset($_SESSION['updateSuccess']);
+        }
+        ?>
+            
+        <?php
+        if(isset($_SESSION['deleteSuccess'])){ ?>
+            <script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Package Deleted',
+                text: 'You just deleted a package'
+                });
+            </script>
+        <?php
+            unset($_SESSION['deleteSuccess']);
         }
         ?>
     </body>
