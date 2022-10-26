@@ -10,7 +10,7 @@ include '../Back_End/db_conn.php';
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <!-- plugins:css -->
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/feather/feather.css">
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/mdi/css/materialdesignicons.min.css">
@@ -18,6 +18,15 @@ include '../Back_End/db_conn.php';
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/typicons/typicons.css">
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/simple-line-icons/css/simple-line-icons.css">
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/css/vendor.bundle.base.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.0.2/css/responsive.dataTables.min.css"></script>
+        <link href='https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
         
         <!-- inject:css -->
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/css/vertical-layout-light/style.css">
@@ -163,7 +172,145 @@ include '../Back_End/db_conn.php';
                 <!-- Main Panel Body -->
                 <div class="main-panel">
                     <div class="content-wrapper">
+                        <div class="d-flex flex-row justify-content-lg-end mt-xl-5">
+                            <button type="button" class="btn btn-primary btn-icon-text col-lg-2" aria-hidden="true"  data-bs-toggle="modal" data-bs-target="#employeeModal">
+                                <i class="ti-plus btn-icon-prepend"></i>
+                                New Employee
+                            </button>
+                        </div>
+                        
+                        <div class="row flex-grow mt-xl-3">
+                            <div class="col-lg-12 d-flex flex-column">
+                                  <div class="card card-rounded">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Employee Overview</h4>
+                                            <table id="employeeTable" class="table table-bordered table-striped mb-0 table-responsive" style="box-shadow: 2px 2px 10px #888888; width:100%; overflow-x: auto;">
+                                                <thead>
+                                                    <tr align="center">
+                                                        <th>Employee Name</th>
+                                                        <th>Email</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Add Employee -->
+                    <div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">New Employee</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
 
+                                <form action="../Admin_Back_End/api/employee_api/handle_addEmployee.php" method="POST">
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <div class="form-group">
+                                                <label>Employee Name</label>
+                                                <input type="text" name="name" class="form-control" placeholder="Charles John" required>
+                                              </div>
+                                              <div class="form-group">
+                                                <label>Employee Password</label>
+                                                <input type="password" name="pw" class="form-control" placeholder="Abcd!23" required>
+                                              </div>
+                                             <div class="form-group">
+                                                <label>Confirm Password</label>
+                                                <input type="password" name="pw2" class="form-control" placeholder="Abcd!23" required>
+                                              </div>
+                                              <div class="form-group">
+                                                <label>Email</label>
+                                                <input type="email" name="email" class="form-control" placeholder="abcd@gmail.com" required>
+                                              </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-primary">Create</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Edit Modal -->
+                    <div class="modal fade" id="editEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Edit Employee</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                                <form action="../Admin_Back_End/api/project_api/handle_editEmployee.php" method="POST">
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label class="form-label">Employee</label>
+
+                                            <input type="hidden" id="employee" name="employee" value=""/>
+                                            <div class="form-group">
+                                                <label>Employee Name</label>
+                                                <input id="employeeName" type="text" name="name" class="form-control" placeholder="Charles John" required>
+                                              </div>
+                                              <div class="form-group">
+                                                <label>Employee Password</label>
+                                                <input id="employeePassword" type="password" name="pw" class="form-control" placeholder="Abcd!23" required>
+                                              </div>
+                                             <div class="form-group">
+                                                <label>Confirm Password</label>
+                                                <input id="employeePassword2" type="password" name="pw2" class="form-control" placeholder="Abcd!23" required>
+                                              </div>
+                                              <div class="form-group">
+                                                <label>Email</label>
+                                                <input id="employeeEmail" type="email" name="email" class="form-control" placeholder="abcd@gmail.com" required>
+                                              </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-primary">Save changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Delete Modal -->
+                    <div class="modal fade" id="deleteEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Warning: Employee Deletion</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+
+                                <form action="../Admin_Back_End/api/employee_api/handle_deleteEmployee.php" method="POST">
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label class="form-label">You are about to remove this employee</label>
+
+                                            <input type="hidden" id="deleteEmployee" name="deleteAcc" value=""/>
+
+                                            <b><p id="deleteEmployeeName"></p></b>
+                                            <div class="form-text">Employee will be removed permanently!</div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                      <button type="submit" class="btn btn-danger">Delete</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
 
                     <footer class="footer">
@@ -177,15 +324,110 @@ include '../Back_End/db_conn.php';
         </div>
 
       
-        <script src="../Admin_Front_End/admin_design/vendors/js/vendor.bundle.base.js"></script>
-        <script src="../Admin_Front_End/admin_design/vendors/chart.js/Chart.min.js"></script>
         <script src="../Admin_Front_End/admin_design/js/off-canvas.js"></script>
         <script src="../Admin_Front_End/admin_design/js/hoverable-collapse.js"></script>
         <script src="../Admin_Front_End/admin_design/js/template.js"></script>
         <script src="../Admin_Front_End/admin_design/js/settings.js"></script>
         <script src="../Admin_Front_End/admin_design/js/jquery.cookie.js" type="text/javascript"></script>
-        <script src="../Admin_Front_End/admin_js/performanceLine.js" type="text/javascript"></script>
-        <script src="../Admin_Front_End/admin_js/doughnutChart.js?v=<?=$version?>" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $(document).on('click', '.editBtn', function(){
+                var employeeId = $(this).data('id');
+                var employeeName = $(this).data('name');
+                var employeeEmail = $(this).data('email');
+
+                $('#employee').val(employeeId);
+                $('#employeeName').val(employeeName);
+                $('#employeeEmail').val(employeeEmail);
+            });
+        });
+
+        $(document).ready(function(){
+            $(document).on('click', '.deleteBtn', function(){
+                var employeeId = $(this).data('id');
+                var employeeName = $(this).data('name');
+                
+                $('#deleteEmployee').val(employeeId);
+                document.getElementById("deleteEmployeeName").innerHTML = "Employee Name: "+ employeeName;
+            });
+        });
+        
+        $(document).ready(function(){
+            var employeeDataTable = $('#employeeTable').DataTable({
+                'scrollX' : true,
+                'processing': true,
+                'serverSide': true,
+                'serverMethod': 'post',
+                'ajax': {
+                    'url':'dataTableEmployee.php'
+                },
+                pageLength: 10,
+                'columnDefs': [
+                   {
+                        "targets": 2,
+                        "className": "text-center"
+                   },
+                   {    "searchable": false, 
+                            "targets": 2 
+                   },
+                    {    "orderable": false,
+                         "targets": 2 
+                    }
+                ],
+                'columns': [
+                    { data: 'username' },
+                    { data: 'email' },
+                    { data: 'actions' }
+                ]
+            });
+        });
+
+
+      </script>
+      
+        <?php
+        if(isset($_SESSION['createSuccess'])){ ?>
+            <script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Account Created',
+                text: 'You just created the Account'
+                });
+            </script>
+        <?php
+            unset($_SESSION['createSuccess']);
+        }
+        ?>
+        
+        <?php
+        if(isset($_SESSION['updateSuccess'])){ ?>
+            <script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Account Updated',
+                text: 'You just updated the Account'
+                });
+            </script>
+        <?php
+            unset($_SESSION['updateSuccess']);
+        }
+        ?>
+            
+        <?php
+        if(isset($_SESSION['deleteSuccess'])){ ?>
+            <script>
+                Swal.fire({
+                icon: 'success',
+                title: 'Account Deleted',
+                text: 'You just deleted a Account'
+                });
+            </script>
+        <?php
+            unset($_SESSION['deleteSuccess']);
+        }
+        ?>
+        
     </body>
 </html>
 
