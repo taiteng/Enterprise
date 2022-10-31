@@ -55,75 +55,6 @@ $deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
             form{
                 text-align: center;
             }
-            /* Button used to open the chat form - fixed at the bottom of the page */
-            .open-button {
-                background-color: #555555;
-                color: white;
-                padding: 20px;
-                border: 1px solid #555555;
-                border-top-left-radius: 25px;
-                border-top-right-radius: 25px;
-                cursor: pointer;
-                opacity: 0.8;
-                position: fixed;
-                right: 25px;
-                bottom: 0px;
-                width: 300px;
-            }
-
-            /* The popup chat - hidden by default */
-            .chat-popup {
-                display: none;
-                position: fixed;
-                bottom: 0;
-                right: 25px;
-                background-color: black;
-                border: 1px solid black;
-                border-top-left-radius: 25px;
-                border-top-right-radius: 25px;
-                z-index: 9;
-                width: 300px;
-            }
-
-            /* Add styles to the form container */
-            .form-container {
-                max-width: 300px;
-                padding: 10px;
-                background-color: black;
-                border: 1px solid black;
-                border-top-left-radius: 25px;
-                border-top-right-radius: 25px;
-            }
-
-            /* Full-width textarea */
-            .form-container textarea {
-                width: 300px;
-                padding: 10px;
-                border: 1px solid #f1f1f1;
-                border-radius: 25px;
-                background: #f1f1f1;
-                resize: none;
-                min-height: 200px;
-            }
-
-            /* When the textarea gets focus, do something */
-            .form-container textarea:focus {
-                background-color: #ddd;
-                outline: none;
-            }
-
-            /* Set a style for the submit/send button */
-            .form-container .btn {
-                padding: 20px;
-                cursor: pointer;
-                width: 90%;
-                opacity: 0.8;
-            }
-
-            /* Add some hover effects to buttons */
-            .form-container .btn:hover, .open-button:hover {
-                opacity: 1;
-            }
             ::-webkit-scrollbar {
                 width: 10px;
             }
@@ -144,6 +75,7 @@ $deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
         <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
         <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
         <script async custom-element="amp-animation" src="https://cdn.ampproject.org/v0/amp-animation-0.1.js"></script>
+        <!-- <script src="https://apps.elfsight.com/p/platform.js" defer></script> -->
         
         <title>Payment</title>
     </head>
@@ -428,23 +360,6 @@ $deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
         </div>
         <!-- End of .container -->
         
-        <button class="open-button" onclick="openForm()">Chat with us live</button>
-
-        <div class="chat-popup" id="myForm">
-            <form action="../Livechat/userchat.php" class="form-container">
-                <button type="submit" class="btn btn-outline-success">Chat</button>
-                <button type="button" class="btn btn-outline-danger" onclick="closeForm()">Cancel</button>
-            </form>
-        </div>
-
-        <script>
-            function openForm() {
-              document.getElementById("myForm").style.display = "block";
-            }
-
-            function closeForm() {
-              document.getElementById("myForm").style.display = "none";
-            }
-        </script>
+        <!-- <div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div> -->
     </body>
 </html>
