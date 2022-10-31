@@ -5,7 +5,7 @@ session_start();
 $DATABASE_HOST = 'localhost';
 $DATABASE_USER = 'root';
 $DATABASE_PASS = '';
-$DATABASE_NAME = 'covent'; 
+$DATABASE_NAME = 'phplogin';
 
 // Try and connect using the info above.
 $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
@@ -33,20 +33,11 @@ if ($stmt = $con->prepare('SELECT id, password FROM accounts WHERE username = ?'
 	if (password_verify($_POST['password'], $password)) {
 		// Verification success! User has logged-in!
 		// Create sessions, so we know the user is logged in, they basically act like cookies but remember the data on the server.
-            if($_POST['username'] == "admin"){
-                session_regenerate_id();
+		session_regenerate_id();
 		$_SESSION['loggedin'] = TRUE;
 		$_SESSION['name'] = $_POST['username'];
 		$_SESSION['id'] = $id;
-		header('Location: ../Admin_Front_End/index.php');
-            }
-            else{
-                session_regenerate_id();
-		$_SESSION['loggedin'] = TRUE;
-		$_SESSION['name'] = $_POST['username'];
-		$_SESSION['id'] = $id;
-		header('Location: worker_home.php');
-            }
+		header('location = index.php');
 	} else {
 		// Incorrect password
 		echo 'Incorrect username and/or password!';

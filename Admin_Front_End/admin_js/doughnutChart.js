@@ -12,9 +12,8 @@ $(document).ready(function(){
             var deepavali =  data['Deepavali Celebration'];
             var raya = data['Raya Aidilfitri Celebration'];
             
-            console.log(birthday);
-            
             if ($("#doughnutChart").length) {
+                var value = birthday;
                 var doughnutChartCanvas = $("#doughnutChart").get(0).getContext("2d");
                 var doughnutPieData = {
                   datasets: [{
