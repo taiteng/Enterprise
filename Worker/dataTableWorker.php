@@ -57,7 +57,7 @@ while($row = mysqli_fetch_assoc($projectRecords)){
                                     ,
             "action"        => '<i class="updateBtn button-30" aria-hidden="true" data-bs-id="'.$row["progress_desc"].'" data-id="'.$row["service_id"].'" data-bs-toggle="modal" data-bs-target="#progressModal">Update Task</i>'
                                 
-                                .'</br><i class="quotationBtn button-30">View Quotation</i>'
+                                .'</br><form action="download_pdf.php" method="post"><input type="hidden" name="serviceID" value="'. $row["service_id"] .'"><button class="btn" type="submit"><i class="quotationBtn button-30">View Quotation</i></button></form>'
             );
     }else if($row["project_status"] === "In-Progress"){
         $data[] = array(
@@ -77,7 +77,7 @@ while($row = mysqli_fetch_assoc($projectRecords)){
                                     ,
             "action"        => '<i class="updateBtn button-30" aria-hidden="true" data-bs-id="'.$row["progress_desc"].'" data-id="'.$row["service_id"].'" data-bs-toggle="modal" data-bs-target="#progressModal">Update Task</i>'
                                 
-                                .'</br><i class="quotationBtn button-30">View Quotation</i>'
+                                .'</br><form action="download_pdf.php" method="post"><input type="hidden" name="serviceID" value="'. $row["service_id"] .'"><button class="btn" type="submit"><i class="quotationBtn button-30">View Quotation</i></button></form>'
             );
     }else{
         $data[] = array(
@@ -95,7 +95,7 @@ while($row = mysqli_fetch_assoc($projectRecords)){
                                     . '</br><p>'.$row['progress_desc'].'</p>'
                                      
                                     ,
-            "action"        => '</br><i class="quotationBtn button-30">View Quotation</i>'
+            "action"        => '</br><form action="download_pdf.php" method="post"><input type="hidden" name="serviceID" value="'. $row["service_id"] .'"><button class="btn" type="submit"><i class="quotationBtn button-30">View Quotation</i></button></form>'
             );
     }
     

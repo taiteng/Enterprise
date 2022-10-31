@@ -20,6 +20,16 @@ function random_id_gen($length){
     return $string;
 }
 
+function check_service_ID($conn, $sid){
+    $query = "select * from service where service_id = '$sid'";
+
+    $result = mysqli_query($conn, $query);
+    if ($result && mysqli_num_rows($result) > 0) {
+        $service_data = mysqli_fetch_assoc($result);
+        return $service_data;
+    }
+}
+
 function check_service($conn){
     if(isset($_SESSION['sid'])){
 	$sid = $_SESSION['sid'];

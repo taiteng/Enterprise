@@ -47,7 +47,7 @@ while($row = mysqli_fetch_assoc($serviceRecords)){
                 "project_status"=>'<i class="fa fa-circle fa-xs" aria-hidden="true" style="color:green"></i> '.$row["project_status"].'',
                 "progress_check"=>$row['progress_check'],
                 "progress_desc"=>'<i class="viewProgressBtn 	fa fa-arrows-alt" aria-hidden="true" data-id="'.$row["progress_desc"].'" data-bs-toggle="modal" data-bs-target="#progressModal"></i>',
-                "quotation"=>'<i class="fa fa-download fa-2x" aria-hidden="true"></i>',
+                "quotation"=>'<form action="download_pdf.php" method="post"><input type="hidden" name="serviceID" value="'. $row["service_id"] .'"><button class="btn" type="submit"><i class="fa fa-download fa-2x" aria-hidden="true"></i></button></form>',
                 "actions"=>'<i id="myEditId" class="editBtn fa fa-pencil-square-o fa-2x " aria-hidden="true" data-id="'.$row["service_id"].'" data-bs-toggle="modal" data-bs-target="#assignModal"></i>'
                     . '<i id="myDeleteId" class="deleteBtn fa fa-trash fa-2x" aria-hidden="true" data-id="'.$row["service_id"].'" data-bs-toggle="modal" data-bs-target="#deleteModal"></i>'
                 );
@@ -62,7 +62,7 @@ while($row = mysqli_fetch_assoc($serviceRecords)){
                 "project_status"=>'<i class="fa fa-circle fa-xs" aria-hidden="true" style="color:orange"></i> '.$row["project_status"].'',
                 "progress_check"=>$row['progress_check'],
                 "progress_desc"=>'<i class="viewProgressBtn 	fa fa-arrows-alt" aria-hidden="true" data-id="'.$row["progress_desc"].'" data-bs-toggle="modal" data-bs-target="#progressModal"></i>',
-                "quotation"=>'<i class="fa fa-download fa-2x" aria-hidden="true"></i>',
+                "quotation"=>'<form action="download_pdf.php" method="post"><input type="hidden" name="serviceID" value="'. $row["service_id"] .'"><button class="btn" type="submit"><i class="fa fa-download fa-2x" aria-hidden="true"></i></button></form>',
                 "actions"=>'<i id="myEditId" class="editBtn fa fa-pencil-square-o fa-2x " aria-hidden="true" data-id="'.$row["service_id"].'" data-bs-toggle="modal" data-bs-target="#assignModal"></i>'
                     . '<i id="myDeleteId" class="deleteBtn fa fa-trash fa-2x" aria-hidden="true" data-id="'.$row["service_id"].'" data-bs-toggle="modal" data-bs-target="#deleteModal"></i>'
                 );
@@ -77,7 +77,7 @@ while($row = mysqli_fetch_assoc($serviceRecords)){
                 "project_status"=>'<i class="fa fa-circle fa-xs" aria-hidden="true" style="color:red"></i> '.$row["project_status"].'',
                 "progress_check"=>$row['progress_check'],
                 "progress_desc"=>'<i class="viewProgressBtn 	fa fa-arrows-alt" aria-hidden="true" data-id="'.$row["progress_desc"].'" data-bs-toggle="modal" data-bs-target="#progressModal"></i>',
-                "quotation"=>'<i class="fa fa-download fa-2x" aria-hidden="true"></i>',
+                "quotation"=>'<form action="download_pdf.php" method="post"><input type="hidden" name="serviceID" value="'. $row["service_id"] .'"><button class="btn" type="submit"><i class="fa fa-download fa-2x" aria-hidden="true"></i></button></form>',
                 "actions"=>'<i id="myEditId" class="editBtn fa fa-pencil-square-o fa-2x " aria-hidden="true" data-id="'.$row["service_id"].'" data-bs-toggle="modal" data-bs-target="#assignModal"></i>'
                     . '<i id="myDeleteId" class="deleteBtn fa fa-trash fa-2x" aria-hidden="true" data-id="'.$row["service_id"].'" data-bs-toggle="modal" data-bs-target="#deleteModal"></i>'
                 );
