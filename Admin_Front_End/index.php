@@ -1,6 +1,7 @@
 <?php
 session_start();
 include '../Admin_Back_End/config.php';
+include '../Back_End/db_conn.php';
 ?>
 
 <!DOCTYPE html>
@@ -23,13 +24,6 @@ include '../Admin_Back_End/config.php';
         <!-- endinject -->
         <link rel="icon" href="../Images/logo.png" />
         
-        <style>
-            .list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-}
-li:nth-child(odd)
-        </style>
         
         <title>Covent</title>
     </head>
@@ -39,52 +33,52 @@ li:nth-child(odd)
             <!--Navigation Bar -->
             <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex align-items-top flex-row">
             
-            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-                
-                <!-- Expand Button -->
-                <div class="me-3">
-                    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
-                        <span class="icon-menu"></span>
+                <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+
+                    <!-- Expand Button -->
+                    <div class="me-3">
+                        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="minimize">
+                            <span class="icon-menu"></span>
+                        </button>
+                    </div>
+
+                    <div>
+                        <a class="navbar-brand brand-logo" href="index.php">
+                            <img src="../Images/coventco_white.jpg" alt="logo" />
+                        </a>
+                        <a class="navbar-brand brand-logo-mini" href="index.php">
+                            <img src="../Images/coventco_white.jpg" alt="logo" />
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Greeting Bar -->
+                <div class="navbar-menu-wrapper d-flex align-items-top"> 
+                    <ul class="navbar-nav">
+                        <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
+                            <h1 class="welcome-text">Greetings, <span class="text-black fw-bold">John Doe</span></h1>
+                            <h3 class="welcome-sub-text">Welcome to Covent Dashboard</h3>
+                        </li>
+                    </ul>
+
+                    <!-- Admin Settings -->
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown d-none d-lg-block user-dropdown">
+                            <a class="nav-link" id="UserDropdown" href="" data-bs-toggle="dropdown" aria-expanded="false">
+                                <p class="mb-1 mt-3 font-weight-semibold">Admin Name</p>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                                <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <!-- Expand Button -->
+                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
+                        <span class="mdi mdi-menu"></span>
                     </button>
                 </div>
-                
-                <div>
-                    <a class="navbar-brand brand-logo" href="index.php">
-                        <img src="../Images/coventco_white.jpg" alt="logo" />
-                    </a>
-                    <a class="navbar-brand brand-logo-mini" href="index.php">
-                        <img src="../Images/coventco_white.jpg" alt="logo" />
-                    </a>
-                </div>
-            </div>
-
-            <!-- Greeting Bar -->
-            <div class="navbar-menu-wrapper d-flex align-items-top"> 
-                <ul class="navbar-nav">
-                    <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                        <h1 class="welcome-text">Greetings, <span class="text-black fw-bold">John Doe</span></h1>
-                        <h3 class="welcome-sub-text">Welcome to Covent Dashboard</h3>
-                    </li>
-                </ul>
-                
-                <!-- Admin Settings -->
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown d-none d-lg-block user-dropdown">
-                        <a class="nav-link" id="UserDropdown" href="" data-bs-toggle="dropdown" aria-expanded="false">
-                            <p class="mb-1 mt-3 font-weight-semibold">Admin Name</p>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
-                        </div>
-                    </li>
-                </ul>
-                
-                <!-- Expand Button -->
-                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
-                    <span class="mdi mdi-menu"></span>
-                </button>
-            </div>
-        </nav>
+            </nav>
         
           <!-- partial -->
         <div class="container-fluid page-body-wrapper">
@@ -128,32 +122,30 @@ li:nth-child(odd)
                     </li>
                     <li class="nav-item nav-category">Service Management</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" aria-expanded="false" aria-controls="form-elements">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#editservice" aria-expanded="false" aria-controls="form-elements">
                             <i class="menu-icon mdi mdi-card-text-outline"></i>
-                            <span class="menu-title">Reviews</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="" aria-expanded="false" aria-controls="charts">
-                            <i class="menu-icon mdi mdi-chart-line"></i>
-                            <span class="menu-title">Sales Statistic</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="" aria-expanded="false" aria-controls="tables">
-                            <i class="menu-icon mdi mdi-table"></i>
                             <span class="menu-title">Edit Service</span>
+                            <i class="menu-arrow"></i>
                         </a>
+                        <div class="collapse" id="editservice">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="fnd.php">Food and Drinks</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="item.php">Items</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="decoration.php">Decorations</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="fun.php">Fun and Entertainment</a></li>
+                            </ul>
+                        </div>
+                        
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" aria-expanded="false" aria-controls="icons">
+                        <a class="nav-link" href="discount.php" aria-expanded="false" aria-controls="icons">
                             <i class="menu-icon mdi mdi-layers-outline"></i>
                             <span class="menu-title">Discount</span>
                         </a>
                     </li>
                     <li class="nav-item nav-category">Company Management</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" aria-expanded="false" aria-controls="auth">
+                        <a class="nav-link" href="employee.php" aria-expanded="false" aria-controls="auth">
                             <i class="menu-icon mdi mdi-account-circle-outline"></i>
                             <span class="menu-title">Employees</span>
                         </a>
@@ -225,9 +217,7 @@ li:nth-child(odd)
                                                                 <h4 class="card-title card-title-dash">Progress Ratio</h4>
                                                             </div>
                                                             <canvas class="my-auto" id="doughnutChart" height="200"></canvas>
-                                                                <div class=" flex-column justify-content-evenly align-items-center">
-                                                                    <div id="doughnut-chart-legend" class="mt-5 text-center "></div>
-                                                                </div>
+                                                            <div id="doughnut-chart-legend" class="mt-5 text-center "></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -236,78 +226,113 @@ li:nth-child(odd)
                                     </div>
                                 </div>
                                 
-                                <!-- Service Type Histogram -->
-                                <div class="col-lg-6 grid-margin stretch-card">
-                                    <div class="card card-rounded">
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="col-lg-6 d-flex flex-column">
+                                    <div class="row">
+                                        <div class="col-12 grid-margin stretch-card">
+                                            <div class="card card-rounded">
+                                                <div class="card-body">
+                                                    <div class="d-sm-flex justify-content-between align-items-start">
                                                         <div>
-                                                            <h4 class="card-title card-title-dash">Top Service Type</h4>
+                                                            <h4 class="card-title card-title-dash">Progress Review</h4>
                                                         </div>
                                                     </div>
-                                                    <div class="mt-3">
-                                                        <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
-                                                            <div class="d-flex">
-                                                                <img class="img-sm rounded-10" src="images/faces/face1.jpg" alt="profile">
-                                                                <div class="wrapper ms-3">
-                                                                    <p class="ms-1 mb-1 fw-bold">Birthday Party</p>
-                                                                    <small class="text-muted mb-0">162543</small>
-                                                                </div>
-                                                            </div>
-                                                            <div class="text-muted text-small">
-                                                                1h ago
-                                                            </div>
-                                                        </div>
-                                                        <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
-                                                            <div class="d-flex">
-                                                                <img class="img-sm rounded-10" src="images/faces/face2.jpg" alt="profile">
-                                                                <div class="wrapper ms-3">
-                                                                    <p class="ms-1 mb-1 fw-bold">Wayne Murphy</p>
-                                                                    <small class="text-muted mb-0">162543</small>
-                                                                </div>
-                                                            </div>
-                                                            <div class="text-muted text-small">
-                                                                1h ago
-                                                            </div>
-                                                        </div>
-                                                        <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
-                                                            <div class="d-flex">
-                                                                <img class="img-sm rounded-10" src="images/faces/face3.jpg" alt="profile">
-                                                                <div class="wrapper ms-3">
-                                                                    <p class="ms-1 mb-1 fw-bold">Katherine Butler</p>
-                                                                    <small class="text-muted mb-0">162543</small>
-                                                                </div>
-                                                            </div>
-                                                            <div class="text-muted text-small">
-                                                                1h ago
-                                                            </div>
-                                                        </div>
-                                                        <div class="wrapper d-flex align-items-center justify-content-between py-2 border-bottom">
-                                                            <div class="d-flex">
-                                                                <img class="img-sm rounded-10" src="images/faces/face4.jpg" alt="profile">
-                                                                <div class="wrapper ms-3">
-                                                                    <p class="ms-1 mb-1 fw-bold">Matthew Bailey</p>
-                                                                    <small class="text-muted mb-0">162543</small>
-                                                                </div>
-                                                            </div>
-                                                            <div class="text-muted text-small">
-                                                                1h ago
-                                                            </div>
-                                                        </div>
-                                                        <div class="wrapper d-flex align-items-center justify-content-between pt-2">
-                                                            <div class="d-flex">
-                                                                <img class="img-sm rounded-10" src="images/faces/face5.jpg" alt="profile">
-                                                                <div class="wrapper ms-3">
-                                                                    <p class="ms-1 mb-1 fw-bold">Rafell John</p>
-                                                                    <small class="text-muted mb-0">Alaska, USA</small>
-                                                                </div>
-                                                            </div>
-                                                            <div class="text-muted text-small">
-                                                                1h ago
-                                                            </div>
-                                                        </div>
+                                                    <div class="table-responsive  mt-1">
+                                                        <table class="table select-table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Employee</th>
+                                                                    <th>Task</th>
+                                                                    <th>Progress</th>
+                                                                    <th>Status</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <?php
+                                                                $query = "SELECT worker_name, service_type, service_desc, project_status, progress_check FROM service ORDER BY progress_check DESC";
+                                                                
+                                                                $result = mysqli_query($conn, $query);
+                                                                
+                                                                if ($result->num_rows > 0) {
+                                                                        // output data of each row
+                                                                        while($row = $result->fetch_assoc()) {
+                                                                            if($row['project_status'] == "Open"){
+                                                                                echo '<tr>
+                                                                                    <td>
+                                                                                        <div class="d-flex ">
+                                                                                            <div>
+                                                                                                <h6>'.$row['worker_name'].'</h6>
+                                                                                                <p>Employee</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <h6>'.$row['service_type'].'</h6>
+                                                                                        <p>'.$row['service_desc'].'</p>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div>
+                                                                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
+                                                                                                <p class="text-success">'.$row['progress_check'].'</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td><div class="badge badge-opacity-success">'.$row['project_status'].'</div></td>
+                                                                                </tr>';
+                                                                            }else if($row['project_status'] == "In-Progress"){
+                                                                                echo '<tr>
+                                                                                    <td>
+                                                                                        <div class="d-flex ">
+                                                                                            <div>
+                                                                                                <h6>'.$row['worker_name'].'</h6>
+                                                                                                <p>Employee</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <h6>'.$row['service_type'].'</h6>
+                                                                                        <p>'.$row['service_desc'].'</p>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div>
+                                                                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
+                                                                                                <p class="text-success">'.$row['progress_check'].'</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td><div class="badge badge-opacity-warning">'.$row['project_status'].'</div></td>
+                                                                                </tr>';
+                                                                            }else{
+                                                                                echo '<tr>
+                                                                                    <td>
+                                                                                        <div class="d-flex ">
+                                                                                            <div>
+                                                                                                <h6>'.$row['worker_name'].'</h6>
+                                                                                                <p>Employee</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <h6>'.$row['service_type'].'</h6>
+                                                                                        <p>'.$row['service_desc'].'</p>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <div>
+                                                                                            <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
+                                                                                                <p class="text-success">'.$row['progress_check'].'</p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </td>
+                                                                                    <td><div class="badge badge-opacity-danger">'.$row['project_status'].'</div></td>
+                                                                                </tr>';
+                                                                            }
+                                                                            
+                                                                            
+                                                                        }
+                                                                    }
+                                                                ?>
+                                                                
+                                                            </tbody>
+                                                        </table>
                                                     </div>
                                                 </div>
                                             </div>
@@ -317,78 +342,6 @@ li:nth-child(odd)
                             </div>
                             
                             
-                          <!-- Employees Progress Review -->  
-                          <div class="row">
-                            <div class="col-lg-12 d-flex flex-column">
-                              
-                                <div class="row">
-                                    <div class="col-12 grid-margin stretch-card">
-                                        <div class="card card-rounded">
-                                            <div class="card-body">
-                                                <div class="d-sm-flex justify-content-between align-items-start">
-                                                    <div>
-                                                        <h4 class="card-title card-title-dash">Progress Review</h4>
-                                                    </div>
-                                                </div>
-                                                <div class="table-responsive  mt-1">
-                                                    <table class="table select-table">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>
-                                                                    <div class="form-check form-check-flat mt-0">
-                                                                        <label class="form-check-label">
-                                                                            <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                                                    </div>
-                                                                </th>
-                                                                <th>Customer</th>
-                                                                <th>Company</th>
-                                                                <th>Progress</th>
-                                                                <th>Status</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>
-                                                                    <div class="form-check form-check-flat mt-0">
-                                                                        <label class="form-check-label">
-                                                                        <input type="checkbox" class="form-check-input" aria-checked="false"><i class="input-helper"></i></label>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <div class="d-flex ">
-                                                                        <img src="images/faces/face1.jpg" alt="">
-                                                                        <div>
-                                                                            <h6>Brandon Washington</h6>
-                                                                            <p>Head admin</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td>
-                                                                    <h6>Company name 1</h6>
-                                                                    <p>company type</p>
-                                                                </td>
-                                                                <td>
-                                                                    <div>
-                                                                        <div class="d-flex justify-content-between align-items-center mb-1 max-width-progress-wrap">
-                                                                            <p class="text-success">79%</p>
-                                                                            <p>85/162</p>
-                                                                        </div>
-                                                                        <div class="progress progress-md">
-                                                                            <div class="progress-bar bg-success" role="progressbar" style="width: 85%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </td>
-                                                                <td><div class="badge badge-opacity-warning">In progress</div></td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </div>

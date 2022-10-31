@@ -140,32 +140,30 @@ include "../Back_End/db_conn.php";
                     </li>
                     <li class="nav-item nav-category">Service Management</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" aria-expanded="false" aria-controls="form-elements">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#editservice" aria-expanded="false" aria-controls="form-elements">
                             <i class="menu-icon mdi mdi-card-text-outline"></i>
-                            <span class="menu-title">Reviews</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="" aria-expanded="false" aria-controls="charts">
-                            <i class="menu-icon mdi mdi-chart-line"></i>
-                            <span class="menu-title">Sales Statistic</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="" aria-expanded="false" aria-controls="tables">
-                            <i class="menu-icon mdi mdi-table"></i>
                             <span class="menu-title">Edit Service</span>
+                            <i class="menu-arrow"></i>
                         </a>
+                        <div class="collapse" id="editservice">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="fnd.php">Food and Drinks</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="item.php">Items</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="decoration.php">Decorations</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="fun.php">Fun and Entertainment</a></li>
+                            </ul>
+                        </div>
+                        
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" aria-expanded="false" aria-controls="icons">
+                        <a class="nav-link" href="discount.php" aria-expanded="false" aria-controls="icons">
                             <i class="menu-icon mdi mdi-layers-outline"></i>
                             <span class="menu-title">Discount</span>
                         </a>
                     </li>
                     <li class="nav-item nav-category">Company Management</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="" aria-expanded="false" aria-controls="auth">
+                        <a class="nav-link" href="employee.php" aria-expanded="false" aria-controls="auth">
                             <i class="menu-icon mdi mdi-account-circle-outline"></i>
                             <span class="menu-title">Employees</span>
                         </a>
@@ -223,7 +221,7 @@ include "../Back_End/db_conn.php";
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
 
-                            <form action="../Admin_Back_End/handle_assignProject.php" method="POST">
+                            <form action="../Admin_Back_End/api/project_api/handle_assignProject.php" method="POST">
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label class="form-label">Employee</label>
@@ -269,7 +267,7 @@ include "../Back_End/db_conn.php";
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
 
-                            <form action="../Admin_Back_End/handle_deleteProject.php" method="POST">
+                            <form action="../Admin_Back_End/api/project_api/handle_deleteProject.php" method="POST">
                                 <div class="modal-body">
                                     <div class="mb-3">
                                         <label class="form-label">Are you sure to delete this project?</label>
@@ -409,7 +407,7 @@ include "../Back_End/db_conn.php";
                 'ajax': {
                     'url':'dataTableAjax.php'
                 },
-                pageLength: 5,
+                pageLength: 10,
                 'columnDefs': [
                     {
                         "targets": 0, // your case first column

@@ -18,15 +18,6 @@ include '../Back_End/db_conn.php';
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/typicons/typicons.css">
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/simple-line-icons/css/simple-line-icons.css">
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/vendors/css/vendor.bundle.base.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-        <script src="https://cdn.datatables.net/responsive/2.0.2/css/responsive.dataTables.min.css"></script>
-        <link href='https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
         
         <!-- inject:css -->
         <link rel="stylesheet" href="../Admin_Front_End/admin_design/css/vertical-layout-light/style.css">
@@ -60,11 +51,11 @@ include '../Back_End/db_conn.php';
                 </div>
 
                 <!-- Greeting Bar -->
-                <div class="navbar-menu-wrapper d-flex align-items-top"> 
+                <div class="navbar-menu-wrapper d-flex align-items-top">
                     <ul class="navbar-nav">
                         <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                            <h1 class="welcome-text">Greetings, <span class="text-black fw-bold">John Doe</span></h1>
-                            <h3 class="welcome-sub-text">Welcome to Covent Dashboard</h3>
+                            <h1 class="welcome-text">Edit Service: <span class="text-black fw-bold">Food and Drinks</span></h1>
+                            <h3 class="welcome-sub-text">Prepare and provide the victuals as a package</h3>
                         </li>
                     </ul>
 
@@ -172,60 +163,66 @@ include '../Back_End/db_conn.php';
                 <!-- Main Panel Body -->
                 <div class="main-panel">
                     <div class="content-wrapper">
-                        <div class="d-flex flex-row justify-content-lg-end mt-xl-5">
-                            <button type="button" class="btn btn-primary btn-icon-text col-lg-2" aria-hidden="true"  data-bs-toggle="modal" data-bs-target="#employeeModal">
-                                <i class="ti-plus btn-icon-prepend"></i>
-                                New Employee
-                            </button>
-                        </div>
-                        
-                        <div class="row flex-grow mt-xl-3">
-                            <div class="col-lg-12 d-flex flex-column">
-                                  <div class="card card-rounded">
-                                        <div class="card-body">
-                                            <h4 class="card-title">Employee Overview</h4>
-                                            <table id="employeeTable" class="table table-bordered table-striped mb-0 table-responsive" style="box-shadow: 2px 2px 10px #888888; width:100%; overflow-x: auto;">
-                                                <thead>
-                                                    <tr align="center">
-                                                        <th>Employee Name</th>
-                                                        <th>Email</th>
-                                                        <th>Actions</th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
-                                        </div>
-                                    </div>
+                        <div class="row">
+                            <div class="d-flex flex-row justify-content-lg-end mt-xl-5">
+                                <button type="button" class="btn btn-primary btn-icon-text col-lg-2" aria-hidden="true"  data-bs-toggle="modal" data-bs-target="#fndModal">
+                                    <i class="ti-plus btn-icon-prepend"></i>
+                                    New Package
+                                </button>
                             </div>
+                            
+                            <div class="col-lg-12 grid-margin stretch-card mt-xl-5">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <h4 class="card-title">Packages</h4>
+                                    <p class="card-description">
+                                        Specialize in food and drinks. 
+                                    </p>
+                                    <div class="table-responsive">
+                                      <table id="packageList" class="table table-hover">
+                                        <thead>
+                                          <tr>
+                                            <th>Name</th>
+                                            <th>Description</th>
+                                            <th>Price</th>
+                                            <th>Actions</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                            <script src="display_fnd.js?v=<?=$version?>"></script>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                         </div>
                     </div>
                     
-                    <!-- Add Employee -->
-                    <div class="modal fade" id="employeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <!-- Add Package -->
+                    <div class="modal fade" id="fndModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">New Employee</h5>
+                                  <h5 class="modal-title" id="exampleModalLabel">Food and Drinks</h5>
                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
 
-                                <form action="../Admin_Back_End/api/employee_api/handle_addEmployee.php" method="POST">
+                                <form action="../Admin_Back_End/api/fnd_api/handle_addFND.php" method="POST">
                                     <div class="modal-body">
                                         <div class="mb-3">
+                                            <input type="hidden" name="id" id="fndid"/>
                                             <div class="form-group">
-                                                <label>Employee Name</label>
-                                                <input type="text" name="name" class="form-control" placeholder="Charles John" required>
+                                                <label for="exampleInputUsername1">Package Name</label>
+                                                <input type="text" name="name" class="form-control" id="exampleInputUsername1" placeholder="Shining Calories" required>
                                               </div>
                                               <div class="form-group">
-                                                <label>Employee Password</label>
-                                                <input type="password" name="pw" class="form-control" placeholder="Abcd!23" required>
-                                              </div>
-                                             <div class="form-group">
-                                                <label>Confirm Password</label>
-                                                <input type="password" name="pw2" class="form-control" placeholder="Abcd!23" required>
+                                                <label for="exampleInputEmail1">Package Description</label>
+                                                <textarea class="form-control" name="desc" style="resize: vertical; height:auto;" rows="5" placeholder="KFC Chicken..." required></textarea>
                                               </div>
                                               <div class="form-group">
-                                                <label>Email</label>
-                                                <input type="email" name="email" class="form-control" placeholder="abcd@gmail.com" required>
+                                                <label for="exampleInputPassword1">Price (RM)</label>
+                                                <input type="number" name="price" class="form-control" id="exampleInputPassword1" placeholder="150" required>
                                               </div>
                                         </div>
                                     </div>
@@ -239,36 +236,32 @@ include '../Back_End/db_conn.php';
                         </div>
                     </div>
                     
+                    
                     <!-- Edit Modal -->
-                    <div class="modal fade" id="editEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="editPackageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Edit Employee</h5>
+                                  <h5 class="modal-title" id="exampleModalLabel">Edit Food Package</h5>
                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
 
-                                <form action="../Admin_Back_End/api/project_api/handle_editEmployee.php" method="POST">
+                                <form action="../Admin_Back_End/api/fnd_api/handle_editFND.php" method="POST">
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <label class="form-label">Employee</label>
-
-                                            <input type="hidden" id="employee" name="employee" value=""/>
+                                            <input type="hidden" name="id" id="editFnd" value=""/>
+                                            
                                             <div class="form-group">
-                                                <label>Employee Name</label>
-                                                <input id="employeeName" type="text" name="name" class="form-control" placeholder="Charles John" required>
+                                                <label for="exampleInputUsername1">Package Name</label>
+                                                <input id="packName" type="text" name="name" class="form-control" placeholder="Shining Calories" required>
                                               </div>
                                               <div class="form-group">
-                                                <label>Employee Password</label>
-                                                <input id="employeePassword" type="password" name="pw" class="form-control" placeholder="Abcd!23" required>
-                                              </div>
-                                             <div class="form-group">
-                                                <label>Confirm Password</label>
-                                                <input id="employeePassword2" type="password" name="pw2" class="form-control" placeholder="Abcd!23" required>
+                                                <label for="exampleInputEmail1">Package Description</label>
+                                                <textarea id="packDesc" class="form-control" name="desc" style="resize: vertical; height:auto;" rows="5" placeholder="KFC Chicken..." required></textarea>
                                               </div>
                                               <div class="form-group">
-                                                <label>Email</label>
-                                                <input id="employeeEmail" type="email" name="email" class="form-control" placeholder="abcd@gmail.com" required>
+                                                <label for="exampleInputPassword1">Price (RM)</label>
+                                                <input id="packPrice" type="number" name="price" class="form-control"  placeholder="150" required>
                                               </div>
                                         </div>
                                     </div>
@@ -281,25 +274,24 @@ include '../Back_End/db_conn.php';
                             </div>
                         </div>
                     </div>
-
+                    
                     <!-- Delete Modal -->
-                    <div class="modal fade" id="deleteEmployeeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal fade" id="deletePackageModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Warning: Employee Deletion</h5>
+                                  <h5 class="modal-title" id="exampleModalLabel">Delete Package</h5>
                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
 
-                                <form action="../Admin_Back_End/api/employee_api/handle_deleteEmployee.php" method="POST">
+                                <form action="../Admin_Back_End/api/fnd_api/handle_deleteFND.php" method="POST">
                                     <div class="modal-body">
-                                        <div class="mb-3">
-                                            <label class="form-label">You are about to remove this employee</label>
+                                        <div class="mb-3 text-center">
 
-                                            <input type="hidden" id="deleteEmployee" name="deleteAcc" value=""/>
+                                            <input type="hidden" id="deleteFND" name="deleteFND" value=""/>
 
-                                            <b><p id="deleteEmployeeName"></p></b>
-                                            <div class="form-text">Employee will be removed permanently!</div>
+                                            <b><label class="form-text" id="deleteFNDName"></label></b>
+                                            <div id="emailHelp" class="form-text text-center">This will delete the package from the system</br>Are you sure?</div>
 
                                         </div>
                                     </div>
@@ -324,75 +316,49 @@ include '../Back_End/db_conn.php';
         </div>
 
       
+        <script src="../Admin_Front_End/admin_design/vendors/js/vendor.bundle.base.js"></script>
+        <script src="../Admin_Front_End/admin_design/vendors/chart.js/Chart.min.js"></script>
         <script src="../Admin_Front_End/admin_design/js/off-canvas.js"></script>
         <script src="../Admin_Front_End/admin_design/js/hoverable-collapse.js"></script>
         <script src="../Admin_Front_End/admin_design/js/template.js"></script>
         <script src="../Admin_Front_End/admin_design/js/settings.js"></script>
         <script src="../Admin_Front_End/admin_design/js/jquery.cookie.js" type="text/javascript"></script>
+        <script src="../Admin_Front_End/admin_js/performanceLine.js" type="text/javascript"></script>
+        <script src="../Admin_Front_End/admin_js/doughnutChart.js?v=<?=$version?>" type="text/javascript"></script>
         
         <script type="text/javascript">
-        $(document).ready(function(){
-            $(document).on('click', '.editBtn', function(){
-                var employeeId = $(this).data('id');
-                var employeeName = $(this).data('name');
-                var employeeEmail = $(this).data('email');
+            $(document).ready(function(){
+                $(document).on('click', '.editPackage', function(){
+                    var packageID = $(this).data('id');
+                    var packageName = $(this).data('name');
+                    var packageDesc = $(this).data('desc');
+                    var packagePrice = $(this).data('price');
 
-                $('#employee').val(employeeId);
-                $('#employeeName').val(employeeName);
-                $('#employeeEmail').val(employeeEmail);
+                    $('#editFnd').val(packageID);
+                    $('#packName').val(packageName);
+                    $('#packDesc').text(packageDesc);
+                    $('#packPrice').val(packagePrice);
+                });
             });
-        });
+            
+            $(document).ready(function(){
+                $(document).on('click', '.deletePackage', function(){
+                    var packageID = $(this).data('id');
+                    var packageName = $(this).data('name');
 
-        $(document).ready(function(){
-            $(document).on('click', '.deleteBtn', function(){
-                var employeeId = $(this).data('id');
-                var employeeName = $(this).data('name');
-                
-                $('#deleteEmployee').val(employeeId);
-                document.getElementById("deleteEmployeeName").innerHTML = "Employee Name: "+ employeeName;
+                    $('#deleteFND').val(packageID);
+                    $('#deleteFNDName').text(packageName);
+                });
             });
-        });
+        </script>
         
-        $(document).ready(function(){
-            var employeeDataTable = $('#employeeTable').DataTable({
-                'scrollX' : true,
-                'processing': true,
-                'serverSide': true,
-                'serverMethod': 'post',
-                'ajax': {
-                    'url':'dataTableEmployee.php'
-                },
-                pageLength: 10,
-                'columnDefs': [
-                   {
-                        "targets": 2,
-                        "className": "text-center"
-                   },
-                   {    "searchable": false, 
-                            "targets": 2 
-                   },
-                    {    "orderable": false,
-                         "targets": 2 
-                    }
-                ],
-                'columns': [
-                    { data: 'username' },
-                    { data: 'email' },
-                    { data: 'actions' }
-                ]
-            });
-        });
-
-
-      </script>
-      
         <?php
         if(isset($_SESSION['createSuccess'])){ ?>
             <script>
                 Swal.fire({
                 icon: 'success',
-                title: 'Account Created',
-                text: 'You just created the Account'
+                title: 'Package Created',
+                text: 'You just created the Package'
                 });
             </script>
         <?php
@@ -405,8 +371,8 @@ include '../Back_End/db_conn.php';
             <script>
                 Swal.fire({
                 icon: 'success',
-                title: 'Account Updated',
-                text: 'You just updated the Account'
+                title: 'Package Updated',
+                text: 'You just updated the Package'
                 });
             </script>
         <?php
@@ -419,15 +385,14 @@ include '../Back_End/db_conn.php';
             <script>
                 Swal.fire({
                 icon: 'success',
-                title: 'Account Deleted',
-                text: 'You just deleted a Account'
+                title: 'Package Deleted',
+                text: 'You just deleted a package'
                 });
             </script>
         <?php
             unset($_SESSION['deleteSuccess']);
         }
         ?>
-        
     </body>
 </html>
 

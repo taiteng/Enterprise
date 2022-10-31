@@ -8,49 +8,42 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
   
 // include database and object files
-include_once '../Back_End/Service_API/database.php';
-include_once '../Back_End/Service_API/service.php';
-include "../Back_End/db_conn.php";
+include_once '../../../Admin_Back_End/api/discount_api/database.php';
+include_once '../../../Admin_Back_End/api/discount_api/discount.php';
+include "../../../Back_End/db_conn.php";
   
 // get database connection
 $database = new Database();
 $db = $database->getConnection();
   
 // prepare product object
-$service = new service($db);
-  
-// set ID property of product to be edited
-$service->service_id = $_POST["service"];
+$discount = new discount($db);
   
 // set product property values
-$service->worker_name = $_POST["username"];
+$discount->discount_percent = $_POST["percent"];
+$discount->discount_name = $_POST["name"];
+$discount->discount_status = $_POST["status"];
 
-if($service->worker_name == '-'){
-    $service->project_status = "Waiting for Job Assign";
-}else{
-    $service->project_status = "Open";
-}
-
-// update the product
-if($service->updateTask()){
+// update the discount
+if($discount->create()){
     $_SESSION['updateSuccess'] = "true";
-    header("Location: ../Admin_Front_End/projects.php");
+    header("Location: ../../../Admin_Front_End/discount.php");
     exit();
     
     // set response code - 200 ok
     http_response_code(200);
     
     // tell the user
-    echo json_encode(array("message" => "Service was updated."));
+    echo json_encode(array("message" => "Discount was created."));
 }
   
-// if unable to update the product, tell the user
+// if unable to update the discount, tell the user
 else{
   
     // set response code - 503 service unavailable
     http_response_code(503);
   
     // tell the user
-    echo json_encode(array("message" => "Unable to update service."));
+    echo json_encode(array("message" => "Unable to create discount."));
 }
 ?>
