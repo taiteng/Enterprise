@@ -81,7 +81,7 @@ div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,ol,ul,li,figcaption,textarea,input{fon
                     </div>
                 </li>
 		<li class="nav-item dropdown open">
-                    <a class="nav-link link text-white display-7" href="../Help/Faq.php" data-toggle="dropdown-submenu" aria-expanded="true">
+                    <a class="nav-link link text-white display-7" href="faq.php" data-toggle="dropdown-submenu" aria-expanded="true">
 			Help
                     </a>	
                 </li>
@@ -129,7 +129,7 @@ div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,ol,ul,li,figcaption,textarea,input{fon
                         </div>
                     </li>
                     <li class="nav-item dropdown open">
-                        <a class="nav-link link text-white display-7" href="../Help/Faq.php" data-toggle="dropdown-submenu" aria-expanded="true">
+                        <a class="nav-link link text-white display-7" href="faq.php" data-toggle="dropdown-submenu" aria-expanded="true">
                             Help
                         </a>	
                     </li>
