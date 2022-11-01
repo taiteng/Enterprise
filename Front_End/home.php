@@ -54,7 +54,7 @@ div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,ol,ul,li,figcaption,textarea,input{fon
     <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
     <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
     <script async custom-element="amp-animation" src="https://cdn.ampproject.org/v0/amp-animation-0.1.js"></script>
-    <!-- <script src="https://apps.elfsight.com/p/platform.js" defer></script> -->
+    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
     <script src="Z_display_tnc.js"></script>
     
     <title>Home</title>
@@ -336,6 +336,8 @@ div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,ol,ul,li,figcaption,textarea,input{fon
             </div>
         </div>
     </section>
+    
+    <div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div>
 
     <div>
         <!-- Footer -->
@@ -432,7 +434,5 @@ div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,ol,ul,li,figcaption,textarea,input{fon
         <!-- Footer -->
     </div>
     <!-- End of .container -->
-    
-    <!-- <div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div> -->
 </body>
 </html>

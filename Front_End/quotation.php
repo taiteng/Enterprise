@@ -601,6 +601,8 @@ if(isset($_SESSION["reviewCreated"])){
                 </form>
             </div>
         </section>
+        
+        <!-- <div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div> -->
 
         <div>
             <!-- Footer -->
@@ -697,8 +699,6 @@ if(isset($_SESSION["reviewCreated"])){
             <!-- Footer -->
         </div>
         <!-- End of .container -->
-        
-        <!-- <div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div> -->
         
         <?php if (isset($_SESSION['mailSent'])) { ?>
             <script>

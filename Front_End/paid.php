@@ -191,12 +191,21 @@ $deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
                     </div>
                 </div>
             </div>
+        </section>
+        
+        <section>
             <center>
                 <a class="text-black display-4" href="home.php">
                     <button type="submit" class="btn btn-white-outline display-6">Exit?</button>
                 </a>
+                <form action="download_receipt.php" method="post">
+                    <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
+                    <button class="btn btn-black-outline display-6" type="submit">Download Receipt</button>
+                </form>
             </center>
         </section>
+        
+        <!-- <div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div> -->
         
         <div>
             <!-- Footer -->
@@ -293,7 +302,5 @@ $deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
             <!-- Footer -->
         </div>
         <!-- End of .container -->
-        
-        <!-- <div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div> -->
     </body>
 </html>

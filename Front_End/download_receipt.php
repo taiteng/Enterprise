@@ -4,54 +4,44 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 require_once 'vendor/autoload.php';
+include("../Back_End/db_conn.php");
+include("../Back_End/function.php");
 
 use Dompdf\Dompdf;
 
 $dompdf = new Dompdf();
 
 if($_SERVER['REQUEST_METHOD'] == "POST"){    
-    if(!empty($_POST['serviceID']) && !empty($_POST['siteName']) && !empty($_POST['siteAddress']) && !empty($_POST['siteSize']) && !empty($_POST['serviceType']) && !empty($_POST['serviceDesc']) && !empty($_POST['noppl']) && !empty($_POST['username'])
-            && !empty($_POST['contact']) && !empty($_POST['email']) && !empty($_POST['eventDate']) && !empty($_POST['eventTime']) && !empty($_POST['nochair']) && !empty($_POST['chairPrice']) && !empty($_POST['nobabychair']) && !empty($_POST['babychairPrice']) && !empty($_POST['notable'])
-            && !empty($_POST['tablePrice']) && !empty($_POST['nocup']) && !empty($_POST['cupPrice']) && !empty($_POST['nocutlery'])  && !empty($_POST['cutleryPrice']) &&  !empty($_POST['fndName']) &&  !empty($_POST['nofnd']) &&  !empty($_POST['fndPrice']) &&  !empty($_POST['decoName']) 
-            &&  !empty($_POST['decoPrice']) &&  !empty($_POST['funName']) &&  !empty($_POST['funPrice']) &&  !empty($_POST['totalPrice'])){
+    if(!empty($_POST['serviceID'])){
         
         $service_id = $_POST['serviceID'];
-        $site_name = $_POST['siteName'];
-        $site_address = $_POST['siteAddress'];
-        $site_size = $_POST['siteSize'];
-        $username = $_POST['username'];
-        $contact = $_POST['contact'];
-        $email = $_POST['email'];
-        $service_type = $_POST['serviceType'];
-        $service_desc = $_POST['serviceDesc'];
-        $event_date = $_POST['eventDate'];
-        $event_time = $_POST['eventTime'];
-        $no_ppl = $_POST['noppl'];
-        $no_chair = $_POST['nochair'];
-        $chair_price = $_POST['chairPrice'];
-        $no_babychair = $_POST['nobabychair'];
-        $babychair_price = $_POST['babychairPrice'];
-        $no_table = $_POST['notable'];
-        $table_price = $_POST['tablePrice'];
-        $no_cup = $_POST['nocup'];
-        $cup_price = $_POST['cupPrice'];
-        $no_cutlery = $_POST['nocutlery'];
-        $cutlery_price = $_POST['cutleryPrice'];
-        $fnd_name = $_POST['fndName'];
-        $no_FND = $_POST['nofnd'];
-        $fnd_price = $_POST['fndPrice'];
-        $deco_name = $_POST['decoName'];
-        $deco_price = $_POST['decoPrice'];
-        $fun_name = $_POST['funName'];
-        $fun_price = $_POST['funPrice'];
-        $total_price = $_POST['totalPrice'];
+
+        $service_data = check_service_ID($conn, $service_id);
+        $chair_data = check_chair($conn);
+        $babychair_data = check_babychair($conn);
+        $table_data = check_table($conn);
+        $cup_data = check_cup($conn);
+        $cutlery_data = check_cutlery($conn);
+        $FND_data = check_FND($service_data['FND_name'], $conn);
+        $deco_data = check_deco($service_data['deco_name'], $conn);
+        $fun_data = check_fun($service_data['fun_name'], $conn);
         
+        $chairPrice = $chair_data['item_price'] * $service_data['no_chair'];
+        $babychairPrice = $babychair_data['item_price'] * $service_data['no_babychair'];
+        $tablePrice = $table_data['item_price'] * $service_data['no_table'];
+        $cupPrice = $cup_data['item_price'] * $service_data['no_cup'];
+        $cutleryPrice = $cutlery_data['item_price'] * $service_data['no_cutlery'];
+        $FNDPrice = $FND_data['pack_price'] * $service_data['no_FND'];
+        $decoPrice = $deco_data['deco_price'] * $service_data['site_size'];
+        $funPrice = $fun_data['fun_price'];
+        $totalPrice = $chairPrice + $babychairPrice + $tablePrice + $cupPrice + $cutleryPrice + $FNDPrice + $decoPrice + $funPrice;
+
         $data = '';
         
         $data .= '<style> p{font-size: 14px; font-family: "times new roman";}'
                 . 'table, tr{border: 1px solid;} tableItem{width: 100%} </style>';
         
-        $data .= '<p>Quotation</p>
+        $data .= '<p>Receipt</p>
             <div class="container">
                         <table class="table tableItem">
                             <tr class="body">
@@ -70,7 +60,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                                 <p>Site Name:</p>
                                             </td>
                                             <td>
-                                                <p>'. $site_name .'</p>
+                                                <p>'. $service_data['site_name'] .'</p>
                                             </td>
                                         </tr>
                                         <tr class="body" align="left">
@@ -78,7 +68,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                                 <p>Address:</p>
                                             </td>
                                             <td>
-                                                <p>'. $site_address .'</p>
+                                                <p>'. $service_data['site_address'] .'</p>
                                             </td>
                                         </tr>
                                         <tr class="body" align="left">
@@ -86,7 +76,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                                 <p>Site Size:</p>
                                             </td>
                                             <td>
-                                                <p>'. $site_size .'</p>
+                                                <p>'. $service_data['site_size'] .' SQ FT </p>
                                             </td>
                                         </tr>
                                         <tr class="body" align="left">
@@ -94,7 +84,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                                 <p>Type of Service:</p>
                                             </td>
                                             <td>
-                                                <p>'. $service_type .'</p>
+                                                <p>'. $service_data['service_type'] .'</p>
                                             </td>
                                         </tr>
                                         <tr class="body" align="left">
@@ -102,7 +92,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                                 <p>Description of Event:</p>
                                             </td>
                                             <td>
-                                                <p>'. $service_desc .'</p>
+                                                <p>'. $service_data['service_desc'] .'</p>
                                             </td>
                                         </tr>
                                     </table>
@@ -114,7 +104,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                                 <p>User Name:</p>
                                             </td>
                                             <td>
-                                                <p>' . $username . '</p>
+                                                <p>' . $service_data['username'] . '</p>
                                             </td>
                                         </tr>
                                         <tr class="body" align="left">
@@ -122,7 +112,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                                 <p>Contact:</p>
                                             </td>
                                             <td>
-                                                <p>' . $contact . '</p>
+                                                <p>' . $service_data['contact'] . '</p>
                                             </td>
                                         </tr>
                                         <tr class="body" align="left">
@@ -130,7 +120,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                                 <p>Email:</p>
                                             </td>
                                             <td>
-                                                <p>' . $email . '</p>
+                                                <p>' . $service_data['email'] . '</p>
                                             </td>
                                         </tr>
                                         <tr class="body" align="left">
@@ -138,7 +128,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                                 <p>Date of Event:</p>
                                             </td>
                                             <td>
-                                                <p>' . $event_date . '</p>
+                                                <p>' . $service_data['event_date'] . '</p>
                                             </td>
                                         </tr>
                                         <tr class="body" align="left">
@@ -146,7 +136,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                                 <p>Duration of Event:</p>
                                             </td>
                                             <td>
-                                                <p>' . $event_time . '</p>
+                                                <p>' . $service_data['event_time'] . '</p>
                                             </td>
                                         </tr>
                                         <tr class="body" align="left">
@@ -154,7 +144,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                                 <p>Number of Participants:</p>
                                             </td>
                                             <td>
-                                                <p>' . $no_ppl . '</p>
+                                                <p>' . $service_data['no_ppl'] . '</p>
                                             </td>
                                         </tr>
                                     </table>
@@ -179,10 +169,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                             <p>Chairs</p>
                                         </td>
                                         <td align="right">
-                                            <p>'. $no_chair .'</p>
+                                            <p>'. $service_data['no_chair'] .'</p>
                                         </td>
                                         <td align="right">
-                                            <p>'. $chair_price .'</p>
+                                            <p>'. $chairPrice .'</p>
                                         </td>
                                     </tr>
                                     <tr class="body" align="left">
@@ -190,10 +180,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                             <p>Baby Chairs</p>
                                         </td>
                                         <td align="right">
-                                            <p>'. $no_babychair .'</p>
+                                            <p>'. $service_data['no_babychair'] .'</p>
                                         </td>
                                         <td align="right">
-                                            <p>'. $babychair_price .'</p>
+                                            <p>'. $babychairPrice .'</p>
                                         </td>
                                     </tr>
                                     <tr class="body" align="left">
@@ -201,10 +191,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                             <p>Tables</p>
                                         </td>
                                         <td align="right">
-                                            <p>'. $no_table .'</p>
+                                            <p>'. $service_data['no_table'] .'</p>
                                         </td>
                                         <td align="right">
-                                            <p>'. $table_price .'</p>
+                                            <p>'. $tablePrice .'</p>
                                         </td>
                                     </tr>
                                     <tr class="body" align="left">
@@ -212,10 +202,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                             <p>Cups</p>
                                         </td>
                                         <td align="right">
-                                            <p>'. $no_cup .'</p>
+                                            <p>'. $service_data['no_cup'] .'</p>
                                         </td>
                                         <td align="right">
-                                            <p>'. $cup_price .'</p>
+                                            <p>'. $cupPrice .'</p>
                                         </td>
                                     </tr>
                                     <tr class="body" align="left">
@@ -223,10 +213,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                             <p>Cutlery Sets</p>
                                         </td>
                                         <td align="right">
-                                            <p>'. $no_cutlery .'</p>
+                                            <p>'. $service_data['no_cutlery'] .'</p>
                                         </td>
                                         <td align="right">
-                                            <p>'. $cutlery_price .'</p>
+                                            <p>'. $cutleryPrice .'</p>
                                         </td>
                                     </tr>
                                     <tr class="body" align="left">
@@ -242,13 +232,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                     </tr>
                                     <tr class="body" align="left">
                                         <td>
-                                            <p>'. $fnd_name .'</p>
+                                            <p>'. $FND_data['pack_name'] .'</p>
                                         </td>
                                         <td align="right">
-                                            <p>'. $no_FND .'</p>
+                                            <p>'. $service_data['no_FND'] .'</p>
                                         </td>
                                         <td align="right">
-                                            <p>'. $fnd_price .'</p>
+                                            <p>'. $FNDPrice .'</p>
                                         </td>
                                     </tr>
                                     <tr class="body" align="left">
@@ -264,13 +254,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                     </tr>
                                     <tr class="body" align="left">
                                         <td>
-                                            <p>'. $deco_name .'</p>
+                                            <p>'. $deco_data['deco_name'] .'</p>
                                         </td>
                                         <td align="right">
                                             <p></p>
                                         </td>
                                         <td align="right">
-                                            <p>'. $deco_price .'</p>
+                                            <p>'. $decoPrice .'</p>
                                         </td>
                                     </tr>
                                     <tr class="body" align="left">
@@ -286,13 +276,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                     </tr>
                                     <tr class="body" align="left">
                                         <td>
-                                            <p>'. $fun_name .'</p>
+                                            <p>'. $fun_data['fun_name'] .'</p>
                                         </td>
                                         <td align="right">
                                             <p></p>
                                         </td>
                                         <td align="right">
-                                            <p>'. $fun_price .'</p>
+                                            <p>'. $funPrice .'</p>
                                         </td>
                                     </tr>
                                     <tr class="body" align="left">
@@ -303,7 +293,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                                             <p></p>
                                         </td>
                                         <td align="right">
-                                            <p>'. $total_price .'</p>
+                                            <p>'. $totalPrice .'</p>
                                         </td>
                                     </tr>
                                 </table>
@@ -318,7 +308,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         
         $dompdf->render();
         
-        $dompdf->stream('quotation.pdf');
+        $dompdf->stream('receipt.pdf');
         
     }
 }
