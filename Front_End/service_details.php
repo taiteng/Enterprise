@@ -369,6 +369,8 @@ $sid = random_id_gen(24);
             </div>
         </section>
         
+        <!-- <div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div> -->
+        
         <div>
             <!-- Footer -->
             <footer class="text-center text-lg-start text-white" style="background-color: #1d1d1d">
@@ -464,8 +466,6 @@ $sid = random_id_gen(24);
             <!-- Footer -->
         </div>
         <!-- End of .container -->
-        
-        <!-- <div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div> -->
         
         <script>
             const input = document.querySelector("#contact");

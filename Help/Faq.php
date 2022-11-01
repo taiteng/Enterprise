@@ -185,6 +185,8 @@
         </section>
         <!--Section: FAQ-->
         
+        <!-- <div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div> -->
+        
         <div>
             <!-- Footer -->
             <footer class="text-center text-lg-start text-white" style="background-color: #1d1d1d">
@@ -280,8 +282,6 @@
             <!-- Footer -->
         </div>
         <!-- End of .container -->
-        
-        <!-- <div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div> -->
     </body>
 </html>
 

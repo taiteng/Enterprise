@@ -38,10 +38,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
         $data = '';
         
-        $data .= '<style> p{font-size: 15px; font-family: "times new roman";}'
+        $data .= '<style> p{font-size: 14px; font-family: "times new roman";}'
                 . 'table, tr{border: 1px solid;} tableItem{width: 100%} </style>';
         
-        $data .= '<div class="container">
+        $data .= '<p>Quotation</p>
+            <div class="container">
                         <table class="table tableItem">
                             <tr class="body">
                                 <td>
