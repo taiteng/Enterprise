@@ -48,6 +48,9 @@ div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,ol,ul,li,figcaption,textarea,input{fon
         }
     </style>
  
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script async  src="https://cdn.ampproject.org/v0.js"></script>
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
     <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
@@ -337,7 +340,36 @@ div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,ol,ul,li,figcaption,textarea,input{fon
         </div>
     </section>
     
-    <div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Discounts Available!!!</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Do book a service with us.
+                    <img class="rounded-top-md card-img-size-400" src="../images/coupon.png" alt="" >
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        $(document).ready(function(){
+            setTimeout(function(){
+                $("#myModal").modal('show');
+            },3000);
+        });
+    </script>
+    
+    <!--<div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div>-->
 
     <div>
         <!-- Footer -->
