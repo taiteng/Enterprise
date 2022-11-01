@@ -115,7 +115,7 @@ $sid = random_id_gen(24);
                         </div>
                     </li>
                     <li class="nav-item dropdown open">
-                        <a class="nav-link link text-white display-7" href="../Help/Faq.php" data-toggle="dropdown-submenu" aria-expanded="true">
+                        <a class="nav-link link text-white display-7" href="faq.php" data-toggle="dropdown-submenu" aria-expanded="true">
                             Help
                         </a>	
                     </li>
@@ -163,7 +163,7 @@ $sid = random_id_gen(24);
                             </div>
                         </li>
                         <li class="nav-item dropdown open">
-                            <a class="nav-link link text-white display-7" href="../Help/Faq.php" data-toggle="dropdown-submenu" aria-expanded="true">
+                            <a class="nav-link link text-white display-7" href="faq.php" data-toggle="dropdown-submenu" aria-expanded="true">
                                 Help
                             </a>	
                         </li>
