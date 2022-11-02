@@ -346,13 +346,26 @@ div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,ol,ul,li,figcaption,textarea,input{fon
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Discounts Available!!!</h5>
+                    
+                    
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+                
                 <div class="modal-body">
                     Do book a service with us.
-                    <img class="rounded-top-md card-img-size-400" src="../images/coupon.png" alt="" >
+                    <div class="card card-rounded border border-success border-2">
+                                <div  class="card-body">
+                                    <h4 class="card-title">Activated Discount</h4>
+                                    <p class="card-description">
+                                        <img class="rounded-top-md card-img-size-50" src="../images/coupon.png" alt="" width="250" height="250">
+                                    </p>
+                                    <div id="activatedDiscount" class="flex-row d-flex">
+                                        <script src="display_discountcta.js"></script>
+                                    </div>
+                                </div>
+                            </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -365,7 +378,7 @@ div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,ol,ul,li,figcaption,textarea,input{fon
         $(document).ready(function(){
             setTimeout(function(){
                 $("#myModal").modal('show');
-            },3000);
+            },2000);
         });
     </script>
     
