@@ -233,7 +233,8 @@ include "../Back_End/db_conn.php";
                                             <option>-</option>
                                             <!--MODAL POP UP FOR ASSIGN EMPLOYEE-->
                                             <?php
-                                            $sql = "SELECT username FROM accounts";
+                                            $sql = "SELECT username FROM accounts WHERE NOT EXISTS "
+                                                    . "(SELECT worker_name FROM service WHERE accounts.username=service.worker_name);";
                                             $result = $conn->query($sql);
 
                                             if ($result->num_rows > 0) {
