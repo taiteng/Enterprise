@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('message.php');
 ?>
 
 <!doctype html>
@@ -11,15 +12,12 @@ session_start();
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <title>Student Create</title>
+    <title>FAQ Create</title>
 </head>
 <body>
-  
     <div class="container mt-5">
-
-        <?php include('message.php'); ?>
-
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -30,7 +28,6 @@ session_start();
                     </div>
                     <div class="card-body">
                         <form action="code.php" method="POST">
-
                             <div class="mb-3">
                                 <label>Question</label>
                                 <input type="text" name="name" class="form-control">
@@ -39,19 +36,15 @@ session_start();
                                 <label>Answer</label>
                                 <input type="text" name="email" class="form-control">
                             </div>
-                            
                             <div class="mb-3">
                                 <button type="submit" name="save_student" class="btn btn-primary">Save FAQ</button>
                             </div>
-
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 

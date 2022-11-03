@@ -1,6 +1,7 @@
 <?php
 session_start();
-require 'dbcon.php';
+include('dbcon.php');
+include('message.php');
 ?>
 
 <!doctype html>
@@ -12,15 +13,13 @@ require 'dbcon.php';
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <title>Student Edit</title>
+    <title>FAQ Edit</title>
 </head>
 <body>
-  
     <div class="container mt-5">
-
-        <?php include('message.php'); ?>
-
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
@@ -30,31 +29,28 @@ require 'dbcon.php';
                         </h4>
                     </div>
                     <div class="card-body">
-
                         <?php
-                        if(isset($_GET['id']))
+                        if(isset($_GET['faq_id']))
                         {
-                            $id = mysqli_real_escape_string($con, $_GET['id']);
-                            $query = "SELECT * FROM faq WHERE id='$id' ";
+                            $faq_id = mysqli_real_escape_string($con, $_GET['faq_id']);
+                            $query = "SELECT * FROM faq WHERE faq_id='$faq_id' ";
                             $query_run = mysqli_query($con, $query);
 
                             if(mysqli_num_rows($query_run) > 0)
                             {
-                                $student = mysqli_fetch_array($query_run);
+                                $faq = mysqli_fetch_array($query_run);
                                 ?>
                                 <form action="code.php" method="POST">
-                                    <input type="hidden" name="id" value="<?= $student['id']; ?>">
-
+                                    <input type="hidden" name="faq_id" value="<?= $faq['faq_id']; ?>">
                                     <div class="mb-3">
                                         <label>Question</label>
-                                        <input type="text" name="name" value="<?=$student['Ques'];?>" class="form-control">
+                                        <input type="text" name="question" value="<?=$faq['Ques'];?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
                                         <label>Answer</label>
-                                        <input type="text" name="email" value="<?=$student['Answ'];?>" class="form-control">
+                                        <input type="text" name="answer" value="<?=$faq['Answ'];?>" class="form-control">
                                     </div>
                                     <div class="mb-3">
-                                        
                                         <button type="submit" name="update_student" class="btn btn-primary">
                                             Update FAQ
                                         </button>
@@ -74,7 +70,5 @@ require 'dbcon.php';
             </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

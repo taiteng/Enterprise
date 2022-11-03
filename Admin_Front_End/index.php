@@ -152,13 +152,13 @@ include '../Back_End/db_conn.php';
                     </li>
                     <li class="nav-item nav-category">Information Editor</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../Tnc/index.php">
+                        <a class="nav-link" aria-expanded="false" aria-controls="ui-basic">
                             <i class="menu-icon mdi mdi-file-document"></i>
                             <span class="menu-title">Terms and Condition</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="../Faq/index.php">
+                        <a class="nav-link" aria-expanded="false" aria-controls="ui-basic">
                             <i class="menu-icon mdi mdi-help-circle-outline"></i>
                             <span class="menu-title">Help</span>
                         </a>
