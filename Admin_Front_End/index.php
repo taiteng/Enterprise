@@ -56,7 +56,7 @@ include '../Back_End/db_conn.php';
                 <div class="navbar-menu-wrapper d-flex align-items-top"> 
                     <ul class="navbar-nav">
                         <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                            <h1 class="welcome-text">Greetings, <span class="text-black fw-bold">John Doe</span></h1>
+                            <h1 class="welcome-text">Greetings, <span class="text-black fw-bold"><?=$_SESSION['name']?></span></h1>
                             <h3 class="welcome-sub-text">Welcome to Covent Dashboard</h3>
                         </li>
                     </ul>
@@ -65,10 +65,10 @@ include '../Back_End/db_conn.php';
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                             <a class="nav-link" id="UserDropdown" href="" data-bs-toggle="dropdown" aria-expanded="false">
-                                <p class="mb-1 mt-3 font-weight-semibold">Admin Name</p>
+                                <p class="mb-1 mt-3 font-weight-semibold"><?=$_SESSION['name']?></p>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                                <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+                                <a class="dropdown-item" href="../Worker/logout.php"><i class="dropdown-item-icon mdi mdi-power text-primary me-2" href=""></i>Sign Out</a>
                             </div>
                         </li>
                     </ul>
@@ -152,13 +152,13 @@ include '../Back_End/db_conn.php';
                     </li>
                     <li class="nav-item nav-category">Information Editor</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="../Tnc/index.php">
                             <i class="menu-icon mdi mdi-file-document"></i>
                             <span class="menu-title">Terms and Condition</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="../Faq/index.php">
                             <i class="menu-icon mdi mdi-help-circle-outline"></i>
                             <span class="menu-title">Help</span>
                         </a>
