@@ -13,9 +13,9 @@ fetch('Z_FAQ_con.php').then((res) => res.json())
                         </div>
                     </div>`;
 	}
-	document.querySelector('.TNC1Body').innerHTML = output;
+	document.querySelector('.FAQBody').innerHTML = output;
 }).catch(error => console.log(error));
 
 $(document).ready(function(){
-	$('.TNC1Body');
+	$('.FAQBody');
 });
