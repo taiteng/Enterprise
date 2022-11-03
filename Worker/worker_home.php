@@ -31,14 +31,14 @@ if (!isset($_SESSION['loggedin'])) {
     <body class="loggedin">
 	<nav class="navtop">
             <div>
-		<h1>Worker Home</h1>
+		<h1>Staff Home</h1>
                 <a href="worker_home.php"><i class="fas fa-user-circle"></i>Home</a>
 		<a href="profile.php"><i class="fas fa-user-circle"></i>Profile</a>
 		<a href="logout.php"><i class="fas fa-sign-out-alt"></i>Logout</a>
             </div>
 	</nav>
 	<div class="content">
-            <h2>Worker Home Page</h2>
+            <h2>Staff Home Page</h2>
             <p>Welcome back, <?=$_SESSION['name']?>!</p>
 	</div>
         <div class="container" style="text-align: center;">
