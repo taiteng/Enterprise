@@ -155,13 +155,13 @@ include '../Back_End/db_conn.php';
                         </li>
                         <li class="nav-item nav-category">Information Editor</li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href="tnc.php">
                                 <i class="menu-icon mdi mdi-file-document"></i>
                                 <span class="menu-title">Terms and Condition</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href="faq.php">
                                 <i class="menu-icon mdi mdi-help-circle-outline"></i>
                                 <span class="menu-title">Help</span>
                             </a>
