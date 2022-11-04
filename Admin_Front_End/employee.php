@@ -63,7 +63,7 @@ include '../Back_End/db_conn.php';
                 <div class="navbar-menu-wrapper d-flex align-items-top"> 
                     <ul class="navbar-nav">
                         <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                            <h1 class="welcome-text">Greetings, <span class="text-black fw-bold">John Doe</span></h1>
+                            <h1 class="welcome-text">Greetings, <span class="text-black fw-bold"><?=$_SESSION['name']?></span></h1>
                             <h3 class="welcome-sub-text">Welcome to Covent Dashboard</h3>
                         </li>
                     </ul>
@@ -72,7 +72,7 @@ include '../Back_End/db_conn.php';
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                             <a class="nav-link" id="UserDropdown" href="" data-bs-toggle="dropdown" aria-expanded="false">
-                                <p class="mb-1 mt-3 font-weight-semibold">Admin Name</p>
+                                <p class="mb-1 mt-3 font-weight-semibold"><?=$_SESSION['name']?></p>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                                 <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
@@ -208,21 +208,18 @@ include '../Back_End/db_conn.php';
                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
 
-                                <form action="../Admin_Back_End/api/employee_api/handle_addEmployee.php" method="POST">
+                                <form action="../Worker/signup_auth.php" method="POST">
                                     <div class="modal-body">
                                         <div class="mb-3">
                                             <div class="form-group">
                                                 <label>Employee Name</label>
-                                                <input type="text" name="name" class="form-control" placeholder="Charles John" required>
+                                                <input type="text" name="username" class="form-control" placeholder="Charles John" required>
                                               </div>
                                               <div class="form-group">
                                                 <label>Employee Password</label>
-                                                <input type="password" name="pw" class="form-control" placeholder="Abcd!23" required>
+                                                <input type="password" name="password" class="form-control" placeholder="Abcd!23" minlength="5" maxlength="20" required>
                                               </div>
-                                             <div class="form-group">
-                                                <label>Confirm Password</label>
-                                                <input type="password" name="pw2" class="form-control" placeholder="Abcd!23" required>
-                                              </div>
+                                             
                                               <div class="form-group">
                                                 <label>Email</label>
                                                 <input type="email" name="email" class="form-control" placeholder="abcd@gmail.com" required>
@@ -232,7 +229,7 @@ include '../Back_End/db_conn.php';
 
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                      <button type="submit" class="btn btn-primary">Create</button>
+                                      <button type="submit" class="btn btn-primary" value="Register" >Create</button>
                                     </div>
                                 </form>
                             </div>

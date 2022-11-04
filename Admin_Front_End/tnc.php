@@ -56,8 +56,8 @@ include '../Back_End/db_conn.php';
                 <div class="navbar-menu-wrapper d-flex align-items-top"> 
                     <ul class="navbar-nav">
                         <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                            <h1 class="welcome-text">Edit Service: <span class="text-black fw-bold">Items</span></h1>
-                            <h3 class="welcome-sub-text">Accessories and Requirements for the event</h3>
+                            <h1 class="welcome-text">Edit Service: <span class="text-black fw-bold">TNC</span></h1>
+                            <h3 class="welcome-sub-text">Term and condition</h3>
                         </li>
                     </ul>
 
@@ -65,7 +65,7 @@ include '../Back_End/db_conn.php';
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                             <a class="nav-link" id="UserDropdown" href="" data-bs-toggle="dropdown" aria-expanded="false">
-                                <p class="mb-1 mt-3 font-weight-semibold">Admin Name</p>
+                                <p class="mb-1 mt-3 font-weight-semibold"><?=$_SESSION['name']?></p>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                                 <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
