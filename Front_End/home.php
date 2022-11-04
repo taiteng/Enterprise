@@ -89,24 +89,6 @@ div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,ol,ul,li,figcaption,textarea,input{fon
         </div>
     </amp-sidebar>
 
-    <!-- Google Analytics -->
-    <amp-analytics type="googleanalytics" id="analytics1">
-        <script type="application/json">
-        {
-          "vars": {
-            "account": "UA-63126154-1"
-          },
-          "triggers": {
-            "trackPageview": {
-              "on": "visible",
-              "request": "pageview"
-            }
-          }
-        }
-        </script>
-    </amp-analytics>
-    <!-- /Google Analytics -->
-
     <section class="menu horizontal-menu cid-qMPJVgmmGW" id="menu1-5">
         <nav class="navbar navbar-dropdown  navbar-fixed-top navbar-expand-lg">
             <div class="navbar-brand">

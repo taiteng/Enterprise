@@ -163,24 +163,6 @@ if(isset($_SESSION["reviewCreated"])){
             </div>
         </amp-sidebar>
 
-        <!-- Google Analytics -->
-        <amp-analytics type="googleanalytics" id="analytics1">
-            <script type="application/json">
-                {
-                "vars": {
-                "account": "UA-63126154-1"
-                },
-                "triggers": {
-                "trackPageview": {
-                "on": "visible",
-                "request": "pageview"
-                }
-                }
-                }
-            </script>
-        </amp-analytics>
-        <!-- /Google Analytics -->
-
         <section class="menu horizontal-menu cid-qMPJVgmmGW" id="menu1-5">
             <nav class="navbar navbar-dropdown  navbar-fixed-top navbar-expand-lg">
                 <div class="navbar-brand">
