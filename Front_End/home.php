@@ -2,7 +2,6 @@
 session_start();
 
 include("../Back_End/db_conn.php");
-//include("../Back_End/validate_service.php");
 
 if(isset($_SESSION['sid'])){
     unset ($_SESSION['sid']);
@@ -126,13 +125,11 @@ div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,ol,ul,li,figcaption,textarea,input{fon
             <span></span>
         </button>
     </section>
-    
+
     <div id="book" name="book"></div>
     
     <section class="header2 cid-qMPFA6jKDg mbr-fullscreen" id="header2-1">
-        <div class="mbr-overlay">
-            
-        </div>
+        <div class="mbr-overlay"></div>
         <div class="container">
             <div class="mbr-row mbr-justify-content-center">
                 <div class="mbr-col-lg-6 mbr-col-md-12 resizeblock vcenter">
@@ -146,9 +143,7 @@ div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,ol,ul,li,figcaption,textarea,input{fon
                 </div>
                 <div class="mbr-col-lg-6 mbr-col-md-12 mbr-col-sm-12 resize vcenter">
                     <div class="img_wrapper vcenter">
-                        <amp-img src="../Images/party_decoration.jpg" alt="event" width="540.5337726523887" height="441" layout="responsive">
-
-                        </amp-img>
+                        <amp-img src="../Images/party_decoration.jpg" alt="event" width="540.5337726523887" height="441" layout="responsive"></amp-img>
                     </div>
                 </div>
             </div>
@@ -226,8 +221,9 @@ div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,ol,ul,li,figcaption,textarea,input{fon
                     <div class="mbr-col-md-5 mbr-col-sm-8">
                         <h2 class="mbr-fonts-style bg titlecol2 card-title mbr-black align-left mbr-bold display-5">Get Quotation</h2>
                         <div class="mbr-text align-right">
-
-                            <p class="mbr-text textcol2 mbr-fonts-style mbr-white align-left display-7">Next, customers will get a quotation based on what they selected. Prices of items are calculated automatically based on the prices we have set in place. Do leave a review on what you think about our system!</p>
+                            <p class="mbr-text textcol2 mbr-fonts-style mbr-white align-left display-7">Next, customers will get a quotation based on what they selected. 
+                                Prices of items are calculated automatically based on the prices we have set in place. 
+                                Do leave a review on what you think about our system!</p>
                         </div>
                     </div>
                 </div>
@@ -364,7 +360,7 @@ div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,ol,ul,li,figcaption,textarea,input{fon
         });
     </script>
     
-    <!--<div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div>-->
+    <div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div>
 
     <div>
         <!-- Footer -->

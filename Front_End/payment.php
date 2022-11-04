@@ -92,9 +92,9 @@ $deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
                             Home
                         </a>	
                         <div class="dropdown-menu">
-                            <a class="text-white dropdown-item display-7" href="#book">Service</a>
-                            <a class="text-white dropdown-item display-7" href="#process">Process</a>
-                            <a class="text-white dropdown-item display-7" href="#tnc">T&C</a>
+                            <a class="text-white dropdown-item display-7" href="home.php#book">Service</a>
+                            <a class="text-white dropdown-item display-7" href="home.php#process">Process</a>
+                            <a class="text-white dropdown-item display-7" href="home.php#tnc">T&C</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown open">
@@ -122,9 +122,9 @@ $deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
                                 Home
                             </a>	
                             <div class="dropdown-menu">
-                                <a class="text-white dropdown-item display-7" href="#book">Service</a>
-                                <a class="text-white dropdown-item display-7" href="#process">Process</a>
-                                <a class="text-white dropdown-item display-7" href="#tnc">T&C</a>
+                                <a class="text-white dropdown-item display-7" href="home.php#book">Service</a>
+                                <a class="text-white dropdown-item display-7" href="home.php#process">Process</a>
+                                <a class="text-white dropdown-item display-7" href="home.php#tnc">T&C</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown open">
