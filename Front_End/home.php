@@ -2,6 +2,7 @@
 session_start();
 
 include("../Back_End/db_conn.php");
+include("config.php");
 
 if(isset($_SESSION['sid'])){
     unset ($_SESSION['sid']);
@@ -58,6 +59,7 @@ div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,ol,ul,li,figcaption,textarea,input{fon
     <script async custom-element="amp-animation" src="https://cdn.ampproject.org/v0/amp-animation-0.1.js"></script>
     <script src="https://apps.elfsight.com/p/platform.js" defer></script>
     <script src="Z_display_tnc.js"></script>
+    <script src="display_discount_cta.js?v=<?=$version?>"></script>
     
     <title>Home</title>
 </head>
@@ -324,26 +326,22 @@ div,span,h1,h2,h3,h4,h5,h6,p,blockquote,a,ol,ul,li,figcaption,textarea,input{fon
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Discounts Available!!!</h5>
-                    
-                    
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                
                 <div class="modal-body">
                     Do book a service with us.
-                    <div class="card card-rounded border border-success border-2">
-                                <div  class="card-body">
-                                    <h4 class="card-title">Activated Discount</h4>
-                                    <p class="card-description">
-                                        <img class="rounded-top-md card-img-size-50" src="../images/coupon.png" alt="" width="250" height="250">
-                                    </p>
-                                    <div id="activatedDiscount" class="flex-row d-flex">
-                                        <script src="display_discountcta.js"></script>
-                                    </div>
-                                </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-description">
+                                <img class="rounded-top-md card-img-size-50" src="../images/coupon.png" alt="" width="100%" height="100%">
                             </div>
+                            <div id="activatedDiscount" class="text-center">
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

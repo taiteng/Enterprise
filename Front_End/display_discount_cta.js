@@ -3,16 +3,12 @@ fetch('../Admin_Back_End/display_database/discount_db.php').then((data)=>{
 }).then((completedata)=>{
     let data1="";
     completedata.map((values)=>{
-        
-        data1 += `<div class="col-sm-3" style="margin-left:20px;">
-                    <div class="card text-center">
+        data1 += `<div class="card" width="250">
                       <div class="card-body">
-                        <h5 class="card-title">${values.discount_name}</h5>
-                        <h5 class="card-description">${values.discount_percent}%</h5>
-                        
+                        <h4 class="card-title">${values.discount_name}</h4>
+                        <h2 class="card-description">${values.discount_percent}%</h2>
                       </div>
-                    </div>
-                  </div>`;
+                    </div>`;
     });
     document.getElementById("activatedDiscount").innerHTML=data1;
     
