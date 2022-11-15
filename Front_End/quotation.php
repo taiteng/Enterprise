@@ -505,7 +505,7 @@ if(isset($_SESSION["reviewCreated"])){
                     <input type="hidden" name="totalPrice" value="<?php echo $totalPrice; ?>">
                     <button class="btn btn-black-outline display-6" type="submit">Download PDF</button>
                 </form>
-                <form action="../Admin_Back_End/send_mail.php" method="POST" style="display: inline-block;">
+                <form action="../Admin_Back_End/send_quotation.php" method="POST" style="display: inline-block;">
                     <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
                     <input type="hidden" name="siteName" value="<?php echo $service_data['site_name']; ?>">
                     <input type="hidden" name="siteAddress" value="<?php echo $service_data['site_address']; ?>">
