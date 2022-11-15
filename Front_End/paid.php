@@ -186,7 +186,7 @@ $deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
                 </form>
                 <form action="../Admin_Back_End/send_receipt.php" method="post">
                     <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
-                    <button class="btn btn-black-outline display-6" type="submit">Download Receipt</button>
+                    <button class="btn btn-white-outline display-6" type="submit">Email Receipt</button>
                 </form>
             </center>
         </section>
