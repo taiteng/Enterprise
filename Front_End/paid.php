@@ -10,6 +10,25 @@ $discount = check_discount($conn);
 $total = $_SESSION["total"];
 $deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
 
+$chair_data = check_chair($conn);
+$babychair_data = check_babychair($conn);
+$table_data = check_table($conn);
+$cup_data = check_cup($conn);
+$cutlery_data = check_cutlery($conn);
+$FND_data = check_FND($service_data['FND_name'], $conn);
+$deco_data = check_deco($service_data['deco_name'], $conn);
+$fun_data = check_fun($service_data['fun_name'], $conn);
+
+$chairPrice = $_SESSION['chairPrice'];
+$babychairPrice = $_SESSION['babychairPrice'];
+$tablePrice = $_SESSION['tablePrice'];
+$cupPrice = $_SESSION['cupPrice'];
+$cutleryPrice = $_SESSION['cutleryPrice'];
+$FNDPrice = $_SESSION['FNDPrice'];
+$decoPrice = $_SESSION['decoPrice'];
+$funPrice = $_SESSION['funPrice'];
+$totalPrice = $_SESSION['totalPrice'];
+
 ?>
 
 <!DOCTYPE html>
@@ -186,6 +205,36 @@ $deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
                 </form>
                 <form action="../Admin_Back_End/send_receipt.php" method="post">
                     <input type="hidden" name="serviceID" value="<?php echo $service_data['service_id']; ?>">
+                    <input type="hidden" name="siteName" value="<?php echo $service_data['site_name']; ?>">
+                    <input type="hidden" name="siteAddress" value="<?php echo $service_data['site_address']; ?>">
+                    <input type="hidden" name="siteSize" value="<?php echo $service_data['site_size']; ?>">
+                    <input type="hidden" name="serviceType" value="<?php echo $service_data['service_type']; ?>">
+                    <input type="hidden" name="serviceDesc" value="<?php echo $service_data['service_desc']; ?>">
+                    <input type="hidden" name="noppl" value="<?php echo $service_data['no_ppl']; ?>">
+                    <input type="hidden" name="username" value="<?php echo $service_data['username']; ?>">
+                    <input type="hidden" name="contact" value="<?php echo $service_data['contact']; ?>">
+                    <input type="hidden" name="email" value="<?php echo $service_data['email']; ?>">
+                    <input type="hidden" name="eventDate" value="<?php echo $service_data['event_date']; ?>">
+                    <input type="hidden" name="eventTime" value="<?php echo $service_data['event_time']; ?>">
+                    <input type="hidden" name="nochair" value="<?php echo $service_data['no_chair']; ?>">
+                    <input type="hidden" name="chairPrice" value="<?php echo $chairPrice; ?>">
+                    <input type="hidden" name="nobabychair" value="<?php echo $service_data['no_babychair']; ?>">
+                    <input type="hidden" name="babychairPrice" value="<?php echo $babychairPrice; ?>">
+                    <input type="hidden" name="notable" value="<?php echo $service_data['no_table']; ?>">
+                    <input type="hidden" name="tablePrice" value="<?php echo $tablePrice; ?>">
+                    <input type="hidden" name="nocup" value="<?php echo $service_data['no_cup']; ?>">
+                    <input type="hidden" name="cupPrice" value="<?php echo $cupPrice; ?>">
+                    <input type="hidden" name="nocutlery" value="<?php echo $service_data['no_cutlery']; ?>">
+                    <input type="hidden" name="cutleryPrice" value="<?php echo $cutleryPrice; ?>">
+                    <input type="hidden" name="fndName" value="<?php echo $service_data['FND_name']; ?>">
+                    <input type="hidden" name="nofnd" value="<?php echo $service_data['no_FND']; ?>">
+                    <input type="hidden" name="fndPrice" value="<?php echo $FNDPrice; ?>">
+                    <input type="hidden" name="decoName" value="<?php echo $service_data['deco_name']; ?>">
+                    <input type="hidden" name="decoPrice" value="<?php echo $decoPrice; ?>">
+                    <input type="hidden" name="funName" value="<?php echo $service_data['fun_name']; ?>">
+                    <input type="hidden" name="funPrice" value="<?php echo $funPrice; ?>">
+                    <input type="hidden" name="totalPrice" value="<?php echo $totalPrice; ?>">
+                    <input type="hidden" name="paidPrice" value="<?php echo $deposit; ?>">
                     <button class="btn btn-white-outline display-6" type="submit">Email Receipt</button>
                 </form>
             </center>
