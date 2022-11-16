@@ -214,7 +214,7 @@ include '../Back_End/db_conn.php';
                                                     <div class="row">
                                                         <div class="col-12 my-auto">
                                                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                                                <h4 class="card-title card-title-dash">Progress Ratio</h4>
+                                                                <h4 class="card-title card-title-dash">Project Ratio</h4>
                                                             </div>
                                                             <canvas class="my-auto" id="doughnutChart" height="200"></canvas>
                                                             <div id="doughnut-chart-legend" class="mt-5 text-center "></div>
