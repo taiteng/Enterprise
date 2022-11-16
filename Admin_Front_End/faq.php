@@ -55,26 +55,87 @@ include '../Admin_Back_End/api/Faq/message.php';
                     </div>
                 </div>
 
-                <!-- Greeting Bar -->
-                <div class="navbar-menu-wrapper d-flex align-items-top"> 
-                    <ul class="navbar-nav">
-                        <li class="nav-item font-weight-semibold d-none d-lg-block ms-0">
-                            <h1 class="welcome-text">Edit FAQ</h1>
-                            <h3 class="welcome-sub-text">Frequently asked questions by users</h3>
-                        </li>
-                    </ul>
+                
 
-                    <!-- Admin Settings -->
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item dropdown d-none d-lg-block user-dropdown">
-                            <a class="nav-link" id="UserDropdown" href="" data-bs-toggle="dropdown" aria-expanded="false">
-                                <p class="mb-1 mt-3 font-weight-semibold"><?=$_SESSION['name']?></p>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                                <a class="dropdown-item" href="../Worker/logout.php"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
-                            </div>
-                        </li>
-                    </ul>
+                     
+                     
+                    <style>
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+    float: right;
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+   right: 0;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+</head>
+<body>
+
+<h2></h2>
+<p></p>
+
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn"><?=$_SESSION['name']?></button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="../Worker/logout.php">Logout</a>
+    
+  </div>
+</div>
+
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
 
                     <!-- Expand Button -->
                     <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-bs-toggle="offcanvas">
