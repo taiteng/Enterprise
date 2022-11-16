@@ -249,7 +249,7 @@ include '../Back_End/db_conn.php';
                                 <form action="../Admin_Back_End/api/discount_api/handle_editDiscount.php" method="POST">
                                     <div class="modal-body">
                                         <div class="mb-3">
-                                            <input type="hidden" name="id" id="editDiscount" value=""/>
+                                            <input type="hidden" name="discountid" id="editDiscount" value=""/>
                                             
                                                 <div class="form-group">
                                                     <label>Discount Name</label>

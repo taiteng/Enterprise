@@ -47,8 +47,8 @@ class discount{
         // update query
         $query = "UPDATE discount 
                 SET
-                    discount_status = :discount_status
-                    discount_name = :discount_name
+                    discount_status = :discount_status,
+                    discount_name = :discount_name,
                     discount_percent = :discount_percent
                 WHERE
                     discount_id = :discount_id";
