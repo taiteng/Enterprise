@@ -26,7 +26,7 @@ $discount->discount_status = $_POST["status"];
 
 // update the discount
 if($discount->create()){
-    $_SESSION['updateSuccess'] = "true";
+    $_SESSION['createSuccess'] = "true";
     header("Location: ../../../Admin_Front_End/discount.php");
     exit();
     

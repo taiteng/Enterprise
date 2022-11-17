@@ -245,7 +245,7 @@ include '../Back_End/db_conn.php';
                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
 
-                                <form action="../Admin_Back_End/api/project_api/handle_editEmployee.php" method="POST">
+                                <form action="../Admin_Back_End/api/employee_api/handle_editEmployee.php" method="POST">
                                     <div class="modal-body">
                                         <div class="mb-3">
                                             <label class="form-label">Employee</label>
@@ -257,11 +257,11 @@ include '../Back_End/db_conn.php';
                                               </div>
                                               <div class="form-group">
                                                 <label>Employee Password</label>
-                                                <input id="employeePassword" type="password" name="pw" class="form-control" placeholder="Abcd!23" required>
+                                                <input id="employeePassword" type="password" name="pw"  onChange="checkPassword()" class="form-control" placeholder="Abcd!23" required>
                                               </div>
                                              <div class="form-group">
                                                 <label>Confirm Password</label>
-                                                <input id="employeePassword2" type="password" name="pw2" class="form-control" placeholder="Abcd!23" required>
+                                                <input id="employeePassword2" type="password" name="pw2" onChange="checkPassword()" class="form-control" placeholder="Abcd!23" required>
                                               </div>
                                               <div class="form-group">
                                                 <label>Email</label>
@@ -328,6 +328,18 @@ include '../Back_End/db_conn.php';
         <script src="../Admin_Front_End/admin_design/js/jquery.cookie.js" type="text/javascript"></script>
         
         <script type="text/javascript">
+            function checkPassword(){
+                var pw = document.getElementById("employeePassword");
+                var rpw = document.getElementById("employeePassword2");
+
+                if(pw.value === rpw.value)
+                    rpw.setCustomValidity('');
+                else{
+                    rpw.setCustomValidity('Password is not equivalent!');
+                } 
+            }
+            
+            
         $(document).ready(function(){
             $(document).on('click', '.editBtn', function(){
                 var employeeId = $(this).data('id');
