@@ -118,7 +118,7 @@
                 </button>
                 <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
                     <li class="nav-item dropdown open">
-                        <a class="nav-link link text-white display-7" href="home.php" data-toggle="dropdown-submenu" aria-expanded="true">
+                        <a class="nav-link link text-white display-7" href="../Front_End/home.php" data-toggle="dropdown-submenu" aria-expanded="true">
                             Home
                         </a>	
                         <div class="dropdown-menu">

@@ -23,7 +23,7 @@ if (empty($_POST['username']) || empty($_POST['password']) || empty($_POST['emai
 if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
 	exit('Email is not valid!');
 }
-if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['username']) == 0) {
+if (preg_match('/^[a-zA-Z0-9_ -]+$/',$_POST['username']) == 0) {
     exit('Username is not valid!');
 }
 if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
