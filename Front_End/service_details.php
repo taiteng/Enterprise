@@ -259,31 +259,31 @@ $sid = random_id_gen(24);
                                     <div class="form-group row mt-1">
                                         <label for="nochair" class="col-sm-2 col-form-label">Chairs:</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="number" id="nochair" name="nochair" min="0" required>
+                                            <input class="form-control" type="number" id="nochair" name="nochair" min="1" required>
                                         </div>
                                     </div>
                                     <div class="form-group row mt-2">
                                         <label for="nobabychair" class="col-sm-2 col-form-label">Baby Chairs:</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="number" id="nobabychair" name="nobabychair" min="0" required>
+                                            <input class="form-control" type="number" id="nobabychair" name="nobabychair" min="1" required>
                                         </div>
                                     </div>
                                     <div class="form-group row mt-2">
                                         <label for="notable" class="col-sm-2 col-form-label">Tables:</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="number" id="notable" name="notable" min="0" required>
+                                            <input class="form-control" type="number" id="notable" name="notable" min="1" required>
                                         </div>
                                     </div>
                                     <div class="form-group row mt-2">
                                         <label for="nocup" class="col-sm-2 col-form-label">Cups:</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="number" id="nocup" name="nocup" min="0" required>
+                                            <input class="form-control" type="number" id="nocup" name="nocup" min="1" required>
                                         </div>
                                     </div>
                                     <div class="form-group row mt-2">
                                         <label for="nocutlery" class="col-sm-2 col-form-label">Cutlery Sets:</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" type="number" id="nocutlery" name="nocutlery" min="0" required>
+                                            <input class="form-control" type="number" id="nocutlery" name="nocutlery" min="1" required>
                                         </div>
                                     </div>
                                 </div>
