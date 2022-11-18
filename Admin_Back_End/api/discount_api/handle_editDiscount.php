@@ -18,20 +18,38 @@ $db = $database->getConnection();
   
 // prepare discount object
 $discount = new discount($db);
-  
-// set ID property of discount to be edited
-$discount->discount_id = $_POST["discountid"];
 
-// set product property values
-$discount->discount_percent = $_POST["percent"];
-$discount->discount_name = $_POST["name"];
-$discount->discount_status = $_POST["status"];
+// get posted data
+$data = json_decode(file_get_contents("php://input"));
+$id = filter_input(INPUT_POST, 'discountid');
+$name = filter_input(INPUT_POST, 'name');
+$percent = filter_input(INPUT_POST, 'percent');
+$status = filter_input(INPUT_POST, 'status');
+
+//if it is an postman call
+if($id == ""){
+    $discount->discount_id = $data->discount_id;
+    $discount->discount_name = $data->discount_name;
+    $discount->discount_percent = $data->discount_percent;
+    $discount->discount_status = $data->discount_status;
+    $postman = true;
+}else{ //if it is normal implementation
+    // set ID property of item to be deleted
+    $discount->discount_id = $id;
+    $discount->discount_name = $name;
+    $discount->discount_percent = $percent;
+    $discount->discount_status = $status;
+}
 
 // update the discount
 if($discount->updateDiscount()){
     $_SESSION['updateSuccess'] = "true";
-    header("Location: ../../../Admin_Front_End/discount.php");
-    exit();
+    if($postman){
+        
+    }else{
+        header("Location: ../../../Admin_Front_End/discount.php");
+        exit();
+    }
     
     // set response code - 200 ok
     http_response_code(200);

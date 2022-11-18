@@ -17,20 +17,28 @@ $db = $database->getConnection();
 // prepare discount object
 $discount = new discount($db);
 
-if(isset($_POST["deleteDiscount"])){
-    // set discount id to be deleted
-    $discount->discount_id = $_POST["deleteDiscount"];
-    
-    $sql = "SELECT * FROM discount WHERE discount_id = '$discount->discount_id'";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
+// get posted data
+$data = json_decode(file_get_contents("php://input"));
+$id = filter_input(INPUT_POST, 'deleteDiscount');
+
+//if it is an postman call
+if($id == ""){
+    $discount->discount_id = $data->discount_id;
+    $postman = true;
+}else{ //if it is normal implementation
+    // set ID property of item to be deleted
+    $discount->discount_id = $id;
 }
 
 // delete the discount
 if($discount->delete()){
     $_SESSION['deleteSuccess'] = "true";
-    header("Location: ../../../Admin_Front_End/discount.php");
-    exit();
+    if($postman){
+        
+    }else{
+        header("Location: ../../../Admin_Front_End/discount.php");
+        exit();
+    }
   
     // set response code - 200 ok
     http_response_code(200);

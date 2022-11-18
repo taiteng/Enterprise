@@ -17,19 +17,30 @@ $db = $database->getConnection();
 // prepare acc object
 $acc = new accounts($db);
 
-if(isset($_POST["deleteAcc"])){
-    // set acc id to be deleted
-    $acc->id = $_POST["deleteAcc"];
-    $sql = "SELECT * FROM accounts WHERE id = '$acc->id'";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
+// get posted data
+$data = json_decode(file_get_contents("php://input"));
+
+$id = filter_input(INPUT_POST, 'deleteAcc');
+
+//if it is an postman call
+if($id == ""){
+    $acc->id = $data->id;
+    $postman = true;
+}else{ //if it is normal implementation
+    // set item property values
+    $acc->id = $id;
 }
+
 
 // delete the acc
 if($acc->delete()){
     $_SESSION['deleteSuccess'] = "true";
-    header("Location: ../../../Admin_Front_End/employee.php");
-    exit();
+    if($postman){
+        
+    }else{
+        header("Location: ../../../Admin_Front_End/employee.php");
+        exit();
+    }
   
     // set response code - 200 ok
     http_response_code(200);

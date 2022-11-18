@@ -18,20 +18,35 @@ $db = $database->getConnection();
   
 // prepare deco object
 $deco = new deco($db);
-  
-// set ID property of deco to be edited
-$deco->deco_id = $_POST["decoid"];
-  
-// set deco property values
-$deco->deco_name = $_POST["name"];
-$deco->deco_desc = $_POST["desc"];
-$deco->deco_price = $_POST["price"];
+
+// get posted data
+$data = json_decode(file_get_contents("php://input"));
+$name = filter_input(INPUT_POST, 'name');
+$desc = filter_input(INPUT_POST, 'desc');
+$price = filter_input(INPUT_POST, 'price');
+
+//if it is an postman call
+if($name == ""){
+    $deco->deco_name = $data->deco_name;
+    $deco->deco_desc = $data->deco_desc;
+    $deco->deco_price = $data->deco_price;
+    $postman = true;
+}else{ //if it is normal implementation
+    // set ID property of item to be deleted
+    $deco->deco_name = $name;
+    $deco->deco_desc = $desc;
+    $deco->deco_price = $price;
+}
 
 // update the deco
 if($deco->create()){
     $_SESSION['createSuccess'] = "true";
-    header("Location: ../../../Admin_Front_End/decoration.php");
-    exit();
+    if($postman){
+        
+    }else{
+        header("Location: ../../../Admin_Front_End/decoration.php");
+        exit();
+    }
     
     // set response code - 200 ok
     http_response_code(200);

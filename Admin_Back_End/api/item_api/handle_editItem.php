@@ -16,21 +16,40 @@ include "../../../Back_End/db_conn.php";
 $database = new Database();
 $db = $database->getConnection();
   
-// prepare product object
+// prepare item object
 $item = new item($db);
-  
-// set ID property of item to be edited
-$item->item_id = $_POST["id"];
 
-// set product property values
-$item->item_name = $_POST["name"];
-$item->item_price = $_POST["price"];
+// get posted data
+$data = json_decode(file_get_contents("php://input"));
 
-// update the product
+$id = filter_input(INPUT_POST, 'id');
+$name = filter_input(INPUT_POST, 'name');
+$price = filter_input(INPUT_POST, 'price');
+
+//if it is an postman call
+if($id == "" && $name == "" && $price == ""){
+    $item->item_id= $data->item_id;
+    $item->item_name = $data->item_name;
+    $item->item_price = $data->item_price;
+    $postman = true;
+}else{ //if it is normal implementation
+    // set ID property of item to be edited
+    $item->item_id = $id;
+    
+    // set item property values
+    $item->item_name = $name;
+    $item->item_price = $price;
+}
+
+// update the item
 if($item->updateItem()){
     $_SESSION['updateSuccess'] = "true";
-    header("Location: ../../../Admin_Front_End/item.php");
-    exit();
+    if($postman){
+        
+    }else{
+        header("Location: ../../../Admin_Front_End/item.php");
+        exit();
+    }
     
     // set response code - 200 ok
     http_response_code(200);

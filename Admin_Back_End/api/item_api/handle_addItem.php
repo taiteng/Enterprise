@@ -18,34 +18,51 @@ $db = $database->getConnection();
   
 // prepare item object
 $item = new item($db);
-  
-// set ID property of item to be edited
-$item->item_id = $_POST["itemid"];
-  
-// set item property values
-$item->item_name = $_POST["name"];
-$item->item_price = $_POST["price"];
 
-// update the item
+// get posted data
+$data = json_decode(file_get_contents("php://input"));
+
+$name = filter_input(INPUT_POST, 'name');
+$price = filter_input(INPUT_POST, 'price');
+
+//if it is an postman call
+if($name == "" && $price == ""){
+    $item->item_name = $data->item_name;
+    $item->item_price = $data->item_price;
+    $postman = true;
+}else{ //if it is normal implementation
+    // set item property values
+    $item->item_name = $name;
+    $item->item_price = $price;
+}
+
+
+// create the product
 if($item->create()){
     $_SESSION['createSuccess'] = "true";
-    header("Location: ../../../Admin_Front_End/item.php");
-    exit();
     
-    // set response code - 200 ok
-    http_response_code(200);
+    if($postman){
+        
+    }else{
+        header("Location: ../../../Admin_Front_End/item.php");
+        exit();
+    }
     
+    // set response code - 201 created
+    http_response_code(201);
+
     // tell the user
     echo json_encode(array("message" => "Item was created."));
 }
-  
-// if unable to update the item, tell the user
+
+// if unable to create the product, tell the user
 else{
-  
+
     // set response code - 503 service unavailable
     http_response_code(503);
-  
+
     // tell the user
     echo json_encode(array("message" => "Unable to create item."));
 }
+
 ?>

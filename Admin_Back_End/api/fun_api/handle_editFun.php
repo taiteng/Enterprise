@@ -18,20 +18,42 @@ $db = $database->getConnection();
   
 // prepare fun object
 $fun = new fun($db);
-  
-// set ID property of fun to be edited
-$fun->fun_id = $_POST["id"];
 
-// set deco property values
-$fun->fun_name = $_POST["name"];
-$fun->fun_desc = $_POST["desc"];
-$fun->fun_price = $_POST["price"];
+// get posted data
+$data = json_decode(file_get_contents("php://input"));
+
+$id = filter_input(INPUT_POST, 'id');
+$name = filter_input(INPUT_POST, 'name');
+$desc = filter_input(INPUT_POST, 'desc');
+$price = filter_input(INPUT_POST, 'price');
+
+//if it is an postman call
+if($id == "" && $name == "" && $price == "" && $desc == ""){
+    $fun->fun_id= $data->fun_id;
+    $fun->fun_name = $data->fun_name;
+    $fun->fun_price = $data->fun_price;
+    $fun->fun_desc = $data->fun_desc;
+    
+    $postman = true;
+}else{ //if it is normal implementation
+    // set ID property of item to be edited
+    $fun->fun_id = $id;
+    
+    // set item property values
+    $fun->fun_name = $name;
+    $fun->fun_price = $price;
+    $fun->fun_desc = $desc;
+}
 
 // update the fun
 if($fun->updateFun()){
     $_SESSION['updateSuccess'] = "true";
-    header("Location: ../../../Admin_Front_End/fun.php");
-    exit();
+    if($postman){
+        
+    }else{
+        header("Location: ../../../Admin_Front_End/fun.php");
+        exit();
+    }
     
     // set response code - 200 ok
     http_response_code(200);

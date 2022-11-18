@@ -17,20 +17,29 @@ $db = $database->getConnection();
 // prepare fnd object
 $item = new item($db);
 
-if(isset($_POST["deleteItem"])){
-    // set fnd id to be deleted
-    $item->item_id = $_POST["deleteItem"];
-    
-    $sql = "SELECT * FROM item WHERE item_id = '$item->item_id'";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
+// get posted data
+$data = json_decode(file_get_contents("php://input"));
+$id = filter_input(INPUT_POST, 'deleteItem');
+
+//if it is an postman call
+if($id == ""){
+    $item->item_id = $data->item_id;
+    $postman = true;
+}else{ //if it is normal implementation
+    // set ID property of item to be deleted
+    $item->item_id = $id;
 }
+
 
 // delete the item
 if($item->delete()){
     $_SESSION['deleteSuccess'] = "true";
-    header("Location: ../../../Admin_Front_End/item.php");
-    exit();
+    if($postman){
+        
+    }else{
+        header("Location: ../../../Admin_Front_End/item.php");
+        exit();
+    }
   
     // set response code - 200 ok
     http_response_code(200);

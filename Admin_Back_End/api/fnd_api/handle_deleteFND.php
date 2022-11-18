@@ -17,20 +17,30 @@ $db = $database->getConnection();
 // prepare fnd object
 $fnd = new fnd($db);
 
-if(isset($_POST["deleteFND"])){
-    // set fnd id to be deleted
-    $fnd->FND_id = $_POST["deleteFND"];
-    
-    $sql = "SELECT * FROM fnd WHERE FND_id = '$fnd->FND_id'";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
+// get posted data
+$data = json_decode(file_get_contents("php://input"));
+
+$id = filter_input(INPUT_POST, 'deleteFND');
+
+//if it is an postman call
+if($id == ""){
+    $fnd->FND_id = $data->FND_id;
+    $postman = true;
+}else{ //if it is normal implementation
+    // set item property values
+    $fnd->FND_id = $id;
 }
+
 
 // delete the product
 if($fnd->delete()){
     $_SESSION['deleteSuccess'] = "true";
-    header("Location: ../../../Admin_Front_End/fnd.php");
-    exit();
+    if($postman){
+        
+    }else{
+        header("Location: ../../../Admin_Front_End/fnd.php");
+        exit();
+    }
   
     // set response code - 200 ok
     http_response_code(200);

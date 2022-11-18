@@ -18,20 +18,39 @@ $db = $database->getConnection();
   
 // prepare product object
 $fnd = new fnd($db);
-  
-// set ID property of product to be edited
-$fnd->FND_id = $_POST["id"];
 
-// set product property values
-$fnd->pack_name = $_POST["name"];
-$fnd->pack_desc = $_POST["desc"];
-$fnd->pack_price = $_POST["price"];
+// get posted data
+$data = json_decode(file_get_contents("php://input"));
+
+$id = filter_input(INPUT_POST, 'id');
+$desc = filter_input(INPUT_POST, 'desc');
+$name = filter_input(INPUT_POST, 'name');
+$price = filter_input(INPUT_POST, 'price');
+
+//if it is an postman call
+if($name == "" && $price == ""){
+    $fnd->FND_id = $data->FND_id;
+    $fnd->pack_name = $data->pack_name;
+    $fnd->pack_desc = $data->pack_desc;
+    $fnd->pack_price = $data->pack_price;
+    $postman = true;
+}else{ //if it is normal implementation
+    // set item property values
+    $fnd->FND_id = $id;
+    $fnd->pack_name = $name;
+    $fnd->pack_desc  = $desc;
+    $fnd->pack_price = $price;
+}
 
 // update the product
 if($fnd->updateFND()){
     $_SESSION['updateSuccess'] = "true";
-    header("Location: ../../../Admin_Front_End/fnd.php");
-    exit();
+    if($postman){
+        
+    }else{
+        header("Location: ../../../Admin_Front_End/fnd.php");
+        exit();
+    }
     
     // set response code - 200 ok
     http_response_code(200);
