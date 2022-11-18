@@ -17,20 +17,28 @@ $db = $database->getConnection();
 // prepare fnd object
 $deco = new deco($db);
 
-if(isset($_POST["deleteDeco"])){
-    // set deco id to be deleted
-    $deco->deco_id = $_POST["deleteDeco"];
-    
-    $sql = "SELECT * FROM decoration WHERE deco_id = '$deco->deco_id'";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
+// get posted data
+$data = json_decode(file_get_contents("php://input"));
+$id = filter_input(INPUT_POST, 'deleteDeco');
+
+//if it is an postman call
+if($id == ""){
+    $deco->deco_id = $data->deco_id;
+    $postman = true;
+}else{ //if it is normal implementation
+    // set ID property of item to be deleted
+    $deco->deco_id = $id;
 }
 
 // delete the deco
 if($deco->delete()){
     $_SESSION['deleteSuccess'] = "true";
-    header("Location: ../../../Admin_Front_End/decoration.php");
-    exit();
+    if($postman){
+        
+    }else{
+        header("Location: ../../../Admin_Front_End/decoration.php");
+        exit();
+    }
   
     // set response code - 200 ok
     http_response_code(200);

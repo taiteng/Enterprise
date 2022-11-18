@@ -18,20 +18,36 @@ $db = $database->getConnection();
   
 // prepare product object
 $fnd = new fnd($db);
-  
-// set ID property of product to be edited
-$fnd->FND_id = $_POST["fndid"];
 
-// set product property values
-$fnd->pack_name = $_POST["name"];
-$fnd->pack_desc = $_POST["desc"];
-$fnd->pack_price = $_POST["price"];
+// get posted data
+$data = json_decode(file_get_contents("php://input"));
+
+$name = filter_input(INPUT_POST, 'name');
+$desc = filter_input(INPUT_POST, 'desc');
+$price = filter_input(INPUT_POST, 'price');
+
+//if it is an postman call
+if($name == "" && $price == ""){
+    $fnd->pack_name = $data->pack_name;
+    $fnd->pack_price = $data->pack_price;
+    $fnd->pack_desc = $data->pack_desc;
+    $postman = true;
+}else{ //if it is normal implementation
+    // set item property values
+    $fnd->pack_name = $name;
+    $fnd->pack_price = $price;
+    $fnd->pack_desc = $desc;
+}
 
 // update the product
 if($fnd->create()){
-    $_SESSION['updateSuccess'] = "true";
-    header("Location: ../../../Admin_Front_End/fnd.php");
-    exit();
+    $_SESSION['createSuccess'] = "true";
+    if($postman){
+        
+    }else{
+        header("Location: ../../../Admin_Front_End/fnd.php");
+        exit();
+    }
     
     // set response code - 200 ok
     http_response_code(200);

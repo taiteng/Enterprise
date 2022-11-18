@@ -17,20 +17,29 @@ $db = $database->getConnection();
 // prepare fnd object
 $fun = new fun($db);
 
-if(isset($_POST["deleteFun"])){
-    // set fun id to be deleted
-    $fun->fun_id = $_POST["deleteFun"];
-    
-    $sql = "SELECT * FROM fun WHERE fun_id = '$fun->fun_id'";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
+// get posted data
+$data = json_decode(file_get_contents("php://input"));
+
+$id = filter_input(INPUT_POST, 'deleteFun');
+
+//if it is an postman call
+if($id == ""){
+    $fun->fun_id = $data->fun_id;
+    $postman = true;
+}else{ //if it is normal implementation
+    // set ID property of item to be deleted
+    $fun->fun_id = $id;
 }
 
 // delete the fun
 if($fun->delete()){
     $_SESSION['deleteSuccess'] = "true";
-    header("Location: ../../../Admin_Front_End/fun.php");
-    exit();
+    if($postman){
+        
+    }else{
+        header("Location: ../../../Admin_Front_End/fun.php");
+        exit();
+    }
   
     // set response code - 200 ok
     http_response_code(200);

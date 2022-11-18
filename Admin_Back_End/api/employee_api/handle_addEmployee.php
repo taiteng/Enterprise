@@ -18,17 +18,37 @@ $db = $database->getConnection();
   
 // prepare fun object
 $acc = new accounts($db);
-  
-// set deco property values
-$acc->username = $_POST["name"];
-$acc->password = $_POST["pw"];
-$acc->email = $_POST["email"];
+
+// get posted data
+$data = json_decode(file_get_contents("php://input"));
+
+$name = filter_input(INPUT_POST, 'name');
+$pw = filter_input(INPUT_POST, 'pw');
+$email = filter_input(INPUT_POST, 'email');
+
+//if it is an postman call
+if($name == "" && $pw == ""){
+    $acc->username = $data->username;
+    $acc->password = $data->password;
+    $acc->email = $data->email;
+    $postman = true;
+}else{ //if it is normal implementation
+    // set item property values
+    $acc->username = $name;
+    $acc->password = $pw;
+    $acc->email = $email;
+}
+
 
 // update the acc
 if($acc->create()){
     $_SESSION['createSuccess'] = "true";
-    header("Location: ../../../Admin_Front_End/employee.php");
-    exit();
+    if($postman){
+        
+    }else{
+        header("Location: ../../../Admin_Front_End/employee.php");
+        exit();
+    }
     
     // set response code - 200 ok
     http_response_code(200);

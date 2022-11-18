@@ -18,20 +18,36 @@ $db = $database->getConnection();
   
 // prepare fun object
 $fun = new fun($db);
-  
-// set ID property of deco to be edited
-$fun->fun_id = $_POST["funid"];
-  
-// set deco property values
-$fun->fun_name = $_POST["name"];
-$fun->fun_desc = $_POST["desc"];
-$fun->fun_price = $_POST["price"];
+// get posted data
+$data = json_decode(file_get_contents("php://input"));
+
+$name = filter_input(INPUT_POST, 'name');
+$desc = filter_input(INPUT_POST, 'desc');
+$price = filter_input(INPUT_POST, 'price');
+
+
+//if it is an postman call
+if($name == "" && $price == "" && $desc == ""){
+    $fun->fun_name = $data->fun_name;
+    $fun->fun_desc = $data->fun_desc;
+    $fun->fun_price = $data->fun_price;
+    $postman = true;
+}else{ //if it is normal implementation
+    // set item property values
+    $fun->fun_name = $name;
+    $fun->fun_price = $price;
+    $fun->fun_desc = $desc;
+}
 
 // update the fun
 if($fun->create()){
     $_SESSION['createSuccess'] = "true";
-    header("Location: ../../../Admin_Front_End/fun.php");
-    exit();
+    if($postman){
+        
+    }else{
+        header("Location: ../../../Admin_Front_End/fun.php");
+        exit();
+    }
     
     // set response code - 200 ok
     http_response_code(200);
