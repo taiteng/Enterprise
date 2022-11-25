@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $.ajax({
-        url: "http://localhost/Enterprise2/Enterprise/Admin_Front_End/admin_js/data_line.php",
+        url: "http://localhost/Enterprise/Admin_Front_End/admin_js/data_line.php",
         type: "GET",
         success: function(myData){
             var data = JSON.parse(myData);
