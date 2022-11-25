@@ -378,7 +378,7 @@ include '../Back_End/db_conn.php';
       <!-- endinject -->
       <!-- Custom js for this page-->
       <script src="../Admin_Front_End/admin_design/js/jquery.cookie.js" type="text/javascript"></script>
-      <script src="../Admin_Front_End/admin_js/performanceLine.js" type="text/javascript"></script>
+      <script src="../Admin_Front_End/admin_js/performanceLine.js?v=<?=$version?>" type="text/javascript"></script>
       <script src="../Admin_Front_End/admin_js/doughnutChart.js?v=<?=$version?>" type="text/javascript"></script>
       
       <!-- End custom js for this page-->
