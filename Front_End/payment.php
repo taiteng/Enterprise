@@ -75,7 +75,7 @@ $deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
         <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
         <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
         <script async custom-element="amp-animation" src="https://cdn.ampproject.org/v0/amp-animation-0.1.js"></script>
-        <!-- <script src="https://apps.elfsight.com/p/platform.js" defer></script> -->
+        <script src="https://apps.elfsight.com/p/platform.js" defer></script>
         
         <title>Payment</title>
     </head>
@@ -205,7 +205,9 @@ $deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
 
                           createOrder: function(data, actions) {
                             return actions.order.create({
-                              purchase_units: [{"description":"Deposit for Covent Event Planning System","amount":{"currency_code":"USD","value":total,"breakdown":{"item_total":{"currency_code":"USD","value":total},"shipping":{"currency_code":"USD","value":0},"tax_total":{"currency_code":"USD","value":0}}}}]
+                              purchase_units: [{"description":"Deposit for Covent Event Planning System","amount":{"currency_code":"USD","value":total,
+                                          "breakdown":{"item_total":{"currency_code":"USD","value":total},"shipping":{"currency_code":"USD","value":0},
+                                              "tax_total":{"currency_code":"USD","value":0}}}}]
                             });
                           },
 
@@ -246,7 +248,7 @@ $deposit = (($total*(100 - $discount['discount_percent']))/100)/2;
             </center>
         </section>
         
-        <!-- <div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div> -->
+        <div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div>
         
         <div>
             <!-- Footer -->

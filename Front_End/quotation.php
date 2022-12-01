@@ -132,7 +132,7 @@ if(isset($_SESSION["reviewCreated"])){
         <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
         <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
         <script async custom-element="amp-animation" src="https://cdn.ampproject.org/v0/amp-animation-0.1.js"></script>
-        <!-- <script src="https://apps.elfsight.com/p/platform.js" defer></script> -->
+        <script src="https://apps.elfsight.com/p/platform.js" defer></script>
         
         <title>Quotation</title>
     </head>
@@ -584,7 +584,7 @@ if(isset($_SESSION["reviewCreated"])){
             </div>
         </section>
         
-        <!-- <div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div> -->
+        <div class="elfsight-app-ad7a5157-fe14-48d4-abb5-571f0250b431"></div>
 
         <div>
             <!-- Footer -->
